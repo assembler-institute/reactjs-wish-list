@@ -62,7 +62,9 @@ $ git checkout -b <new_branch_name> <remote_branch_name>
 
 ### Installing
 
-This project is made so that you start from scratch so you will need to create a base React app by yourself, therefore there are no install scripts because we only have a `README` file.
+This project is made so that you start from scratch so you will need to create a
+base React app by yourself, therefore there are no install scripts because we
+only have a `README` file.
 
 ### Running the Tests
 
@@ -111,47 +113,66 @@ found in the doc that the academic team will provide you.
 
 For this step you have to think of a layout for the app.
 
-1. You **must** use `SCSS` for all the styles of the app and the [classnames](https://github.com/JedWatson/classnames#readme) npm package to handle any conditionally set classes
+1. You **must** use `SCSS` for all the styles of the app and the
+   [classnames](https://github.com/JedWatson/classnames#readme) npm package to
+   handle any conditionally set classes
 2. The overall layout must be a pixel perfect copy of the design we provide
 3. The layout must be responsive so that it works in all device sizes
 
 ### 2. Show All the Todos
 
-In this step you must implement the logic to render all the todos of the app. This means that all the todos are rendered without taking into account if they are completed or not.
+In this step you must implement the logic to render all the todos of the app.
+This means that all the todos are rendered without taking into account if they
+are completed or not.
 
-1. **The todos must be created in the `App` component and passed as props to the page components**
-2. **All the methods that modify the `<App />` state must also be passed as props**
-3. If there are no todos created you must render a message telling the user that they can create their first todo to get started
-4. You can also render an illustration that indicates users that they can create a todo to get started
-   1. Feel free to create your own or use one from the internet, this is a great resource: [undraw.co](https://undraw.co/illustrations)
+1. **The todos must be created in the `App` component and passed as props to the
+   page components**
+2. **All the methods that modify the `<App />` state must also be passed as
+   props**
+3. If there are no todos created you must render a message telling the user that
+   they can create their first todo to get started
+4. You can also render an illustration that indicates users that they can create
+   a todo to get started
+   1. Feel free to create your own or use one from the internet, this is a great
+      resource: [undraw.co](https://undraw.co/illustrations)
 
 ### 3. Creating Todos
 
 1. Users must be able to create a new todo using the form in the app header
-2. Users must be able to press the `enter` key on their keyboard to create the todo (if you implement it using semantic html5 this comes for free)
+2. Users must be able to press the `enter` key on their keyboard to create the
+   todo (if you implement it using semantic html5 this comes for free)
 3. Once the todo is created it must be rendered in the list bellow the form
 
 ### 4. Editing Todos
 
 Users must be able to edit the todos once they are created.
 
-1. Clicking the todo name should open a form that allows users to edit the todo name.
-   1. This can be implemented either in line or by filling out the new todo form with the details of the todo that was clicked
-   2. We recommend that you implement a solution that allows users to edit the todo in line. This means that clicking the todo name replaces the todo with a form that has a value of the todo's name
-   3. Then, by clicking on the done button or by pressing enter, the todo is edited and saved
-2. Users should be able to delete todos by clicking the `X` button that is rendered when users hover over the todo name
-3. Users must be able to mark a todo as completed when they press the `Done` button that is rendered when the user hovers over the todo name
+1. Clicking the todo name should open a form that allows users to edit the todo
+   name.
+   1. This can be implemented either in line or by filling out the new todo form
+      with the details of the todo that was clicked
+   2. We recommend that you implement a solution that allows users to edit the
+      todo in line. This means that clicking the todo name replaces the todo
+      with a form that has a value of the todo's name
+   3. Then, by clicking on the done button or by pressing enter, the todo is
+      edited and saved
+2. Users should be able to delete todos by clicking the `X` button that is
+   rendered when users hover over the todo name
+3. Users must be able to mark a todo as completed when they press the `Done`
+   button that is rendered when the user hovers over the todo name
 
 ### 5. Filtering Todos
 
 In this step you will create a page for each todo type.
 
-In order to allow users to navigate to a page you will need to complete the footer of the app that you can see in the screenshot above.
+In order to allow users to navigate to a page you will need to complete the
+footer of the app that you can see in the screenshot above.
 
 You will have to render the following in the footer:
 
 1. The total count of all the `active` todos
-2. A link to the home page that renders `all` the todos, **both active and completed**
+2. A link to the home page that renders `all` the todos, **both active and
+   completed**
 3. A link to the active todos page that renders the `active` todos
 4. A link to the completed todos page that renders the `completed` todos
 
@@ -171,7 +192,8 @@ In this page you will render all the **completed** todos.
 
 You will need to think of a way to store or filter the todos that are completed.
 
-A possible solution is to use `[].filter` or to store the todos in a different `this.state` property.
+A possible solution is to use `[].filter` or to store the todos in a different
+`this.state` property.
 
 Feel free to think of a solution for this requirement.
 
@@ -180,11 +202,13 @@ Feel free to think of a solution for this requirement.
 - Route: `/active`
 - Page Component: `Active`
 
-In this page you will render all the **active** todos, that is, all the todos that are not completed.
+In this page you will render all the **active** todos, that is, all the todos
+that are not completed.
 
 You will need to think of a way to store or filter the todos that are active.
 
-A possible solution is to use `[].filter` or to store the todos in a different `this.state` property.
+A possible solution is to use `[].filter` or to store the todos in a different
+`this.state` property.
 
 Feel free to think of a solution for this requirement.
 
@@ -192,15 +216,18 @@ Feel free to think of a solution for this requirement.
 
 #### 1. Store the todos in `localStorage`
 
-All the todos are stored in `localStorage` so that users can refresh the app and their previous todos are not lost.
+All the todos are stored in `localStorage` so that users can refresh the app and
+their previous todos are not lost.
 
 #### 2. Clear all the Completed Todos
 
-Users must be able to clear all the todos that are completed. You can implement a button in the app footer that allows users to clear the completed todos.
+Users must be able to clear all the todos that are completed. You can implement
+a button in the app footer that allows users to clear the completed todos.
 
 #### 3: Light & Dark Mode Switch
 
-You can implement a light & dark mode switch that can be toggled using the moon icon in the app header.
+You can implement a light & dark mode switch that can be toggled using the moon
+icon in the app header.
 
 ## Project delivery
 
