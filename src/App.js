@@ -1,14 +1,17 @@
 import React from "react";
+import TestDesign from "./pages/TestDesign";
+// import All from "./pages/All";
 
 function App() {
   return (
-    <main className="container mt-5">
-      <section className="row">
-        <div className="col col-12">
-          <h1>Hola mundo</h1>
-        </div>
-      </section>
-    </main>
+    <TestDesign />
+    // <main className="container mt-5">
+    //   <section className="row">
+    //     <div className="col col-12">
+    //       <All />
+    //     </div>
+    //   </section>
+    // </main>
   );
 }
 

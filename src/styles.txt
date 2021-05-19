@@ -1,0 +1,23 @@
+bg_white: #fafafa;
+blue: #5278ca;
+greyFont: #505050;
+lightGreyFont: #d3d3d3;
+mediumGreyFont: #a8a8a8;
+purple: #9f7cea;
+
+degradado: background: linear-gradient(140deg, rgba(82,120,202,1) 0%, rgba(159,124,234,1) 100%);
+
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+--- Header Font:
+css:
+font-family: 'Montserrat', sans-serif;
+font-weight: 600;
+
+--- Body Font:
+css:
+font-family: 'Maven Pro', sans-serif;
+font-weight:400 y 500;
