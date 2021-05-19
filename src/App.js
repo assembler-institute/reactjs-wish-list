@@ -8,11 +8,12 @@ function App() {
   return (
     <>
       <header>
-        <img alt="hero" src={hero} />
-        <h1>TODO</h1>
-        <form>
-          <input type="text" placeholder="Create task" />
-        </form>
+        <div className="heroImg" alt="hero" src={hero}>
+          <h1 className="TODOHeader">TODO</h1>
+          <form>
+            <input type="text" placeholder="Create task" />
+          </form>
+        </div>
       </header>
       <main className="container mt-5">
         <section className="row">
