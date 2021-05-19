@@ -15,23 +15,24 @@ function App() {
           </form>
         </div>
       </header>
-      <main className="container mt-5">
+
+      <main className="main container mt-3">
         <section className="row">
-          <div className="col col-6">
+          <div className="main__todo col col-12">
             <label>
-              <input type="checkbox" name="name" />
+              <input className="mx-4" type="checkbox" name="name" />
               Jog around the park
             </label>
           </div>
-          <div className="col col-6">
+          <div className="main__todo col col-12">
             <label>
-              <input type="checkbox" name="name" />
+              <input className="mx-4" type="checkbox" name="name" />
               Jog around the park
             </label>
           </div>
-          <div className="col col-6">
+          <div className="main__todo col col-12">
             <label>
-              <input type="checkbox" name="name" />
+              <input className="mx-4" type="checkbox" name="name" />
               Jog around the park
             </label>
           </div>
