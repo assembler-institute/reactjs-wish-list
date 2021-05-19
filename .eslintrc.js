@@ -64,5 +64,21 @@ module.exports = {
     "no-underscore-dangle": "off",
     "react/forbid-prop-types": "off",
     "react/prop-types": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        required: {
+          some: ["nesting", "id"],
+        },
+      },
+    ],
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        required: {
+          some: ["nesting", "id"],
+        },
+      },
+    ],
   },
 };
