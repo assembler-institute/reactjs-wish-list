@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./styles.scss";
+
 function App() {
   return (
     <main className="container mt-5">
