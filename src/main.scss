@@ -1,0 +1,33 @@
+.main {
+  max-width: 500px;
+  min-height: 450px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: -45px;
+
+  &__todo {
+    padding: 0.7rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  &__footer {
+    // padding: 0.6rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-around;
+
+    button {
+      border: none;
+      background-color: transparent;
+      padding: 0.4rem;
+    }
+    span {
+      padding: 0.3rem 0.2rem;
+      opacity: 0.4;
+    }
+  }
+}

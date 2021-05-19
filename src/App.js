@@ -16,7 +16,7 @@ function App() {
         </div>
       </header>
 
-      <main className="main container mt-3">
+      <main className="main container ">
         <section className="row">
           <div className="main__todo col col-12">
             <label>
@@ -37,11 +37,13 @@ function App() {
             </label>
           </div>
         </section>
-        <section>
+        <section className="row main__footer">
           <span>5 items left</span>
-          <button type="button">All</button>
-          <button type="button">Active</button>
-          <button type="button">Completed</button>
+          <div>
+            <button type="button">All</button>
+            <button type="button">Active</button>
+            <button type="button">Completed</button>
+          </div>
           <button type="button">Clear completed</button>
         </section>
       </main>
