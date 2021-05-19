@@ -25,16 +25,6 @@ export default function Home() {
             <TodoCard />
             <TodoCard />
             <TodoCard />
-            <TodoCard />
-            <TodoCard />
-            <TodoCard />
-            <TodoCard />
-            <TodoCard />
-            <TodoCard />
-            <TodoCard />
-            <TodoCard />
-            <TodoCard />
-            <TodoCard />
           </section>
           <CardFooter />
         </div>

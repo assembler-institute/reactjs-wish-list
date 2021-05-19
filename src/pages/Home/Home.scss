@@ -16,7 +16,7 @@
 }
 
 .mainBackground {
-  background-color: rgb(241, 241, 241);
+  background-color: rgb(235, 235, 235);
 }
 
 .whiteBg {
@@ -40,15 +40,15 @@
 .gridMain {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 100px 80px 1fr;
+  grid-template-rows: 100px 80px;
   justify-content: center;
   width: 80%;
-  /* min-height: 300px; */
+  height: fit-content;
   max-width: 600px;
   margin: 0 auto;
   z-index: 100;
   padding: 1%;
-  overflow: hidden;
+  overflow-x: hidden;
   margin-bottom: 5vh;
   section {
     height: fit-content;

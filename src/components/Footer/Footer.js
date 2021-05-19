@@ -5,7 +5,7 @@ import "./Footer.scss";
 export default function Footer() {
   return (
     <footer className="centerText">
-      <h1>Drag and drop to reorder list</h1>
+      <p className="font-size-10 gray-color">Drag and drop to reorder list</p>
     </footer>
   );
 }
