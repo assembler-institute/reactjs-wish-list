@@ -49,7 +49,6 @@ module.exports = {
     },
   ],
   rules: {
-    "prettier/prettier": "error",
     "react/jsx-filename-extension": "off",
     "import/prefer-default-export": "off",
     "prefer-destructuring": "off",
@@ -59,5 +58,11 @@ module.exports = {
     "no-underscore-dangle": "off",
     "react/forbid-prop-types": "off",
     "react/prop-types": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
   },
 };
