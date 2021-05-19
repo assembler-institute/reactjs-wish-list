@@ -4,11 +4,25 @@ import "./styles.scss";
 
 function App() {
   return (
-    <main className="container mt-5">
-      <section className="row">
-        <div className="col col-12">
+    <main>
+      <section className="container">
+        <section className="header">
           <h1>Hola mundo</h1>
-        </div>
+          <p>darkMode</p>
+        </section>
+        <section className="new-todo">
+          <article>Input new todo</article>
+        </section>
+        <section className="todo-list">
+          <ul>
+            <li>Todo list</li>
+          </ul>
+        </section>
+        <section className="footer">
+          <article>Active number</article>
+          <article>Menu All / Active / Completed</article>
+          <article>Delete completed</article>
+        </section>
       </section>
     </main>
   );

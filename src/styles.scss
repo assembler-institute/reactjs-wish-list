@@ -2,6 +2,7 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  outline: 1px solid red !important;
 }
 
 body {
@@ -9,4 +10,21 @@ body {
   background-position: top;
   background-color: gray;
   background-repeat: no-repeat;
+
+}
+
+main{
+  position: relative;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+
+  .container {
+    position: relative;
+    top: 10vh;
+    width: 800px;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+  }
 }
