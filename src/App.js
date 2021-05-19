@@ -1,5 +1,8 @@
 import React from "react";
 
+import Todolist from "./components/todolist";
+// import Footer from "./components/footer";
+
 import "./styles.scss";
 
 function App() {
@@ -13,16 +16,14 @@ function App() {
         <section className="new-todo">
           <article>Input new todo</article>
         </section>
-        <section className="todo-list">
-          <ul>
-            <li>Todo list</li>
-          </ul>
-        </section>
-        <section className="footer">
+        {/* <section className="todo-list"><ul><li>Todo list</li></ul></section> */}
+        <Todolist />
+        {/*
+         <section className="footer">
           <article>Active number</article>
           <article>Menu All / Active / Completed</article>
           <article>Delete completed</article>
-        </section>
+        </section> */}
       </section>
     </main>
   );
