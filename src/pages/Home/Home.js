@@ -5,12 +5,15 @@ import Header from "../../components/layout/Header";
 import Main from "../../components/layout/Main";
 import Footer from "../../components/layout/Footer";
 
+import "./Home.scss";
+
 export default function Home() {
   return (
-    <div>
-      <main className="container mt-5">
+    <div className="home">
+      <main>
         <section className="row">
-          <div className="col col-12">
+          <div className="upper_home">
+            <div />
             <Header />
             <Main />
             <Footer />

@@ -1,9 +1,11 @@
 import React from "react";
 
+import "./Header.scss";
+
 export default function Header() {
   return (
-    <>
-      <h1>I am Header</h1>
-    </>
+    <div>
+      <h1 className="main_title">TODO</h1>
+    </div>
   );
 }
