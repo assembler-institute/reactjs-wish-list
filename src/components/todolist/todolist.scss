@@ -1,0 +1,20 @@
+ul {
+  width: 100%;
+  list-style: none;
+}
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  background-color: #fff;
+  padding: 0.8rem;
+  border-radius: 0px 0px 8px 8px;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
