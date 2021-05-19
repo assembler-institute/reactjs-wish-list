@@ -1,6 +1,6 @@
 import React from "react";
 // import { NavLink } from "react-router-dom";
-import Todo from "../Todo/Todo";
+import Todo from "../Todo";
 
 import "./TodoList.scss";
 
