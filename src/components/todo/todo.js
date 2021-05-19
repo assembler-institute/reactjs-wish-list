@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./Todo.scss";
+import "./todo.scss";
 
-function Todo() {
+function todo() {
   return (
     <li>
       <div>
@@ -14,4 +14,4 @@ function Todo() {
   );
 }
 
-export default Todo;
+export default todo;

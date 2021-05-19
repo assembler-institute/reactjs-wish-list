@@ -1,10 +1,10 @@
 import React from "react";
 // import { NavLink } from "react-router-dom";
-import Todo from "../Todo";
+import Todo from "../todo";
 
-import "./TodoList.scss";
+import "./todolist.scss";
 
-function TodoList() {
+function todolist() {
   return (
     <section>
       <ul>
@@ -27,4 +27,4 @@ function TodoList() {
   );
 }
 
-export default TodoList;
+export default todolist;
