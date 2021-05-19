@@ -2,7 +2,9 @@
 .header {
   height: 33vh;
   width: 100%;
-  background-color: red;
+  background-image: url('./header.jpg');
+  background-position: center;
+  background-size: cover;
   position: absolute;
   top: 0;
 }
