@@ -1,0 +1,52 @@
+@mixin grid3($cell1,$cell2,$cell3,$gap) {
+display: grid;
+grid-template-columns: $cell1 $cell2 $cell3;
+column-gap: $gap;
+justify-content: left;
+align-content: flex-start;
+}
+@mixin resetMarginPadding {
+margin: 0;
+padding: 0;
+}
+@mixin inputs($color,$top,$bot){
+border-radius: 3px;
+border: $borderColor;
+height: 40px;
+width: 80%;
+justify-content: center;
+align-items: center;
+background-color: $color;
+margin-top: $top;
+margin-bottom: $bot;
+}
+@mixin image ($ejeZ){
+position: absolute;
+z-index: $ejeZ;
+width: 50%;
+}
+@mixin backimag ($ejeX,$ejeY,$bordeR,$url){
+height: $ejeX;
+width: $ejeY;
+border-radius: $bordeR;
+margin: 5px;
+background-image: url($url);
+background-size: cover;
+background-position: center;
+}
+@mixin flex ($flexbox,$direction,$xPos,$ypos,$color,$borde,$anchor){
+display: flex;
+flex-direction: $direction;
+justify-content: $xPos;
+align-items: $ypos;
+width: $anchor;
+background-color: $color;
+border: #dbdbdb $borde solid;
+}
+@mixin aHref ($color,$fonts){
+text-decoration: none;
+color: $color;
+font-weight: 700;
+font-family: $fonts;
+justify-self: center;
+align-self: center;

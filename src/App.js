@@ -1,12 +1,16 @@
 import React from "react";
+import Form from "./components/Form/Form";
+import Header from "./components/Header/Header";
+import Todo from "./components/Todo";
+import "./_App.scss";
 
 function App() {
   return (
-    <main className="container mt-5">
-      <section className="row">
-        <div className="col col-12">
-          <h1>Hola mundo</h1>
-        </div>
+    <main className="background_container">
+      <section className="parent_container">
+        <Header />
+        <Form />
+        <Todo />
       </section>
     </main>
   );
