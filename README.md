@@ -62,13 +62,22 @@ $ git checkout -b <new_branch_name> <remote_branch_name>
 
 ### Installing
 
-This project is made so that you start from scratch so you will need to create a
-base React app by yourself, therefore there are no install scripts because we
-only have a `README` file.
+First, you will need to install the dependencies with: `npm install`.
+
+Run the following command in your terminal after cloning the main repo:
+
+```sh
+$ npm install
+```
 
 ### Running the Tests
 
-There are no tests for the same reasons.
+The tests that validate your solution can be executed by runing the following
+command:
+
+```
+$ npm run test
+```
 
 ### Git `precommit` and `prepush` Hooks
 
