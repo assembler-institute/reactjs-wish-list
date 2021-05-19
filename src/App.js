@@ -7,8 +7,9 @@ import "./_App.scss";
 function App() {
   return (
     <main className="background_container">
+      <Header />
       <section className="parent_container">
-        <Header />
+        <h1>TODO</h1>
         <Form />
         <Todo />
       </section>

@@ -2,11 +2,7 @@ import React from "react";
 import "./_header.scss";
 
 function Header() {
-  return (
-    <header className="header">
-      <div className="img_container" />
-    </header>
-  );
+  return <header className="header" />;
 }
 
 export default Header;

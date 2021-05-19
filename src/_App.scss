@@ -3,9 +3,29 @@
 .background_container {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 100%;
 }
 .parent_container {
+  display: flex;
+  position: fixed;
+  background-color: antiquewhite;
+  top: 5%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  width: 40%;
+  outline: 1px solid black;
+  flex-wrap: wrap;
+  gap: 25px;
+  border-radius: 10px;
+}
+h1 {
+  background-color: aqua;
+  height: 80px;
   width: 100%;
+  outline: 1px solid black;
+  letter-spacing: 10px;
 }
