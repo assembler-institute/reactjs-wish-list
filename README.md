@@ -6,9 +6,15 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-# Assembler School: React.js Todo List
+# Assembler School: React.js Todo List <!-- omit in toc -->
 
 In this project you will learn how to create a React.js todo list.
+
+- [Getting Started](#getting-started)
+- [The Project](#the-project)
+- [Project requirements](#project-requirements)
+- [Project delivery](#project-delivery)
+- [Resources](#resources)
 
 ## Getting Started
 
@@ -28,7 +34,7 @@ account:
 $ git clone https://github.com/assembler-school/reactjs-todo-list.git
 ```
 
-## Contents and Branches Naming Strategy
+## Contents and Branches Naming Strategy <!-- omit in toc -->
 
 The repository is made up of several branches that include the contents of each
 section.
@@ -84,11 +90,11 @@ $ npm run test
 In the `assembler-solution` branch you can see an implementation of these tools
 if you'd like to use them.
 
-## Deployment
+## Deployment <!-- omit in toc -->
 
 In this pill we won't deploy the app.
 
-## Technologies used
+## Technologies used <!-- omit in toc -->
 
 - `React.js`
 - `@testing-library/react`
@@ -249,12 +255,12 @@ To deliver this project you must follow the steps indicated in the document:
 - [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/)
 - [reactjs.org](https://reactjs.org/)
 
-## License
+## License <!-- omit in toc -->
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 for details
 
-## Contributors ✨
+## Contributors ✨ <!-- omit in toc -->
 
 Thanks goes to these wonderful people
 ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
