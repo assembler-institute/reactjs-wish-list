@@ -10,6 +10,8 @@
 
 In this project you will learn how to create a React.js todo list.
 
+## Table of Contents <!-- omit in toc -->
+
 - [Getting Started](#getting-started)
 - [The Project](#the-project)
 - [Project requirements](#project-requirements)
