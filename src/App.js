@@ -7,30 +7,33 @@ import "./main.scss";
 function App() {
   return (
     <>
-      <header>
-        <img alt="hero" src={hero} />
-        <h1>TODO</h1>
+      <header className="header">
+        <div className="header__prb">
+          <img className="img-fluid" alt="hero" src={hero} />
+        </div>
+        {/* <h1>TODO</h1>
         <form>
           <input type="text" placeholder="Create task" />
-        </form>
+        </form> */}
       </header>
-      <main className="container mt-5">
+
+      <main className="main container mt-3">
         <section className="row">
-          <div className="col col-6">
+          <div className="main__todo col col-12">
             <label>
-              <input type="checkbox" name="name" />
+              <input className="mx-4" type="checkbox" name="name" />
               Jog around the park
             </label>
           </div>
-          <div className="col col-6">
+          <div className="main__todo col col-12">
             <label>
-              <input type="checkbox" name="name" />
+              <input className="mx-4" type="checkbox" name="name" />
               Jog around the park
             </label>
           </div>
-          <div className="col col-6">
+          <div className="main__todo col col-12">
             <label>
-              <input type="checkbox" name="name" />
+              <input className="mx-4" type="checkbox" name="name" />
               Jog around the park
             </label>
           </div>

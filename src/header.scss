@@ -1,0 +1,31 @@
+body {
+  background-color: #fafafa;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: 1px solid black;
+}
+
+.header {
+  &__prb {
+    height: 320px;
+    overflow: hidden;
+  }
+}
+
+.main {
+  margin: 0 auto;
+  max-width: 450px;
+  border: 2px solid black;
+
+  &__todo {
+    padding: 0.5rem 0;
+
+    &__check {
+      margin-right: 20px;
+    }
+  }
+}
