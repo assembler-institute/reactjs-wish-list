@@ -6,10 +6,13 @@ li {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 }
 input[type="radio"] {
   height: 16px;
   width: 16px;
   background-color: #eee;
   margin-right: 0.5rem;
+  cursor: pointer;
 }

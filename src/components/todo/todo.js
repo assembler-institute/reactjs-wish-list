@@ -5,8 +5,11 @@ import "./todo.scss";
 function Todo() {
   return (
     <li>
-      <input type="radio" />
-      Prueba 1
+      <div>
+        <input type="radio" />
+        Prueba 1
+      </div>
+      <span>X</span>
     </li>
   );
 }

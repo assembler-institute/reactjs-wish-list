@@ -1,5 +1,7 @@
 import React from "react";
+// import { NavLink } from "react-router-dom";
 import Todo from "../todo/todo";
+
 import "./todolist.scss";
 
 function Todolist() {
@@ -14,8 +16,12 @@ function Todolist() {
       </ul>
       <footer>
         <div>5 items left</div>
-        <div>All Active Completed</div>
-        <div>Clear Completed</div>
+        <div>
+          <button type="button">All</button>
+          <button type="button">Actived</button>
+          <button type="button">Completed</button>
+        </div>
+        <div className="">Clear Completed</div>
       </footer>
     </section>
   );
