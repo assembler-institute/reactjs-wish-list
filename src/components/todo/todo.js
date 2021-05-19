@@ -1,12 +1,12 @@
 import React from "react";
 
-import "./todo.scss";
+import "./Todo.scss";
 
 function Todo() {
   return (
     <li>
       <div>
-        <input type="radio" />
+        <input type="checkbox" />
         Prueba 1
       </div>
       <span>X</span>

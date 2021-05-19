@@ -1,32 +1,21 @@
-import React from "react";
-
-import Todolist from "./components/todolist";
-// import Footer from "./components/footer";
+import { React } from "react";
 
 import "./styles.scss";
 
-function App() {
+import Header from "./components/Header";
+import NewTodo from "./components/NewTodo";
+import TodoList from "./components/TodoList";
+
+export default function App() {
   return (
-    <main>
-      <section className="container">
-        <section className="header">
-          <h1>Hola mundo</h1>
-          <p>darkMode</p>
+    <>
+      <main>
+        <section className="container">
+          <Header />
+          <NewTodo />
+          <TodoList />
         </section>
-        <section className="new-todo">
-          <article>Input new todo</article>
-        </section>
-        {/* <section className="todo-list"><ul><li>Todo list</li></ul></section> */}
-        <Todolist />
-        {/*
-         <section className="footer">
-          <article>Active number</article>
-          <article>Menu All / Active / Completed</article>
-          <article>Delete completed</article>
-        </section> */}
-      </section>
-    </main>
+      </main>
+    </>
   );
 }
-
-export default App;
