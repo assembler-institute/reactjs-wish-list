@@ -32,7 +32,7 @@ class App extends Component {
         <section className="parent_container">
           <h1>TODO</h1>
           <Form newTodo={this.newTodo} />
-          <Todo todo={todos} />
+          <Todo todos={todos} />
         </section>
       </main>
     );
