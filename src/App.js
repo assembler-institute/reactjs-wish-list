@@ -56,6 +56,7 @@ class App extends Component {
   }
 
   render() {
+    // eslint-disable-next-line
     console.log(this.state);
     return (
       <>
