@@ -10,3 +10,19 @@
     }
   }
 }
+
+.todoRight {
+  display: flex;
+  align-items: center;
+}
+
+.removeBtn {
+  height: 18px;
+  width: 18px;
+  background-image: url("../../img/cross.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 5px;
+  background-color: transparent;
+  border: none;
+}
