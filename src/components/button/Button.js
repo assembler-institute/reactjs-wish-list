@@ -12,8 +12,8 @@ function Button({ id, handleIsActive, isActive }) {
   return (
     <button type="button" className="buttonCheck" onClick={onSetActive}>
       {isActive ? (
-        <div>
-          <FontAwesomeIcon icon={faCheck} className="checkTrue" />
+        <div className="checked">
+          <FontAwesomeIcon icon={faCheck} />
         </div>
       ) : (
         <div> </div>

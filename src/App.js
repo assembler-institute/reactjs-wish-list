@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import "./styles.scss";
 
@@ -34,6 +34,7 @@ class App extends Component {
     };
     this.handleIsActive = this.handleIsActive.bind(this);
     this.saveNewTodo = this.saveNewTodo.bind(this);
+    this.clearCompleted = this.clearCompleted.bind(this);
   }
 
   componentDidMount() {
@@ -81,10 +82,22 @@ class App extends Component {
     }));
   }
 
+  clearCompleted() {
+    const { todos } = this.state;
+    const newTodos = todos.filter((todo) => todo.isActive === false);
+    // eslint-disable-next-line
+    console.log(newTodos);
+    this.setState(() => ({
+      todos: newTodos,
+    }));
+  }
+
   render() {
     const { todos } = this.state;
     // eslint-disable-next-line
     console.log(this.state);
+    const completed = todos.filter((todo) => todo.isActive === true);
+    const active = todos.filter((todo) => todo.isActive === false);
 
     return (
       <>
@@ -96,13 +109,13 @@ class App extends Component {
               <Switch>
                 <Route path="/active">
                   <TodoList
-                    todos={todos}
+                    todos={active}
                     handleIsActive={this.handleIsActive}
                   />
                 </Route>
                 <Route path="/completed">
                   <TodoList
-                    todos={todos}
+                    todos={completed}
                     handleIsActive={this.handleIsActive}
                   />
                 </Route>
@@ -113,6 +126,23 @@ class App extends Component {
                   />
                 </Route>
               </Switch>
+              <footer>
+                <div>{active.length} items left</div>
+                <div>
+                  <Link to="/">
+                    <button type="button">All</button>
+                  </Link>
+                  <Link to="/active">
+                    <button type="button">Actived</button>
+                  </Link>
+                  <Link to="/completed">
+                    <button type="button">Completed</button>
+                  </Link>
+                </div>
+                <button type="button" onClick={this.clearCompleted}>
+                  Clear Completed
+                </button>
+              </footer>
             </section>
           </main>
         </Router>
