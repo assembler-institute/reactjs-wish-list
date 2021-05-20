@@ -11,6 +11,7 @@ export default function TodoList({
   handleCompleteTodo,
   handleEdit,
   handleRemove,
+  handleClear,
 }) {
   return (
     <div className="TodoList">
@@ -30,7 +31,7 @@ export default function TodoList({
           );
         })}
       </ul>
-      <Footer />
+      <Footer handleClear={handleClear} />
     </div>
   );
 }

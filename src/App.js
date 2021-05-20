@@ -109,6 +109,14 @@ class App extends Component {
     });
   };
 
+  handleClear = () => {
+    const { todoList } = this.state;
+    const clearedList = todoList.filter((todo) => todo.completed === false);
+    this.setState({
+      todoList: clearedList,
+    });
+  };
+
   render() {
     const { id, todo, todoList, active, editTodo } = this.state;
     return (
@@ -127,6 +135,7 @@ class App extends Component {
               handleCompleteTodo={this.handleCompleteTodo}
               handleEdit={this.handleEdit}
               handleRemove={this.handleRemove}
+              handleClear={this.handleClear}
             />
           )}
         />

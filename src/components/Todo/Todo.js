@@ -15,7 +15,11 @@ export default function Todo({
   return (
     <li className="list-group-item text-capitalize d-flex justify-content-between p-2 todo">
       <span>
-        <input type="checkbox" onChange={handleCompleteTodo} />
+        <input
+          type="checkbox"
+          onChange={handleCompleteTodo}
+          checked={completed}
+        />
         <h6 className={cns({ completed: completed })}>{title}</h6>
       </span>
 
