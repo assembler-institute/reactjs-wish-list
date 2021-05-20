@@ -3,8 +3,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 // import pages
 import Home from "./pages/Home";
-import Completed from "./pages/Completed";
-import Active from "./pages/Active";
+/* import Completed from "./pages/Completed";
+import Active from "./pages/Active"; */
 // import components
 
 // import style
@@ -120,6 +120,7 @@ class App extends Component {
       <BrowserRouter>
         <Route
           path="/"
+          exact
           render={() => (
             <Home
               id={id}
@@ -135,8 +136,42 @@ class App extends Component {
             />
           )}
         />
-        <Route path="/completed" render={() => <Completed />} />
-        <Route path="/active" render={() => <Active />} />
+        <Route
+          path="/completed"
+          exact
+          render={() => (
+            <Home
+              id={id}
+              todo={todo}
+              todoList={todoList}
+              editTodo={editTodo}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+              handleCompleteTodo={this.handleCompleteTodo}
+              handleEdit={this.handleEdit}
+              handleRemove={this.handleRemove}
+              handleClear={this.handleClear}
+            />
+          )}
+        />
+        <Route
+          path="/active"
+          exact
+          render={() => (
+            <Home
+              id={id}
+              todo={todo}
+              todoList={todoList}
+              editTodo={editTodo}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+              handleCompleteTodo={this.handleCompleteTodo}
+              handleEdit={this.handleEdit}
+              handleRemove={this.handleRemove}
+              handleClear={this.handleClear}
+            />
+          )}
+        />
       </BrowserRouter>
     );
   }
