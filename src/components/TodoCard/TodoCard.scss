@@ -45,13 +45,13 @@ $backgroundColor: #ffffff;
       line-height: 25px;
     }
   }
-  input:checked ~ .status-switch {
+  input:not(:checked) ~ .status-switch {
     border: 1px solid gray;
     background: white;
     transition: border 0.2s;
     box-shadow: 2px 2px 0 13px white inset;
   }
-  input:checked ~ .status-switch:hover {
+  input:not(:checked) ~ .status-switch:hover {
     background: linear-gradient(135deg, #6fbff9, #9d6ef5);
     border: 2px solid transparent;
     box-shadow: 2px 2px 0 13px white inset;
