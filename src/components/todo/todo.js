@@ -2,9 +2,9 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import "./todo.scss";
+import "./Todo.scss";
 
-function todo() {
+function Todo() {
   return (
     <li>
       <div>
@@ -18,4 +18,4 @@ function todo() {
   );
 }
 
-export default todo;
+export default Todo;
