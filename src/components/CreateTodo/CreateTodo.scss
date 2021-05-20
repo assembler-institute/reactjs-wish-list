@@ -1,0 +1,20 @@
+.todo__input {
+    font-family: 'Maven Pro',
+    sans-serif;
+    font-weight:800;
+}
+.todo__input::placeholder {
+    opacity:0.5;
+}
+
+
+.todo__checkbox {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    margin: 10px 10px 0px 10px;
+}

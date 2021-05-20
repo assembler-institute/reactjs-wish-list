@@ -2,6 +2,7 @@ import React from "react";
 import "./Main.scss";
 import mountainImg from "../../img/mountain.jpg";
 import TodosContainer from "../TodosContainer";
+import CreateTodo from "../CreateTodo";
 
 function Main() {
   return (
@@ -18,7 +19,7 @@ function Main() {
           TODO
         </header>
         <aside className="bg-light d-flex flex-row rounded p-3 mb-4">
-          Input
+          <CreateTodo />
         </aside>
         <article className="bg-light d-flex flex-column shadow rounded toContent p-3">
           <TodosContainer />
