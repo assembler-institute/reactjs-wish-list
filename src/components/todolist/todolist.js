@@ -5,6 +5,8 @@ import Todo from "../todo";
 import "./todolist.scss";
 
 function TodoList({ todos }) {
+  // eslint-disable-next-line
+  console.log({ todos });
   return (
     <section className="todo-list">
       <ul>

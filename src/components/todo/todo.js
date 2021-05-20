@@ -9,6 +9,7 @@ function Todo() {
     <li>
       <div>
         <input type="checkbox" />
+        <span>Prueba 1</span>
       </div>
       <div className="prueba">
         <FontAwesomeIcon icon={faTimes} />
