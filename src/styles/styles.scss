@@ -4,7 +4,7 @@
 * {
   padding: 0;
   margin: 0;
-  border: 2px c.$mainColor solid;
+  // border: 2px c.$mainColor solid;
 }
 
 // background-blend-mode: multiply;
@@ -13,38 +13,42 @@ body {
   height: 100vh;
 }
 
-#root{
+#root {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
-  .general-background{
+  .general-background {
     height: 100vh;
-    .top-background{
+    .top-background {
       height: 33%;
-      .img-background{
+      .img-background {
         object-fit: cover;
         height: 100%;
         width: 100%;
       }
     }
-    .bottom-background{
+    .bottom-background {
       background-color: c.$backgroundColor;
       flex-grow: 1;
     }
   }
-  .main-container{
+  .main-container {
     position: absolute;
     z-index: 1;
     width: 40%;
     min-width: 500px;
-    min-height: 80%; 
-    .main-header{
+    min-height: 80%;
+
+    .main-header {
       display: flex;
       justify-content: space-between;
       color: black;
     }
+
+    section {
+      border-radius: 10px;
+    }
   }
 }
-
