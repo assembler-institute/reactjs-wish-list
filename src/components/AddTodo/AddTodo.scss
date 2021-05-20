@@ -1,7 +1,25 @@
-.addTodo input {
-  padding: 10px;
-  width: 500px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
+@mixin focusNone {
+  box-shadow: none !important;
+}
+.addTodo {
+  form {
+    display: flex;
+    input {
+      padding: 10px;
+      width: 500px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      &:focus {
+        @include focusNone();
+      }
+    }
+    .addBtn {
+      margin-left: -35px;
+      display: inline;
+      &:focus {
+        @include focusNone();
+      }
+    }
+  }
 }

@@ -14,13 +14,82 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      id: Math.random() * 1000,
+      todo: "",
+      todoList: [],
+      completed: false,
+      active: true,
+      editTodo: false,
+    };
   }
 
+  handleChange = (e) => {
+    this.setState({ todo: e.target.value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { todo, todoList } = this.state;
+    const newTodo = {
+      id: Math.random() * 1000,
+      title: todo,
+    };
+    const updatedList = [...todoList, newTodo];
+    this.setState({
+      todoList: updatedList,
+      todo: "",
+      id: Math.random() * 1000,
+      editTodo: false,
+    });
+  };
+
+  handleCompleteTodo = (id) => {
+    const { todoList, completed } = this.state;
+    todoList.map((todo) => {
+      if (todo.id === id)
+        this.setState({
+          ...todoList,
+          id: id,
+          completed: !completed,
+        });
+      return todo;
+    });
+  };
+
+  handleEdit = (id) => {
+    const { todoList } = this.state;
+    const updatedList = todoList.filter((todo) => todo.id !== id);
+    const todoToEdit = todoList.find((todo) => todo.id === id);
+    this.setState({
+      todoList: updatedList,
+      todo: todoToEdit.title,
+      id: id,
+      editTodo: true,
+    });
+  };
+
   render() {
+    const { id, todo, todoList, completed, active, editTodo } = this.state;
     return (
       <BrowserRouter>
-        <Route path="/" render={() => <Home />} />
+        <Route
+          path="/"
+          render={() => (
+            <Home
+              id={id}
+              todo={todo}
+              todoList={todoList}
+              completed={completed}
+              active={active}
+              editTodo={editTodo}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+              handleCompleteTodo={this.handleCompleteTodo}
+              handleEdit={this.handleEdit}
+            />
+          )}
+        />
         <Route path="/completed" render={() => <Completed />} />
         <Route path="/active" render={() => <Active />} />
       </BrowserRouter>

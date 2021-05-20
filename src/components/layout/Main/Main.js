@@ -4,11 +4,38 @@ import TodoList from "../../TodoList/TodoList";
 
 import "./Main.scss";
 
-export default function Main() {
+export default function Main({
+  id,
+  todo,
+  todoList,
+  completed,
+  active,
+  editTodo,
+  handleChange,
+  handleSubmit,
+  handleCompleteTodo,
+  handleEdit,
+}) {
   return (
     <div className="main">
-      <AddTodo />
-      <TodoList />
+      <AddTodo
+        id={id}
+        todo={todo}
+        todoList={todoList}
+        completed={completed}
+        active={active}
+        editTodo={editTodo}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
+      <TodoList
+        todoList={todoList}
+        completed={completed}
+        active={active}
+        editTodo={editTodo}
+        handleCompleteTodo={handleCompleteTodo}
+        handleEdit={handleEdit}
+      />
     </div>
   );
 }
