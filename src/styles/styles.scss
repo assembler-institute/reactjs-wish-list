@@ -37,10 +37,13 @@ body {
   .main-container{
     position: absolute;
     z-index: 1;
+    width: 40%;
+    min-width: 500px;
+    min-height: 80%; 
     .main-header{
       display: flex;
       justify-content: space-between;
-      color: c.$backgroundColor;
+      color: black;
     }
   }
 }
