@@ -1,18 +1,20 @@
 .buttonCheck {
-  height: 17px;
-  width: 17px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   background-color: transparent;
   border: 1px solid red;
   margin-right: 0.5rem;
   cursor: pointer;
 }
+
 button[type="button"] > div {
   background-color: blue;
-  height: 15px;
-  width: 15px;
+  height: 18px;
+  width: 18px;
   border-radius: 50%;
 }
+
 .svg-inline--fa,
 .checkTrue {
   font-size: 0.75rem;
