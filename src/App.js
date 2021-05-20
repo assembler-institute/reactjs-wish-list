@@ -6,13 +6,6 @@ function App() {
   return (
     // <TestDesign />
     <All />
-    // <main className="container mt-5">
-    //   <section className="row">
-    //     <div className="col col-12">
-    //       <All />
-    //     </div>
-    //   </section>
-    // </main>
   );
 }
 
