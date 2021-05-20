@@ -76,6 +76,9 @@ main {
         border: none;
         outline: none;
       }
+      .input:hover {
+        border-bottom: #dadce0 2px solid;
+      }
     }
   }
 }

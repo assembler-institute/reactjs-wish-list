@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import "./todo.scss";
 
@@ -9,7 +11,9 @@ function todo() {
         <input type="checkbox" />
         Prueba 1
       </div>
-      <span>X</span>
+      <div className="prueba">
+        <FontAwesomeIcon icon={faTimes} />
+      </div>
     </li>
   );
 }
