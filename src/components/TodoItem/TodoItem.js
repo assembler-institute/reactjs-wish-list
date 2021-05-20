@@ -1,9 +1,9 @@
 import React from "react";
 
-const TodoItem = () => {
+const TodoItem = ({ text }) => {
   return (
     <div>
-      <li>JON</li>
+      <li>{text}</li>
     </div>
   );
 };
