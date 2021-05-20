@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./styles.scss";
 
@@ -6,7 +7,7 @@ import Header from "./components/Header";
 import NewTodo from "./components/NewTodo";
 import TodoList from "./components/todolist";
 
-import * as api from "./api";
+// import * as api from "./api";
 
 const LOCAL_STORAGE_KEY = "react-todo-app";
 
@@ -32,16 +33,15 @@ class App extends Component {
       todos: [],
     };
     this.handleIsActive = this.handleIsActive.bind(this);
+    this.saveNewTodo = this.saveNewTodo.bind(this);
   }
 
   componentDidMount() {
     const prevItems = loadLocalStorageData();
 
     if (!prevItems) {
-      api.getTodos().then((data) => {
-        this.setState({
-          todos: data,
-        });
+      this.setState({
+        todos: [],
       });
       return;
     }
@@ -75,23 +75,47 @@ class App extends Component {
     this.setState({ todos: updatedTodos });
   }
 
+  saveNewTodo(newTodo) {
+    this.setState((prevState) => ({
+      todos: [newTodo, ...prevState.todos],
+    }));
+  }
+
   render() {
     const { todos } = this.state;
     // eslint-disable-next-line
     console.log(this.state);
+
     return (
       <>
-        <main>
-          <section className="container">
-            <Header />
-            <NewTodo saveNewTodo={this.saveNewTodo} />
-            <TodoList
-              todos={todos}
-              isActive={todos.isActive}
-              handleIsActive={this.handleIsActive}
-            />
-          </section>
-        </main>
+        <Router>
+          <main>
+            <section className="container">
+              <Header />
+              <NewTodo saveNewTodo={this.saveNewTodo} />
+              <Switch>
+                <Route path="/active">
+                  <TodoList
+                    todos={todos}
+                    handleIsActive={this.handleIsActive}
+                  />
+                </Route>
+                <Route path="/completed">
+                  <TodoList
+                    todos={todos}
+                    handleIsActive={this.handleIsActive}
+                  />
+                </Route>
+                <Route path="/">
+                  <TodoList
+                    todos={todos}
+                    handleIsActive={this.handleIsActive}
+                  />
+                </Route>
+              </Switch>
+            </section>
+          </main>
+        </Router>
       </>
     );
   }
