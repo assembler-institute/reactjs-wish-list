@@ -10,7 +10,8 @@ body {
 }
 
 .heroImg {
-  height: 33vh;
+  // height: 33vh;
+  min-height: 210px;
   width: 100vw;
   margin: 0;
   display: grid;
@@ -31,17 +32,21 @@ body {
     letter-spacing: 10px;
     color: white;
   }
+}
 
-  &__Form {
-    margin-top: 5px;
-    background-color: white;
-    border-radius: 5px;
-    overflow: hidden;
-  }
+.TODO__Form {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 3rem;
+  border-radius: 5px;
+  overflow: hidden;
+  padding-left: 0.7rem;
 
   &__New {
-    height: 55.4px;
-    width: 440px;
+    flex-grow: 1;
+    padding: 0.7rem;
     border: none;
     outline: none;
   }
