@@ -19,7 +19,6 @@ function loadLocalStorage() {
       id: Math.random() * 1000,
       todo: "",
       todoList: [],
-      active: true,
       editTodo: false,
     };
   }
@@ -34,7 +33,6 @@ class App extends Component {
       id: Math.random() * 1000,
       todo: "",
       todoList: [],
-      active: true,
       editTodo: false,
     };
   }
@@ -46,7 +44,6 @@ class App extends Component {
       id: storedState.id,
       todo: storedState.todo,
       todoList: storedState.todoList,
-      active: storedState.active,
       editTodo: storedState.editTodo,
     });
   }
@@ -118,7 +115,7 @@ class App extends Component {
   };
 
   render() {
-    const { id, todo, todoList, active, editTodo } = this.state;
+    const { id, todo, todoList, editTodo } = this.state;
     return (
       <BrowserRouter>
         <Route
@@ -128,7 +125,6 @@ class App extends Component {
               id={id}
               todo={todo}
               todoList={todoList}
-              active={active}
               editTodo={editTodo}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}

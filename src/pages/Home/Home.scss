@@ -5,10 +5,15 @@
   height: 100%;
   font-family: "Josefin Sans", sans-serif;
   .upper_home {
-    background-image: url("../../img/background.jpg");
+    background-image: linear-gradient(
+        to right,
+        rgb(124, 50, 131),
+        rgb(64, 57, 128)
+      ),
+      url("../../img/background.jpg");
+    background-blend-mode: screen;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: fit;
     height: 300px;
     width: 100%;
     display: flex;

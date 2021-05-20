@@ -15,7 +15,7 @@ export default function TodoList({
 }) {
   return (
     <div className="TodoList">
-      <ul className="list-group my-5">
+      <ul className="list-group mb-5">
         {todoList.map((todo) => {
           return (
             <Todo

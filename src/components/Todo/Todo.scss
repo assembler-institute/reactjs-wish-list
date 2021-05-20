@@ -1,12 +1,14 @@
 .todo {
+  width: 100%;
   span {
     display: flex;
     input {
       align-self: center;
+      margin-left: 20px;
     }
     h6 {
       align-self: center;
-      margin: 0 0 0 10px;
+      margin: 0 0 0 20px;
     }
     .completed {
       text-decoration: line-through;
