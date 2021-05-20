@@ -5,7 +5,7 @@ import "./styles.scss";
 
 import Header from "./components/Header";
 import NewTodo from "./components/NewTodo";
-import TodoList from "./components/todolist";
+import TodoList from "./components/TodoList";
 
 // import * as api from "./api";
 
