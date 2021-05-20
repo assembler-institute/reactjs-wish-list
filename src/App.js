@@ -6,22 +6,40 @@ import "./header.scss";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      todos: [
+        { id: 1, name: "Brahim Benalia Casas", complete: false },
+        { id: 2, name: "Marc Solá Crack", complete: false },
+        { id: 3, name: "Brahim Benalia Casas", complete: false },
+        { id: 4, name: "Marc Solá Crack", complete: false },
+        { id: 4, name: "....", complete: false },
+      ],
+    };
+    // this.handleAddTodo = this.handleAddTodo.bind(this);
   }
 
+  // handleAddTodo(value) {
+
+  // }
+
   render() {
+    const { todos } = this.state;
     return (
       <>
         <header>
           <div className="heroImg" alt="hero" src={hero}>
             <h1 className="TODOHeader">TODO</h1>
             <form>
-              <input type="text" placeholder="Create task" />
+              <input
+                type="text"
+                onClick={this.handleAddTodo}
+                placeholder="Create task"
+              />
             </form>
           </div>
         </header>
 
-        <TodoList />
+        <TodoList todos={todos} />
       </>
     );
   }

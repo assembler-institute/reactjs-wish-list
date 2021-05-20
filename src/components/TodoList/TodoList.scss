@@ -9,6 +9,16 @@
   justify-content: space-between;
   margin-top: -45px;
 
+  &__empty {
+    p {
+      margin: 0.4rem auto;
+      text-align: center;
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+
   &__footer {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     display: flex;

@@ -3,12 +3,12 @@ import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import "./Todo.scss";
 
-function Todo() {
+function Todo({ todo }) {
   return (
     <div className="main__todo col col-12">
       <label>
         <input className="mx-4" type="checkbox" name="name" />
-        Jog around the park
+        {todo.name}
       </label>
       <AiOutlineClose className="main__todo__close" size={24} />
     </div>
