@@ -1,14 +1,15 @@
 import React from "react";
 import Main from "../../components/Main";
 import mountainImg from "../../img/mountain.jpg";
-import TodosContainer from "../../components/TodosContainer";
+// import TodosContainer from "../../components/TodosContainer";
 import AppHeader from "../../components/AppHeader";
 import AppFooter from "../../components/AppFooter";
 import CreateTodo from "../../components/CreateTodo";
+import TodoListing from "../../components/TodoListing";
 
-function All() {
+function All({ isEmpty = false, allTodos, handleSetCompleted, ...props }) {
   return (
-    <Main>
+    <Main {...props}>
       <div className="fullcontent">
         <div className="container-fluid, h40">
           <div className="gradient" />
@@ -23,8 +24,13 @@ function All() {
         </aside>
         <article className="bg-light d-flex flex-column shadow rounded toContent">
           <div className="todoRender">
-            <TodosContainer />
-            <TodosContainer />
+            {isEmpty && <div>There is no todos to show</div>}
+            {!isEmpty && (
+              <TodoListing
+                allTodos={allTodos}
+                handleSetCompleted={handleSetCompleted}
+              />
+            )}
           </div>
           <AppFooter />
         </article>
