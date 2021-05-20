@@ -3,3 +3,15 @@
   color: white;
   padding: 8px 20px;
 }
+.cancel {
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  justify-content: flex-end;
+  font-size: 30px;
+  font-weight: 100;
+  background-image: url(../../img/x.svg);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
+}
