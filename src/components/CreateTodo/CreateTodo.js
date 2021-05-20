@@ -11,7 +11,7 @@ import "./CreateTodo.scss";
 
 export default function CreateTodo() {
   return (
-    <section className="row todo-list-section">
+    <section className="row create-todo-section">
       <div className="col col-12">
         <form>
           {/* <form onSubmit={this.handleSubmit}> */}

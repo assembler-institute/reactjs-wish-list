@@ -13,9 +13,6 @@ class App extends Component {
 
     this.state = {
       todos: defaultTodos,
-      // id: id: uuidv4()
-      // text: "Todo"
-      // done: false
       isLoading: false,
       hasError: false,
     };

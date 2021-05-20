@@ -6,7 +6,7 @@ import "./TodoList.scss";
 export default function TodoList({ todos }) {
   return (
     <section className="row todo-list-section">
-      <div className="col col-12">
+      <div className="col col-12 p-0">
         {todos.map(
           // eslint-disable-next-line
           (todo) => (
