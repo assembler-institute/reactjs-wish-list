@@ -7,7 +7,12 @@ import TodosList from "../../components/TodosList/index";
 import NewTodoCard from "../../components/NewTodoCard/index";
 import BgPicture from "../../components/BgPicture/index";
 
-export default function Home({ todos, handleCompleted, saveNewTodo }) {
+export default function Home({
+  todos,
+  handleCompleted,
+  saveNewTodo,
+  handleTodoChange,
+}) {
   return (
     <div className="mainBackground allWidth minHeight gridBody">
       <BgPicture />
@@ -16,7 +21,11 @@ export default function Home({ todos, handleCompleted, saveNewTodo }) {
         <section className="whiteBg roundedCorner shadow margBot">
           <NewTodoCard saveNewTodo={saveNewTodo} />
         </section>
-        <TodosList todos={todos} handleCompleted={handleCompleted} />
+        <TodosList
+          todos={todos}
+          handleCompleted={handleCompleted}
+          handleTodoChange={handleTodoChange}
+        />
       </main>
       <Footer />
     </div>

@@ -6,7 +6,12 @@ import TodoCard from "../TodoCard/index";
 import CardFooter from "../CardFooter/index";
 import noTodoImg from "../../img/undraw_fill_form_re_cwyf.svg";
 
-export default function TodosList({ todos, handleCompleted, ...props }) {
+export default function TodosList({
+  todos,
+  handleCompleted,
+  handleTodoChange,
+  ...props
+}) {
   const todoMap = (
     <section className="whiteBg">
       {todos.map((todo) => (
@@ -16,6 +21,7 @@ export default function TodosList({ todos, handleCompleted, ...props }) {
           title={todo.title}
           isComplete={todo.isComplete}
           handleCompleted={handleCompleted}
+          handleTodoChange={handleTodoChange}
         />
       ))}
     </section>

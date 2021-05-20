@@ -43,13 +43,14 @@ class App extends Component {
         {
           key: 4,
           id: 4,
-          title: "prueba 3",
+          title: "prueba 4",
           isComplete: false,
         },
       ],
     };
     this.handleCompleted = this.handleCompleted.bind(this);
     this.saveNewTodo = this.saveNewTodo.bind(this);
+    this.handleTodoChange = this.handleTodoChange.bind(this);
   }
   /* Functions */
 
@@ -57,6 +58,13 @@ class App extends Component {
     const { todos } = this.state;
     const selectedTodoId = findIndexByIdInArray(id, todos);
     todos[selectedTodoId].isComplete = !todos[selectedTodoId].isComplete;
+    this.setState({ todos });
+  }
+
+  handleTodoChange(id, newText) {
+    const { todos } = this.state;
+    const changeTodoId = findIndexByIdInArray(id, todos);
+    todos[changeTodoId].title = newText;
     this.setState({ todos });
   }
 
@@ -73,6 +81,7 @@ class App extends Component {
         todos={todos}
         handleCompleted={this.handleCompleted}
         saveNewTodo={this.saveNewTodo}
+        handleTodoChange={this.handleTodoChange}
       />
     );
   }
