@@ -9,10 +9,6 @@ function TodoList({ todos }) {
     <section className="todo-list">
       <ul>
         <Todo />
-        <Todo />
-        <Todo />
-        <Todo />
-        <Todo />
       </ul>
       <footer>
         <div>5 items left</div>
