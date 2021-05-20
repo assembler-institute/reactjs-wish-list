@@ -69,11 +69,6 @@ class App extends Component {
     });
   };
 
-  // completedHandler = () => {
-  //   const { completed } = this.state;
-  //   this.setState({ completed: !completed });
-  // };
-
   render() {
     const { id, todo, todoList, active, editTodo } = this.state;
     return (
