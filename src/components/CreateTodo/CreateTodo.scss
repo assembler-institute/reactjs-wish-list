@@ -2,6 +2,10 @@
     font-family: 'Maven Pro',
     sans-serif;
     font-weight:800;
+    width: 100% !important;
+}
+form{
+    width: 90%;
 }
 .todo__input::placeholder {
     opacity:0.5;
