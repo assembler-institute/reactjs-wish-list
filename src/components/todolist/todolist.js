@@ -4,9 +4,9 @@ import Todo from "../todo";
 
 import "./todolist.scss";
 
-function TodoList() {
+function TodoList({ todos }) {
   return (
-    <section>
+    <section className="todo-list">
       <ul>
         <Todo />
         <Todo />

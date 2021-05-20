@@ -1,15 +1,19 @@
+.todo-list {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
 ul {
   width: 100%;
   list-style: none;
 }
+
 footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
-  background-color: #fff;
   padding: 0.8rem;
-  border-radius: 0px 0px 8px 8px;
 }
 
 button {
