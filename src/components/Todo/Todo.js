@@ -13,15 +13,21 @@ export default function Todo({ id, text, done, handleDone, handleDelete }) {
   return (
     <div
       id={id}
-      done={done.toString()}
-      className="todo-wrapper d-flex justify-center align-items-center px-4"
+      done={done}
+      className="todo-wrapper d-flex justify-content-center align-items-center px-4"
     >
-      <span className="checkbox-wrapper">
+      <div className="checkbox-wrapper d-flex flex-column justify-content-center align-items-center">
         <input onChange={onDone} type="checkbox" name="checkbox" />
-        <span className="custom-checkbox" />
-      </span>
+        <div className="custom-checkbox d-flex flex-column justify-content-center align-items-center">
+          <i className="uil uil-check text-center" />
+        </div>
+      </div>
       <h4 className="todo-text">{text}</h4>
-      <button type="button" onClick={onDelete}>
+      <button
+        type="button"
+        onClick={onDelete}
+        className="d-flex justify-content-center align-items-center"
+      >
         <i className="close uil uil-times" />
       </button>
     </div>

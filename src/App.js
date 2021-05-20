@@ -30,14 +30,11 @@ class App extends Component {
     const { todos } = this.state;
     const updatedTodos = todos.map((todo) => {
       if (todo.id === todoId) {
-        // eslint-disable-next-line no-console
-        console.log("Updated!", todo);
         return {
           ...todo,
           done: !todo.done,
         };
       }
-
       return todo;
     });
     this.setState({ todos: updatedTodos });
@@ -49,7 +46,6 @@ class App extends Component {
     const indexToDelete = todos.indexOf(itemToDelete);
 
     todos.splice(indexToDelete, 1);
-
     this.setState({ todos: todos });
   }
 
