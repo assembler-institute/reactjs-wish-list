@@ -10,6 +10,22 @@ import Active from "./pages/Active";
 // import style
 import "./App.scss";
 
+function loadLocalStorage() {
+  const json = localStorage.getItem("appState");
+  const data = JSON.parse(json);
+
+  if (!data) {
+    return {
+      id: Math.random() * 1000,
+      todo: "",
+      todoList: [],
+      active: true,
+      editTodo: false,
+    };
+  }
+  return data;
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +37,22 @@ class App extends Component {
       active: true,
       editTodo: false,
     };
+  }
+
+  componentDidMount() {
+    const storedState = loadLocalStorage();
+
+    this.setState({
+      id: storedState.id,
+      todo: storedState.todo,
+      todoList: storedState.todoList,
+      active: storedState.active,
+      editTodo: storedState.editTodo,
+    });
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("appState", JSON.stringify(this.state));
   }
 
   handleChange = (e) => {
