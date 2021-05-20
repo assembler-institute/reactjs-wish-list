@@ -1,13 +1,21 @@
 import React from "react";
+import classnames from "classnames/bind";
 
-import "./Todo.scss";
+import todoStyles from "./Todo.scss";
 
-export default function Todo({ title, handleCompleteTodo, handleEdit }) {
+const cns = classnames.bind(todoStyles);
+
+export default function Todo({
+  title,
+  handleCompleteTodo,
+  handleEdit,
+  completed,
+}) {
   return (
     <li className="list-group-item text-capitalize d-flex justify-content-between p-2 todo">
       <span>
         <input type="checkbox" onChange={handleCompleteTodo} />
-        <h6>{title}</h6>
+        <h6 className={cns({ completed: completed })}>{title}</h6>
       </span>
 
       <button type="button" className="btn btn-info mx-2" onClick={handleEdit}>

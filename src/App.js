@@ -18,7 +18,6 @@ class App extends Component {
       id: Math.random() * 1000,
       todo: "",
       todoList: [],
-      completed: false,
       active: true,
       editTodo: false,
     };
@@ -34,6 +33,7 @@ class App extends Component {
     const newTodo = {
       id: Math.random() * 1000,
       title: todo,
+      completed: false,
     };
     const updatedList = [...todoList, newTodo];
     this.setState({
@@ -45,15 +45,15 @@ class App extends Component {
   };
 
   handleCompleteTodo = (id) => {
-    const { todoList, completed } = this.state;
-    todoList.map((todo) => {
-      if (todo.id === id)
-        this.setState({
-          ...todoList,
-          id: id,
-          completed: !completed,
-        });
-      return todo;
+    const { todoList } = this.state;
+
+    this.setState({
+      todoList: todoList.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed: !todo.completed };
+        }
+        return todo;
+      }),
     });
   };
 
@@ -69,8 +69,13 @@ class App extends Component {
     });
   };
 
+  // completedHandler = () => {
+  //   const { completed } = this.state;
+  //   this.setState({ completed: !completed });
+  // };
+
   render() {
-    const { id, todo, todoList, completed, active, editTodo } = this.state;
+    const { id, todo, todoList, active, editTodo } = this.state;
     return (
       <BrowserRouter>
         <Route
@@ -80,7 +85,6 @@ class App extends Component {
               id={id}
               todo={todo}
               todoList={todoList}
-              completed={completed}
               active={active}
               editTodo={editTodo}
               handleChange={this.handleChange}
