@@ -13,7 +13,7 @@ export default function TodosList({ todos, handleCompleted, ...props }) {
         <TodoCard
           key={todo.id}
           id={todo.id}
-          text={todo.text}
+          title={todo.title}
           isComplete={todo.isComplete}
           handleCompleted={handleCompleted}
         />

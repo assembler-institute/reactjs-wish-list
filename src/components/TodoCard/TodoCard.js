@@ -4,7 +4,7 @@ import "./TodoCard.scss";
 
 export default function TodoCard({
   /* key, */ id,
-  text,
+  title,
   isComplete,
   handleCompleted,
 }) {
@@ -24,7 +24,7 @@ export default function TodoCard({
           <i className=" bi bi-check inherit-size" />
         </div>
       </label>
-      <span className="font-bold font-big full-width">{text}</span>
+      <span className="font-bold font-big full-width">{title}</span>
       <div>
         <i className="bi bi-x-lg font-light clickable" />
       </div>

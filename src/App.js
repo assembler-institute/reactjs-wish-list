@@ -25,30 +25,31 @@ class App extends Component {
         {
           key: 1,
           id: 1,
-          text: "prueba 1",
+          title: "prueba 1",
           isComplete: true,
         },
         {
           key: 2,
           id: 2,
-          text: "prueba 2",
+          title: "prueba 2",
           isComplete: false,
         },
         {
           key: 3,
           id: 3,
-          text: "prueba 3",
+          title: "prueba 3",
           isComplete: true,
         },
         {
           key: 4,
           id: 4,
-          text: "prueba 3",
+          title: "prueba 3",
           isComplete: false,
         },
       ],
     };
     this.handleCompleted = this.handleCompleted.bind(this);
+    this.saveNewTodo = this.saveNewTodo.bind(this);
   }
   /* Functions */
 
@@ -59,9 +60,21 @@ class App extends Component {
     this.setState({ todos });
   }
 
+  saveNewTodo(newTodo) {
+    const { todos } = this.state;
+    todos.push(newTodo);
+    this.setState({ todos });
+  }
+
   render() {
     const { todos } = this.state;
-    return <Home todos={todos} handleCompleted={this.handleCompleted} />;
+    return (
+      <Home
+        todos={todos}
+        handleCompleted={this.handleCompleted}
+        saveNewTodo={this.saveNewTodo}
+      />
+    );
   }
 }
 
