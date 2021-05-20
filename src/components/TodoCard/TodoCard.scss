@@ -1,0 +1,59 @@
+$backgroundColor: #ffffff;
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+}
+
+.card-wide {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  height: 50px;
+  padding: 10px;
+  background-color: $backgroundColor;
+  gap: 10px;
+  align-items: center;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-big {
+  font-size: 18px;
+}
+
+.font-light {
+  font-weight: 100;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+input.blue-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px red solid;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.input-no-border {
+  border: none;
+  outline: none;
+  :focus {
+    background-color: red;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+.no-border {
+  border: none;
+}

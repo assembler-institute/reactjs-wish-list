@@ -1,0 +1,14 @@
+.bgPicture {
+  background-color: white;
+  position: absolute;
+  transform: translateY(-10vh);
+  z-index: 50;
+  height: 40vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.bgImg {
+  width: 100%;
+  object-fit: cover;
+}
