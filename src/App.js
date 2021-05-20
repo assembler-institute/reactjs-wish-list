@@ -13,11 +13,10 @@ class App extends Component {
     this.newTodo = this.newTodo.bind(this);
   }
 
-  newTodo(titl) {
+  newTodo(item) {
     const { todos } = this.state;
-    // eslint-disable-next-line
-    console.log("empty", todos);
-    todos.push(titl);
+
+    todos.push(item);
     this.setState({
       todos: todos,
     });
@@ -32,7 +31,7 @@ class App extends Component {
         <Header />
         <section className="parent_container">
           <h1>TODO</h1>
-          <Form />
+          <Form newTodo={this.newTodo} />
           <Todo toDo={todo} />
         </section>
       </main>

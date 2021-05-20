@@ -8,18 +8,23 @@ class newForm extends Component {
       title: "",
     };
     this.handleInput = this.handleInput.bind(this);
+    this.submitTitle = this.submitTitle.bind(this);
   }
 
   handleInput(event) {
     const { title } = this.state;
-    // eslint-disable-next-line
-    console.log(this.props);
-    // newTodo(title);
     this.setState({
       title: event.target.value,
     });
     // eslint-disable-next-line
-    console.log(title);  
+    console.log("Este es titile", title);
+  }
+
+  submitTitle() {
+    // event.preventDefault();
+    const { title } = this.state;
+    const { newTodo } = this.props;
+    newTodo(title);
   }
 
   render() {
@@ -32,7 +37,7 @@ class newForm extends Component {
           value={title}
           onChange={this.handleInput}
         />
-        <button type="button" onClick={this.newTodo} />
+        <button type="button" onClick={this.submitTitle} />
       </>
     );
   }
