@@ -12,3 +12,36 @@
 body {
   height: 100vh;
 }
+
+#root{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  .general-background{
+    height: 100vh;
+    .top-background{
+      height: 33%;
+      .img-background{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .bottom-background{
+      background-color: c.$backgroundColor;
+      flex-grow: 1;
+    }
+  }
+  .main-container{
+    position: absolute;
+    z-index: 1;
+    .main-header{
+      display: flex;
+      justify-content: space-between;
+      color: c.$backgroundColor;
+    }
+  }
+}
+
