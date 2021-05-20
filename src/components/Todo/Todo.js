@@ -1,18 +1,22 @@
 import React from "react";
 
-export default function Todo({ todo, toggleTodo }) {
-  function handleTodoClick() {
-    toggleTodo(todo.id);
-  }
+export default function Todo({ id, text, done }) {
+  // function handleTodoClick() {
+  //   toggleTodo(todo.id);
+  // }
   return (
-    <div>
-      <div>
+    <div id={id} className="todo-wrapper d-flex justify-center align-center">
+      <div className="checkbox-wrapper">
         <input
           type="checkbox"
-          checked={todo.complete}
-          onChange={handleTodoClick}
+          // checked={todo.complete}
+          // onChange={handleTodoClick}
         />
-        {todo.name}
+        <span />
+        <h4 className="todo-text">
+          Text: {text}. Done: {done.toString()}
+        </h4>
+        <span className="close">&times;</span>
       </div>
     </div>
   );
