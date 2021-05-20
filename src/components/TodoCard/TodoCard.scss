@@ -1,27 +1,5 @@
 $backgroundColor: #ffffff;
 
-@mixin circleDiv($diameter) {
-  height: $diameter;
-  width: $diameter;
-  border-radius: $diameter;
-  overflow: hidden;
-}
-@mixin roundGradient($extSize) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  @include circleDiv($extSize);
-  border: 1px solid white;
-  background: linear-gradient(55deg, #faa458, #c52d90);
-  box-sizing: border-box;
-  div {
-    @include circleDiv($extSize - 10px);
-    border: white 2px solid;
-    box-sizing: content-box;
-  }
-}
-
 .flex-row {
   display: flex;
   flex-direction: row;
