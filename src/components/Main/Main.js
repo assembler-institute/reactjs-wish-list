@@ -2,6 +2,7 @@ import React from "react";
 import "./Main.scss";
 import mountainImg from "../../img/mountain.jpg";
 import TodosContainer from "../TodosContainer";
+import AppHeader from "../AppHeader";
 
 function Main() {
   return (
@@ -14,10 +15,8 @@ function Main() {
         <div className="container-fluid h60 bg-light" />
       </div>
       <section className="container-sm position-absolute d-flex flex-column p-0 mainContent">
-        <header className="d-flex flex-row justify-content-between mb-5">
-          TODO
-        </header>
-        <aside className="bg-light d-flex flex-row rounded p-3 mb-4">
+        <AppHeader />
+        <aside className="bg-light d-flex flex-row shadow rounded p-3 mb-4">
           Input
         </aside>
         <article className="bg-light d-flex flex-column shadow rounded toContent p-3">
