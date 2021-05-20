@@ -10,28 +10,26 @@ Using Bootstrap as much as possible
 
 Defining base elements:
 
-* Title
-* Light/Dark mode
-* Create todo (component)
-* Todolist (component via `BrowserRouter`. Has `filter` property)
+- Title
+- Light/Dark mode
+- Create todo (component)
+- Todolist (component via `BrowserRouter`. Has `filter` property)
 
-	· Route 1: Home
-	
-	· Route 2: Completed
-	
-	· Route 3: Active
-	
-	* Todo
+  · Route 1: Home
 
-* NavBar (component & has `NavLinks` to filter)
-	
+  · Route 2: Completed
+
+  · Route 3: Active
+
+  - Todo
+
+- NavBar (component & has `NavLinks` to filter)
 
 ## 3. App.state
 
-
-* todos
-* isLoading
-* hasError
+- todos
+- isLoading
+- hasError
 
 ```
 this.state{
@@ -42,14 +40,15 @@ this.state{
 ```
 
 -
+
 ### 4. Methods & properties needed
 
 **Create todo** (component)
 
 Using a `formik` form with `yup` validation.
 
-* handleSubmit(): **create todo object** once submitted form. **Add a new object to state (todos)**.
-
+- handleSubmit(): **create todo object** once submitted form. **Add a new object
+  to state (todos)**.
 
 Local storage:
 
@@ -65,32 +64,23 @@ Local storage:
 
 ```
 
-
 **Todo** (component)
 
 Wrap all todo in a `<div>` to **hover** & show crossbar.
 
-* handleClick(): **checkbox**
-* handleRemove(): **crossbar**
-* handleEdit(): when user clicks on todo.
+- handleClick(): **checkbox**
+- handleRemove(): **crossbar**
+- handleEdit(): when user clicks on todo.
 
-* key: use `uuid` to create id.
-* done: `boolean`
-* text: `string`
-
+- key: use `uuid` to create id.
+- done: `boolean`
+- text: `string`
 
 **Todo list** (component)
 
-
-
-
 **Navbar** (component)
 
-
-
-
 ## TODO
-
 
 ## DONE
 
