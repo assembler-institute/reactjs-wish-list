@@ -18,7 +18,6 @@ class App extends Component {
       id: Math.random() * 1000,
       todo: "",
       todoList: [],
-      active: true,
       editTodo: false,
     };
   }
