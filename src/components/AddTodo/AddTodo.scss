@@ -15,11 +15,18 @@
       }
     }
     .addBtn {
-      margin-left: -35px;
+      margin-left: -40px;
       display: inline;
+      background-color: rgba(174, 210, 235, 0.427);
+      color: aliceblue;
+      width: 40px;
       &:focus {
         @include focusNone();
       }
+    }
+    .updateBtn {
+      background-color: rgba(194, 136, 194, 0.68);
+      color: aliceblue;
     }
   }
 }
