@@ -1,4 +1,15 @@
 .create-todo-section{
     background-color: #FFFFFF;
     margin: 30px 0px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    .addtodo-input{
+        border: none;
+    }
+    .addtodo-input:focus{
+        outline: none;
+    }
 }

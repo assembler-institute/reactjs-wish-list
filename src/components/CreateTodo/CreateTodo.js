@@ -37,8 +37,9 @@ class CreateTodo extends Component {
         <div className="col col-12">
           <form onSubmit={this.handleSubmit}>
             <input
-              className="my-input"
-              name="my-input"
+              className="addtodo-input"
+              name="addtodo-input"
+              id="addtodo-input"
               type="text"
               placeholder="Insert todo"
               value={text}
