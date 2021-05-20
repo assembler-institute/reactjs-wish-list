@@ -1,0 +1,14 @@
+@use "./partials/colors" as c;
+@use "./partials/typography" as t;
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 2px c.$mainColor solid;
+}
+
+// background-blend-mode: multiply;
+
+body {
+  height: 100vh;
+}
