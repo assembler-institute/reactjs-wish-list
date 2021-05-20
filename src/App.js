@@ -1,10 +1,11 @@
 import React from "react";
-import TestDesign from "./pages/TestDesign";
-// import All from "./pages/All";
+// import TestDesign from "./pages/TestDesign";
+import All from "./pages/All";
 
 function App() {
   return (
-    <TestDesign />
+    // <TestDesign />
+    <All />
     // <main className="container mt-5">
     //   <section className="row">
     //     <div className="col col-12">
