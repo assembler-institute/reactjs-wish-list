@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import classNames from "classnames";
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import Checkbox from "../Checkbox";
@@ -9,17 +10,22 @@ function Todo({ todo, handleRemove, handleChangeCheck }) {
     handleRemove(todo.id);
   }
 
+  const pr = classNames({
+    completed: todo.complete,
+  });
   return (
     <div className="main__todo col col-12">
-      <label>
-        {/* <input className="mx-4" type="checkbox" name="name" /> */}
+      <div className="main__todo__check">
         <Checkbox
           handleChange={handleChangeCheck}
           checked={todo.complete}
           id={todo.id}
         />
-        {todo.name}
-      </label>
+        <label className={pr}>
+          {/* <input className="mx-4" type="checkbox" name="name" /> */}
+          {todo.name}
+        </label>
+      </div>
       <AiOutlineClose
         onClick={onHandleRemove}
         className="main__todo__close"

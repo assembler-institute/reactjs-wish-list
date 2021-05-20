@@ -9,11 +9,21 @@
     display: none;
   }
 
-  label {
+  &__check {
     display: flex;
+    align-items: center;
+
+    label {
+      margin: 0;
+    }
   }
 }
 
 .main__todo:hover .main__todo__close {
   display: block;
+}
+
+.completed {
+  opacity: 0.5;
+  text-decoration: line-through;
 }
