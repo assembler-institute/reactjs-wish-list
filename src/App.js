@@ -51,8 +51,8 @@ class App extends Component {
     this.handleCompleted = this.handleCompleted.bind(this);
     this.saveNewTodo = this.saveNewTodo.bind(this);
     this.handleTodoChange = this.handleTodoChange.bind(this);
+    this.handleTodoDelete = this.handleTodoDelete.bind(this);
   }
-  /* Functions */
 
   handleCompleted(id) {
     const { todos } = this.state;
@@ -65,6 +65,14 @@ class App extends Component {
     const { todos } = this.state;
     const changeTodoId = findIndexByIdInArray(id, todos);
     todos[changeTodoId].title = newText;
+    this.setState({ todos });
+  }
+
+  handleTodoDelete(id) {
+    let { todos } = this.state;
+    todos = todos.filter((element) => {
+      return element.id !== id;
+    });
     this.setState({ todos });
   }
 
@@ -82,6 +90,7 @@ class App extends Component {
         handleCompleted={this.handleCompleted}
         saveNewTodo={this.saveNewTodo}
         handleTodoChange={this.handleTodoChange}
+        handleTodoDelete={this.handleTodoDelete}
       />
     );
   }

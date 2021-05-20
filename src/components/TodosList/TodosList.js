@@ -10,6 +10,7 @@ export default function TodosList({
   todos,
   handleCompleted,
   handleTodoChange,
+  handleTodoDelete,
   ...props
 }) {
   const todoMap = (
@@ -22,6 +23,7 @@ export default function TodosList({
           isComplete={todo.isComplete}
           handleCompleted={handleCompleted}
           handleTodoChange={handleTodoChange}
+          handleTodoDelete={handleTodoDelete}
         />
       ))}
     </section>

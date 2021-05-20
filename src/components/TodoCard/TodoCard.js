@@ -16,6 +16,7 @@ class TodoCard extends Component {
     this.onCompleted = this.onCompleted.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onBlur = this.onBlur.bind(this);
+    this.deleteTodo = this.deleteTodo.bind(this);
   }
 
   handleChange(event) {
@@ -44,6 +45,12 @@ class TodoCard extends Component {
     this.setState({ tempTitle: title });
   }
 
+  deleteTodo() {
+    const { id } = this.state;
+    const { handleTodoDelete } = this.props;
+    handleTodoDelete(id);
+  }
+
   render() {
     const { /* key,  id, title, */ isComplete } = this.props;
     const { tempTitle } = this.state;
@@ -68,7 +75,9 @@ class TodoCard extends Component {
           onBlur={this.onBlur}
         />
         <div>
-          <i className="bi bi-x-lg font-light clickable" />
+          <button type="button" onClick={this.deleteTodo} className="no-border">
+            <i className="bi bi-x-lg font-light clickable" />
+          </button>
         </div>
       </form>
     );
