@@ -5,12 +5,14 @@ import { BrowserRouter, Route } from "react-router-dom";
 import CreateTodo from "./components/CreateTodo";
 import TodoList from "./components/TodoList";
 
+import defaultTodos from "./utils/demo-data";
+
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      todos: [],
+      todos: defaultTodos,
       // id: id: uuidv4()
       // text: "Todo"
       // done: false
@@ -29,19 +31,15 @@ class App extends Component {
     const { todos, isLoading, hasError } = this.state;
     // eslint-disable-next-line no-console
     console.log(todos, isLoading, hasError);
-    // api.getProducts().then((data) => {
-    //   this.setState({
-    //     products: data,
-    //     isLoading: false,
-    //   });
 
-    //   if (!localStorage.getItem("App data")) {
-    //     localStorage.setItem("App data", JSON.stringify(this.state));
-    //   }
-    // });
+    this.setState({
+      isLoading: false,
+    });
   }
 
   render() {
+    const { todos } = this.state;
+
     return (
       <>
         <div className="general-background d-flex flex-column">
@@ -64,17 +62,23 @@ class App extends Component {
             <Route
               path="/"
               exact
-              render={(routeProps) => <TodoList {...routeProps} />}
+              render={(routeProps) => (
+                <TodoList {...routeProps} todos={todos} />
+              )}
             />
             <Route
               path="/active"
               exact
-              render={(routeProps) => <TodoList {...routeProps} />}
+              render={(routeProps) => (
+                <TodoList {...routeProps} todos={todos} />
+              )}
             />
             <Route
               path="/completed"
               exact
-              render={(routeProps) => <TodoList {...routeProps} />}
+              render={(routeProps) => (
+                <TodoList {...routeProps} todos={todos} />
+              )}
             />
           </BrowserRouter>
         </main>
