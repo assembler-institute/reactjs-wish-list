@@ -15,11 +15,13 @@ class App extends Component {
         // { id: 4, name: "Marc Solá Crack", complete: false },
       ],
       todoName: "",
+      checked: false,
     };
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleAddTodo({ todos, todoName }) {
@@ -47,6 +49,11 @@ class App extends Component {
     this.setState({ todos: arr });
   }
 
+  handleChange() {
+    const { checked } = this.state;
+    this.setState({ checked: !checked });
+  }
+
   render() {
     const { todos, todoName } = this.state;
     return (
@@ -55,6 +62,7 @@ class App extends Component {
           <div className="heroImg" alt="hero" src={hero}>
             <h1 className="TODOHeader">TODO</h1>
             <form onSubmit={this.handleSubmit}>
+              <Checkbox handleChange={this.handleChange} checked={checked} />
               <input
                 type="text"
                 placeholder="Create task"
