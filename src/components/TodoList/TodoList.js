@@ -24,7 +24,7 @@ function TodoList({ todos = [], handleRemove, handleChangeCheck }) {
       </section>
 
       <section className="row main__footer">
-        <span>5 items left</span>
+        <span>{todos.filter((v) => !v.complete).length} items left</span>
         <div>
           <button type="button">All</button>
           <button type="button">Active</button>
