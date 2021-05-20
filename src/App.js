@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { v4 as uuid } from "uuid";
+import $ from "jquery";
 // import { BrowserRouter, Route } from "react-router-dom";
 import Main from "./components/Main";
 import Section from "./components/Section";
@@ -10,13 +12,31 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: ["111", "222"],
+      tasks: [],
     };
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
+  // eslint-disable-next-line react/sort-comp
   getTasks() {
     const { tasks } = this.state;
     return tasks;
+  }
+
+  handleKeyDown(event) {
+    if (event.key === "Enter") {
+      this.setState(
+        (prevState) => ({
+          tasks: [
+            { id: uuid(), name: event.target.value, completed: 0 },
+            ...prevState.tasks,
+          ],
+        }),
+        () => {
+          $(event.target).val("");
+        },
+      );
+    }
   }
 
   render() {
@@ -24,7 +44,7 @@ class App extends Component {
       <Main>
         <Section>
           <AppHeader />
-          <InputTask />
+          <InputTask handleKeyDown={this.handleKeyDown} />
           <List />
         </Section>
       </Main>
