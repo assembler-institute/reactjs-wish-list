@@ -70,10 +70,8 @@ class App extends Component {
   };
 
   handleRemove = (id) => {
-    console.log(id);
     const { todoList } = this.state;
     const updatedList = todoList.filter((todo) => todo.id !== id);
-    /* const todoToRemove = todoList.find((todo) => todo.id === id); */
     this.setState({
       todoList: updatedList,
     });
