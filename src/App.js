@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TodoList from "./components/TodoList";
 import hero from "./img/hero.jpg";
+import Checkbox from "./components/Checkbox";
 import "./header.scss";
 
 class App extends Component {
@@ -21,7 +22,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeCheck = this.handleChangeCheck.bind(this);
   }
 
   handleAddTodo({ todos, todoName }) {
@@ -49,9 +50,14 @@ class App extends Component {
     this.setState({ todos: arr });
   }
 
-  handleChange() {
-    const { checked } = this.state;
-    this.setState({ checked: !checked });
+  handleChangeCheck(id) {
+    const { todos } = this.state;
+    const arr = todos.map((todo) => {
+      const obj = todo.id === id ? { ...todo, complete: !todo.complete } : todo;
+      return obj;
+    });
+
+    this.setState({ todos: arr });
   }
 
   render() {
@@ -60,12 +66,13 @@ class App extends Component {
       <>
         <header>
           <div className="heroImg" alt="hero" src={hero}>
-            <h1 className="TODOHeader">TODO</h1>
+            <h1 className="TODO__Header">TODO</h1>
             <form onSubmit={this.handleSubmit}>
-              <Checkbox handleChange={this.handleChange} checked={checked} />
+              <Checkbox handleChange={this.handleChange} />
               <input
                 type="text"
                 placeholder="Create task"
+                className="TODO__New"
                 id={todoName}
                 name={todoName}
                 value={todoName}
@@ -75,7 +82,20 @@ class App extends Component {
           </div>
         </header>
 
-        <TodoList handleRemove={this.handleRemove} todos={todos} />
+        {/* <header>
+          <div className="heroImg" alt="hero" src={hero}>
+            <h1 className="TODO__Header">TODO</h1>
+            <form>
+              <Checkbox handleChange={this.handleChange} checked={checked} />
+            </form>
+          </div>
+        </header> */}
+
+        <TodoList
+          handleChangeCheck={this.handleChangeCheck}
+          handleRemove={this.handleRemove}
+          todos={todos}
+        />
       </>
     );
   }

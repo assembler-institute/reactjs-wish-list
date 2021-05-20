@@ -8,6 +8,10 @@
     opacity: 0.7;
     display: none;
   }
+
+  label {
+    display: flex;
+  }
 }
 
 .main__todo:hover .main__todo__close {

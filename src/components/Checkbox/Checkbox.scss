@@ -1,0 +1,41 @@
+.border {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 8px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid grey;
+  border-radius: 25px;
+}
+
+.indicator {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 25px;
+  z-index: 1;
+  background: linear-gradient(
+    135deg,
+    hsl(348, 97%, 63%, 1),
+    hsl(230, 96%, 62%, 1)
+  );
+  transform: scale(0);
+  transition: transform 100ms;
+}
+
+.indicator::after {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 5px;
+  height: 9px;
+  content: "";
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: translate(-50%, -50%) rotate(40deg);
+}
+.checked {
+  transform: scale(1.1);
+}

@@ -6,7 +6,7 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  outline: 1px solid black;
+  /*outline: 1px solid black;*/
 }
 
 .heroImg {
@@ -14,7 +14,6 @@ body {
   width: 100vw;
   margin: 0;
   display: grid;
-  place-items: center;
   place-content: center;
   background: linear-gradient(
       135deg,
@@ -25,5 +24,25 @@ body {
   background-position: center;
 }
 
-// .TODOHeader {
-// }
+.TODO {
+  &__Header {
+    margin-bottom: 20px;
+    width: 500px;
+    letter-spacing: 10px;
+    color: white;
+  }
+
+  &__Form {
+    margin-top: 5px;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  &__New {
+    height: 55.4px;
+    width: 440px;
+    border: none;
+    outline: none;
+  }
+}
