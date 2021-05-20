@@ -1,12 +1,14 @@
 import React from "react";
+import Task from "../Task";
 
-function List() {
+function List({ tasks }) {
   return (
     <ul>
-      <li>Task1</li>
-      <li>Task2</li>
-      <li>Task3</li>
-      <li>Task4</li>
+      {tasks.map((task) => (
+        <Task key={task.id} id={task.id}>
+          {task.name}
+        </Task>
+      ))}
     </ul>
   );
 }
