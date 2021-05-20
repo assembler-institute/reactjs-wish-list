@@ -4,7 +4,7 @@ import Todo from "../todo";
 
 import "./todolist.scss";
 
-function todolist() {
+function TodoList() {
   return (
     <section>
       <ul>
@@ -27,4 +27,4 @@ function todolist() {
   );
 }
 
-export default todolist;
+export default TodoList;
