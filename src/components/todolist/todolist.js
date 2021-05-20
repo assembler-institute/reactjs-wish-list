@@ -1,14 +1,22 @@
 import React from "react";
 // import { NavLink } from "react-router-dom";
-import Todo from "../todo";
+import Todo from "../Todo";
 
 import "./todolist.scss";
 
-function TodoList({ todos }) {
+function TodoList({ todos, handleIsActive }) {
   return (
     <section className="todo-list">
       <ul>
-        <Todo />
+        {todos.map((todo) => (
+          <Todo
+            key={todo.id}
+            id={todo.id}
+            content={todo.content}
+            isActive={todo.isActive}
+            handleIsActive={handleIsActive}
+          />
+        ))}
       </ul>
       <footer>
         <div>5 items left</div>
