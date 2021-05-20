@@ -6,11 +6,39 @@ import AppHeader from "./components/AppHeader";
 import InputTask from "./components/InputTask";
 import List from "./components/List";
 
+// const LOCAL_STORAGE_KEY = "tasks";
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: ["111", "222"],
+      tasks: [
+        {
+          id: 343434437676433343434,
+          name: "Task 1",
+          completed: false,
+        },
+        {
+          id: 343434434333657883343434,
+          name: "Task 2",
+          completed: false,
+        },
+        {
+          id: 3434344343336578888834,
+          name: "Task 3",
+          completed: false,
+        },
+        {
+          id: 3434344343336578888834,
+          name: "Task A3",
+          completed: false,
+        },
+        {
+          id: 3434344343336578888834,
+          name: "Task 13",
+          completed: false,
+        },
+      ],
     };
   }
 
@@ -20,12 +48,14 @@ class App extends Component {
   }
 
   render() {
+    const { tasks } = this.state;
+
     return (
       <Main>
         <Section>
           <AppHeader />
           <InputTask />
-          <List />
+          <List tasks={tasks} />
         </Section>
       </Main>
     );
