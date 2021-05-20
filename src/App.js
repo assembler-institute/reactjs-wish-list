@@ -17,9 +17,37 @@ class App extends Component {
       hasError: false,
     };
 
-    // this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleDone = this.handleDone.bind(this);
   }
 
+  /* -------------------------------------------------------------------------- */
+  /*                                CUSTOM METHODS                              */
+  /* -------------------------------------------------------------------------- */
+
+  // eslint-disable-next-line react/sort-comp
+  handleDone(todoId) {
+    const { todos } = this.state;
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === todoId) {
+        // eslint-disable-next-line no-console
+        console.log("Updated!", todo);
+        return {
+          ...todo,
+          done: !todo.done,
+        };
+      }
+
+      return todo;
+    });
+    // eslint-disable-next-line no-console
+    this.setState({ todos: updatedTodos });
+    // eslint-disable-next-line no-console
+    // console.log(this.state);
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                REACT METHODS                               */
+  /* -------------------------------------------------------------------------- */
   componentDidMount() {
     this.setState({
       isLoading: true,
@@ -32,6 +60,11 @@ class App extends Component {
     this.setState({
       isLoading: false,
     });
+  }
+
+  componentDidUpdate() {
+    // eslint-disable-next-line no-console
+    console.log(this.state);
   }
 
   render() {
@@ -60,21 +93,33 @@ class App extends Component {
               path="/"
               exact
               render={(routeProps) => (
-                <TodoList {...routeProps} todos={todos} />
+                <TodoList
+                  {...routeProps}
+                  todos={todos}
+                  handleDone={this.handleDone}
+                />
               )}
             />
             <Route
               path="/active"
               exact
               render={(routeProps) => (
-                <TodoList {...routeProps} todos={todos} />
+                <TodoList
+                  {...routeProps}
+                  todos={todos}
+                  handleDone={this.handleDone}
+                />
               )}
             />
             <Route
               path="/completed"
               exact
               render={(routeProps) => (
-                <TodoList {...routeProps} todos={todos} />
+                <TodoList
+                  {...routeProps}
+                  todos={todos}
+                  handleDone={this.handleDone}
+                />
               )}
             />
           </BrowserRouter>
