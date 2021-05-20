@@ -17,6 +17,9 @@
 .todoRight {
   display: flex;
   align-items: center;
+  .editBtn {
+    width: 40px;
+  }
 }
 
 .removeBtn {

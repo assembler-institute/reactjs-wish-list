@@ -1,6 +1,8 @@
 import React from "react";
 import classnames from "classnames/bind";
 
+import EditIcon from "../Icons/EditIcon";
+
 import todoStyles from "./Todo.scss";
 
 const cns = classnames.bind(todoStyles);
@@ -11,7 +13,6 @@ export default function Todo({
   handleEdit,
   handleRemove,
   completed,
-  editTodo,
 }) {
   return (
     <li className="list-group-item text-capitalize d-flex justify-content-between p-2 todo">
@@ -21,12 +22,8 @@ export default function Todo({
       </span>
 
       <div className="todoRight">
-        <button
-          type="button"
-          className="btn btn-info mx-2"
-          onClick={handleEdit}
-        >
-          edit
+        <button type="button" className="btn mx-2 editBtn" onClick={handleEdit}>
+          <EditIcon />
         </button>
 
         <button type="button" className="removeBtn" onClick={handleRemove} />
