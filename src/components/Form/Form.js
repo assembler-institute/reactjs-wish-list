@@ -25,7 +25,9 @@ class newForm extends Component {
       const { title } = this.state;
       const { newTodo } = this.props;
       newTodo(title);
-      // event.target.value = "";
+      this.setState({
+        title: "",
+      });
     }
   }
 
@@ -39,6 +41,7 @@ class newForm extends Component {
           value={title}
           onChange={this.handleInput}
           onKeyPress={this.submitTitle}
+          placeholder="Write what you have to do an press Enter key"
         />
       </>
     );
