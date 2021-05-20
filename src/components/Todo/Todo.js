@@ -10,6 +10,7 @@ export default function Todo({
   handleCompleteTodo,
   handleEdit,
   completed,
+  editTodo,
 }) {
   return (
     <li className="list-group-item text-capitalize d-flex justify-content-between p-2 todo">
