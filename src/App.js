@@ -25,14 +25,14 @@ class App extends Component {
   }
 
   render() {
-    const { todo } = this.state;
+    const { todos } = this.state;
     return (
       <main className="background_container">
         <Header />
         <section className="parent_container">
           <h1>TODO</h1>
           <Form newTodo={this.newTodo} />
-          <Todo toDo={todo} />
+          <Todo todo={todos} />
         </section>
       </main>
     );
