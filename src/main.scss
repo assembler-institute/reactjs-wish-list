@@ -12,10 +12,19 @@
   &__todo {
     padding: 0.7rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    &__close {
+      opacity: 0.7;
+      display: none;
+    }
+  }
+
+  &__todo:hover .main__todo__close {
+    display: block;
   }
 
   &__footer {
-    // padding: 0.6rem 0;
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: space-around;
