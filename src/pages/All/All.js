@@ -1,13 +1,8 @@
 import React from "react";
-import DeleteButton from "../../components/DeleteButton";
+import Main from "../../components/Main";
 
 function All() {
-  return (
-    <>
-      <h1>This is all</h1>
-      <DeleteButton />
-    </>
-  );
+  return <Main />;
 }
 
 export default All;

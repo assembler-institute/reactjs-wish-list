@@ -1,0 +1,59 @@
+.fullpage {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .fullcontent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    position: relative;
+  }
+
+  .h60 {
+    height: 60%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    &_white {
+      background-color: #fafafa;
+    }
+  }
+
+  .h40 {
+    height: 40%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    mix-blend-mode: soft-light;
+  }
+
+  .gradient {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-image: linear-gradient(45deg, #9f7cea 40%, #5278ca 100%);
+  }
+
+  .mainContent {
+    max-width: 650px;
+    height: 75%;
+  }
+
+  .toContent {
+    height: 70%;
+  }
+}

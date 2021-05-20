@@ -1,46 +1,47 @@
-
 .checkbox-round {
-    width: 2em;
-    height: 2em;
-    border-radius: 50%;
-    border: 1px solid #ddd;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
-    margin: 10px 10px 0px 10px;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  margin: 10px 10px 0px 10px;
 }
 
 .checkbox-round:checked {
-    background: linear-gradient(140deg, rgba(82, 120, 202, 1) 0%, rgba(159, 124, 234, 1) 100%);
-    content: "✔";
-    color: white;
+  background: linear-gradient(
+    140deg,
+    rgba(82, 120, 202, 1) 0%,
+    rgba(159, 124, 234, 1) 100%
+  );
+  content: "✔";
+  color: white;
 }
 
-.form-control{
-    border: none;
-    margin-top: 10px;
-    width: auto !important;
-    font-family: 'Maven Pro',
-    sans-serif;
-    font-weight:600;
-    cursor: pointer;
+.form-control {
+  border: none;
+  margin-top: 10px;
+  width: auto !important;
+  font-family: "Maven Pro", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .borders {
-    width: 500px;
-    height: 60px;
-    border-bottom: 0.5px solid #d3d3d3;
+  width: 100%;
+  height: 60px;
+  border-bottom: 0.5px solid #d3d3d3;
 }
 .cancel {
-    border: none;
-    margin-left: 10px;
-    margin-right: 10px;
-    justify-content: flex-end;
-    font-size: 30px;
-    font-weight: 100;
-    background-image: url(../../img/x.svg);
-    background-repeat: no-repeat;
-    background-size: 30px;
-    background-position: center;
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  justify-content: flex-end;
+  font-size: 30px;
+  font-weight: 100;
+  background-image: url(../../img/x.svg);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
 }
-

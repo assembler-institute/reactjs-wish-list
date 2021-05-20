@@ -1,13 +1,8 @@
 import React from "react";
+import Main from "../../components/Main";
 
-import TodosContainer from "../../components/TodosContainer";
-
-function TestDesing() {
-  return (
-    <>
-      <TodosContainer />
-    </>
-  );
+function TestDesign() {
+  return <Main />;
 }
 
-export default TestDesing;
+export default TestDesign;
