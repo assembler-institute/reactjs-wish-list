@@ -69,6 +69,14 @@ class App extends Component {
     });
   };
 
+  handleRemove = (id) => {
+    const { todoList } = this.state;
+    const updatedList = todoList.filter((todo) => todo.id !== id);
+    this.setState({
+      todoList: updatedList,
+    });
+  };
+
   render() {
     const { id, todo, todoList, active, editTodo } = this.state;
     return (
@@ -86,6 +94,7 @@ class App extends Component {
               handleSubmit={this.handleSubmit}
               handleCompleteTodo={this.handleCompleteTodo}
               handleEdit={this.handleEdit}
+              handleRemove={this.handleRemove}
             />
           )}
         />

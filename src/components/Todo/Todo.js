@@ -9,6 +9,7 @@ export default function Todo({
   title,
   handleCompleteTodo,
   handleEdit,
+  handleRemove,
   completed,
   editTodo,
 }) {
@@ -19,9 +20,17 @@ export default function Todo({
         <h6 className={cns({ completed: completed })}>{title}</h6>
       </span>
 
-      <button type="button" className="btn btn-info mx-2" onClick={handleEdit}>
-        edit
-      </button>
+      <div className="todoRight">
+        <button
+          type="button"
+          className="btn btn-info mx-2"
+          onClick={handleEdit}
+        >
+          edit
+        </button>
+
+        <button type="button" className="removeBtn" onClick={handleRemove} />
+      </div>
     </li>
   );
 }

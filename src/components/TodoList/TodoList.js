@@ -10,6 +10,7 @@ export default function TodoList({
   editTodo,
   handleCompleteTodo,
   handleEdit,
+  handleRemove,
 }) {
   return (
     <div className="TodoList">
@@ -24,6 +25,7 @@ export default function TodoList({
               completed={todo.completed}
               handleCompleteTodo={() => handleCompleteTodo(todo.id)}
               handleEdit={() => handleEdit(todo.id)}
+              handleRemove={() => handleRemove(todo.id)}
             />
           );
         })}

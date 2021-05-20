@@ -16,6 +16,7 @@ export default function Home({
   handleSubmit,
   handleCompleteTodo,
   handleEdit,
+  handleRemove,
 }) {
   return (
     <div className="home">
@@ -34,6 +35,7 @@ export default function Home({
                 handleSubmit={handleSubmit}
                 handleCompleteTodo={handleCompleteTodo}
                 handleEdit={handleEdit}
+                handleRemove={handleRemove}
               />
             </div>
           </div>
