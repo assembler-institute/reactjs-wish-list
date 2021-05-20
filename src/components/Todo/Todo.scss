@@ -29,7 +29,11 @@
     flex-grow: 1;
   }
 
-  .close {
-    font-size: 18px;
+  button {
+    border: none;
+    background-color: transparent;
+    .close {
+      font-size: 18px;
+    }
   }
 }

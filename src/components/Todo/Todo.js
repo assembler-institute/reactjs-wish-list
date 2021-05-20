@@ -1,9 +1,13 @@
 import React from "react";
 import "./Todo.scss";
 
-export default function Todo({ id, text, done, handleDone }) {
+export default function Todo({ id, text, done, handleDone, handleDelete }) {
   function onDone() {
     handleDone(id);
+  }
+
+  function onDelete() {
+    handleDelete(id);
   }
 
   return (
@@ -17,7 +21,9 @@ export default function Todo({ id, text, done, handleDone }) {
         <span className="custom-checkbox" />
       </span>
       <h4 className="todo-text">{text}</h4>
-      <i className="close uil uil-times" />
+      <button type="button" onClick={onDelete}>
+        <i className="close uil uil-times" />
+      </button>
     </div>
   );
 }

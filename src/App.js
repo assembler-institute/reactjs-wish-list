@@ -18,6 +18,7 @@ class App extends Component {
     };
 
     this.handleDone = this.handleDone.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   /* -------------------------------------------------------------------------- */
@@ -39,10 +40,17 @@ class App extends Component {
 
       return todo;
     });
-    // eslint-disable-next-line no-console
     this.setState({ todos: updatedTodos });
-    // eslint-disable-next-line no-console
-    // console.log(this.state);
+  }
+
+  handleDelete(todoId) {
+    const { todos } = this.state;
+    const itemToDelete = todos.find((todo) => todo.id === todoId);
+    const indexToDelete = todos.indexOf(itemToDelete);
+
+    todos.splice(indexToDelete, 1);
+
+    this.setState({ todos: todos });
   }
 
   /* -------------------------------------------------------------------------- */
@@ -97,6 +105,7 @@ class App extends Component {
                   {...routeProps}
                   todos={todos}
                   handleDone={this.handleDone}
+                  handleDelete={this.handleDelete}
                 />
               )}
             />
@@ -108,6 +117,7 @@ class App extends Component {
                   {...routeProps}
                   todos={todos}
                   handleDone={this.handleDone}
+                  handleDelete={this.handleDelete}
                 />
               )}
             />
@@ -119,6 +129,7 @@ class App extends Component {
                   {...routeProps}
                   todos={todos}
                   handleDone={this.handleDone}
+                  handleDelete={this.handleDelete}
                 />
               )}
             />
