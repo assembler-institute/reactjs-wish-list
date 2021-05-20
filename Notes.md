@@ -23,19 +23,26 @@ Defining base elements:
 	
 	* Todo
 
-* NavBar (component & has `NavLinks` to filter)	
--
-### this.state
+* NavBar (component & has `NavLinks` to filter)
+	
+
+## 3. App.state
+
+
+* todos
+* isLoading
+* hasError
 
 ```
 this.state{
-
+	todos: [];
+	isLoading: false;
+	hasError: false;
 }
 ```
 
-
 -
-### Methods & properties needed
+### 4. Methods & properties needed
 
 **Create todo** (component)
 
