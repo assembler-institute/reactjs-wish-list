@@ -22,7 +22,7 @@ class App extends Component {
 
     this.state = {
       todos: [
-        {
+        /*    {
           key: 1,
           id: 1,
           text: "prueba 1",
@@ -45,7 +45,7 @@ class App extends Component {
           id: 4,
           text: "prueba 3",
           isComplete: false,
-        },
+        }, */
       ],
     };
     this.handleCompleted = this.handleCompleted.bind(this);
