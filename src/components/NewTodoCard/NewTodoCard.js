@@ -28,6 +28,7 @@ class NewTodoCard extends Component {
     const { saveNewTodo } = this.props;
     const TodoData = addTodoDetails(this.state);
     saveNewTodo(TodoData);
+    this.setState({ title: "" });
   }
 
   handleChange(event) {
