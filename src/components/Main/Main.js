@@ -1,14 +1,17 @@
 import React from "react";
 import "./Main.scss";
-import mountainImg from "../../img/mountain.jpg";
-import TodosContainer from "../TodosContainer";
-import AppHeader from "../AppHeader";
-import AppFooter from "../AppFooter";
 
-function Main() {
+function Main({ children, ...props }) {
   return (
-    <main className="fullpage position-relative">
-      <div className="fullcontent">
+    <main className="fullpage position-relative" {...props}>
+      {children}
+    </main>
+  );
+}
+
+export default Main;
+
+/* <div className="fullcontent">
         <div className="container-fluid, h40">
           <div className="gradient" />
           <img src={mountainImg} alt="Mountain background" />
@@ -35,9 +38,4 @@ function Main() {
           </div>
           <AppFooter />
         </article>
-      </section>
-    </main>
-  );
-}
-
-export default Main;
+      </section> */
