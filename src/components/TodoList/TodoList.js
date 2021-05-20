@@ -5,9 +5,11 @@ import EmptyTodo from "../EmptyTodo";
 import Todo from "../Todo";
 import "./TodoList.scss";
 
-function TodoList({ todos = [] }) {
+function TodoList({ todos = [], handleRemove }) {
   function printTodos() {
-    return todos.map((todo) => <Todo key={uuidv4()} todo={todo} />);
+    return todos.map((todo) => (
+      <Todo key={uuidv4()} handleRemove={handleRemove} todo={todo} />
+    ));
   }
 
   return (

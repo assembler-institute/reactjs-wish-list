@@ -19,6 +19,7 @@ class App extends Component {
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   handleAddTodo({ todos, todoName }) {
@@ -38,6 +39,12 @@ class App extends Component {
 
   handleChange(e) {
     this.setState({ todoName: e.target.value });
+  }
+
+  handleRemove(id) {
+    const { todos } = this.state;
+    const arr = todos.filter((todo) => todo.id !== id);
+    this.setState({ todos: arr });
   }
 
   render() {
@@ -60,7 +67,7 @@ class App extends Component {
           </div>
         </header>
 
-        <TodoList todos={todos} />
+        <TodoList handleRemove={this.handleRemove} todos={todos} />
       </>
     );
   }
