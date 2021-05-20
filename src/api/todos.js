@@ -1,7 +1,7 @@
 const todos = [
   {
     id: "65d6b269-209b-50ac-a566-ca6a334aa6f0",
-    isActive: false,
+    isActive: true,
     content: "Eu in voluptate ut magna id sint elit est enim et officia. ",
   },
   {
@@ -11,7 +11,7 @@ const todos = [
   },
   {
     id: "5e88d7ab-ecdd-5a92-8a4a-7391a4709994",
-    isActive: false,
+    isActive: true,
     content: "Eu in voluptate ut magna id sint elit est enim et officia. ",
   },
   {
@@ -21,7 +21,7 @@ const todos = [
   },
   {
     id: "208c1e43-c945-58fd-9469-19d9229fded4",
-    isActive: false,
+    isActive: true,
     content: "Eu in voluptate ut magna id sint elit est enim et officia. ",
   },
   {

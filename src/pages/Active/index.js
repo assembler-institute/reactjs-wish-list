@@ -1,1 +1,1 @@
-export { default } from "./Active.js";
+export { default } from "./Active";

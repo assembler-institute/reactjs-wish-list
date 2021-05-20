@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./styles.scss";
 
+import Home from "./pages/Home";
+import Completed from "./pages/Completed";
+
 import Header from "./components/Header";
 import NewTodo from "./components/NewTodo";
-import TodoList from "./components/todolist";
 
 import * as api from "./api";
 
@@ -31,6 +34,8 @@ class App extends Component {
     this.state = {
       todos: [],
     };
+
+    this.saveNewTodo = this.saveNewTodo.bind(this);
   }
 
   componentDidMount() {
@@ -55,18 +60,43 @@ class App extends Component {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ todos }));
   }
 
+  saveNewTodo(newTodo) {
+    this.setState((prevState) => ({
+      todos: [newTodo, ...prevState.todos],
+    }));
+  }
+
   render() {
     // eslint-disable-next-line
     console.log(this.state);
+    const { todos } = this.state;
     return (
       <>
-        <main>
-          <section className="container">
-            <Header />
-            <NewTodo saveNewTodo={this.saveNewTodo} />
-            <TodoList />
-          </section>
-        </main>
+        <Router>
+          <main>
+            <section className="container">
+              <Header />
+              <NewTodo saveNewTodo={this.saveNewTodo} />
+              <Switch>
+                <Route path="/active">
+                  {todos.map((todo) => {
+                    if (todo.isActive === false) {
+                      return todo;
+                    }
+                    return null;
+                  })}
+                  <Home />
+                </Route>
+                <Route path="/completed">
+                  <Completed />
+                </Route>
+                <Route path="/">
+                  <Home todos={todos} />
+                </Route>
+              </Switch>
+            </section>
+          </main>
+        </Router>
       </>
     );
   }
