@@ -112,6 +112,7 @@ class toDoInfo extends React.Component {
   removeElement(toDoElementRemove) {
     toDoElements.splice(toDoElementRemove, 1);
     this.setState({ toDoElements: toDoElements });
+    this;
   }
 
   render() {
@@ -124,5 +125,7 @@ class toDoInfo extends React.Component {
     );
   }
 }
+
+
 
 export default App;
