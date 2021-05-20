@@ -4,7 +4,7 @@ import "./styles.scss";
 
 import Header from "./components/Header";
 import NewTodo from "./components/NewTodo";
-import TodoList from "./components/todolist";
+import TodoList from "./components/TodoList";
 
 import * as api from "./api";
 
@@ -31,6 +31,7 @@ class App extends Component {
     this.state = {
       todos: [],
     };
+    this.handleIsActive = this.handleIsActive.bind(this);
   }
 
   componentDidMount() {
@@ -55,7 +56,27 @@ class App extends Component {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ todos }));
   }
 
+  handleIsActive(todosId) {
+    const { todos } = this.state;
+
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === todosId) {
+        // eslint-disable-next-line
+        console.log(todo.isActive);
+        return {
+          ...todo,
+          isActive: !todo.isActive,
+        };
+      }
+
+      return todo;
+    });
+
+    this.setState({ todos: updatedTodos });
+  }
+
   render() {
+    const { todos } = this.state;
     // eslint-disable-next-line
     console.log(this.state);
     return (
@@ -64,7 +85,11 @@ class App extends Component {
           <section className="container">
             <Header />
             <NewTodo saveNewTodo={this.saveNewTodo} />
-            <TodoList />
+            <TodoList
+              todos={todos}
+              isActive={todos.isActive}
+              handleIsActive={this.handleIsActive}
+            />
           </section>
         </main>
       </>
