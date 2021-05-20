@@ -14,27 +14,27 @@ class App extends Component {
     this.state = {
       tasks: [
         {
-          id: 343434437676433343434,
+          id: 1,
           name: "Task 1",
           completed: false,
         },
         {
-          id: 343434434333657883343434,
+          id: 2,
           name: "Task 2",
           completed: false,
         },
         {
-          id: 3434344343336578888834,
+          id: 3,
           name: "Task 3",
           completed: false,
         },
         {
-          id: 3434344343336578888834,
+          id: 4,
           name: "Task A3",
           completed: false,
         },
         {
-          id: 3434344343336578888834,
+          id: 5,
           name: "Task 13",
           completed: false,
         },

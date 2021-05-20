@@ -1,12 +1,13 @@
 import React from "react";
+import Task from "../Task";
 
 function List({ tasks }) {
   return (
     <ul>
       {tasks.map((task) => (
-        <li key={task.id} id={task.id}>
+        <Task key={task.id} id={task.id}>
           {task.name}
-        </li>
+        </Task>
       ))}
     </ul>
   );
