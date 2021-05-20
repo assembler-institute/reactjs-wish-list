@@ -6,7 +6,6 @@ import Footer from "../layout/Footer";
 
 export default function TodoList({
   todoList,
-  completed,
   active,
   editTodo,
   handleCompleteTodo,
@@ -21,9 +20,9 @@ export default function TodoList({
             <Todo
               key={todo.id}
               title={todo.title}
-              completed={completed}
               active={active}
               editTodo={editTodo}
+              completed={todo.completed}
               handleCompleteTodo={() => handleCompleteTodo(todo.id)}
               handleEdit={() => handleEdit(todo.id)}
               handleRemove={() => handleRemove(todo.id)}

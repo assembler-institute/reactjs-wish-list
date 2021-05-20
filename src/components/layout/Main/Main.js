@@ -8,7 +8,6 @@ export default function Main({
   id,
   todo,
   todoList,
-  completed,
   active,
   editTodo,
   handleChange,
@@ -23,7 +22,6 @@ export default function Main({
         id={id}
         todo={todo}
         todoList={todoList}
-        completed={completed}
         active={active}
         editTodo={editTodo}
         handleChange={handleChange}
@@ -31,7 +29,6 @@ export default function Main({
       />
       <TodoList
         todoList={todoList}
-        completed={completed}
         active={active}
         editTodo={editTodo}
         handleCompleteTodo={handleCompleteTodo}

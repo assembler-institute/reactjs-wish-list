@@ -10,7 +10,6 @@ export default function Home({
   id,
   todo,
   todoList,
-  completed,
   active,
   editTodo,
   handleChange,
@@ -30,7 +29,6 @@ export default function Home({
                 id={id}
                 todo={todo}
                 todoList={todoList}
-                completed={completed}
                 active={active}
                 editTodo={editTodo}
                 handleChange={handleChange}
