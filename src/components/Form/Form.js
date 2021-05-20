@@ -20,11 +20,13 @@ class newForm extends Component {
     console.log("Este es titile", title);
   }
 
-  submitTitle() {
-    // event.preventDefault();
-    const { title } = this.state;
-    const { newTodo } = this.props;
-    newTodo(title);
+  submitTitle(event) {
+    if (event.key === "Enter") {
+      const { title } = this.state;
+      const { newTodo } = this.props;
+      newTodo(title);
+      // event.target.value = "";
+    }
   }
 
   render() {
@@ -36,8 +38,8 @@ class newForm extends Component {
           className="form_input"
           value={title}
           onChange={this.handleInput}
+          onKeyPress={this.submitTitle}
         />
-        <button type="button" onClick={this.submitTitle} />
       </>
     );
   }
