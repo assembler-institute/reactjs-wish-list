@@ -1,4 +1,7 @@
-.todo-list-section{
-    background-color: green;
-    height: 400px;
+.todo-list-section {
+  background-color: white;
+  height: 400px;
+  -moz-box-shadow: 0px 0px 30px rgba(68, 68, 68, 0.6);
+  -webkit-box-shadow: 0px 0px 30px rgba(68, 68, 68, 0.6);
+  box-shadow: 0px 0px 30px rgba(68, 68, 68, 0.6);
 }
