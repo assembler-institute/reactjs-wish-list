@@ -1,7 +1,7 @@
 
 .checkbox-round {
-    width: 2.5em;
-    height: 2.5em;
+    width: 2em;
+    height: 2em;
     border-radius: 50%;
     border: 1px solid #ddd;
     -webkit-appearance: none;
@@ -19,19 +19,28 @@
 .form-control{
     border: none;
     margin-top: 10px;
+    width: auto !important;
+    font-family: 'Maven Pro',
+    sans-serif;
+    font-weight:600;
+    cursor: pointer;
 }
 
 .borders {
-    width: 600px;
+    width: 500px;
     height: 60px;
     border-bottom: 0.5px solid #d3d3d3;
 }
-.btn {
+.cancel {
     border: none;
-    margin-right: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
     justify-content: flex-end;
+    font-size: 30px;
+    font-weight: 100;
+    background-image: url(../../img/x.svg);
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
 }
-
-
-
 
