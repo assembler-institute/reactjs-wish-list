@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+
 import TodoList from "./components/TodoList";
-import hero from "./img/hero.jpg";
 import Checkbox from "./components/Checkbox";
+
+import hero from "./img/hero.jpg";
+import { HOME, ACTIVE, COMPLETED } from "./constatnts/routes";
+
 import "./header.scss";
 
 class App extends Component {
@@ -91,11 +96,50 @@ class App extends Component {
           </div>
         </header> */}
 
-        <TodoList
+        <Route
+          path={ACTIVE}
+          exact
+          render={() => (
+            <TodoList
+              handleChangeCheck={this.handleChangeCheck}
+              handleRemove={this.handleRemove}
+              todos={todos.filter((todo) => !todo.complete)}
+              filter={ACTIVE}
+            />
+          )}
+        />
+
+        <Route
+          path={COMPLETED}
+          exact
+          render={() => (
+            <TodoList
+              handleChangeCheck={this.handleChangeCheck}
+              handleRemove={this.handleRemove}
+              todos={todos.filter((todo) => todo.complete)}
+              filter={ACTIVE}
+            />
+          )}
+        />
+
+        <Route
+          path={HOME}
+          exact
+          render={() => (
+            <TodoList
+              handleChangeCheck={this.handleChangeCheck}
+              handleRemove={this.handleRemove}
+              todos={todos}
+              filter={HOME}
+            />
+          )}
+        />
+
+        {/* <TodoList
           handleChangeCheck={this.handleChangeCheck}
           handleRemove={this.handleRemove}
           todos={todos}
-        />
+        /> */}
       </>
     );
   }

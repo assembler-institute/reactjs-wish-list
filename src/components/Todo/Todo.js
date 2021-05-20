@@ -9,10 +9,6 @@ function Todo({ todo, handleRemove, handleChangeCheck }) {
     handleRemove(todo.id);
   }
 
-  // function onHandleChange() {
-  //   handleChangeCheck(todo.id);
-  // }
-
   return (
     <div className="main__todo col col-12">
       <label>
