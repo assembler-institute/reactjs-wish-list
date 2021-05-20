@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { v4 as uuidv4 } from "uuid";
 import TodoList from "./components/TodoList";
 import hero from "./img/hero.jpg";
 import "./header.scss";
@@ -8,32 +9,52 @@ class App extends Component {
     super(props);
     this.state = {
       todos: [
-        { id: 1, name: "Brahim Benalia Casas", complete: false },
-        { id: 2, name: "Marc Solá Crack", complete: false },
-        { id: 3, name: "Brahim Benalia Casas", complete: false },
-        { id: 4, name: "Marc Solá Crack", complete: false },
-        { id: 4, name: "....", complete: false },
+        // { id: 1, name: "Brahim Benalia Casas", complete: false },
+        // { id: 2, name: "Marc Solá Crack", complete: false },
+        // { id: 3, name: "Brahim Benalia Casas", complete: false },
+        // { id: 4, name: "Marc Solá Crack", complete: false },
       ],
+      todoName: "",
     };
-    // this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  // handleAddTodo(value) {
+  handleAddTodo({ todos, todoName }) {
+    const newTodo = {
+      id: uuidv4(),
+      name: todoName,
+      complete: false,
+    };
 
-  // }
+    this.setState({ todos: [...todos, newTodo], todoName: "" });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.handleAddTodo(this.state);
+  }
+
+  handleChange(e) {
+    this.setState({ todoName: e.target.value });
+  }
 
   render() {
-    const { todos } = this.state;
+    const { todos, todoName } = this.state;
     return (
       <>
         <header>
           <div className="heroImg" alt="hero" src={hero}>
             <h1 className="TODOHeader">TODO</h1>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <input
                 type="text"
-                onClick={this.handleAddTodo}
                 placeholder="Create task"
+                id={todoName}
+                name={todoName}
+                value={todoName}
+                onChange={this.handleChange}
               />
             </form>
           </div>
@@ -46,56 +67,3 @@ class App extends Component {
 }
 
 export default App;
-
-// function App() {
-//   return (
-//     <>
-//       <header>
-//         <div className="heroImg" alt="hero" src={hero}>
-//           <h1 className="TODOHeader">TODO</h1>
-//           <form>
-//             <input type="text" placeholder="Create task" />
-//           </form>
-//         </div>
-//       </header>
-
-//       <main className="main container ">
-
-//         {/* <section className="row">
-//           <div className="main__todo col col-12">
-//             <label>
-//               <input className="mx-4" type="checkbox" name="name" />
-//               Jog around the park
-//             </label>
-//             <AiOutlineClose className="main__todo__close" size={24} />
-//           </div>
-//           <div className="main__todo col col-12">
-//             <label>
-//               <input className="mx-4" type="checkbox" name="name" />
-//               Jog around the park
-//             </label>
-//             <AiOutlineClose className="main__todo__close" size={24} />
-//           </div>
-//           <div className="main__todo col col-12">
-//             <label>
-//               <input className="mx-4" type="checkbox" name="name" />
-//               Jog around the park
-//             </label>
-//             <AiOutlineClose className="main__todo__close" size={24} />
-//           </div>
-//         </section>
-//         <section className="row main__footer">
-//           <span>5 items left</span>
-//           <div>
-//             <button type="button">All</button>
-//             <button type="button">Active</button>
-//             <button type="button">Completed</button>
-//           </div>
-//           <button type="button">Clear completed</button>
-//         </section> */}
-//       </main>
-//     </>
-//   );
-// }
-
-// export default App;
