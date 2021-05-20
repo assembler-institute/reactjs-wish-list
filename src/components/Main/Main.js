@@ -3,6 +3,7 @@ import "./Main.scss";
 import mountainImg from "../../img/mountain.jpg";
 import TodosContainer from "../TodosContainer";
 import AppHeader from "../AppHeader";
+import AppFooter from "../AppFooter";
 
 function Main() {
   return (
@@ -19,8 +20,20 @@ function Main() {
         <aside className="bg-light d-flex flex-row shadow rounded p-3 mb-4">
           Input
         </aside>
-        <article className="bg-light d-flex flex-column shadow rounded toContent p-3">
-          <TodosContainer />
+        <article className="bg-light d-flex flex-column shadow rounded toContent">
+          <div className="todoRender">
+            <TodosContainer />
+            <TodosContainer />
+            <TodosContainer />
+            <TodosContainer />
+            <TodosContainer />
+            <TodosContainer />
+            <TodosContainer />
+            <TodosContainer />
+            <TodosContainer />
+            <TodosContainer />
+          </div>
+          <AppFooter />
         </article>
       </section>
     </main>

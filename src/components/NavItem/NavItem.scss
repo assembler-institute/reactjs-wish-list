@@ -1,0 +1,15 @@
+nav {
+  li {
+    font-weight: 500;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  li:hover {
+    color: #505050;
+  }
+
+  .active {
+    color: #5278ca;
+  }
+}
