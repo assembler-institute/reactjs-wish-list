@@ -23,7 +23,7 @@ class App extends Component {
 
   componentDidMount() {
     const { todos, isLoading, hasError } = this.state;
-
+    // eslint-disable-next-line
     console.log(todos);
     console.log(isLoading);
     console.log(hasError);

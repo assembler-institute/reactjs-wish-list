@@ -2,7 +2,7 @@ import React from "react";
 
 function Input({
   type = "text",
-  label = "input-01",
+  // label = "input-01",
   id = "input-01",
   value = "",
   placeholder = "",
@@ -14,7 +14,7 @@ function Input({
 }) {
   return (
     <div className="form-group">
-      <label htmlFor={id}>{label}</label>
+      {/* <label htmlFor={id}>{label}</label> */}
       <input
         className={
           hasErrorMessage && errorMessage

@@ -17,6 +17,7 @@
     "@testing-library/user-event": "^13.1.5",
     "bootstrap": "^4.6.0",
     "classnames": "^2.3.1",
+    "clsx": "^1.1.1",
     "formik": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
