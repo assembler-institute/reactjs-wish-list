@@ -6,7 +6,7 @@ import "./Haders.scss";
 export default function Header() {
   return (
     <section className="header">
-      <h1 className="title">TODO.DO</h1>
+      <h1 className="title">TODO</h1>
       <div className="dark-mode">
         <FontAwesomeIcon icon={faMoon} className="moon" />
       </div>

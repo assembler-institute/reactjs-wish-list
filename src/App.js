@@ -4,7 +4,7 @@ import "./styles.scss";
 
 import Header from "./components/Header";
 import NewTodo from "./components/NewTodo";
-import TodoList from "./components/todolist";
+import TodoList from "./components/TodoList";
 
 import * as api from "./api";
 
@@ -56,7 +56,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <>
         <main>
