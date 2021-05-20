@@ -1,5 +1,7 @@
 .todo-list-section {
-  background-color: yellow;
+  background-color: white;
   height: 400px;
-  box-shadow: 0 0 20px;
+  -moz-box-shadow: 0px 0px 30px rgba(68, 68, 68, 0.6);
+  -webkit-box-shadow: 0px 0px 30px rgba(68, 68, 68, 0.6);
+  box-shadow: 0px 0px 30px rgba(68, 68, 68, 0.6);
 }

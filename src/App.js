@@ -22,11 +22,23 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const { todos, isLoading, hasError } = this.state;
+    this.setState({
+      isLoading: true,
+    });
 
-    console.log(todos);
-    console.log(isLoading);
-    console.log(hasError);
+    const { todos, isLoading, hasError } = this.state;
+    // eslint-disable-next-line no-console
+    console.log(todos, isLoading, hasError);
+    // api.getProducts().then((data) => {
+    //   this.setState({
+    //     products: data,
+    //     isLoading: false,
+    //   });
+
+    //   if (!localStorage.getItem("App data")) {
+    //     localStorage.setItem("App data", JSON.stringify(this.state));
+    //   }
+    // });
   }
 
   render() {
