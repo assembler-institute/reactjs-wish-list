@@ -5,12 +5,11 @@ import "./TodoCard.scss";
 export default function TodoCard() {
   return (
     <div className="flex-row card-wide">
-      <label>
-        <input
-          type="checkbox"
-          name="completed"
-          className="blue-checkbox clickable"
-        />
+      <label className="blue-checkbox clickable">
+        <input type="checkbox" name="completed" />
+        <div className="status-switch text-center">
+          <i className=" bi bi-check inherit-size" />
+        </div>
       </label>
       <span className="font-bold font-big full-width">TodoCard</span>
       <div>
