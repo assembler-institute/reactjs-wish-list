@@ -5,19 +5,12 @@ import { v4 as uuidv4 } from "uuid";
 import All from "./pages/All";
 import "./App.scss";
 
-// function buildNewTodo(todo) {
-//   return {
-//     id: todo.id,
-//     name: todo.name,
-//     complete: false
-//   }
-// }
-
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      isEmpty: true,
       allTodos: [],
       // completeTodos: [],
       // activeTodos: [],
@@ -29,23 +22,32 @@ class App extends Component {
     this.handleRemove = this.handleRemove.bind(this);
   }
 
-  // componentDidMount() {
-  //   api.getTodos().then((data) => {
-  //     this.setState({
-  //       todos: data,
-  //     });
-  //   });
-  //   return;
-  // }
+  componentDidMount() {
+    const { allTodos } = this.state;
+    if (allTodos.length === 0) {
+      this.setState({
+        isEmpty: true,
+      });
+    }
+
+    if (allTodos.length > 0) {
+      this.setState({
+        isEmpty: false,
+      });
+    }
+  }
+
   handleAddTodo({ todoName, allTodos }) {
     const newTodo = {
       id: uuidv4(),
       name: todoName,
       complete: false,
     };
-    this.setState({ allTodos: [...allTodos, newTodo], todoName: "" });
-    // eslint-disable-next-line
-    console.log(todoName);
+    this.setState({
+      allTodos: [...allTodos, newTodo],
+      todoName: "",
+      isEmpty: false,
+    });
   }
 
   handleSubmit(e) {
@@ -64,7 +66,7 @@ class App extends Component {
   }
 
   render() {
-    const { allTodos, todoName } = this.state;
+    const { allTodos, todoName, isEmpty } = this.state;
     return (
       <All
         handleSubmit={this.handleSubmit}
@@ -72,6 +74,7 @@ class App extends Component {
         handleRemove={this.handleRemove}
         allTodos={allTodos}
         todoName={todoName}
+        isEmpty={isEmpty}
       />
     );
   }

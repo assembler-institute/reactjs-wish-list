@@ -11,7 +11,7 @@ function All({
   handleSubmit,
   handleChange,
   todoName,
-  isEmpty = false,
+  isEmpty,
   allTodos,
   handleSetCompleted,
   handleRemove,
