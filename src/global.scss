@@ -34,7 +34,7 @@ background-image: url($url);
 background-size: cover;
 background-position: center;
 }
-@mixin flex ($flexbox,$direction,$xPos,$ypos,$color,$borde,$anchor){
+@mixin flex ($direction,$xPos,$ypos,$color,$borde,$anchor){
 display: flex;
 flex-direction: $direction;
 justify-content: $xPos;
@@ -50,3 +50,11 @@ font-weight: 700;
 font-family: $fonts;
 justify-self: center;
 align-self: center;
+}
+
+@mixin list ($color,$fonts,$dist){
+    list-style: none;
+    color: $color;
+    font-family: $fonts;
+    margin-bottom: $dist;
+}  

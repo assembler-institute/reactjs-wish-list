@@ -1,7 +1,11 @@
 import React from "react";
 import "./_Button.scss";
 
-function Button() {
-  return null;
+function Checkbox() {
+  return <input className="check" type="checkbox" />;
 }
-export default Button;
+
+function Button() {
+  return <input className="but" type="button" />;
+}
+export { Button, Checkbox };
