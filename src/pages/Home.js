@@ -1,22 +1,21 @@
 import React from "react";
 
-function Home(
-  {
-    //   products,
-    //   cartItems,
-    //   isLoading,
-    //   hasError,
-    //   loadingError,
-    //   handleDownVote,
-    //   handleUpVote,
-    //   handleSetFavorite,
-    //   handleAddToCart,
-    //   handleRemove,
-    //   handleChange,
-  },
-) {
+function Home({
+  tasks,
+  //   cartItems,
+  isLoading,
+  //   hasError,
+  //   loadingError,
+  //   handleDownVote,
+  //   handleUpVote,
+  //   handleSetFavorite,
+  //   handleAddToCart,
+  //   handleRemove,
+  //   handleChange,
+}) {
   return (
     <>
+      {(tasks, isLoading)}
       {/* <AppHeader />
       <Main className="container-fluid">
         <div className="row">
