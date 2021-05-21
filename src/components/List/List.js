@@ -7,8 +7,7 @@ function List({ tasks, handleRemoveTask, handleCompleteTask }) {
       {tasks.map((task) => (
         <Task
           key={task.id}
-          id={task.id}
-          value={task.name}
+          task={task}
           handleRemoveTask={handleRemoveTask}
           handleCompleteTask={handleCompleteTask}
         />

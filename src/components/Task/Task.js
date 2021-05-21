@@ -1,6 +1,6 @@
 import React from "react";
 
-function Task({ value, handleRemoveTask, handleCompleteTask, id }) {
+function Task({ task, handleRemoveTask, handleCompleteTask }) {
   function onTaskRemove(event) {
     handleRemoveTask(event.target.value);
   }
@@ -11,10 +11,16 @@ function Task({ value, handleRemoveTask, handleCompleteTask, id }) {
 
   return (
     <li>
-      <input type="checkbox" onChange={onTaskComplete} value={id} />
+      <input
+        type="checkbox"
+        onChange={onTaskComplete}
+        value={task.id}
+        disabled={task.completed}
+        checked={task.completed}
+      />
 
-      {value}
-      <button type="button" onClick={onTaskRemove} value={id}>
+      {task.name}
+      <button type="button" onClick={onTaskRemove} value={task.id}>
         x
       </button>
     </li>

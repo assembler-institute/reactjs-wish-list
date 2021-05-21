@@ -47,6 +47,7 @@ class App extends Component {
   componentDidUpdate() {
     const { tasks } = this.state;
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
+    console.log(tasks);
   }
 
   handleKeyDown(event) {
@@ -79,16 +80,10 @@ class App extends Component {
 
   handleCompleteTask(taskId) {
     const { tasks } = this.state;
-    const completedTask = tasks.filter((task) => task.id === taskId)[0];
-    completedTask.completed = true;
-    const updatedTasks = tasks
-      .filter((task) => task.id !== taskId)
-      .push(completedTask);
-    // this.setState({
-    //   tasks: updatedTasks,
-    // });
-    console.log(completedTask);
-    console.log(updatedTasks);
+    tasks[tasks.findIndex((task) => task.id === taskId)].completed = true;
+    this.setState({
+      tasks: tasks,
+    });
   }
 
   render() {
