@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-// import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from "uuid";
 import CreateTodo from "./components/CreateTodo";
 import TodoList from "./components/TodoList";
 
@@ -13,14 +13,11 @@ class App extends Component {
 
     this.state = {
       todos: defaultTodos,
-      // id: id: uuidv4()
-      // text: "Todo"
-      // done: false
       isLoading: false,
       hasError: false,
     };
 
-    // this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleAddTodo = this.handleAddTodo.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +32,17 @@ class App extends Component {
     this.setState({
       isLoading: false,
     });
+  }
+
+  componentDidUpdate() {
+    const { todos } = this.state;
+    console.log(todos);
+  }
+
+  handleAddTodo(text) {
+    this.setState((prevState) => ({
+      todos: [...prevState.todos, { id: uuidv4(), text: text, done: false }],
+    }));
   }
 
   render() {
@@ -57,7 +65,7 @@ class App extends Component {
             <h1 className="main-header-title">T O D O</h1>
             <i className="uil uil-moon" />
           </div>
-          <CreateTodo />
+          <CreateTodo handleAddTodo={this.handleAddTodo} />
           <BrowserRouter>
             <Route
               path="/"
