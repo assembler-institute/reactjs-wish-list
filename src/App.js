@@ -13,6 +13,7 @@ class App extends Component {
 
     this.state = {
       todos: defaultTodos,
+      hasTodos: false,
       isLoading: false,
       hasError: false,
     };
@@ -52,11 +53,17 @@ class App extends Component {
 
     todos.splice(indexToDelete, 1);
     this.setState({ todos: todos });
+
+    if (todos.length === 0) {
+      this.setState({ hasTodos: false });
+      console.log("Empty todos");
+    }
   }
 
   handleAddTodo(text) {
     this.setState((prevState) => ({
       todos: [...prevState.todos, { id: uuidv4(), text: text, done: false }],
+      hasTodos: !prevState.hasTodos,
     }));
   }
 
@@ -78,11 +85,15 @@ class App extends Component {
   /*                                REACT METHODS                               */
   /* -------------------------------------------------------------------------- */
   componentDidMount() {
+    const { todos, isLoading, hasError } = this.state;
+    if (todos) {
+      this.setState({ hasTodos: true });
+    }
+
     this.setState({
       isLoading: true,
     });
 
-    const { todos, isLoading, hasError } = this.state;
     // eslint-disable-next-line no-console
     console.log(todos, isLoading, hasError);
 
@@ -97,7 +108,7 @@ class App extends Component {
   }
 
   render() {
-    const { todos } = this.state;
+    const { todos, hasTodos } = this.state;
 
     return (
       <>
@@ -125,6 +136,7 @@ class App extends Component {
                 <TodoList
                   {...routeProps}
                   todos={todos}
+                  hasTodos={hasTodos}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
                   handleEditedTodo={this.handleEditedTodo}
@@ -138,6 +150,7 @@ class App extends Component {
                 <TodoList
                   {...routeProps}
                   todos={todos}
+                  hasTodos={hasTodos}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
                   handleEditedTodo={this.handleEditedTodo}
@@ -151,6 +164,7 @@ class App extends Component {
                 <TodoList
                   {...routeProps}
                   todos={todos}
+                  hasTodos={hasTodos}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
                   handleEditedTodo={this.handleEditedTodo}
