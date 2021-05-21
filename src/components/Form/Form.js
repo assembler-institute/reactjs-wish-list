@@ -5,50 +5,55 @@ class newForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      selected: true,
+      todoIt: {
+        title: "",
+        selected: false,
+      },
     };
     this.handleInput = this.handleInput.bind(this);
     this.submitTitle = this.submitTitle.bind(this);
   }
 
   handleSelected() {
-    const { selected } = this.state;
+    const { todoIt } = this.state;
+    todoIt.selected = true;
     this.setState({
-      selected: false,
+      todoIt: todoIt,
     });
     // eslint-disable-next-line
-    console.log("Este es el valor", selected);
+    console.log("Este es el valor", todoIt.selected);
   }
 
   handleInput(event) {
-    const { title } = this.state;
+    const { todoIt } = this.state;
+    todoIt.title = event.target.value;
     this.setState({
-      title: event.target.value,
+      todoIt: todoIt,
     });
     // eslint-disable-next-line
-    console.log("Este es titile", title);
+    console.log("Este es titile", todoIt.title);
   }
 
   submitTitle(event) {
     if (event.key === "Enter") {
-      const { title } = this.state;
+      const { todoIt } = this.state;
       const { newTodo } = this.props;
-      newTodo(title);
+      newTodo(todoIt);
+      todoIt.title = "";
       this.setState({
-        title: "",
+        todoIt: todoIt,
       });
     }
   }
 
   render() {
-    const { title } = this.state;
+    const { todoIt } = this.state;
     return (
       <>
         <input
           type="text"
           className="form_input"
-          value={title}
+          value={todoIt.title}
           onChange={this.handleInput}
           onKeyPress={this.submitTitle}
           placeholder="Write what you have to do an press Enter key"
