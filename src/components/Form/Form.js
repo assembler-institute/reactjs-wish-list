@@ -8,6 +8,7 @@ class newForm extends Component {
       title: "",
       id: 0,
       selected: false,
+      editTodo: false,
     };
     this.handleInput = this.handleInput.bind(this);
     this.submitTitle = this.submitTitle.bind(this);
@@ -46,6 +47,11 @@ class newForm extends Component {
         id: id,
       });
     }
+  }
+
+  handleDelete({ todos }) {
+    const { deleteTodos } = this.state;
+    todos;
   }
 
   render() {
