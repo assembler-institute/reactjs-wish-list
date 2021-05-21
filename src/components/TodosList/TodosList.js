@@ -4,7 +4,7 @@ import "./TodoList.scss";
 
 import TodoCard from "../TodoCard/index";
 import CardFooter from "../CardFooter/index";
-import noTodoImg from "../../img/undraw_fill_form_re_cwyf.svg";
+import EmptyList from "../EmptyList/EmptyList";
 
 export default function TodosList({
   todos,
@@ -12,6 +12,7 @@ export default function TodosList({
   handleTodoChange,
   handleTodoDelete,
   activeTodos,
+  pageName,
   ...props
 }) {
   const todoMap = (
@@ -29,18 +30,9 @@ export default function TodosList({
       ))}
     </section>
   );
-  const noTodos = (
-    <section className="whiteBg">
-      <hr />
-      <h4 className="text-center">Create your first Todo to get started</h4>
-      <hr />
-      <img src={noTodoImg} alt="" className="mid-img img-center" />
-      <hr />
-    </section>
-  );
   return (
     <div className="shadow roundedCorner" props={props}>
-      {todos[0] ? todoMap : noTodos}
+      {todos[0] ? todoMap : <EmptyList pageName={pageName} />}
 
       <CardFooter activeTodos={activeTodos} />
     </div>

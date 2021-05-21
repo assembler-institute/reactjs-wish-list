@@ -14,6 +14,7 @@ export default function Completed({
   handleTodoDelete,
   activeTodos,
 }) {
+  const pageName = "Completed";
   return (
     <div className="mainBackground allWidth minHeight gridBody">
       <BgPicture />
@@ -30,6 +31,7 @@ export default function Completed({
           handleTodoChange={handleTodoChange}
           handleTodoDelete={handleTodoDelete}
           activeTodos={activeTodos}
+          pageName={pageName}
         />
       </main>
       <Footer />
