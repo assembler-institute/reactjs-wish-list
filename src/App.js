@@ -8,55 +8,55 @@ import AppHeader from "./components/AppHeader";
 import InputTask from "./components/InputTask";
 import List from "./components/List";
 
-// const LOCAL_STORAGE_KEY = "tasks";
+const LOCAL_STORAGE_KEY = "tasks";
+
+function loadLocalStorageData() {
+  const prevItems = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+  if (!prevItems) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(prevItems);
+  } catch (error) {
+    return null;
+  }
+}
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [
-        {
-          id: 1,
-          name: "Task 1",
-          completed: false,
-        },
-        {
-          id: 2,
-          name: "Task 2",
-          completed: false,
-        },
-        {
-          id: 3,
-          name: "Task 3",
-          completed: false,
-        },
-        {
-          id: 4,
-          name: "Task A3",
-          completed: false,
-        },
-        {
-          id: 5,
-          name: "Task 13",
-          completed: false,
-        },
-      ],
+      tasks: [],
     };
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  // eslint-disable-next-line react/sort-comp
-  getTasks() {
+  componentDidMount() {
+    const prevItems = loadLocalStorageData();
+    if (prevItems && prevItems.tasks) {
+      this.setState({
+        tasks: prevItems.tasks,
+      });
+    }
+  }
+
+  componentDidUpdate() {
     const { tasks } = this.state;
-    return tasks;
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
   }
 
   handleKeyDown(event) {
-    if (event.key === "Enter") {
+    if (
+      event.target.value &&
+      !/^\s*$/.test(event.target.value) &&
+      event.key === "Enter"
+    ) {
       this.setState(
         (prevState) => ({
           tasks: [
-            { id: uuid(), name: event.target.value, completed: 0 },
+            { id: uuid(), name: event.target.value, completed: false },
             ...prevState.tasks,
           ],
         }),
@@ -76,7 +76,6 @@ class App extends Component {
           <AppHeader />
           <InputTask handleKeyDown={this.handleKeyDown} />
           <List tasks={tasks} />
-          <List />
         </Section>
       </Main>
     );
