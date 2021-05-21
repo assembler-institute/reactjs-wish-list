@@ -13,6 +13,7 @@ class App extends Component {
 
     this.state = {
       todos: defaultTodos,
+      hasTodos: false,
       isLoading: false,
       hasError: false,
     };
@@ -20,6 +21,7 @@ class App extends Component {
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleDone = this.handleDone.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleEditedTodo = this.handleEditedTodo.bind(this);
   }
 
   /* -------------------------------------------------------------------------- */
@@ -28,6 +30,9 @@ class App extends Component {
 
   // eslint-disable-next-line react/sort-comp
   handleDone(todoId) {
+    // eslint-disable-next-line no-param-reassign
+    const selInput = document.getElementById(`input-${todoId}`);
+    selInput.disabled = !selInput.disabled;
     const { todos } = this.state;
     const updatedTodos = todos.map((todo) => {
       if (todo.id === todoId) {
@@ -48,23 +53,48 @@ class App extends Component {
 
     todos.splice(indexToDelete, 1);
     this.setState({ todos: todos });
+
+    if (todos.length === 0) {
+      this.setState({ hasTodos: false });
+      // eslint-disable-next-line no-console
+      console.log("Empty todos");
+    }
   }
 
   handleAddTodo(text) {
     this.setState((prevState) => ({
       todos: [...prevState.todos, { id: uuidv4(), text: text, done: false }],
+      hasTodos: true,
     }));
+  }
+
+  handleEditedTodo(todoId, editedText) {
+    const { todos } = this.state;
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === todoId) {
+        return {
+          ...todo,
+          text: editedText,
+        };
+      }
+      return todo;
+    });
+    this.setState({ todos: updatedTodos });
   }
 
   /* -------------------------------------------------------------------------- */
   /*                                REACT METHODS                               */
   /* -------------------------------------------------------------------------- */
   componentDidMount() {
+    const { todos, isLoading, hasError } = this.state;
+    if (todos) {
+      this.setState({ hasTodos: true });
+    }
+
     this.setState({
       isLoading: true,
     });
 
-    const { todos, isLoading, hasError } = this.state;
     // eslint-disable-next-line no-console
     console.log(todos, isLoading, hasError);
 
@@ -75,11 +105,13 @@ class App extends Component {
 
   componentDidUpdate() {
     // eslint-disable-next-line no-console
+    console.clear();
+    // eslint-disable-next-line no-console
     console.log(this.state);
   }
 
   render() {
-    const { todos } = this.state;
+    const { todos, hasTodos } = this.state;
 
     return (
       <>
@@ -107,9 +139,11 @@ class App extends Component {
                 <TodoList
                   {...routeProps}
                   todos={todos}
+                  hasTodos={hasTodos}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
                   todosLeft={todos.filter((todo) => !todo.done).length}
+                  handleEditedTodo={this.handleEditedTodo}
                 />
               )}
             />
@@ -120,9 +154,11 @@ class App extends Component {
                 <TodoList
                   {...routeProps}
                   todos={todos.filter((todo) => !todo.done)}
+                  todosLeft={todos.filter((todo) => !todo.done).length}
+                  hasTodos={hasTodos}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
-                  todosLeft={todos.filter((todo) => !todo.done).length}
+                  handleEditedTodo={this.handleEditedTodo}
                 />
               )}
             />
@@ -133,9 +169,11 @@ class App extends Component {
                 <TodoList
                   {...routeProps}
                   todos={todos.filter((todo) => todo.done)}
+                  todosLeft={todos.filter((todo) => !todo.done).length}
+                  hasTodos={hasTodos}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
-                  todosLeft={todos.filter((todo) => !todo.done).length}
+                  handleEditedTodo={this.handleEditedTodo}
                 />
               )}
             />

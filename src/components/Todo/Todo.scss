@@ -44,10 +44,22 @@
     }
   }
 
-  .todo-text {
-    font-size: 15px;
-    margin: 0;
+  form {
     flex-grow: 1;
+
+    .done-todo-text {
+      color: lightgray;
+      text-decoration: line-through;
+    }
+
+    .edit-todo-input {
+      cursor: pointer;
+      font-size: 15px;
+      width: 95%;
+      margin: 0;
+      outline: none;
+      border: none;
+    }
   }
 
   button {

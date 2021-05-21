@@ -5,6 +5,16 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+  ::placeholder {
+    // color: #7e76b7;
+    color: lightgray;
+    opacity: 1;
+  }
+
+  :disabled {
+    background-color: transparent;
+  }
   // outline: 2px c.$mainColor solid;
 }
 
