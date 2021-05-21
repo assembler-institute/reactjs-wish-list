@@ -5,19 +5,12 @@ import { v4 as uuidv4 } from "uuid";
 import All from "./pages/All";
 import "./App.scss";
 
-// function buildNewTodo(todo) {
-//   return {
-//     id: todo.id,
-//     name: todo.name,
-//     complete: false
-//   }
-// }
-
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      isEmpty: true,
       allTodos: [],
       // completeTodos: [],
       // activeTodos: [],
@@ -28,14 +21,21 @@ class App extends Component {
     this.handleAddTodo = this.handleAddTodo.bind(this);
   }
 
-  // componentDidMount() {
-  //   api.getTodos().then((data) => {
-  //     this.setState({
-  //       todos: data,
-  //     });
-  //   });
-  //   return;
-  // }
+  componentDidMount() {
+    const { allTodos } = this.state;
+    if (allTodos.length === 0) {
+      this.setState({
+        isEmpty: true,
+      });
+    }
+
+    if (allTodos.length > 0) {
+      this.setState({
+        isEmpty: false,
+      });
+    }
+  }
+
   handleAddTodo({ todoName, allTodos }) {
     const newTodo = {
       id: uuidv4(),
@@ -43,7 +43,7 @@ class App extends Component {
       complete: false,
     };
     allTodos.push(newTodo);
-    this.setState({ allTodos: allTodos });
+    this.setState({ allTodos: allTodos, isEmpty: false });
   }
 
   handleSubmit(e) {
@@ -59,12 +59,13 @@ class App extends Component {
   }
 
   render() {
-    const { allTodos } = this.state;
+    const { allTodos, isEmpty } = this.state;
     return (
       <All
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         allTodos={allTodos}
+        isEmpty={isEmpty}
       />
     );
   }

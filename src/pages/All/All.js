@@ -10,7 +10,7 @@ import NoTodos from "../../components/NoTodos";
 function All({
   handleSubmit,
   handleChange,
-  isEmpty = false,
+  isEmpty,
   allTodos,
   handleSetCompleted,
   ...props
