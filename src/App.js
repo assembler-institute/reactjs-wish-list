@@ -85,8 +85,6 @@ class App extends Component {
   clearCompleted() {
     const { todos } = this.state;
     const newTodos = todos.filter((todo) => todo.isActive === false);
-    // eslint-disable-next-line
-    console.log(newTodos);
     this.setState(() => ({
       todos: newTodos,
     }));
