@@ -12,6 +12,22 @@ import Active from "./pages/Active";
   return productData;
 } */
 
+const LOCAL_STORAGE_KEY = "react-todo-state";
+
+function loadLocalStorageData() {
+  const prevItems = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+  if (!prevItems) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(prevItems);
+  } catch (error) {
+    return null;
+  }
+}
+
 function findIndexByIdInArray(id, array) {
   const productData = array.findIndex((element) => {
     return element.id === id;
@@ -25,7 +41,7 @@ class App extends Component {
 
     this.state = {
       todos: [
-        {
+        /* {
           key: 1,
           id: 1,
           title: "prueba 1",
@@ -48,7 +64,7 @@ class App extends Component {
           id: 4,
           title: "prueba 4",
           isComplete: false,
-        },
+        }, */
       ],
     };
     this.handleCompleted = this.handleCompleted.bind(this);
@@ -56,6 +72,20 @@ class App extends Component {
     this.handleTodoChange = this.handleTodoChange.bind(this);
     this.handleTodoDelete = this.handleTodoDelete.bind(this);
     this.activeTodosCount = this.activeTodosCount.bind(this);
+  }
+
+  componentDidMount() {
+    const prevItems = loadLocalStorageData();
+    if (prevItems) {
+      this.setState({
+        todos: prevItems,
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    const { todos } = this.state;
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
   }
 
   handleCompleted(id) {
