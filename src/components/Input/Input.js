@@ -6,8 +6,9 @@ export default function Input({
   id = "",
   value = "",
   placeholder = "",
-  handleChange = () => {},
-  handleBlur = () => {},
+  handleChange,
+  handleBlur,
+  handleEnterKey,
   errorMessage,
   hasErrorMessage,
   ...props
@@ -27,6 +28,7 @@ export default function Input({
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
+        onKeyPress={handleEnterKey}
         {...props}
       />
       {hasErrorMessage && errorMessage && (

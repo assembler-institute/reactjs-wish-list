@@ -1,0 +1,17 @@
+$body-background: rgb(226, 226, 226);
+$main-background: rgb(255, 255, 255);
+
+.new-todo {
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.new-todo-form {
+  width: 95%;
+}

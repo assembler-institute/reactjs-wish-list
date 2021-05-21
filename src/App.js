@@ -6,7 +6,7 @@ import "./components/Footer/Footer.scss";
 
 import Header from "./components/Header";
 import NewTodo from "./components/NewTodo";
-import TodoList from "./components/TodoList";
+import TodoList from "./components/todolist";
 
 // import * as api from "./api";
 
@@ -36,6 +36,8 @@ class App extends Component {
     this.handleIsActive = this.handleIsActive.bind(this);
     this.saveNewTodo = this.saveNewTodo.bind(this);
     this.clearCompleted = this.clearCompleted.bind(this);
+    this.handleIsEdit = this.handleIsEdit.bind(this);
+    this.editTodo = this.editTodo.bind(this);
   }
 
   componentDidMount() {
@@ -63,11 +65,28 @@ class App extends Component {
 
     const updatedTodos = todos.map((todo) => {
       if (todo.id === todosId) {
-        // eslint-disable-next-line
-        console.log(todo.isActive);
         return {
           ...todo,
           isActive: !todo.isActive,
+        };
+      }
+
+      return todo;
+    });
+
+    this.setState({ todos: updatedTodos });
+  }
+
+  handleIsEdit(todoId) {
+    // eslint-disable-next-line
+    console.log({ todoId });
+    const { todos } = this.state;
+
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === todoId) {
+        return {
+          ...todo,
+          isEdit: !todo.isEdit,
         };
       }
 
@@ -83,6 +102,23 @@ class App extends Component {
     }));
   }
 
+  editTodo(todoId, content) {
+    const { todos } = this.state;
+    const updatedTodos = todos.map((todo) => {
+      if (todoId === todo.id) {
+        return {
+          ...todo,
+          content: content,
+        };
+      }
+      return todo;
+    });
+
+    this.setState({ todos: updatedTodos });
+    // eslint-disable-next-line
+    console.log(todoId, { todos });
+  }
+
   clearCompleted() {
     const { todos } = this.state;
     const newTodos = todos.filter((todo) => todo.isActive === false);
@@ -93,8 +129,6 @@ class App extends Component {
 
   render() {
     const { todos } = this.state;
-    // eslint-disable-next-line
-    console.log(this.state);
     const completed = todos.filter((todo) => todo.isActive === true);
     const active = todos.filter((todo) => todo.isActive === false);
 
@@ -104,24 +138,32 @@ class App extends Component {
           <main>
             <section className="container">
               <Header />
-              <NewTodo saveNewTodo={this.saveNewTodo} />
+              <div className="new-todo">
+                <NewTodo saveNewTodo={this.saveNewTodo} />
+              </div>
               <Switch>
                 <Route path="/active">
                   <TodoList
                     todos={active}
                     handleIsActive={this.handleIsActive}
+                    handleIsEdit={this.handleIsEdit}
+                    editTodo={this.editTodo}
                   />
                 </Route>
                 <Route path="/completed">
                   <TodoList
                     todos={completed}
                     handleIsActive={this.handleIsActive}
+                    handleIsEdit={this.handleIsEdit}
+                    editTodo={this.editTodo}
                   />
                 </Route>
                 <Route path="/">
                   <TodoList
                     todos={todos}
                     handleIsActive={this.handleIsActive}
+                    handleIsEdit={this.handleIsEdit}
+                    editTodo={this.editTodo}
                   />
                 </Route>
               </Switch>

@@ -1,8 +1,8 @@
 import React from "react";
-import Todo from "../Todo";
+import Todo from "../todo";
 import "./todolist.scss";
 
-function TodoList({ todos, handleIsActive }) {
+function TodoList({ todos, handleIsActive, handleIsEdit, editTodo }) {
   return (
     <section className="todo-list">
       <ul>
@@ -12,7 +12,10 @@ function TodoList({ todos, handleIsActive }) {
             id={todo.id}
             content={todo.content}
             isActive={todo.isActive}
+            isEdit={todo.isEdit}
             handleIsActive={handleIsActive}
+            handleIsEdit={handleIsEdit}
+            editTodo={editTodo}
           />
         ))}
       </ul>

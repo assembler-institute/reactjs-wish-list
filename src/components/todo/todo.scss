@@ -18,10 +18,12 @@ li {
 }
 .delete {
   display: none;
+  min-width: 10%;
 }
 li:hover {
   .delete {
     display: block;
+    min-width: 10%;
     svg {
       color: rgb(122, 122, 122);
       font-size: 1.2rem;

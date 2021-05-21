@@ -1,28 +1,6 @@
 import React from "react";
-import { v4 as uuid } from "uuid";
-import { Formik } from "formik";
 
-import "./NewTodo.scss";
-
-import newTodoSchema from "./NewTodoSchema";
-
-import Input from "../Input";
-
-function addTodoDetails(todo) {
-  return {
-    id: uuid(),
-    ...todo,
-    isActive: false,
-    isEdit: false,
-  };
-}
-
-export default function NewTodo({ saveNewTodo, editTodo, id, content }) {
-  function onSave(values) {
-    // eslint-disable-next-line
-    // console.log(values.target.value);
-    editTodo(id, values.target.value);
-  }
+export default function EditTodo() {
   const onSubmit = async (
     values,
     { setSubmitting, setErrors, setStatus, resetForm },
@@ -43,9 +21,8 @@ export default function NewTodo({ saveNewTodo, editTodo, id, content }) {
         content: "",
       }}
       validationSchema={newTodoSchema}
-      onSubmit={id ? onSave : onSubmit}
-      onChange={id && onSave}
-      onBlur={id && onSave}
+      onSubmit={onSubmit}
+      onBlur={onSubmit}
     >
       {({
         handleChange,
@@ -55,18 +32,13 @@ export default function NewTodo({ saveNewTodo, editTodo, id, content }) {
         values,
         touched,
       }) => (
-        <form
-          onSubmit={handleSubmit}
-          onChange={id && onSave}
-          onBlur={id && onSave}
-          className="new-todo-form"
-        >
+        <form onSubmit={handleSubmit} onBlur={handleBlur} className="new-todo">
           <Input
             id="content"
             type="text"
             className="input"
-            value={id ? content : values.content}
-            placeholder={id ? content : "Add new todo"}
+            value={values.content}
+            placeholder="Add new todo"
             handleChange={handleChange}
             handleBlur={handleBlur}
             hasErrorMessage={touched.title}
