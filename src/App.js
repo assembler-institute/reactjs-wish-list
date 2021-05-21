@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 // import pages
-import Home from "./pages/Home";
-import Completed from "./pages/Completed";
-import Active from "./pages/Active";
+import Template from "./components/layout/Template";
 
 // import style
 import "./App.scss";
@@ -121,7 +119,7 @@ class App extends Component {
           path="/"
           exact
           render={() => (
-            <Home
+            <Template
               id={id}
               todo={todo}
               todoList={todoList}
@@ -139,7 +137,7 @@ class App extends Component {
           path="/completed"
           exact
           render={() => (
-            <Completed
+            <Template
               id={id}
               todo={todo}
               todoList={todoList}
@@ -157,7 +155,7 @@ class App extends Component {
           path="/active"
           exact
           render={() => (
-            <Active
+            <Template
               id={id}
               todo={todo}
               todoList={todoList}
