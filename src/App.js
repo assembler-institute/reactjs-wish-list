@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Header from "./components/Header/Header";
 import Todo from "./components/Todo";
@@ -33,6 +34,7 @@ class App extends Component {
           <h1>TODO</h1>
           <Form newTodo={this.newTodo} />
           <Todo todos={todos} />
+          <Footer />
         </section>
       </main>
     );
