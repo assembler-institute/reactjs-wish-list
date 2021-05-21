@@ -6,9 +6,19 @@ class newForm extends Component {
     super(props);
     this.state = {
       title: "",
+      selected: true,
     };
     this.handleInput = this.handleInput.bind(this);
     this.submitTitle = this.submitTitle.bind(this);
+  }
+
+  handleSelected() {
+    const { selected } = this.state;
+    this.setState({
+      selected: false,
+    });
+    // eslint-disable-next-line
+    console.log("Este es el valor", selected);
   }
 
   handleInput(event) {

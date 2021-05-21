@@ -1,9 +1,9 @@
 import React from "react";
 import "./_Button.scss";
 
-function Checkbox() {
-  return <input className="check" type="checkbox" />;
-}
+const Checkbox = ({ handleSelected }) => {
+  return <input className="check" type="checkbox" onChange={handleSelected} />;
+};
 
 function Button() {
   return <input className="but" type="button" />;
