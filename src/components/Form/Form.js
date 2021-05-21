@@ -8,7 +8,7 @@ class newForm extends Component {
       title: "",
       id: 0,
       selected: false,
-      editTodo: false,
+      // editTodo: false,
     };
     this.handleInput = this.handleInput.bind(this);
     this.submitTitle = this.submitTitle.bind(this);
@@ -34,6 +34,16 @@ class newForm extends Component {
     console.log("Este es titile", title);
   }
 
+  handleDelete() {
+    const { id } = this.state;
+
+    this.setState({
+      id: id,
+    });
+    // eslint-disable-next-line
+    console.log(id);
+  }
+
   submitTitle(event) {
     if (event.key === "Enter") {
       const { ...newTodos } = this.state;
@@ -47,11 +57,6 @@ class newForm extends Component {
         id: id,
       });
     }
-  }
-
-  handleDelete({ todos }) {
-    const { deleteTodos } = this.state;
-    todos;
   }
 
   render() {

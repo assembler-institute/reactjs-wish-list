@@ -8,6 +8,7 @@ class TodoItem extends newForm {
     super(props);
 
     this.handleSelected = this.handleSelected.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   render() {
@@ -20,7 +21,7 @@ class TodoItem extends newForm {
         <li className="Items">
           <Checkbox handleSelected={this.handleSelected} />
           {text}
-          <Button />
+          <Button handleDelete={this.handleDelete} />
         </li>
       </div>
     );
