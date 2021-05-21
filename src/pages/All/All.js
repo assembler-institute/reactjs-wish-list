@@ -1,11 +1,11 @@
 import React from "react";
 import Main from "../../components/Main";
 import mountainImg from "../../img/mountain.jpg";
-// import TodosContainer from "../../components/TodosContainer";
 import AppHeader from "../../components/AppHeader";
 import AppFooter from "../../components/AppFooter";
 import CreateTodo from "../../components/CreateTodo";
 import TodoListing from "../../components/TodoListing";
+import NoTodos from "../../components/NoTodos";
 
 function All({ isEmpty = false, allTodos, handleSetCompleted, ...props }) {
   return (
@@ -24,7 +24,7 @@ function All({ isEmpty = false, allTodos, handleSetCompleted, ...props }) {
         </aside>
         <article className="bg-light d-flex flex-column shadow rounded toContent">
           <div className="todoRender">
-            {isEmpty && <div>There is no todos to show</div>}
+            {isEmpty && <NoTodos />}
             {!isEmpty && (
               <TodoListing
                 allTodos={allTodos}
