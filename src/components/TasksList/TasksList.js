@@ -6,10 +6,7 @@ function TasksList({ tasks, handleDeleteTask, ...props }) {
   return (
     <aside {...props}>
       <div className="row flex-column">
-        <div className="col shopping__cart__header">
-          <h2 className="h3 mt-2">Tasks List</h2>
-          <hr className="mb-3" />
-        </div>
+        <br />
 
         {tasks.length > 0 ? (
           tasks.map((task) => (
