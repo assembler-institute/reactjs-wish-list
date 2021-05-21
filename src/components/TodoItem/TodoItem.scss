@@ -1,5 +1,6 @@
 @use "../../global.scss" as global;
 
 .Items{
+    position: relative;
     @include global.flex (row,left,center,none,none,100%)
 }
