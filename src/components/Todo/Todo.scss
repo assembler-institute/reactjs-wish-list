@@ -2,9 +2,9 @@
   width: 100%;
   span {
     display: flex;
+    align-items: center;
     input {
-      align-self: center;
-      margin-left: 20px;
+      visibility: hidden;
     }
     h6 {
       align-self: center;
@@ -13,6 +13,34 @@
     .completed {
       text-decoration: line-through;
     }
+  }
+}
+
+.roundedLabel {
+  display: flex;
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.checked {
+  border: 0px solid transparent;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(102, 200, 207),
+    rgb(168, 71, 168)
+  );
+  &:after {
+    content: "\2714";
+    font-size: 16px;
+    color: white;
+    margin-left: -8px;
+    margin-top: 1px;
   }
 }
 

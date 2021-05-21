@@ -5,6 +5,8 @@ import EditIcon from "../Icons/EditIcon";
 
 import todoStyles from "./Todo.scss";
 
+const classNames = require("classnames");
+
 const cns = classnames.bind(todoStyles);
 
 export default function Todo({
@@ -13,15 +15,21 @@ export default function Todo({
   handleEdit,
   handleRemove,
   completed,
+  id,
 }) {
+  const checkedClass = classNames("roundedLabel", { checked: completed });
   return (
     <li className="list-group-item text-capitalize d-flex justify-content-between p-2 todo border-bottom border-top-0 border-left-0 border-right-0">
       <span>
-        <input
-          type="checkbox"
-          onChange={handleCompleteTodo}
-          checked={completed}
-        />
+        <label htmlFor={id} className={checkedClass}>
+          <input
+            type="checkbox"
+            className="roundedCheckbox"
+            id={id}
+            onChange={handleCompleteTodo}
+            checked={completed}
+          />
+        </label>
         <h6 className={cns({ completed: completed })}>{title}</h6>
       </span>
 

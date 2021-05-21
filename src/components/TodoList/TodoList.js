@@ -23,6 +23,7 @@ export default function TodoList({
             return (
               <Todo
                 key={todo.id}
+                id={todo.id}
                 title={todo.title}
                 active={active}
                 editTodo={editTodo}
@@ -49,6 +50,7 @@ export default function TodoList({
             return (
               <Todo
                 key={todo.id}
+                id={todo.id}
                 title={todo.title}
                 active={active}
                 editTodo={editTodo}
@@ -75,6 +77,7 @@ export default function TodoList({
             return (
               <Todo
                 key={todo.id}
+                id={todo.id}
                 title={todo.title}
                 active={active}
                 editTodo={editTodo}
