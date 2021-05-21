@@ -109,6 +109,7 @@ class App extends Component {
                   todos={todos}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
+                  todosLeft={todos.filter((todo) => !todo.done).length}
                 />
               )}
             />
@@ -118,9 +119,10 @@ class App extends Component {
               render={(routeProps) => (
                 <TodoList
                   {...routeProps}
-                  todos={todos}
+                  todos={todos.filter((todo) => !todo.done)}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
+                  todosLeft={todos.filter((todo) => !todo.done).length}
                 />
               )}
             />
@@ -130,9 +132,10 @@ class App extends Component {
               render={(routeProps) => (
                 <TodoList
                   {...routeProps}
-                  todos={todos}
+                  todos={todos.filter((todo) => todo.done)}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
+                  todosLeft={todos.filter((todo) => !todo.done).length}
                 />
               )}
             />

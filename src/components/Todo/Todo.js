@@ -17,7 +17,12 @@ export default function Todo({ id, text, done, handleDone, handleDelete }) {
       className="todo-wrapper d-flex justify-content-center align-items-center px-4"
     >
       <div className="checkbox-wrapper d-flex flex-column justify-content-center align-items-center">
-        <input onChange={onDone} type="checkbox" name="checkbox" />
+        <input
+          onChange={onDone}
+          type="checkbox"
+          defaultChecked={done}
+          name="checkbox"
+        />
         <div className="custom-checkbox d-flex flex-column justify-content-center align-items-center">
           <i className="uil uil-check text-center" />
         </div>
