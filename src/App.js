@@ -90,12 +90,12 @@ class App extends Component {
         <Route
           path={ACTIVE}
           exact
-          render={() => (
+          render={(routeProps) => (
             <TodoList
+              {...routeProps}
               handleChangeCheck={this.handleChangeCheck}
               handleRemove={this.handleRemove}
               todos={todos.filter((todo) => !todo.complete)}
-              filter={ACTIVE}
             />
           )}
         />
@@ -103,12 +103,12 @@ class App extends Component {
         <Route
           path={COMPLETED}
           exact
-          render={() => (
+          render={(routeProps) => (
             <TodoList
+              {...routeProps}
               handleChangeCheck={this.handleChangeCheck}
               handleRemove={this.handleRemove}
               todos={todos.filter((todo) => todo.complete)}
-              filter={ACTIVE}
             />
           )}
         />
@@ -116,12 +116,12 @@ class App extends Component {
         <Route
           path={HOME}
           exact
-          render={() => (
+          render={(routeProps) => (
             <TodoList
+              {...routeProps}
               handleChangeCheck={this.handleChangeCheck}
               handleRemove={this.handleRemove}
               todos={todos}
-              filter={HOME}
             />
           )}
         />

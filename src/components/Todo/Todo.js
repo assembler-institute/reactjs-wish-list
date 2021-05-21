@@ -10,7 +10,7 @@ function Todo({ todo, handleRemove, handleChangeCheck }) {
     handleRemove(todo.id);
   }
 
-  const pr = classNames({
+  const completedTask = classNames({
     completed: todo.complete,
   });
   return (
@@ -21,10 +21,7 @@ function Todo({ todo, handleRemove, handleChangeCheck }) {
           checked={todo.complete}
           id={todo.id}
         />
-        <label className={pr}>
-          {/* <input className="mx-4" type="checkbox" name="name" /> */}
-          {todo.name}
-        </label>
+        <label className={completedTask}>{todo.name}</label>
       </div>
       <AiOutlineClose
         onClick={onHandleRemove}
