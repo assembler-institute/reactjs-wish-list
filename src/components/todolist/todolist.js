@@ -1,7 +1,5 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
 import Todo from "../Todo";
-import Footer from "../Footer";
 import "./todolist.scss";
 
 function TodoList({ todos, handleIsActive }) {
@@ -18,7 +16,6 @@ function TodoList({ todos, handleIsActive }) {
           />
         ))}
       </ul>
-      <Footer />
     </section>
   );
 }

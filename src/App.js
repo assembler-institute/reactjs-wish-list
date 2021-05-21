@@ -1,12 +1,14 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import "./styles.scss";
+import "./components/Footer/Footer.scss";
 
 import Header from "./components/Header";
 import NewTodo from "./components/NewTodo";
 import TodoList from "./components/TodoList";
 
-import * as api from "./api";
+// import * as api from "./api";
 
 const LOCAL_STORAGE_KEY = "react-todo-app";
 
@@ -32,16 +34,16 @@ class App extends Component {
       todos: [],
     };
     this.handleIsActive = this.handleIsActive.bind(this);
+    this.saveNewTodo = this.saveNewTodo.bind(this);
+    this.clearCompleted = this.clearCompleted.bind(this);
   }
 
   componentDidMount() {
     const prevItems = loadLocalStorageData();
 
     if (!prevItems) {
-      api.getTodos().then((data) => {
-        this.setState({
-          todos: data,
-        });
+      this.setState({
+        todos: [],
       });
       return;
     }
@@ -75,23 +77,76 @@ class App extends Component {
     this.setState({ todos: updatedTodos });
   }
 
+  saveNewTodo(newTodo) {
+    this.setState((prevState) => ({
+      todos: [newTodo, ...prevState.todos],
+    }));
+  }
+
+  clearCompleted() {
+    const { todos } = this.state;
+    const newTodos = todos.filter((todo) => todo.isActive === false);
+    // eslint-disable-next-line
+    console.log(newTodos);
+    this.setState(() => ({
+      todos: newTodos,
+    }));
+  }
+
   render() {
     const { todos } = this.state;
     // eslint-disable-next-line
     console.log(this.state);
+    const completed = todos.filter((todo) => todo.isActive === true);
+    const active = todos.filter((todo) => todo.isActive === false);
+
     return (
       <>
-        <main>
-          <section className="container">
-            <Header />
-            <NewTodo saveNewTodo={this.saveNewTodo} />
-            <TodoList
-              todos={todos}
-              isActive={todos.isActive}
-              handleIsActive={this.handleIsActive}
-            />
-          </section>
-        </main>
+        <Router>
+          <main>
+            <section className="container">
+              <Header />
+              <NewTodo saveNewTodo={this.saveNewTodo} />
+              <Switch>
+                <Route path="/active">
+                  <TodoList
+                    todos={active}
+                    handleIsActive={this.handleIsActive}
+                  />
+                </Route>
+                <Route path="/completed">
+                  <TodoList
+                    todos={completed}
+                    handleIsActive={this.handleIsActive}
+                  />
+                </Route>
+                <Route path="/">
+                  <TodoList
+                    todos={todos}
+                    handleIsActive={this.handleIsActive}
+                  />
+                </Route>
+              </Switch>
+              <footer>
+                <div>{active.length} items left</div>
+                <div>
+                  <Link to="/">
+                    <button type="button">All</button>
+                  </Link>
+                  <Link to="/active">
+                    <button type="button">Actived</button>
+                  </Link>
+                  <Link to="/completed">
+                    <button type="button">Completed</button>
+                  </Link>
+                </div>
+                <button type="button" onClick={this.clearCompleted}>
+                  Clear Completed
+                </button>
+              </footer>
+            </section>
+          </main>
+        </Router>
       </>
     );
   }
