@@ -1,8 +1,9 @@
-import React from "react";
-import { Component } from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
+import Header from "./components/Header";
+import NewTask from "./components/NewTask";
 
 import * as api from "./api";
 
@@ -29,8 +30,9 @@ class App extends Component {
     this.state = {
       tasks: [],
       isLoading: false,
-      hasError: false,
-      loadingError: null,
+      isDark: false,
+      // hasError: false,
+      // loadingError: null,
       // newProductFormOpen: false,
     };
 
@@ -40,8 +42,8 @@ class App extends Component {
     // this.handleDownVote = this.handleDownVote.bind(this);
     // this.handleUpVote = this.handleUpVote.bind(this);
     // this.handleSetFavorite = this.handleSetFavorite.bind(this);
-    // this.saveNewProduct = this.saveNewProduct.bind(this);
-    // this.toggleNewProductForm = this.toggleNewProductForm.bind(this);
+    this.saveNewTask = this.saveNewTask.bind(this);
+    this.toggleDarkLightMode = this.toggleDarkLightMode.bind(this);
   }
 
   componentDidMount() {
@@ -72,44 +74,66 @@ class App extends Component {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
   }
 
+  saveNewTask(newTask) {
+    this.setState((prevState) => ({
+      tasks: [newTask, ...prevState.tasks],
+    }));
+  }
+
+  toggleDarkLightMode() {
+    const { isDark } = this.state;
+    if (isDark === true) this.setState({ isDark: false });
+    else this.setState({ isDark: true });
+  }
+
   render() {
+    const {
+      // cartItems,
+      tasks,
+      isLoading,
+      isDark,
+      // hasError,
+      // loadingError,
+      // newProductFormOpen,
+    } = this.state;
+
     return (
-      <BrowserRouter>
-        <Route
-          path="/"
-          exact
-          render={(routeProps) => (
-            <Home
-              {...routeProps}
-              // cartItems={cartItems}
-              // products={products}
-              // isLoading={isLoading}
-              // hasError={hasError}
-              // loadingError={loadingError}
-              // handleDownVote={this.handleDownVote}
-              // handleUpVote={this.handleUpVote}
-              // handleSetFavorite={this.handleSetFavorite}
-              // handleAddToCart={this.handleAddToCart}
-              // handleRemove={this.handleRemove}
-              // handleChange={this.handleChange}
-            />
-          )}
+      <>
+        <Header
+          toggleDarkLightMode={this.toggleDarkLightMode}
+          isDark={isDark}
         />
-        {/* <Route
+        <NewTask saveNewTask={this.saveNewTask} />
+        <BrowserRouter>
+          <Route
+            path="/"
+            exact
+            render={(routeProps) => (
+              <Home
+                {...routeProps}
+                // cartItems={cartItems}
+                tasks={tasks}
+                isLoading={isLoading}
+                // hasError={hasError}
+                // loadingError={loadingError}
+                // handleDownVote={this.handleDownVote}
+                // handleUpVote={this.handleUpVote}
+                // handleSetFavorite={this.handleSetFavorite}
+                // handleAddToCart={this.handleAddToCart}
+                // handleRemove={this.handleRemove}
+                // handleChange={this.handleChange}
+              />
+            )}
+          />
+          {/* <Route
           path="/new-product"
           exact
           render={(routeProps) => (
             <NewProduct {...routeProps} saveNewProduct={this.saveNewProduct} />
           )}
         /> */}
-      </BrowserRouter>
-      // <main className="container mt-5">
-      //   <section className="row">
-      //     <div className="col col-12">
-      //       <h1>Hola mundo</h1>
-      //     </div>
-      //   </section>
-      // </main>
+        </BrowserRouter>
+      </>
     );
   }
 }
