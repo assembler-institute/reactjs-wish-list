@@ -36,6 +36,7 @@ class App extends Component {
 
   componentDidUpdate() {
     const { todos } = this.state;
+    // eslint-disable-next-line no-console
     console.log(todos);
   }
 
