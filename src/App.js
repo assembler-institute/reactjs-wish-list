@@ -18,8 +18,47 @@ class App extends Component {
     };
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleDone = this.handleDone.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
+  /* -------------------------------------------------------------------------- */
+  /*                                CUSTOM METHODS                              */
+  /* -------------------------------------------------------------------------- */
+
+  // eslint-disable-next-line react/sort-comp
+  handleDone(todoId) {
+    const { todos } = this.state;
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === todoId) {
+        return {
+          ...todo,
+          done: !todo.done,
+        };
+      }
+      return todo;
+    });
+    this.setState({ todos: updatedTodos });
+  }
+
+  handleDelete(todoId) {
+    const { todos } = this.state;
+    const itemToDelete = todos.find((todo) => todo.id === todoId);
+    const indexToDelete = todos.indexOf(itemToDelete);
+
+    todos.splice(indexToDelete, 1);
+    this.setState({ todos: todos });
+  }
+
+  handleAddTodo(text) {
+    this.setState((prevState) => ({
+      todos: [...prevState.todos, { id: uuidv4(), text: text, done: false }],
+    }));
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                REACT METHODS                               */
+  /* -------------------------------------------------------------------------- */
   componentDidMount() {
     this.setState({
       isLoading: true,
@@ -35,15 +74,8 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    const { todos } = this.state;
     // eslint-disable-next-line no-console
-    console.log(todos);
-  }
-
-  handleAddTodo(text) {
-    this.setState((prevState) => ({
-      todos: [...prevState.todos, { id: uuidv4(), text: text, done: false }],
-    }));
+    console.log(this.state);
   }
 
   render() {
@@ -72,21 +104,36 @@ class App extends Component {
               path="/"
               exact
               render={(routeProps) => (
-                <TodoList {...routeProps} todos={todos} />
+                <TodoList
+                  {...routeProps}
+                  todos={todos}
+                  handleDone={this.handleDone}
+                  handleDelete={this.handleDelete}
+                />
               )}
             />
             <Route
               path="/active"
               exact
               render={(routeProps) => (
-                <TodoList {...routeProps} todos={todos} />
+                <TodoList
+                  {...routeProps}
+                  todos={todos}
+                  handleDone={this.handleDone}
+                  handleDelete={this.handleDelete}
+                />
               )}
             />
             <Route
               path="/completed"
               exact
               render={(routeProps) => (
-                <TodoList {...routeProps} todos={todos} />
+                <TodoList
+                  {...routeProps}
+                  todos={todos}
+                  handleDone={this.handleDone}
+                  handleDelete={this.handleDelete}
+                />
               )}
             />
           </BrowserRouter>

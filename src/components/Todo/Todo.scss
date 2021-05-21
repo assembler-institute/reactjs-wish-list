@@ -1,0 +1,61 @@
+@use "../../styles/partials/colors" as c;
+
+.todo-wrapper {
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid lightgray;
+
+  .checkbox-wrapper {
+    margin-right: 20px;
+    position: relative;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 100%;
+      width: 100%;
+    }
+
+    .custom-checkbox {
+      border: none;
+      border: 2px solid #7e76b7;
+      color: #7e76b7;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+
+      i {
+        width: fit-content;
+        height: fit-content;
+      }
+    }
+
+    input:checked ~ .custom-checkbox {
+      color: white;
+
+      background-image: linear-gradient(
+        125deg,
+        #b62b86,
+        #9f589e,
+        #7e76b7,
+        #3a8fd1
+      );
+    }
+  }
+
+  .todo-text {
+    font-size: 15px;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+
+    .close {
+      font-size: 18px;
+    }
+  }
+}

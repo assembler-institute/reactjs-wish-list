@@ -1,2 +1,12 @@
 $mainColor: cyan;
-$backgroundColor: #FAFAFA
+$backgroundColor: #fafafa;
+
+// @mixin gradient($degree) {
+//   background-image: linear-gradient(
+//     `${$degree}deg`,
+//     #b62b86,
+//     #9f589e,
+//     #7e76b7,
+//     #3a8fd1
+//   );
+// } ;
