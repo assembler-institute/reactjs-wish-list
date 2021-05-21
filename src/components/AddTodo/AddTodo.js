@@ -22,6 +22,7 @@ export default function AddTodo({
           placeholder="Add To Do"
           onChange={handleChange}
           value={todo}
+          required
         />
         <button
           className={classnames("btn addBtn", { updateBtn: editTodo })}
