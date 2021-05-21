@@ -24,8 +24,11 @@ body.dark {
         background-color: rgb(3, 17, 12);
         color: aliceblue;
         .footerStyle {
-          a {
+          .links {
             color: #ebd2e3;
+          }
+          .filtered {
+            color: #007bff;
           }
           .footerBtn {
             color: aliceblue;
@@ -49,5 +52,8 @@ body.dark {
         }
       }
     }
+  }
+  .roundedLabel {
+    border-color: rgba(255, 255, 255, 0.15);
   }
 }
