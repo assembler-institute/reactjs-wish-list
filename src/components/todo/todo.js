@@ -13,14 +13,27 @@ function Todo({ id, content, handleIsActive, isActive, deleteTodo }) {
   }
   return (
     <li className="list">
-      <span className="hashtag"> </span>
+      <div className="container__list">
+        <span className="hashtag hastagRed"> </span>
 
-      <Button id={id} handleIsActive={handleIsActive} isActive={isActive} />
-      <span>{content}</span>
+        <Button id={id} handleIsActive={handleIsActive} isActive={isActive} />
+        <span>{content}</span>
 
-      <div className="delete">
-        <FontAwesomeIcon icon={faTimes} onClick={deleteTodoId} />
-        <FontAwesomeIcon icon={faTrashAlt} />
+        <div className="delete">
+          <FontAwesomeIcon icon={faTimes} onClick={deleteTodoId} />
+          <FontAwesomeIcon icon={faTrashAlt} />
+        </div>
+      </div>
+      <div className="container__hastag">
+        <div>
+          <div className="hastagRed"> </div>Very important
+        </div>
+        <div>
+          <div className="hastagOrange"> </div>Important
+        </div>
+        <div>
+          <div className="hastagGreen"> </div>Slope
+        </div>
       </div>
     </li>
   );
