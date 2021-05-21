@@ -10,19 +10,31 @@ import Input from "./components/Input";
 import hero from "./img/hero.jpg";
 import { HOME, ACTIVE, COMPLETED } from "./constatnts/routes";
 import productSchema from "./todo-schema";
+import * as api from "./api";
 
 import "./header.scss";
+
+const LOCAL_STORAGE_KEY = "todo-state";
+
+function loadLocalStorageData() {
+  const prevItems = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+  if (!prevItems) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(prevItems);
+  } catch (error) {
+    return null;
+  }
+}
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [
-        { id: 1, name: "Brahim Benalia Casas", complete: false },
-        { id: 2, name: "Marc Solá Crack", complete: false },
-        { id: 3, name: "Brahim Benalia Casas", complete: false },
-        { id: 4, name: "Marc Solá Crack", complete: false },
-      ],
+      todos: [],
       todoName: "",
       checked: false,
     };
@@ -31,6 +43,24 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
     this.handleChangeCheck = this.handleChangeCheck.bind(this);
+  }
+
+  componentDidMount() {
+    const prevItems = loadLocalStorageData();
+
+    if (!prevItems) {
+      api.getProducts().then((data) => {
+        this.setState({ todos: data });
+      });
+      return;
+    }
+
+    this.setState({ todos: prevItems.todos });
+  }
+
+  componentDidUpdate() {
+    const { todos } = this.state;
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ todos }));
   }
 
   handleAddTodo(values) {
@@ -112,19 +142,6 @@ class App extends Component {
                 </form>
               )}
             </Formik>
-
-            {/* <form className="TODO__Form" onSubmit={this.handleSubmit}>
-              <Checkbox handleChange={() => {}} />
-              <input
-                type="text"
-                placeholder="Create task"
-                className="TODO__Form__New"
-                id={todoName}
-                name={todoName}
-                value={todoName}
-                onChange={this.handleChange}
-              />
-            </form> */}
           </div>
         </header>
 
