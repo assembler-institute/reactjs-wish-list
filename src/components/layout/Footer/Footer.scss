@@ -1,0 +1,15 @@
+.footerStyle {
+  display: flex;
+  justify-content: space-around;
+  font-size: 13px;
+  height: 50px;
+  align-items: center;
+  .footerBtn {
+    border: none;
+    background-color: inherit;
+    display: inline-block;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

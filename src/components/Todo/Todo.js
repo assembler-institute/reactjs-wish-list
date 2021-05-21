@@ -15,7 +15,7 @@ export default function Todo({
   completed,
 }) {
   return (
-    <li className="list-group-item text-capitalize d-flex justify-content-between p-2 todo">
+    <li className="list-group-item text-capitalize d-flex justify-content-between p-2 todo border-bottom border-top-0 border-left-0 border-right-0">
       <span>
         <input
           type="checkbox"

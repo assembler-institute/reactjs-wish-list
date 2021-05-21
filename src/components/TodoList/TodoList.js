@@ -18,7 +18,7 @@ export default function TodoList({
   if (location.pathname === "/") {
     return (
       <div className="TodoList">
-        <ul className="list-group mb-5">
+        <ul className="list-group">
           {todoList.map((todo) => {
             return (
               <Todo

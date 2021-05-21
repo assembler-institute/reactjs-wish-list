@@ -3,9 +3,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 // import pages
 import Home from "./pages/Home";
-/* import Completed from "./pages/Completed";
-import Active from "./pages/Active"; */
-// import components
+import Completed from "./pages/Completed";
+import Active from "./pages/Active";
 
 // import style
 import "./App.scss";
@@ -140,7 +139,7 @@ class App extends Component {
           path="/completed"
           exact
           render={() => (
-            <Home
+            <Completed
               id={id}
               todo={todo}
               todoList={todoList}
@@ -158,7 +157,7 @@ class App extends Component {
           path="/active"
           exact
           render={() => (
-            <Home
+            <Active
               id={id}
               todo={todo}
               todoList={todoList}
