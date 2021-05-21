@@ -13,9 +13,7 @@ function Todo({
   handleRemove,
   handleChangeCheck,
   handleEdit,
-  handleChangeTodo,
   handleEditSubmit,
-  editTodoName,
 }) {
   function onHandleRemove() {
     handleRemove(todo.id);
@@ -35,20 +33,9 @@ function Todo({
           id={todo.id}
         />
         {todo.edit ? (
-          <EditTodo
-            todo={todo}
-            handleChangeTodo={handleChangeTodo}
-            handleEditSubmit={handleEditSubmit}
-            editTodoName={editTodoName}
-          />
+          <EditTodo todo={todo} handleEditSubmit={handleEditSubmit} />
         ) : (
-          <label
-            className={completedTask}
-            onClick={onHandleEdit}
-            // handleChange={handleChange}
-            // handleEditSubmit={handleEditSubmit}
-            // handleChangeCheck={handleChangeCheck}
-          >
+          <label className={completedTask} onClick={onHandleEdit}>
             {todo.name}
           </label>
         )}

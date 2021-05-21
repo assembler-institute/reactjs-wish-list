@@ -12,9 +12,7 @@ function TodoList({
   handleRemove,
   handleChangeCheck,
   handleEdit,
-  handleChangeTodo,
   handleEditSubmit,
-  editTodoName,
 }) {
   function printTodos() {
     return todos.map((todo) => (
@@ -23,9 +21,7 @@ function TodoList({
         handleChangeCheck={handleChangeCheck}
         handleRemove={handleRemove}
         handleEdit={handleEdit}
-        handleChangeTodo={handleChangeTodo}
         handleEditSubmit={handleEditSubmit}
-        editTodoName={editTodoName}
         todo={todo}
       />
     ));
