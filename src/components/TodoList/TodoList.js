@@ -3,7 +3,12 @@ import Todo from "../Todo";
 import "./TodoList.scss";
 // import Todo from "../Todo";
 
-export default function TodoList({ todos, handleDone, handleDelete }) {
+export default function TodoList({
+  todos,
+  handleDone,
+  handleDelete,
+  handleEditedTodo,
+}) {
   return (
     <section className="row todo-list-section mx-0">
       <div className="col col-12 p-0">
@@ -17,6 +22,7 @@ export default function TodoList({ todos, handleDone, handleDelete }) {
               done={todo.done}
               handleDone={handleDone}
               handleDelete={handleDelete}
+              handleEditedTodo={handleEditedTodo}
             />
           ),
         )}

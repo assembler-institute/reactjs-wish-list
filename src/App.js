@@ -20,6 +20,7 @@ class App extends Component {
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleDone = this.handleDone.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleEditedTodo = this.handleEditedTodo.bind(this);
   }
 
   /* -------------------------------------------------------------------------- */
@@ -56,6 +57,20 @@ class App extends Component {
     }));
   }
 
+  handleEditedTodo(todoId, editedText) {
+    const { todos } = this.state;
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === todoId) {
+        return {
+          ...todo,
+          text: editedText,
+        };
+      }
+      return todo;
+    });
+    this.setState({ todos: updatedTodos });
+  }
+
   /* -------------------------------------------------------------------------- */
   /*                                REACT METHODS                               */
   /* -------------------------------------------------------------------------- */
@@ -74,7 +89,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    // eslint-disable-next-line no-console
+    console.clear();
     console.log(this.state);
   }
 
@@ -109,6 +124,7 @@ class App extends Component {
                   todos={todos}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
+                  handleEditedTodo={this.handleEditedTodo}
                 />
               )}
             />
@@ -121,6 +137,7 @@ class App extends Component {
                   todos={todos}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
+                  handleEditedTodo={this.handleEditedTodo}
                 />
               )}
             />
@@ -133,6 +150,7 @@ class App extends Component {
                   todos={todos}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
+                  handleEditedTodo={this.handleEditedTodo}
                 />
               )}
             />

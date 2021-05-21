@@ -44,10 +44,16 @@
     }
   }
 
-  .todo-text {
-    font-size: 15px;
-    margin: 0;
+  form {
     flex-grow: 1;
+    .todo-text {
+      cursor: pointer;
+      font-size: 15px;
+      width: 95%;
+      margin: 0;
+      outline: none;
+      border: none;
+    }
   }
 
   button {

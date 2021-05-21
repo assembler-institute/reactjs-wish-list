@@ -10,10 +10,14 @@ class Todo extends Component {
 
     this.insideDoneTodo = this.insideDoneTodo.bind(this);
     this.insideDeleteTodo = this.insideDeleteTodo.bind(this);
+    this.insideFocusText = this.insideFocusText.bind(this);
+    this.insideEditedText = this.insideEditedText.bind(this);
+    this.insideEditedTodo = this.insideEditedTodo.bind(this);
   }
 
   insideDoneTodo() {
     const { todoText } = this.state;
+    // eslint-disable-next-line no-console
     console.log(todoText);
     const { id, handleDone } = this.props;
     handleDone(id);
@@ -24,8 +28,29 @@ class Todo extends Component {
     handleDelete(id);
   }
 
+  insideFocusText() {
+    const { text } = this.props;
+    this.setState({
+      todoText: text,
+    });
+  }
+
+  insideEditedText(event) {
+    this.setState({
+      todoText: event.target.value,
+    });
+  }
+
+  insideEditedTodo(event) {
+    event.preventDefault();
+    const { id, handleEditedTodo } = this.props;
+    const { todoText } = this.state;
+    handleEditedTodo(id, todoText);
+  }
+
   render() {
     const { id, text, done } = this.props;
+    const { todoText } = this.state;
 
     return (
       <div
@@ -43,8 +68,18 @@ class Todo extends Component {
             <i className="uil uil-check text-center" />
           </div>
         </div>
-        {/* Add form */}
-        <h4 className="todo-text">{text}</h4>
+        <form onSubmit={this.insideEditedTodo}>
+          <input
+            className="edit-todo-input todo-text"
+            name="edit-todo-input"
+            id="edit-todo-input"
+            type="text"
+            placeholder={text}
+            value={todoText}
+            onChange={this.insideEditedText}
+            onFocus={this.insideFocusText}
+          />
+        </form>
         <button
           type="button"
           onClick={this.insideDeleteTodo}
