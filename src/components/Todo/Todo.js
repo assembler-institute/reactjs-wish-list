@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./Todo.scss";
 
+const classNames = require("classnames");
+
 class Todo extends Component {
   constructor(props) {
     super(props);
@@ -49,6 +51,12 @@ class Todo extends Component {
     const { id, text, done } = this.props;
     const { todoText } = this.state;
 
+    // Disabled text classes
+    const inputClasses = classNames({
+      "edit-todo-input": true,
+      "done-todo-text": done,
+    });
+
     return (
       <div
         id={id}
@@ -67,7 +75,7 @@ class Todo extends Component {
         </div>
         <form onSubmit={this.insideEditedTodo}>
           <input
-            className="edit-todo-input"
+            className={inputClasses}
             name="edit-todo-input"
             id={`input-${id}`}
             type="text"
@@ -90,4 +98,3 @@ class Todo extends Component {
 }
 
 export default Todo;
-// done - todo - text;
