@@ -1,8 +1,12 @@
 import React from "react";
 import Todo from "../Todo";
 import "./todolist.scss";
+import NoTodo from "../NoTodo";
 
-function TodoList({ todos, handleIsActive }) {
+function TodoList({ todos, handleIsActive, deleteTodo }) {
+  if (todos.length === 0) {
+    return <NoTodo />;
+  }
   return (
     <section className="todo-list">
       <ul>
@@ -13,6 +17,7 @@ function TodoList({ todos, handleIsActive }) {
             content={todo.content}
             isActive={todo.isActive}
             handleIsActive={handleIsActive}
+            deleteTodo={deleteTodo}
           />
         ))}
       </ul>

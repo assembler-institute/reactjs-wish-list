@@ -7,16 +7,19 @@ import Button from "../button";
 
 import "./todo.scss";
 
-function Todo({ id, content, handleIsActive, isActive }) {
+function Todo({ id, content, handleIsActive, isActive, deleteTodo }) {
+  function deleteTodoId() {
+    deleteTodo(id);
+  }
   return (
-    <li>
+    <li className="list">
       <span className="hashtag"> </span>
 
       <Button id={id} handleIsActive={handleIsActive} isActive={isActive} />
       <span>{content}</span>
 
       <div className="delete">
-        <FontAwesomeIcon icon={faTimes} />
+        <FontAwesomeIcon icon={faTimes} onClick={deleteTodoId} />
         <FontAwesomeIcon icon={faTrashAlt} />
       </div>
     </li>

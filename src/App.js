@@ -36,6 +36,7 @@ class App extends Component {
     this.handleIsActive = this.handleIsActive.bind(this);
     this.saveNewTodo = this.saveNewTodo.bind(this);
     this.clearCompleted = this.clearCompleted.bind(this);
+    this.deleteTodo = this.deleteTodo.bind(this);
   }
 
   componentDidMount() {
@@ -83,6 +84,16 @@ class App extends Component {
     }));
   }
 
+  deleteTodo(todoId) {
+    const { todos } = this.state;
+    const todoDelete = todos.filter((todo) => todo.id !== todoId);
+    // eslint-disable-next-line
+    console.log(todoDelete);
+    this.setState(() => ({
+      todos: todoDelete,
+    }));
+  }
+
   clearCompleted() {
     const { todos } = this.state;
     const newTodos = todos.filter((todo) => todo.isActive === false);
@@ -112,18 +123,21 @@ class App extends Component {
                   <TodoList
                     todos={active}
                     handleIsActive={this.handleIsActive}
+                    deleteTodo={this.deleteTodo}
                   />
                 </Route>
                 <Route path="/completed">
                   <TodoList
                     todos={completed}
                     handleIsActive={this.handleIsActive}
+                    deleteTodo={this.deleteTodo}
                   />
                 </Route>
                 <Route path="/">
                   <TodoList
                     todos={todos}
                     handleIsActive={this.handleIsActive}
+                    deleteTodo={this.deleteTodo}
                   />
                 </Route>
               </Switch>
