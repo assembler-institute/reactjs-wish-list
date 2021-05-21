@@ -6,9 +6,10 @@
       align-self: center;
       margin-left: 20px;
     }
-    h6 {
+    p {
       align-self: center;
       margin: 0 0 0 20px;
+      font-size: 13px;
     }
     .completed {
       text-decoration: line-through;
@@ -21,16 +22,6 @@
   align-items: center;
   .editBtn {
     width: 40px;
+    fill: #a1a9a9;
   }
-}
-
-.removeBtn {
-  height: 12px;
-  width: 12px;
-  background-image: url("../../img/cross.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin: 0 5px;
-  background-color: transparent;
-  border: none;
 }

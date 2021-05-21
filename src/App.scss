@@ -1,0 +1,53 @@
+body.dark {
+  background-color: rgb(20, 2, 26);
+  .btn {
+    path {
+      fill: aliceblue;
+    }
+  }
+  .home {
+    .upper_home {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("../src/img/background.jpg");
+      .addTodo {
+        form {
+          input {
+            background-color: rgb(20, 2, 26);
+            color: aliceblue;
+          }
+          .addBtn {
+            background-color: #2b425b;
+          }
+        }
+      }
+      .TodoList {
+        background-color: rgb(3, 17, 12);
+        color: aliceblue;
+        .footerStyle {
+          a {
+            color: #ebd2e3;
+          }
+          .footerBtn {
+            color: aliceblue;
+          }
+        }
+        .todo {
+          border-bottom: 1px solid rgba(61, 1, 56, 0.445) !important;
+          background: rgb(2, 0, 36);
+          background: linear-gradient(
+            90deg,
+            rgba(2, 0, 36, 1) 0%,
+            rgba(39, 29, 50, 1) 35%,
+            #9291c9 100%
+          );
+          color: aliceblue;
+          button {
+            svg {
+              fill: aliceblue;
+            }
+          }
+        }
+      }
+    }
+  }
+}
