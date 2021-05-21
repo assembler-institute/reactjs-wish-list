@@ -22,7 +22,7 @@ function EditTodo({ handleEditSubmit, todo }) {
         values,
         touched,
       }) => (
-        <form className="TODO__Form" onSubmit={handleSubmit}>
+        <form className="Edit__Form" onSubmit={handleSubmit}>
           <Input
             type="text"
             placeholder="Create task"

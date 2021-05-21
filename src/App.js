@@ -1,18 +1,11 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { Formik } from "formik";
 
 import TodoList from "./components/TodoList";
-import Checkbox from "./components/Checkbox";
-import Input from "./components/Input";
-
-import hero from "./img/hero.jpg";
-import { HOME, ACTIVE, COMPLETED } from "./constatnts/routes";
-import productSchema from "./todo-schema";
 import * as api from "./api";
-
-import "./header.scss";
+import AppHeader from "./components/AppHeader";
+import { HOME, ACTIVE, COMPLETED } from "./constatnts/routes";
 
 const LOCAL_STORAGE_KEY = "todo-state";
 
@@ -123,45 +116,7 @@ class App extends Component {
     const { todos } = this.state;
     return (
       <>
-        <header>
-          <div className="heroImg" alt="hero" src={hero}>
-            <h1 className="TODO__Header">TODO</h1>
-
-            <Formik
-              initialValues={{
-                name: "",
-              }}
-              validationSchema={productSchema}
-              onSubmit={(values, { resetForm }) => {
-                this.handleAddTodo(values);
-                resetForm();
-              }}
-            >
-              {({
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                errors,
-                values,
-                touched,
-              }) => (
-                <form className="TODO__Form" onSubmit={handleSubmit}>
-                  <Checkbox handleChange={() => {}} />
-                  <Input
-                    type="text"
-                    placeholder="Create task"
-                    id="name"
-                    value={values.name}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                    hasErrorMessage={touched.name}
-                    errorMessage={errors.name}
-                  />
-                </form>
-              )}
-            </Formik>
-          </div>
-        </header>
+        <AppHeader handleAddTodo={this.handleAddTodo} />
 
         <Route
           path={ACTIVE}

@@ -1,13 +1,12 @@
-body {
-  background-color: #fafafa;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  /*outline: 1px solid black;*/
-}
+// body {
+//   background-color: #fafafa;
+// }
+// * {
+//   padding: 0;
+//   margin: 0;
+//   box-sizing: border-box;
+//   /*outline: 1px solid black;*/
+// }
 
 .heroImg {
   // height: 33vh;
@@ -21,17 +20,15 @@ body {
       hsl(348, 97%, 63%, 0.65),
       hsl(230, 96%, 62%, 0.65)
     ),
-    url("./img/hero.jpg");
+    url("../../img/hero.jpg");
   background-position: center;
 }
 
-.TODO {
-  &__Header {
-    margin-bottom: 20px;
-    width: 500px;
-    letter-spacing: 10px;
-    color: white;
-  }
+.TODO__Header {
+  margin-bottom: 20px;
+  width: 500px;
+  letter-spacing: 10px;
+  color: white;
 }
 
 .TODO__Form {
