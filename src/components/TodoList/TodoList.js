@@ -34,7 +34,7 @@ export default function TodoList({
             );
           })}
         </ul>
-        <Footer handleClear={handleClear} />
+        <Footer handleClear={handleClear} todoList={todoList} />
       </div>
     );
   }
@@ -60,7 +60,7 @@ export default function TodoList({
             );
           })}
         </ul>
-        <Footer handleClear={handleClear} />
+        <Footer handleClear={handleClear} todoList={todoList} />
       </div>
     );
   }
@@ -86,7 +86,7 @@ export default function TodoList({
             );
           })}
         </ul>
-        <Footer handleClear={handleClear} />
+        <Footer handleClear={handleClear} todoList={todoList} />
       </div>
     );
   }
