@@ -7,6 +7,7 @@ class newForm extends Component {
     this.state = {
       todoIt: {
         title: "",
+        id: 0,
         selected: false,
       },
     };
@@ -36,10 +37,11 @@ class newForm extends Component {
 
   submitTitle(event) {
     if (event.key === "Enter") {
-      const { todoIt } = this.state;
+      const { ...todoIt } = this.state;
       const { newTodo } = this.props;
       newTodo(todoIt);
       todoIt.title = "";
+      todoIt.id = Math.random() * 1000;
       this.setState({
         todoIt: todoIt,
       });
