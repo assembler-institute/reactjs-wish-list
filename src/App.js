@@ -73,7 +73,7 @@ class App extends Component {
           <div className="heroImg" alt="hero" src={hero}>
             <h1 className="TODO__Header">TODO</h1>
             <form className="TODO__Form" onSubmit={this.handleSubmit}>
-              <Checkbox handleChange={this.handleChange} />
+              <Checkbox handleChange={() => {}} />
               <input
                 type="text"
                 placeholder="Create task"
