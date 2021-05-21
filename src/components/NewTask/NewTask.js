@@ -1,19 +1,28 @@
 import React from "react";
+import { v4 as uuid } from "uuid";
 import { Formik } from "formik";
 
 import taskSchema from "./task-schema";
+
+function addDetailsNewTask(data) {
+  return {
+    id: uuid(),
+    ...data,
+  };
+}
 
 function NewTask({ saveNewTask }) {
   return (
     <>
       <Formik
         initialValues={{
-          taskText: "",
+          title: "",
           isCompleted: false,
         }}
         validationSchema={taskSchema}
         onSubmit={(values) => {
-          saveNewTask(values);
+          const newTask = addDetailsNewTask(values);
+          saveNewTask(newTask);
         }}
       >
         {({
@@ -39,20 +48,20 @@ function NewTask({ saveNewTask }) {
             <div className="form-group">
               <input
                 className={
-                  touched.taskText && errors.taskText
+                  touched.title && errors.title
                     ? "form-control is-invalid"
                     : "form-control"
                 }
-                id="taskText"
-                name="taskText"
+                id="title"
+                name="title"
                 type="text"
                 placeholder="Insert a new task..."
-                value={values.taskText}
+                value={values.title}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {touched.taskText && errors.taskText && (
-                <p className="invalid-feedback">{errors.taskText}</p>
+              {touched.title && errors.title && (
+                <p className="invalid-feedback">{errors.title}</p>
               )}
             </div>
             <button type="submit" />
