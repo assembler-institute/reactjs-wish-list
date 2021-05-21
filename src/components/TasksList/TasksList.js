@@ -2,7 +2,13 @@ import React from "react";
 
 import TasksListEntry from "../TasksListEntry";
 
-function TasksList({ tasks, handleDeleteTask, ...props }) {
+function TasksList({
+  tasks,
+  handleDeleteTask,
+  handleUpdateTask,
+  handleToggleEditing,
+  ...props
+}) {
   return (
     <aside {...props}>
       <div className="row flex-column">
@@ -15,8 +21,10 @@ function TasksList({ tasks, handleDeleteTask, ...props }) {
               id={task.id}
               title={task.title}
               isCompleted={task.isCompleted}
-              editing={false}
+              editing={task.isEditing}
               handleDeleteTask={handleDeleteTask}
+              handleUpdateTask={handleUpdateTask}
+              handleToggleEditing={handleToggleEditing}
             />
           ))
         ) : (

@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Completed from "./pages/Completed";
 import Active from "./pages/Active";
 
+import Main from "./components/Main";
 import Header from "./components/Header";
 import NewTask from "./components/NewTask";
 import ListFooter from "./components/ListFooter";
@@ -40,6 +41,8 @@ class App extends Component {
     this.toggleDarkLightMode = this.toggleDarkLightMode.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
     this.handleClearCompleted = this.handleClearCompleted.bind(this);
+    this.handleUpdateTask = this.handleUpdateTask.bind(this);
+    this.handleToggleEditing = this.handleToggleEditing.bind(this);
   }
 
   componentDidMount() {
@@ -81,6 +84,43 @@ class App extends Component {
     this.setState({ tasks: updatedTasks });
   }
 
+  handleToggleEditing(taskId) {
+    const { tasks } = this.state;
+
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        return {
+          ...task,
+          isEditing: true,
+        };
+      }
+
+      return task;
+    });
+
+    this.setState({ tasks: updatedTasks });
+  }
+
+  handleUpdateTask(data, taskId) {
+    const { tasks } = this.state;
+
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === taskId && data.title !== task.title) {
+        return {
+          ...task,
+          title: data.title,
+          isEditing: false,
+        };
+      }
+      return {
+        ...task,
+        isEditing: false,
+      };
+    });
+
+    this.setState({ tasks: updatedTasks });
+  }
+
   saveNewTask(newTask) {
     this.setState((prevState) => ({
       tasks: [newTask, ...prevState.tasks],
@@ -97,7 +137,7 @@ class App extends Component {
     const { tasks, isDark } = this.state;
 
     return (
-      <>
+      <Main>
         <Header
           toggleDarkLightMode={this.toggleDarkLightMode}
           isDark={isDark}
@@ -112,6 +152,8 @@ class App extends Component {
                 {...routeProps}
                 tasks={tasks}
                 handleDeleteTask={this.handleDeleteTask}
+                handleUpdateTask={this.handleUpdateTask}
+                handleToggleEditing={this.handleToggleEditing}
               />
             )}
           />
@@ -123,6 +165,8 @@ class App extends Component {
                 {...routeProps}
                 tasks={tasks}
                 handleDeleteTask={this.handleDeleteTask}
+                handleUpdateTask={this.handleUpdateTask}
+                handleToggleEditing={this.handleToggleEditing}
               />
             )}
           />
@@ -134,12 +178,14 @@ class App extends Component {
                 {...routeProps}
                 tasks={tasks}
                 handleDeleteTask={this.handleDeleteTask}
+                handleUpdateTask={this.handleUpdateTask}
+                handleToggleEditing={this.handleToggleEditing}
               />
             )}
           />
           <ListFooter handleClearCompleted={this.handleClearCompleted} />
         </BrowserRouter>
-      </>
+      </Main>
     );
   }
 }

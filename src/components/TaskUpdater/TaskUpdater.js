@@ -1,29 +1,22 @@
 import React from "react";
-import { v4 as uuid } from "uuid";
-import { Formik } from "formik";
 
+import "./TaskUpdater.scss";
+import { Formik } from "formik";
 import taskSchema from "./task-schema";
 
-function addDetailsNewTask(data) {
-  return {
-    id: uuid(),
-    ...data,
-    isEditing: false,
-  };
-}
-
-function NewTask({ saveNewTask }) {
+function TaskUpdater({ id, title, handleUpdateTask }) {
+  function onHandleUpdateTask(values) {
+    handleUpdateTask(values, id);
+  }
   return (
     <>
       <Formik
         initialValues={{
-          title: "",
-          isCompleted: false,
+          title: title,
         }}
         validationSchema={taskSchema}
         onSubmit={(values) => {
-          const newTask = addDetailsNewTask(values);
-          saveNewTask(newTask);
+          onHandleUpdateTask(values);
         }}
       >
         {({
@@ -34,18 +27,7 @@ function NewTask({ saveNewTask }) {
           values,
           touched,
         }) => (
-          <form
-            className="d-flex flex-row justify-content-around"
-            onSubmit={handleSubmit}
-          >
-            <input
-              id="isCompleted"
-              name="isCompleted"
-              type="checkbox"
-              value={values.isCompleted}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input
                 className={
@@ -56,7 +38,6 @@ function NewTask({ saveNewTask }) {
                 id="title"
                 name="title"
                 type="text"
-                placeholder="Insert a new task..."
                 value={values.title}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -73,4 +54,4 @@ function NewTask({ saveNewTask }) {
   );
 }
 
-export default NewTask;
+export default TaskUpdater;

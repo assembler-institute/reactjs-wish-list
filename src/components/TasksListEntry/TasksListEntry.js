@@ -1,8 +1,8 @@
 import React from "react";
 
 import "./TasksListEntry.scss";
-import { Formik } from "formik";
 import Checkbox from "../Checkbox";
+import TaskUpdater from "../TaskUpdater";
 
 function TasksListEntry({
   id,
@@ -10,32 +10,40 @@ function TasksListEntry({
   isCompleted,
   editing,
   handleDeleteTask,
+  handleUpdateTask,
+  handleToggleEditing,
   ...props
 }) {
   function onHandleDeleteTask(event) {
     handleDeleteTask(event, id);
   }
-  // function onHandleToggleEditing() {}
+  function onHandleToggleEditing() {
+    handleToggleEditing(id);
+  }
 
   return (
     <li>
       <Checkbox defaultChecked={isCompleted} taskId={id} {...props} />
-      {editing ? (
-        <Formik
-          initialValues={{
-            title: { title },
-          }}
-          onSubmit={() => {}}
-        />
-      ) : (
-        <span
-          style={{
-            textDecoration: isCompleted ? "line-through" : "none",
-          }}
-        >
-          {title}
-        </span>
-      )}
+      <div>
+        {editing ? (
+          <TaskUpdater
+            id={id}
+            title={title}
+            handleUpdateTask={handleUpdateTask}
+          />
+        ) : (
+          <button
+            className="camouflaged-button"
+            type="button"
+            onClick={onHandleToggleEditing}
+            style={{
+              textDecoration: isCompleted ? "line-through" : "none",
+            }}
+          >
+            {title}
+          </button>
+        )}
+      </div>
       <button type="button" onClick={onHandleDeleteTask}>
         X
       </button>
