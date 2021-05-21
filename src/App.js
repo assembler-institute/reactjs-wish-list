@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-// import TestDesign from "./pages/TestDesign";
 import { v4 as uuidv4 } from "uuid";
+// import { BrowserRouter, Route } from "react-router-dom";
+
 import All from "./pages/All";
 import "./App.scss";
 
-// import * as api from "./api";
-
-// const todos = {
-//   id: "",
-//   name: "",
-//   complete: false,
-// };
+// function buildNewTodo(todo) {
+//   return {
+//     id: todo.id,
+//     name: todo.name,
+//     complete: false
+//   }
+// }
 
 class App extends Component {
   constructor(props) {
@@ -58,8 +59,13 @@ class App extends Component {
   }
 
   render() {
+    const { allTodos } = this.state;
     return (
-      <All handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+      <All
+        handleSubmit={this.handleSubmit}
+        handleChange={this.handleChange}
+        allTodos={allTodos}
+      />
     );
   }
 }

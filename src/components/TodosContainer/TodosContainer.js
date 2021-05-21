@@ -3,11 +3,25 @@ import DeleteButton from "../DeleteButton";
 import CompletedButton from "../CompletedButton";
 import "./TodosContainer.scss";
 
-function TodosContainer() {
+function TodosContainer({
+  id,
+  value = "",
+  isComplete = false,
+  handleSetCompleted,
+}) {
+  function onCompleted() {
+    handleSetCompleted(id, isComplete);
+  }
+
   return (
     <div className="input-group borders">
-      <CompletedButton />
-      <input className="form-control bg-light" type="text" />
+      <CompletedButton handleSetCompleted={onCompleted} />
+      <input
+        className="form-control bg-light"
+        type="text"
+        value={value}
+        readOnly
+      />
       <DeleteButton />
     </div>
   );
