@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import Todo from "../Todo";
 import "./TodoList.scss";
 import Footer from "../layout/Footer";
+import emptyBird from "../../img/empty.svg";
 
 export default function TodoList({
   todoList,
@@ -15,7 +16,7 @@ export default function TodoList({
   handleClear,
 }) {
   const location = useLocation();
-  if (location.pathname === "/") {
+  if (location.pathname === "/" && todoList.length > 0) {
     return (
       <div className="TodoList">
         <ul className="list-group">
@@ -42,7 +43,7 @@ export default function TodoList({
 
   const activeList = todoList.filter((todo) => todo.completed === false);
 
-  if (location.pathname === "/active") {
+  if (location.pathname === "/active" && activeList.length > 0) {
     return (
       <div className="TodoList">
         <ul className="list-group">
@@ -69,7 +70,7 @@ export default function TodoList({
 
   const completedList = todoList.filter((todo) => todo.completed === true);
 
-  if (location.pathname === "/completed") {
+  if (location.pathname === "/completed" && completedList.length > 0) {
     return (
       <div className="TodoList">
         <ul className="list-group">
@@ -93,4 +94,14 @@ export default function TodoList({
       </div>
     );
   }
+
+  return (
+    <div className="TodoList empty">
+      <ul className="list-group">
+        <h2>All seems clear here</h2>
+        <img src={emptyBird} alt="This list is empty" />
+      </ul>
+      <Footer handleClear={handleClear} todoList={todoList} />
+    </div>
+  );
 }
