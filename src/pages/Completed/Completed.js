@@ -1,13 +1,12 @@
 import React from "react";
 
-import "./Home.scss";
 import AppHeader from "../../components/AppHeader";
 import Footer from "../../components/Footer";
 import TodosList from "../../components/TodosList";
 import NewTodoCard from "../../components/NewTodoCard";
 import BgPicture from "../../components/BgPicture";
 
-export default function Home({
+export default function Completed({
   todos,
   handleCompleted,
   saveNewTodo,
@@ -24,7 +23,9 @@ export default function Home({
           <NewTodoCard saveNewTodo={saveNewTodo} />
         </section>
         <TodosList
-          todos={todos}
+          todos={todos.filter((element) => {
+            return element.isComplete === true;
+          })}
           handleCompleted={handleCompleted}
           handleTodoChange={handleTodoChange}
           handleTodoDelete={handleTodoDelete}

@@ -13,9 +13,18 @@
 
 .text-center {
   text-align: center;
-	margin-bottom: 0px;
+  margin-bottom: 0px;
   p {
-		text-align: center;
+    text-align: center;
     margin-bottom: 0px;
   }
+}
+
+.navbar-link {
+  color: red;
+}
+
+.navbar-link-active {
+  color: blue;
+  text-decoration: underline;
 }

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
+import Completed from "./pages/Completed";
+import Active from "./pages/Active";
 
 /* function findObjectByIdInArray(id, array) {
   const productData = array.find((element) => {
@@ -94,14 +97,53 @@ class App extends Component {
   render() {
     const { todos } = this.state;
     return (
-      <Home
-        todos={todos}
-        handleCompleted={this.handleCompleted}
-        saveNewTodo={this.saveNewTodo}
-        handleTodoChange={this.handleTodoChange}
-        handleTodoDelete={this.handleTodoDelete}
-        activeTodos={this.activeTodosCount()}
-      />
+      <BrowserRouter>
+        <Route
+          path="/"
+          exact
+          render={(routeProps) => (
+            <Home
+              {...routeProps}
+              todos={todos}
+              handleCompleted={this.handleCompleted}
+              saveNewTodo={this.saveNewTodo}
+              handleTodoChange={this.handleTodoChange}
+              handleTodoDelete={this.handleTodoDelete}
+              activeTodos={this.activeTodosCount()}
+            />
+          )}
+        />
+        <Route
+          path="/completed"
+          exact
+          render={(routeProps) => (
+            <Completed
+              {...routeProps}
+              todos={todos}
+              handleCompleted={this.handleCompleted}
+              saveNewTodo={this.saveNewTodo}
+              handleTodoChange={this.handleTodoChange}
+              handleTodoDelete={this.handleTodoDelete}
+              activeTodos={this.activeTodosCount()}
+            />
+          )}
+        />
+        <Route
+          path="/active"
+          exact
+          render={(routeProps) => (
+            <Active
+              {...routeProps}
+              todos={todos}
+              handleCompleted={this.handleCompleted}
+              saveNewTodo={this.saveNewTodo}
+              handleTodoChange={this.handleTodoChange}
+              handleTodoDelete={this.handleTodoDelete}
+              activeTodos={this.activeTodosCount()}
+            />
+          )}
+        />
+      </BrowserRouter>
     );
   }
 }
