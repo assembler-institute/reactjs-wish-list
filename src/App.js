@@ -29,6 +29,9 @@ class App extends Component {
 
   // eslint-disable-next-line react/sort-comp
   handleDone(todoId) {
+    // eslint-disable-next-line no-param-reassign
+    const selInput = document.getElementById(`input-${todoId}`);
+    selInput.disabled = !selInput.disabled;
     const { todos } = this.state;
     const updatedTodos = todos.map((todo) => {
       if (todo.id === todoId) {

@@ -1,7 +1,6 @@
 import React from "react";
 import Todo from "../Todo";
 import "./TodoList.scss";
-// import Todo from "../Todo";
 
 export default function TodoList({
   todos,
@@ -30,5 +29,3 @@ export default function TodoList({
     </section>
   );
 }
-
-//  toggleTodo={toggleTodo}

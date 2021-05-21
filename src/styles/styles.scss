@@ -11,6 +11,10 @@
     color: gray;
     opacity: 1;
   }
+
+  :disabled {
+    background-color: transparent;
+  }
   // outline: 2px c.$mainColor solid;
 }
 

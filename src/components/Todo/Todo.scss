@@ -46,7 +46,13 @@
 
   form {
     flex-grow: 1;
-    .todo-text {
+
+    .done-todo-text {
+      color: lightgray;
+      text-decoration: line-through;
+    }
+
+    .edit-todo-input {
       cursor: pointer;
       font-size: 15px;
       width: 95%;

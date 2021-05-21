@@ -15,12 +15,9 @@ class Todo extends Component {
     this.insideEditedTodo = this.insideEditedTodo.bind(this);
   }
 
-  insideDoneTodo() {
-    const { todoText } = this.state;
-    // eslint-disable-next-line no-console
-    console.log(todoText);
+  insideDoneTodo(event) {
     const { id, handleDone } = this.props;
-    handleDone(id);
+    handleDone(id, event);
   }
 
   insideDeleteTodo() {
@@ -70,9 +67,9 @@ class Todo extends Component {
         </div>
         <form onSubmit={this.insideEditedTodo}>
           <input
-            className="edit-todo-input todo-text"
+            className="edit-todo-input"
             name="edit-todo-input"
-            id="edit-todo-input"
+            id={`input-${id}`}
             type="text"
             placeholder={text}
             value={todoText}
@@ -93,3 +90,4 @@ class Todo extends Component {
 }
 
 export default Todo;
+// done - todo - text;
