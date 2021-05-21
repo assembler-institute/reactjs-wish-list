@@ -93,7 +93,7 @@ class App extends Component {
           </div>
           <div className="bottom-background" />
         </div>
-        <main className="container mt-5 main-container">
+        <main className="container mt-5 main-container px-0">
           <div className="main-header">
             <h1 className="main-header-title">T O D O</h1>
             <i className="uil uil-moon" />
