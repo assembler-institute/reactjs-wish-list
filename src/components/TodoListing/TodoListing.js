@@ -2,7 +2,7 @@ import React from "react";
 
 import TodosContainer from "../TodosContainer";
 
-function TodoListing({ allTodos }) {
+function TodoListing({ allTodos, handleRemove }) {
   return (
     <>
       {allTodos.map((todo) => (
@@ -11,6 +11,7 @@ function TodoListing({ allTodos }) {
           id={todo.id}
           value={todo.name}
           isComplete={todo.complete}
+          handleRemove={handleRemove}
         />
       ))}
     </>

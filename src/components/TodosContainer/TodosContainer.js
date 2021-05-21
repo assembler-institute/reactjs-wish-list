@@ -8,6 +8,7 @@ function TodosContainer({
   value = "",
   isComplete = false,
   handleSetCompleted,
+  handleRemove,
 }) {
   function onCompleted() {
     handleSetCompleted(id, isComplete);
@@ -22,7 +23,7 @@ function TodosContainer({
         value={value}
         readOnly
       />
-      <DeleteButton />
+      <DeleteButton id={id} handleRemove={handleRemove} />
     </div>
   );
 }

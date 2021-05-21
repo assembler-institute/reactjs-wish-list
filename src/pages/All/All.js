@@ -10,9 +10,11 @@ import NoTodos from "../../components/NoTodos";
 function All({
   handleSubmit,
   handleChange,
+  todoName,
   isEmpty = false,
   allTodos,
   handleSetCompleted,
+  handleRemove,
   ...props
 }) {
   return (
@@ -27,7 +29,11 @@ function All({
       <section className="container-sm position-absolute d-flex flex-column p-0 mainContent">
         <AppHeader />
         <aside className="bg-light d-flex flex-row shadow rounded p-3 mb-4">
-          <CreateTodo handleSubmit={handleSubmit} handleChange={handleChange} />
+          <CreateTodo
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            todoName={todoName}
+          />
         </aside>
         <article className="bg-light d-flex flex-column shadow rounded toContent">
           <div className="todoRender">
@@ -36,6 +42,7 @@ function All({
               <TodoListing
                 allTodos={allTodos}
                 handleSetCompleted={handleSetCompleted}
+                handleRemove={handleRemove}
               />
             )}
           </div>

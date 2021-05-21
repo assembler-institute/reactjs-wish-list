@@ -14,4 +14,8 @@
   background-repeat: no-repeat;
   background-size: 30px;
   background-position: center;
+  opacity: 0;
+}
+.cancel:hover {
+  opacity:1;
 }

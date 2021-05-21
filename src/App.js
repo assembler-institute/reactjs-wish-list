@@ -26,6 +26,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   // componentDidMount() {
@@ -42,29 +43,35 @@ class App extends Component {
       name: todoName,
       complete: false,
     };
-    allTodos.push(newTodo);
-    this.setState({ allTodos: allTodos });
+    this.setState({ allTodos: [...allTodos, newTodo], todoName: "" });
+    // eslint-disable-next-line
+    console.log(todoName);
   }
 
   handleSubmit(e) {
-    const { allTodos } = this.state;
     e.preventDefault();
     this.handleAddTodo(this.state);
-    // eslint-disable-next-line
-    console.log(allTodos);
   }
 
   handleChange(e) {
     this.setState({ todoName: e.target.value });
   }
 
-  render() {
+  handleRemove(id) {
     const { allTodos } = this.state;
+    const arr = allTodos.filter((todo) => todo.id !== id);
+    this.setState({ allTodos: arr });
+  }
+
+  render() {
+    const { allTodos, todoName } = this.state;
     return (
       <All
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
+        handleRemove={this.handleRemove}
         allTodos={allTodos}
+        todoName={todoName}
       />
     );
   }

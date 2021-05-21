@@ -2,7 +2,7 @@ import React from "react";
 
 import "./CreateTodo.scss";
 
-function CreateTodo({ handleSubmit, handleChange }) {
+function CreateTodo({ handleSubmit, handleChange, todoName }) {
   return (
     <div className="input-group todo__create">
       <input className="todo__checkbox" type="checkbox" />
@@ -12,6 +12,7 @@ function CreateTodo({ handleSubmit, handleChange }) {
           type="text"
           placeholder="Add Item..."
           onChange={handleChange}
+          value={todoName}
         />
       </form>
     </div>
