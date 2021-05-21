@@ -47,7 +47,7 @@ class App extends Component {
   componentDidUpdate() {
     const { tasks } = this.state;
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
-    console.log(tasks);
+    // console.log(tasks);
   }
 
   handleKeyDown(event) {
