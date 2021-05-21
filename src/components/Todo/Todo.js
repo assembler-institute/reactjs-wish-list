@@ -6,8 +6,9 @@ const classNames = require("classnames");
 class Todo extends Component {
   constructor(props) {
     super(props);
+    const { text } = this.props;
     this.state = {
-      todoText: "",
+      todoText: text,
     };
 
     this.insideDoneTodo = this.insideDoneTodo.bind(this);
@@ -48,7 +49,8 @@ class Todo extends Component {
   }
 
   render() {
-    const { id, text, done } = this.props;
+    const { id, done } = this.props;
+    // const { id, text, done } = this.props;
     const { todoText } = this.state;
 
     // Disabled text classes
@@ -79,7 +81,7 @@ class Todo extends Component {
             name="edit-todo-input"
             id={`input-${id}`}
             type="text"
-            placeholder={text}
+            placeholder={todoText}
             value={todoText}
             onChange={this.insideEditedText}
             onFocus={this.insideFocusText}
