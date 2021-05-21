@@ -34,14 +34,20 @@ class CreateTodo extends Component {
 
     return (
       <section className="row create-todo-section">
-        <div className="col col-12">
-          <form onSubmit={this.handleSubmit}>
+        <div className="col col-12 px-4 d-flex align-items-center">
+          <div className="checkbox-wrapper d-flex flex-column justify-content-center align-items-center">
+            {/* <input type="checkbox" name="checkbox" /> */}
+            <div className="custom-checkbox d-flex flex-column justify-content-center align-items-center">
+              {/* <i className="uil uil-check text-center" /> */}
+            </div>
+          </div>
+          <form className="d-flex" onSubmit={this.handleSubmit}>
             <input
               className="addtodo-input"
               name="addtodo-input"
               id="addtodo-input"
               type="text"
-              placeholder="Insert todo"
+              placeholder="Add to do..."
               value={text}
               onChange={this.handleTodoInputChange}
             />

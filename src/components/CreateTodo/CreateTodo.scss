@@ -1,13 +1,31 @@
 .create-todo-section {
   margin: 30px 0px;
-  height: 50px;
+  height: 70px;
   width: 100%;
-  display: flex;
-  align-items: center;
-  .addtodo-input {
-    border: none;
+  .checkbox-wrapper {
+    margin-right: 20px;
+    .custom-checkbox {
+      border: none;
+      border: 2px solid #7e76b7;
+      color: #7e76b7;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      i {
+        width: fit-content;
+        height: fit-content;
+      }
+    }
   }
-  .addtodo-input:focus {
-    outline: none;
-  }
+  form{
+    flex-grow: 1;
+    .addtodo-input {
+      flex-grow: 1;
+      border: none;
+      font-size: 15px;
+    }
+    .addtodo-input:focus {
+      outline: none;
+    }
+    }
 }
