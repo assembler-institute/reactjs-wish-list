@@ -5,24 +5,28 @@ import "./TodosContainer.scss";
 
 function TodosContainer({
   id,
-  value = "",
+  value,
   isComplete = false,
   handleSetCompleted,
   handleRemove,
+  handleSubmit,
+  handleChange,
 }) {
   function onCompleted() {
     handleSetCompleted(id, isComplete);
   }
 
   return (
-    <div className="input-group borders">
+    <div className="d-flex justify-content-center align-items-center px-3 input-group borders">
       <CompletedButton handleSetCompleted={onCompleted} />
-      <input
-        className="form-control bg-light"
-        type="text"
-        value={value}
-        readOnly
-      />
+      <form className="mx-1" onSubmit={handleSubmit}>
+        <input
+          className="form-control bg-light"
+          type="text"
+          onChange={handleChange}
+          defaultValue={value}
+        />
+      </form>
       <DeleteButton id={id} handleRemove={handleRemove} />
     </div>
   );

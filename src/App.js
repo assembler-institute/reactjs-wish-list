@@ -11,7 +11,13 @@ class App extends Component {
 
     this.state = {
       isEmpty: true,
-      allTodos: [],
+      allTodos: [
+        {
+          id: "1",
+          name: "test",
+          complete: false,
+        },
+      ],
       // completeTodos: [],
       // activeTodos: [],
       todoName: "",
@@ -36,6 +42,11 @@ class App extends Component {
       });
     }
   }
+
+  // componentDidUpdate() {
+  //   const { allTodos } = this.state;
+  //   console.log(allTodos);
+  // }
 
   handleAddTodo({ todoName, allTodos }) {
     const newTodo = {
@@ -63,6 +74,11 @@ class App extends Component {
     const { allTodos } = this.state;
     const arr = allTodos.filter((todo) => todo.id !== id);
     this.setState({ allTodos: arr });
+    if (arr.length === 0) {
+      this.setState({
+        isEmpty: true,
+      });
+    }
   }
 
   render() {

@@ -4,9 +4,8 @@
   padding: 8px 20px;
 }
 .cancel {
+  height: 100%;
   border: none;
-  margin-left: 10px;
-  margin-right: 10px;
   justify-content: flex-end;
   font-size: 30px;
   font-weight: 100;
@@ -17,5 +16,5 @@
   opacity: 0;
 }
 .cancel:hover {
-  opacity:1;
+  opacity: 1;
 }
