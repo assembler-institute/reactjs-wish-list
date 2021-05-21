@@ -30,3 +30,11 @@
     }
   }
 }
+
+@media screen and (max-width: 550px) {
+  .addTodo input {
+    max-width: 500px;
+    min-width: 300px;
+    background-color: blue;
+  }
+}

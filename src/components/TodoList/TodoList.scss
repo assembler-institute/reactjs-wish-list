@@ -1,5 +1,5 @@
 .TodoList {
-  width: 500px;
+  max-width: 500px;
   background-color: white;
   margin-top: 20px;
   border-radius: 5px;
@@ -16,5 +16,13 @@
   img {
     width: 70%;
     margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .TodoList {
+    max-width: 500px;
+    min-width: 300px;
+    background-color: blue;
   }
 }
