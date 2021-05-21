@@ -8,7 +8,7 @@ function getProducts(fail = false) {
       }
 
       res(todos);
-    }, 1000);
+    }, 100);
   });
 }
 

@@ -36,13 +36,16 @@ class App extends Component {
     this.state = {
       todos: [],
       todoName: "",
-      checked: false,
+      editTodoName: "",
     };
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
     this.handleChangeCheck = this.handleChangeCheck.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleChangeTodo = this.handleChangeTodo.bind(this);
+    this.handleEditSubmit = this.handleEditSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -100,9 +103,35 @@ class App extends Component {
     this.setState({ todos: arr });
   }
 
-  render() {
-    // const { todos, todoName } = this.state;
+  handleEdit(id) {
     const { todos } = this.state;
+    const todoToEdit = todos.map((todo) => {
+      return todo.id === id ? { ...todo, edit: true } : todo;
+    });
+    this.setState({ todos: todoToEdit });
+  }
+
+  handleChangeTodo(e) {
+    // const { todos } = this.state;
+    this.setState({ editTodoName: e.target.value });
+    // const todoToEdit = todos.map((todo) => {
+    //   return todo.id === id ? { ...todo, name: e.target.value } : todo;
+    // });
+    // this.setState({ todos: todoToEdit });
+  }
+
+  handleEditSubmit(e, id) {
+    const { todos, editTodoName } = this.state;
+    const todoToEdit = todos.map((todo) => {
+      return todo.id === id
+        ? { ...todo, name: editTodoName, edit: false }
+        : todo;
+    });
+    this.setState({ todos: todoToEdit });
+  }
+
+  render() {
+    const { todos, editTodoName } = this.state;
     return (
       <>
         <header>
@@ -179,6 +208,10 @@ class App extends Component {
               {...routeProps}
               handleChangeCheck={this.handleChangeCheck}
               handleRemove={this.handleRemove}
+              handleEdit={this.handleEdit}
+              handleChangeTodo={this.handleChangeTodo}
+              handleEditSubmit={this.handleEditSubmit}
+              editTodoName={editTodoName}
               todos={todos}
             />
           )}

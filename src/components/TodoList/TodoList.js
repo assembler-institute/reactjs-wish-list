@@ -7,13 +7,25 @@ import Todo from "../Todo";
 import "./TodoList.scss";
 import { HOME, ACTIVE, COMPLETED } from "../../constatnts/routes";
 
-function TodoList({ todos = [], handleRemove, handleChangeCheck }) {
+function TodoList({
+  todos = [],
+  handleRemove,
+  handleChangeCheck,
+  handleEdit,
+  handleChangeTodo,
+  handleEditSubmit,
+  editTodoName,
+}) {
   function printTodos() {
     return todos.map((todo) => (
       <Todo
         key={uuidv4()}
         handleChangeCheck={handleChangeCheck}
         handleRemove={handleRemove}
+        handleEdit={handleEdit}
+        handleChangeTodo={handleChangeTodo}
+        handleEditSubmit={handleEditSubmit}
+        editTodoName={editTodoName}
         todo={todo}
       />
     ));
