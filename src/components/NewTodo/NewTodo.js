@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import newTodoSchema from "./NewTodoSchema";
 
 import Input from "../Input";
+import Button from "../button";
 
 function addTodoDetails(todo) {
   return {
@@ -46,7 +47,7 @@ export default function NewTodo({ saveNewTodo }) {
         touched,
       }) => (
         <form onSubmit={handleSubmit} className="new-todo">
-          <input type="checkbox" />
+          <Button />
           <Input
             id="content"
             type="text"

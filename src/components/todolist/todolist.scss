@@ -1,24 +1,10 @@
 .todo-list {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
 }
 
 ul {
   width: 100%;
   list-style: none;
-}
-
-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
-  padding: 0.8rem;
-}
-
-button {
-  border: none;
-  background-color: transparent;
-  margin: 0 0.5rem;
-  cursor: pointer;
 }

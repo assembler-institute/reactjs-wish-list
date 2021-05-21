@@ -1,7 +1,5 @@
 import React from "react";
-
-import Todo from "../todo";
-
+import Todo from "../Todo";
 import "./todolist.scss";
 
 function TodoList({ todos, handleIsActive }) {

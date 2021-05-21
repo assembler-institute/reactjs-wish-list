@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import "./styles.scss";
+import "./components/Footer/Footer.scss";
 
 import Header from "./components/Header";
 import NewTodo from "./components/NewTodo";
-import TodoList from "./components/todolist";
+import TodoList from "./components/TodoList";
 
 // import * as api from "./api";
 

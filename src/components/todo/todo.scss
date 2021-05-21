@@ -1,16 +1,30 @@
 li {
-  width: inherit;
+  width: auto;
   background-color: transparent;
   border-bottom: #dadce0 1.8px solid;
-  padding: 1rem;
-  display: flex;
-  flex-direction: row;
+  padding: 0;
+  //display: flex;
+  //flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  //justify-content: space-between;
+  display: grid;
+  height: 64px;
+  grid-template-columns: 2% 8% 85% 5%;
   cursor: pointer;
 }
+.hashtag {
+  background-color: green;
+  display: flex;
+}
+.delete {
+  display: none;
+}
 li:hover {
-  .prueba {
+  .delete {
     display: block;
+    svg {
+      color: rgb(122, 122, 122);
+      font-size: 1.2rem;
+    }
   }
 }
