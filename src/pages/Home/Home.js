@@ -8,6 +8,7 @@ import AddTodo from "../../components/AddTodo";
 import TodoList from "../../components/TodoList";
 
 import "./Home.scss";
+import DarkMode from "../../components/DarkMode";
 
 export default function Home({
   id,
@@ -24,6 +25,7 @@ export default function Home({
 }) {
   return (
     <div className="home">
+      <DarkMode />
       <main>
         <section>
           <div className="upper_home">

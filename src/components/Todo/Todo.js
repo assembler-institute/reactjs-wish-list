@@ -2,6 +2,7 @@ import React from "react";
 import classnames from "classnames/bind";
 
 import EditIcon from "../Icons/EditIcon";
+import DeleteIcon from "../Icons/DeleteIcon";
 
 import todoStyles from "./Todo.scss";
 
@@ -30,15 +31,16 @@ export default function Todo({
             checked={completed}
           />
         </label>
-        <h6 className={cns({ completed: completed })}>{title}</h6>
+        <p className={cns({ completed: completed })}>{title}</p>
       </span>
 
       <div className="todoRight">
-        <button type="button" className="btn mx-2 editBtn" onClick={handleEdit}>
+        <button type="button" className="btn editBtn" onClick={handleEdit}>
           <EditIcon />
         </button>
-
-        <button type="button" className="removeBtn" onClick={handleRemove} />
+        <button type="button" className="btn removeBtn" onClick={handleRemove}>
+          <DeleteIcon />
+        </button>
       </div>
     </li>
   );
