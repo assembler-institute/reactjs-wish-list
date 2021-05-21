@@ -1,12 +1,12 @@
-// eslint-disable-next-line
-import React from "react";
-// eslint-disable-next-line
-import { Component } from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Completed from "./pages/Completed";
 import Active from "./pages/Active";
+
+import Header from "./components/Header";
+import NewTask from "./components/NewTask";
 import ListFooter from "./components/ListFooter";
 
 import * as api from "./api";
@@ -33,8 +33,11 @@ class App extends Component {
 
     this.state = {
       tasks: [],
+      isDark: false,
     };
 
+    this.saveNewTask = this.saveNewTask.bind(this);
+    this.toggleDarkLightMode = this.toggleDarkLightMode.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
     this.handleClearCompleted = this.handleClearCompleted.bind(this);
   }
@@ -43,14 +46,9 @@ class App extends Component {
     const prevItems = loadLocalStorageData();
 
     if (!prevItems) {
-      this.setState({
-        // isLoading: true,
-      });
-
       api.getTasks().then((data) => {
         this.setState({
           tasks: data,
-          // isLoading: false,
         });
       });
       return;
@@ -83,10 +81,28 @@ class App extends Component {
     this.setState({ tasks: updatedTasks });
   }
 
+  saveNewTask(newTask) {
+    this.setState((prevState) => ({
+      tasks: [newTask, ...prevState.tasks],
+    }));
+  }
+
+  toggleDarkLightMode() {
+    const { isDark } = this.state;
+    if (isDark === true) this.setState({ isDark: false });
+    else this.setState({ isDark: true });
+  }
+
   render() {
-    const { tasks } = this.state;
+    const { tasks, isDark } = this.state;
+
     return (
       <>
+        <Header
+          toggleDarkLightMode={this.toggleDarkLightMode}
+          isDark={isDark}
+        />
+        <NewTask saveNewTask={this.saveNewTask} />
         <BrowserRouter>
           <Route
             path="/"
