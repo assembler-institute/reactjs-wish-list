@@ -5,6 +5,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
 
   ::placeholder {
     // color: #7e76b7;
@@ -55,7 +56,17 @@ body {
     .main-header {
       display: flex;
       justify-content: space-between;
-      color: black;
+      align-items: center;
+      color: white;
+
+      .main-header-title {
+        font-weight: 300;
+      }
+
+      i {
+        cursor: pointer;
+        font-size: 24px;
+      }
     }
 
     section {

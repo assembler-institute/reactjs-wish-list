@@ -13,7 +13,7 @@ const defaultTodos = [
   {
     id: "30",
     text: "Be cool",
-    done: false,
+    done: true,
   },
 ];
 
