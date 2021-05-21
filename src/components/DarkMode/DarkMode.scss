@@ -5,11 +5,10 @@
   border: none;
   border-radius: 50%;
   background-color: rgba(40, 26, 44, 0.345);
-}
-
-#darkMode:hover,
-#darkMode:focus {
-  filter: none;
-  background-color: rgba(210, 193, 214, 0.345);
-  cursor: pointer;
+  &:hover,
+  &:focus {
+    filter: none;
+    background-color: rgba(210, 193, 214, 0.345);
+    cursor: pointer;
+  }
 }
