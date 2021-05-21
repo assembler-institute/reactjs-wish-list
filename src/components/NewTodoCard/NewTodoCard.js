@@ -44,9 +44,11 @@ class NewTodoCard extends Component {
         className="flex-row card-wide no-border"
         onSubmit={this.handleSubmit}
       >
-        <label>
-          <input type="checkbox" name="completed" className="blue-checkbox" />
-        </label>
+        <div className="blue-checkbox">
+          <div className="status-switch text-center">
+            <i className=" bi bi-check inherit-size" />
+          </div>
+        </div>
         <label>
           <input
             type="text"

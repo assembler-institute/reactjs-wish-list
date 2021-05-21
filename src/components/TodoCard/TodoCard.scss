@@ -1,14 +1,16 @@
 $backgroundColor: #ffffff;
+$appGray: #cacacf;
 
 .flex-row {
   display: flex;
   flex-direction: row;
   justify-items: center;
+  /*   align-items: center; */
 }
 
 .card-wide {
   width: 100%;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid $appGray;
   height: 50px;
   padding: 10px;
   background-color: $backgroundColor;
@@ -21,7 +23,8 @@ $backgroundColor: #ffffff;
 }
 
 .font-big {
-  font-size: 18px;
+  font-size: 1.2rem;
+  transition: all 0.2s;
 }
 
 .font-light {
@@ -66,6 +69,7 @@ $backgroundColor: #ffffff;
 .input-no-border {
   border: none;
   outline: none;
+  font-size: 1.2rem;
   :focus {
     background-color: red;
   }
@@ -76,4 +80,9 @@ $backgroundColor: #ffffff;
 }
 .no-border {
   border: none;
+}
+
+.crossout {
+  text-decoration: line-through;
+  color: $appGray;
 }

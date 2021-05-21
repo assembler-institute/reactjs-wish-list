@@ -5,33 +5,37 @@ import "./CardFooter.scss";
 
 export default function CardFooter({ activeTodos }) {
   return (
-    <section className="whiteBg gridFooter text-center">
+    <section className="whiteBg flex-row full-width card-footer-justify">
       <p>{activeTodos} items left</p>
-      <NavLink
-        exact
-        activeClassName="navbar-link-active"
-        className="navbar-link"
-        to="/"
-      >
-        All
-      </NavLink>
-      <NavLink
-        exact
-        activeClassName="navbar-link-active"
-        className="navbar-link"
-        to="/active"
-      >
-        Active
-      </NavLink>
-      <NavLink
-        exact
-        activeClassName="navbar-link-active"
-        className="navbar-link"
-        to="/completed"
-      >
-        Completed
-      </NavLink>
-      <button type="button">Clear completed</button>
+      <div className="flex-centered-gap">
+        <NavLink
+          exact
+          activeClassName="navbar-link-active"
+          className="navbar-link"
+          to="/"
+        >
+          All
+        </NavLink>
+        <NavLink
+          exact
+          activeClassName="navbar-link-active"
+          className="navbar-link"
+          to="/active"
+        >
+          Active
+        </NavLink>
+        <NavLink
+          exact
+          activeClassName="navbar-link-active"
+          className="navbar-link"
+          to="/completed"
+        >
+          Completed
+        </NavLink>
+      </div>
+      <button type="button" className="no-border">
+        Clear completed
+      </button>
     </section>
   );
 }

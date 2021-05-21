@@ -17,16 +17,12 @@ export default function EmptyList({ pageName }) {
       <hr />
       <h4 className="text-center">No completed Todos</h4>
       <hr />
-      <img src={noTodoImg} alt="" className="mid-img img-center" />
-      <hr />
     </section>
   );
   const noTodosActive = (
     <section className="whiteBg">
       <hr />
       <h4 className="text-center">No active Todos</h4>
-      <hr />
-      <img src={noTodoImg} alt="" className="mid-img img-center" />
       <hr />
     </section>
   );

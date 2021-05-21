@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import "./TodoCard.scss";
 
+const classNames = require("classnames");
+
 class TodoCard extends Component {
   constructor(props) {
     super(props);
@@ -69,7 +71,13 @@ class TodoCard extends Component {
           </div>
         </label>
         <input
-          className="font-bold font-big full-width no-border"
+          className={classNames(
+            "font-bold",
+            "font-big",
+            "full-width",
+            "no-border",
+            { crossout: isComplete },
+          )}
           value={tempTitle}
           onChange={this.handleChange}
           onBlur={this.onBlur}
