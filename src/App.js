@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
+import Completed from "./pages/Completed";
+import Active from "./pages/Active";
+
 import Header from "./components/Header";
 import NewTask from "./components/NewTask";
+import ListFooter from "./components/ListFooter";
 
 import * as api from "./api";
 
@@ -29,35 +33,22 @@ class App extends Component {
 
     this.state = {
       tasks: [],
-      isLoading: false,
       isDark: false,
-      // hasError: false,
-      // loadingError: null,
-      // newProductFormOpen: false,
     };
 
-    // this.handleAddToCart = this.handleAddToCart.bind(this);
-    // this.handleRemove = this.handleRemove.bind(this);
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleDownVote = this.handleDownVote.bind(this);
-    // this.handleUpVote = this.handleUpVote.bind(this);
-    // this.handleSetFavorite = this.handleSetFavorite.bind(this);
     this.saveNewTask = this.saveNewTask.bind(this);
     this.toggleDarkLightMode = this.toggleDarkLightMode.bind(this);
+    this.handleDeleteTask = this.handleDeleteTask.bind(this);
+    this.handleClearCompleted = this.handleClearCompleted.bind(this);
   }
 
   componentDidMount() {
     const prevItems = loadLocalStorageData();
 
     if (!prevItems) {
-      this.setState({
-        isLoading: true,
-      });
-
       api.getTasks().then((data) => {
         this.setState({
           tasks: data,
-          isLoading: false,
         });
       });
       return;
@@ -74,6 +65,22 @@ class App extends Component {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
   }
 
+  handleDeleteTask(event, taskId) {
+    const { tasks } = this.state;
+
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+
+    this.setState({ tasks: updatedTasks });
+  }
+
+  handleClearCompleted() {
+    const { tasks } = this.state;
+
+    const updatedTasks = tasks.filter((task) => !task.isCompleted);
+
+    this.setState({ tasks: updatedTasks });
+  }
+
   saveNewTask(newTask) {
     this.setState((prevState) => ({
       tasks: [newTask, ...prevState.tasks],
@@ -87,15 +94,7 @@ class App extends Component {
   }
 
   render() {
-    const {
-      // cartItems,
-      tasks,
-      isLoading,
-      isDark,
-      // hasError,
-      // loadingError,
-      // newProductFormOpen,
-    } = this.state;
+    const { tasks, isDark } = this.state;
 
     return (
       <>
@@ -111,27 +110,34 @@ class App extends Component {
             render={(routeProps) => (
               <Home
                 {...routeProps}
-                // cartItems={cartItems}
                 tasks={tasks}
-                isLoading={isLoading}
-                // hasError={hasError}
-                // loadingError={loadingError}
-                // handleDownVote={this.handleDownVote}
-                // handleUpVote={this.handleUpVote}
-                // handleSetFavorite={this.handleSetFavorite}
-                // handleAddToCart={this.handleAddToCart}
-                // handleRemove={this.handleRemove}
-                // handleChange={this.handleChange}
+                handleDeleteTask={this.handleDeleteTask}
               />
             )}
           />
-          {/* <Route
-          path="/new-product"
-          exact
-          render={(routeProps) => (
-            <NewProduct {...routeProps} saveNewProduct={this.saveNewProduct} />
-          )}
-        /> */}
+          <Route
+            path="/completed"
+            exact
+            render={(routeProps) => (
+              <Completed
+                {...routeProps}
+                tasks={tasks}
+                handleDeleteTask={this.handleDeleteTask}
+              />
+            )}
+          />
+          <Route
+            path="/active"
+            exact
+            render={(routeProps) => (
+              <Active
+                {...routeProps}
+                tasks={tasks}
+                handleDeleteTask={this.handleDeleteTask}
+              />
+            )}
+          />
+          <ListFooter handleClearCompleted={this.handleClearCompleted} />
         </BrowserRouter>
       </>
     );
