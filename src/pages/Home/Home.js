@@ -13,6 +13,7 @@ export default function Home({
   saveNewTodo,
   handleTodoChange,
   handleTodoDelete,
+  activeTodos,
 }) {
   return (
     <div className="mainBackground allWidth minHeight gridBody">
@@ -27,6 +28,7 @@ export default function Home({
           handleCompleted={handleCompleted}
           handleTodoChange={handleTodoChange}
           handleTodoDelete={handleTodoDelete}
+          activeTodos={activeTodos}
         />
       </main>
       <Footer />

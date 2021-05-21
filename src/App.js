@@ -52,6 +52,7 @@ class App extends Component {
     this.saveNewTodo = this.saveNewTodo.bind(this);
     this.handleTodoChange = this.handleTodoChange.bind(this);
     this.handleTodoDelete = this.handleTodoDelete.bind(this);
+    this.activeTodosCount = this.activeTodosCount.bind(this);
   }
 
   handleCompleted(id) {
@@ -76,6 +77,14 @@ class App extends Component {
     this.setState({ todos });
   }
 
+  activeTodosCount() {
+    let { todos } = this.state;
+    todos = todos.filter((element) => {
+      return element.isComplete === false;
+    });
+    return todos.length;
+  }
+
   saveNewTodo(newTodo) {
     const { todos } = this.state;
     todos.push(newTodo);
@@ -91,6 +100,7 @@ class App extends Component {
         saveNewTodo={this.saveNewTodo}
         handleTodoChange={this.handleTodoChange}
         handleTodoDelete={this.handleTodoDelete}
+        activeTodos={this.activeTodosCount()}
       />
     );
   }

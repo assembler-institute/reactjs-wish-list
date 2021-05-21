@@ -11,6 +11,7 @@ export default function TodosList({
   handleCompleted,
   handleTodoChange,
   handleTodoDelete,
+  activeTodos,
   ...props
 }) {
   const todoMap = (
@@ -41,7 +42,7 @@ export default function TodosList({
     <div className="shadow roundedCorner" props={props}>
       {todos[0] ? todoMap : noTodos}
 
-      <CardFooter />
+      <CardFooter activeTodos={activeTodos} />
     </div>
   );
 }
