@@ -44,7 +44,7 @@ export default function TodoList({
   if (location.pathname === "/active") {
     return (
       <div className="TodoList">
-        <ul className="list-group mb-5">
+        <ul className="list-group">
           {activeList.map((todo) => {
             return (
               <Todo
@@ -70,7 +70,7 @@ export default function TodoList({
   if (location.pathname === "/completed") {
     return (
       <div className="TodoList">
-        <ul className="list-group mb-5">
+        <ul className="list-group">
           {completedList.map((todo) => {
             return (
               <Todo
