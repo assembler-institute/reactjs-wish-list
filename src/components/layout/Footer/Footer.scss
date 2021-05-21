@@ -1,15 +1,28 @@
 .footerStyle {
   display: flex;
   justify-content: space-around;
-  font-size: 13px;
+  font-size: 15px;
   height: 50px;
   align-items: center;
   .footerBtn {
     border: none;
     background-color: inherit;
     display: inline-block;
+    color: #212529;
     &:hover {
       text-decoration: underline;
+      color: #007bff;
     }
   }
+}
+
+.links {
+  color: #212529;
+  &:hover {
+    color: #007bff;
+  }
+}
+
+.filtered {
+  color: #007bff;
 }

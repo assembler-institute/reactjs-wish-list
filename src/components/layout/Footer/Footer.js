@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "./Footer.scss";
 
@@ -9,9 +9,20 @@ export default function Footer({ handleClear, todoList }) {
   return (
     <div className="footerStyle border-top-0">
       {itemsLeft} items left
-      <Link to="/">All</Link>
-      <Link to="/active">Active</Link>
-      <Link to="/completed">Completed</Link>
+      <NavLink to="/" activeClassName="filtered" className="links" exact>
+        All
+      </NavLink>
+      <NavLink to="/active" activeClassName="filtered" className="links" exact>
+        Active
+      </NavLink>
+      <NavLink
+        to="/completed"
+        activeClassName="filtered"
+        className="links"
+        exact
+      >
+        Completed
+      </NavLink>
       <input
         type="button"
         className="footerBtn"
