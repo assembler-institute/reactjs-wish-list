@@ -15,6 +15,7 @@ function All({
   allTodos,
   handleSetCompleted,
   handleRemove,
+  handleEditTodo,
   ...props
 }) {
   return (
@@ -43,6 +44,8 @@ function All({
                 allTodos={allTodos}
                 handleSetCompleted={handleSetCompleted}
                 handleRemove={handleRemove}
+                handleEditTodo={handleEditTodo}
+                onChange={handleChange}
               />
             )}
           </div>

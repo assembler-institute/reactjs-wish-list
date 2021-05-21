@@ -1,35 +1,63 @@
-import React from "react";
+import React, { Component } from "react";
 import DeleteButton from "../DeleteButton";
 import CompletedButton from "../CompletedButton";
 import "./TodosContainer.scss";
 
-function TodosContainer({
-  id,
-  value,
-  isComplete = false,
-  handleSetCompleted,
-  handleRemove,
-  handleSubmit,
-  handleChange,
-}) {
-  function onCompleted() {
-    handleSetCompleted(id, isComplete);
+class TodosContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    const { id, name } = this.props;
+
+    this.state = {
+      id: id,
+      name: name,
+    };
+
+    this.onSubmit = this.onSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.onBlur = this.onBlur.bind(this);
   }
 
-  return (
-    <div className="d-flex justify-content-center align-items-center px-3 input-group borders">
-      <CompletedButton handleSetCompleted={onCompleted} />
-      <form className="mx-1" onSubmit={handleSubmit}>
-        <input
-          className="form-control bg-light"
-          type="text"
-          onChange={handleChange}
-          defaultValue={value}
-        />
-      </form>
-      <DeleteButton id={id} handleRemove={handleRemove} />
-    </div>
-  );
+  handleChange(event) {
+    this.setState({
+      name: event.target.value,
+    });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const { handleEditTodo } = this.props;
+    const { name, id } = this.state;
+    handleEditTodo(name, id);
+  }
+
+  onBlur() {
+    const { name } = this.props;
+    this.setState({ name: name });
+  }
+
+  render() {
+    const { id, name } = this.state;
+    const { handleRemove } = this.props;
+
+    return (
+      <div className="d-flex justify-content-center align-items-center px-3 input-group borders">
+        <CompletedButton /* handleSetCompleted={this.onCompleted} */ />
+        <form className="mx-1" onSubmit={this.onSubmit}>
+          <input
+            id={id}
+            className="form-control bg-light"
+            type="text"
+            value={name}
+            onBlur={this.onBlur}
+            onChange={this.handleChange}
+          />
+        </form>
+        <DeleteButton id={id} handleRemove={handleRemove} />
+      </div>
+    );
+  }
 }
 
 export default TodosContainer;

@@ -12,11 +12,11 @@ class App extends Component {
     this.state = {
       isEmpty: true,
       allTodos: [
-        {
-          id: "1",
-          name: "test",
-          complete: false,
-        },
+        // {
+        //   id: "1",
+        //   name: "test",
+        //   complete: false,
+        // },
       ],
       // completeTodos: [],
       // activeTodos: [],
@@ -26,6 +26,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleEditTodo = this.handleEditTodo.bind(this);
   }
 
   componentDidMount() {
@@ -42,11 +43,6 @@ class App extends Component {
       });
     }
   }
-
-  // componentDidUpdate() {
-  //   const { allTodos } = this.state;
-  //   console.log(allTodos);
-  // }
 
   handleAddTodo({ todoName, allTodos }) {
     const newTodo = {
@@ -70,6 +66,15 @@ class App extends Component {
     this.setState({ todoName: e.target.value });
   }
 
+  handleEditTodo(value, id) {
+    const { allTodos } = this.state;
+    const todoIndexInArray = allTodos.findIndex((todo) => todo.id === id);
+    allTodos[todoIndexInArray].name = value;
+    this.setState({
+      allTodos,
+    });
+  }
+
   handleRemove(id) {
     const { allTodos } = this.state;
     const arr = allTodos.filter((todo) => todo.id !== id);
@@ -88,6 +93,7 @@ class App extends Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         handleRemove={this.handleRemove}
+        handleEditTodo={this.handleEditTodo}
         allTodos={allTodos}
         todoName={todoName}
         isEmpty={isEmpty}
