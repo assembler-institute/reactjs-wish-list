@@ -9,7 +9,7 @@
     p {
       align-self: center;
       margin: 0 0 0 20px;
-      font-size: 13px;
+      font-size: 16px;
     }
     .completed {
       text-decoration: line-through;
@@ -51,5 +51,11 @@
   .editBtn {
     width: 40px;
     fill: #a1a9a9;
+  }
+}
+
+@media (min-width: 551px) {
+  .todo span p {
+    font-size: 14px;
   }
 }

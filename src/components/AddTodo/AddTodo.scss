@@ -4,11 +4,12 @@
 .addTodo {
   form {
     display: flex;
+    position: relative;
     box-shadow: 0px 5px 5px 10px rgba(0, 0, 0, 0.153);
-
     input {
       padding: 30px;
-      width: 500px;
+      width: 100vw;
+      min-width: 300px;
       border-radius: 5px;
       border: none;
       outline: none;
@@ -17,11 +18,13 @@
       }
     }
     .addBtn {
-      margin-left: -40px;
-      display: inline;
+      position: absolute;
+      right: 0;
+      top: 0;
       background-color: rgba(174, 210, 235, 0.427);
       color: aliceblue;
       width: 40px;
+      height: 100%;
       &:focus {
         @include focusNone();
       }
@@ -33,10 +36,11 @@
   }
 }
 
-@media screen and (max-width: 550px) {
-  .addTodo input {
-    max-width: 500px;
-    min-width: 300px;
-    background-color: blue;
+@media (min-width: 551px) {
+  .addTodo {
+    width: 500px;
+    input {
+      width: 500px;
+    }
   }
 }
