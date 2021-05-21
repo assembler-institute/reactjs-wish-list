@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { Formik } from "formik";
 
 import TodoList from "./components/TodoList";
 import Checkbox from "./components/Checkbox";
+import Input from "./components/Input";
 
 import hero from "./img/hero.jpg";
 import { HOME, ACTIVE, COMPLETED } from "./constatnts/routes";
+import productSchema from "./todo-schema";
 
 import "./header.scss";
 
@@ -30,10 +33,12 @@ class App extends Component {
     this.handleChangeCheck = this.handleChangeCheck.bind(this);
   }
 
-  handleAddTodo({ todos, todoName }) {
+  handleAddTodo(values) {
+    const { todos } = this.state;
+
     const newTodo = {
       id: uuidv4(),
-      name: todoName,
+      name: values.name,
       complete: false,
     };
 
@@ -66,13 +71,49 @@ class App extends Component {
   }
 
   render() {
-    const { todos, todoName } = this.state;
+    // const { todos, todoName } = this.state;
+    const { todos } = this.state;
     return (
       <>
         <header>
           <div className="heroImg" alt="hero" src={hero}>
             <h1 className="TODO__Header">TODO</h1>
-            <form className="TODO__Form" onSubmit={this.handleSubmit}>
+
+            <Formik
+              initialValues={{
+                name: "",
+              }}
+              validationSchema={productSchema}
+              onSubmit={(values, { resetForm }) => {
+                this.handleAddTodo(values);
+                resetForm();
+              }}
+            >
+              {({
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                errors,
+                values,
+                touched,
+              }) => (
+                <form className="TODO__Form" onSubmit={handleSubmit}>
+                  <Checkbox handleChange={() => {}} />
+                  <Input
+                    type="text"
+                    placeholder="Create task"
+                    id="name"
+                    value={values.name}
+                    handleChange={handleChange}
+                    handleBlur={handleBlur}
+                    hasErrorMessage={touched.name}
+                    errorMessage={errors.name}
+                  />
+                </form>
+              )}
+            </Formik>
+
+            {/* <form className="TODO__Form" onSubmit={this.handleSubmit}>
               <Checkbox handleChange={() => {}} />
               <input
                 type="text"
@@ -83,7 +124,7 @@ class App extends Component {
                 value={todoName}
                 onChange={this.handleChange}
               />
-            </form>
+            </form> */}
           </div>
         </header>
 
