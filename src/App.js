@@ -87,15 +87,6 @@ class App extends Component {
           </div>
         </header>
 
-        {/* <header>
-          <div className="heroImg" alt="hero" src={hero}>
-            <h1 className="TODO__Header">TODO</h1>
-            <form>
-              <Checkbox handleChange={this.handleChange} checked={checked} />
-            </form>
-          </div>
-        </header> */}
-
         <Route
           path={ACTIVE}
           exact
@@ -134,12 +125,6 @@ class App extends Component {
             />
           )}
         />
-
-        {/* <TodoList
-          handleChangeCheck={this.handleChangeCheck}
-          handleRemove={this.handleRemove}
-          todos={todos}
-        /> */}
       </>
     );
   }
