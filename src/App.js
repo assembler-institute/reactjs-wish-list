@@ -56,6 +56,7 @@ class App extends Component {
 
     if (todos.length === 0) {
       this.setState({ hasTodos: false });
+      // eslint-disable-next-line no-console
       console.log("Empty todos");
     }
   }
@@ -103,7 +104,9 @@ class App extends Component {
   }
 
   componentDidUpdate() {
+    // eslint-disable-next-line no-console
     console.clear();
+    // eslint-disable-next-line no-console
     console.log(this.state);
   }
 
