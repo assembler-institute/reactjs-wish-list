@@ -1,8 +1,13 @@
+// eslint-disable-next-line
 import React from "react";
+// eslint-disable-next-line
 import { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
+import Completed from "./pages/Completed";
+import Active from "./pages/Active";
+import ListFooter from "./components/ListFooter";
 
 import * as api from "./api";
 
@@ -28,20 +33,10 @@ class App extends Component {
 
     this.state = {
       tasks: [],
-      isLoading: false,
-      hasError: false,
-      loadingError: null,
-      // newProductFormOpen: false,
     };
 
-    // this.handleAddToCart = this.handleAddToCart.bind(this);
-    // this.handleRemove = this.handleRemove.bind(this);
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleDownVote = this.handleDownVote.bind(this);
-    // this.handleUpVote = this.handleUpVote.bind(this);
-    // this.handleSetFavorite = this.handleSetFavorite.bind(this);
-    // this.saveNewProduct = this.saveNewProduct.bind(this);
-    // this.toggleNewProductForm = this.toggleNewProductForm.bind(this);
+    this.handleDeleteTask = this.handleDeleteTask.bind(this);
+    this.handleClearCompleted = this.handleClearCompleted.bind(this);
   }
 
   componentDidMount() {
@@ -49,13 +44,13 @@ class App extends Component {
 
     if (!prevItems) {
       this.setState({
-        isLoading: true,
+        // isLoading: true,
       });
 
       api.getTasks().then((data) => {
         this.setState({
           tasks: data,
-          isLoading: false,
+          // isLoading: false,
         });
       });
       return;
@@ -72,44 +67,63 @@ class App extends Component {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
   }
 
+  handleDeleteTask(event, taskId) {
+    const { tasks } = this.state;
+
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+
+    this.setState({ tasks: updatedTasks });
+  }
+
+  handleClearCompleted() {
+    const { tasks } = this.state;
+
+    const updatedTasks = tasks.filter((task) => !task.isCompleted);
+
+    this.setState({ tasks: updatedTasks });
+  }
+
   render() {
+    const { tasks } = this.state;
     return (
-      <BrowserRouter>
-        <Route
-          path="/"
-          exact
-          render={(routeProps) => (
-            <Home
-              {...routeProps}
-              // cartItems={cartItems}
-              // products={products}
-              // isLoading={isLoading}
-              // hasError={hasError}
-              // loadingError={loadingError}
-              // handleDownVote={this.handleDownVote}
-              // handleUpVote={this.handleUpVote}
-              // handleSetFavorite={this.handleSetFavorite}
-              // handleAddToCart={this.handleAddToCart}
-              // handleRemove={this.handleRemove}
-              // handleChange={this.handleChange}
-            />
-          )}
-        />
-        {/* <Route
-          path="/new-product"
-          exact
-          render={(routeProps) => (
-            <NewProduct {...routeProps} saveNewProduct={this.saveNewProduct} />
-          )}
-        /> */}
-      </BrowserRouter>
-      // <main className="container mt-5">
-      //   <section className="row">
-      //     <div className="col col-12">
-      //       <h1>Hola mundo</h1>
-      //     </div>
-      //   </section>
-      // </main>
+      <>
+        <BrowserRouter>
+          <Route
+            path="/"
+            exact
+            render={(routeProps) => (
+              <Home
+                {...routeProps}
+                tasks={tasks}
+                handleDeleteTask={this.handleDeleteTask}
+              />
+            )}
+          />
+          <Route
+            path="/completed"
+            exact
+            render={(routeProps) => (
+              <Completed
+                {...routeProps}
+                tasks={tasks}
+                handleDeleteTask={this.handleDeleteTask}
+              />
+            )}
+          />
+          <Route
+            path="/active"
+            exact
+            render={(routeProps) => (
+              <Active
+                {...routeProps}
+                tasks={tasks}
+                handleDeleteTask={this.handleDeleteTask}
+              />
+            )}
+          />
+          <ListFooter handleClearCompleted={this.handleClearCompleted} />
+        </BrowserRouter>
+      </>
     );
   }
 }
