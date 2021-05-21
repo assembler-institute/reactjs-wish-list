@@ -1,10 +1,11 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+
 import EmptyTodo from "../EmptyTodo";
 import Todo from "../Todo";
 import "./TodoList.scss";
+
 import { HOME, ACTIVE, COMPLETED } from "../../constatnts/routes";
 
 function TodoList({
@@ -13,6 +14,7 @@ function TodoList({
   handleChangeCheck,
   handleEdit,
   handleEditSubmit,
+  handleResetEdit,
 }) {
   function printTodos() {
     return todos.map((todo) => (
@@ -22,18 +24,17 @@ function TodoList({
         handleRemove={handleRemove}
         handleEdit={handleEdit}
         handleEditSubmit={handleEditSubmit}
+        handleResetEdit={handleResetEdit}
         todo={todo}
       />
     ));
   }
 
   return (
-    <main className="main container">
-      <section className="row">
-        {todos.length ? printTodos() : <EmptyTodo />}
-      </section>
+    <main className="main">
+      <section>{todos.length ? printTodos() : <EmptyTodo />}</section>
 
-      <section className="row main__footer">
+      <section className="main__footer">
         <span>{todos.filter((v) => !v.complete).length} items left</span>
         <div className="main__footer__lwrp">
           <Link className="main__footer__link" to={HOME}>

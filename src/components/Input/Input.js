@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import classNames from "classnames";
 import React from "react";
 
@@ -12,6 +13,7 @@ function Input({
   handleBlur = () => {},
   errorMessage,
   hasErrorMessage,
+  autoFocus,
   ...props
 }) {
   const classes = classNames({
@@ -31,6 +33,7 @@ function Input({
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
+        autoFocus={autoFocus}
         {...props}
       />
       {hasErrorMessage && errorMessage && (

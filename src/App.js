@@ -37,6 +37,7 @@ class App extends Component {
     this.handleChangeCheck = this.handleChangeCheck.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
+    this.handleResetEdit = this.handleResetEdit.bind(this);
   }
 
   componentDidMount() {
@@ -112,6 +113,14 @@ class App extends Component {
     this.setState({ todos: todoToEdit });
   }
 
+  handleResetEdit() {
+    const { todos } = this.state;
+    const todoToEdit = todos.map((todo) => {
+      return { ...todo, edit: false };
+    });
+    this.setState({ todos: todoToEdit });
+  }
+
   render() {
     const { todos } = this.state;
     return (
@@ -154,6 +163,7 @@ class App extends Component {
               handleRemove={this.handleRemove}
               handleEdit={this.handleEdit}
               handleEditSubmit={this.handleEditSubmit}
+              handleResetEdit={this.handleResetEdit}
               todos={todos}
             />
           )}

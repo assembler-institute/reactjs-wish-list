@@ -1,13 +1,17 @@
+/* eslint-disable react/jsx-boolean-value */
 import React from "react";
 import { Formik } from "formik";
+
 import Input from "../Input";
 import editSchema from "./edit-schema";
 
-function EditTodo({ handleEditSubmit, todo }) {
+import "./EditTodo.scss";
+
+function EditTodo({ handleEditSubmit, handleResetEdit, todo }) {
   return (
     <Formik
       initialValues={{
-        name: "",
+        name: todo.name,
       }}
       validationSchema={editSchema}
       onSubmit={(values) => {
@@ -29,9 +33,13 @@ function EditTodo({ handleEditSubmit, todo }) {
             id="name"
             value={values.name}
             handleChange={handleChange}
-            handleBlur={handleBlur}
+            handleBlur={(e) => {
+              handleBlur(e);
+              handleResetEdit();
+            }}
             hasErrorMessage={touched.name}
             errorMessage={errors.name}
+            autoFocus={true}
           />
         </form>
       )}

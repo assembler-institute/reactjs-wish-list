@@ -20,6 +20,7 @@ function Appheader({ handleAddTodo }) {
             name: "",
           }}
           validationSchema={productSchema}
+          validateOnBlur={false}
           onSubmit={(values, { resetForm }) => {
             handleAddTodo(values);
             resetForm();
