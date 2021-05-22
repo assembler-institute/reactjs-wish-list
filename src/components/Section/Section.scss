@@ -1,4 +1,8 @@
 .middle-container {
-  background-color: tomato;
   margin: 0 auto;
+  display: flex;
+  flex-basis: 50%;
+  height: 60vh;
+  flex-flow: column;
+  align-self: center;
 }
