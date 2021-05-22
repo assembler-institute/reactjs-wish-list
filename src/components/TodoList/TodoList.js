@@ -14,6 +14,7 @@ function TodoList({
   handleEdit,
   handleEditSubmit,
   handleResetEdit,
+  handleClearCompleted,
 }) {
   function printTodos() {
     return todos.map((todo) => (
@@ -33,7 +34,7 @@ function TodoList({
     <main className="main">
       <section>{todos.length ? printTodos() : <EmptyTodo />}</section>
 
-      <AppFooter todos={todos} />
+      <AppFooter todos={todos} handleClearCompleted={handleClearCompleted} />
     </main>
   );
 }

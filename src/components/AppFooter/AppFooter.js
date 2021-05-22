@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 import { HOME, ACTIVE, COMPLETED } from "../../constatnts/routes";
 
-function AppFooter({ todos }) {
+function AppFooter({ todos, handleClearCompleted }) {
+  function onHandleClearCompleted() {
+    handleClearCompleted(todos);
+  }
   return (
     <section className="main__footer">
       <span>{todos.filter((v) => !v.complete).length} items left</span>
@@ -18,7 +21,11 @@ function AppFooter({ todos }) {
           Completed
         </Link>
       </div>
-      <button className="main__footer__link" type="button">
+      <button
+        className="main__footer__link"
+        type="button"
+        onClick={onHandleClearCompleted}
+      >
         Clear completed
       </button>
     </section>

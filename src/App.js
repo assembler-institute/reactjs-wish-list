@@ -38,6 +38,7 @@ class App extends Component {
     this.handleEdit = this.handleEdit.bind(this);
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
     this.handleResetEdit = this.handleResetEdit.bind(this);
+    this.handleClearCompleted = this.handleClearCompleted.bind(this);
   }
 
   componentDidMount() {
@@ -92,6 +93,11 @@ class App extends Component {
       return obj;
     });
 
+    this.setState({ todos: arr });
+  }
+
+  handleClearCompleted(todos) {
+    const arr = todos.filter((todo) => todo.complete === false);
     this.setState({ todos: arr });
   }
 
@@ -164,6 +170,7 @@ class App extends Component {
               handleEdit={this.handleEdit}
               handleEditSubmit={this.handleEditSubmit}
               handleResetEdit={this.handleResetEdit}
+              handleClearCompleted={this.handleClearCompleted}
               todos={todos}
             />
           )}
