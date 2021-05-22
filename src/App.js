@@ -5,6 +5,21 @@ import { v4 as uuidv4 } from "uuid";
 import All from "./pages/All";
 import "./App.scss";
 
+const LOCAL_STORAGE_KEY = "react-todo-state";
+
+function loadLocalStorageData() {
+  const prevItems = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+  if (!prevItems) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(prevItems);
+  } catch (error) {
+    return null;
+  }
+}
 class App extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +44,12 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const prevItems = loadLocalStorageData();
+    if (prevItems) {
+      this.setState({
+        allTodos: prevItems,
+      });
+    }
     const { allTodos } = this.state;
     if (allTodos.length === 0) {
       this.setState({
@@ -43,10 +64,10 @@ class App extends Component {
     }
   }
 
-  // componentDidUpdate() {
-  //   const { allTodos } = this.state;
-  //   console.log(allTodos);
-  // }
+  componentDidUpdate() {
+    const { allTodos } = this.state;
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(allTodos));
+  }
 
   handleAddTodo({ todoName, allTodos }) {
     const newTodo = {

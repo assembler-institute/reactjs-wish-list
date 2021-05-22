@@ -13,6 +13,7 @@ function All({
   todoName,
   isEmpty,
   allTodos,
+  handleCompleted,
   handleSetCompleted,
   handleRemove,
   ...props
@@ -42,6 +43,7 @@ function All({
               <TodoListing
                 allTodos={allTodos}
                 handleSetCompleted={handleSetCompleted}
+                handleCompleted={handleCompleted}
                 handleRemove={handleRemove}
               />
             )}

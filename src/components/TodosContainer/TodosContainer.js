@@ -6,19 +6,14 @@ import "./TodosContainer.scss";
 function TodosContainer({
   id,
   value,
-  isComplete = false,
-  handleSetCompleted,
+  isComplete,
   handleRemove,
   handleSubmit,
   handleChange,
 }) {
-  function onCompleted() {
-    handleSetCompleted(id, isComplete);
-  }
-
   return (
     <div className="d-flex justify-content-center align-items-center px-3 input-group borders">
-      <CompletedButton handleSetCompleted={onCompleted} />
+      <CompletedButton id={id} isComplete={isComplete} />
       <form className="mx-1" onSubmit={handleSubmit}>
         <input
           className="form-control bg-light"
