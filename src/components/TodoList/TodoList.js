@@ -13,7 +13,7 @@ export default function TodoList({
   todosLeft,
 }) {
   return (
-    <section className="row todo-list-section mx-0">
+    <section className="row todo-list-section mx-0 d-flex justify-content-center align-items-center">
       <div className="col col-12 p-0 list-wrapper">
         {!hasTodos ? (
           <div className="no-todos d-flex justify-content-center align-items-center">
