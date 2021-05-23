@@ -56,12 +56,18 @@ class App extends Component {
       return;
     }
 
-    this.setState({ todos: prevItems.todos });
+    this.setState({
+      todos: prevItems.todos,
+      currentTheme: prevItems.currentTheme,
+    });
   }
 
   componentDidUpdate() {
-    const { todos } = this.state;
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ todos }));
+    const { todos, currentTheme } = this.state;
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify({ todos, currentTheme }),
+    );
   }
 
   handleAddTodo(values) {
