@@ -8,14 +8,14 @@ class TodoItem extends newForm {
     super(props);
 
     this.handleSelected = this.handleSelected.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+    // this.handleDelete = this.handleDelete.bind(this);
   }
 
   render() {
-    // const { handleSelected } = this.props;
+    // const { handleDelete } = this.props;
     const { text } = this.props;
     // eslint-disable-next-line
-    console.log(this.handleSelected);
+    console.log();
     return (
       <div>
         <li className="Items">

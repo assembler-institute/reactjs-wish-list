@@ -34,16 +34,6 @@ class newForm extends Component {
     console.log("Este es titile", title);
   }
 
-  handleDelete() {
-    const { id } = this.state;
-
-    this.setState({
-      id: id,
-    });
-    // eslint-disable-next-line
-    console.log(id);
-  }
-
   submitTitle(event) {
     if (event.key === "Enter") {
       const { ...newTodos } = this.state;

@@ -7,7 +7,7 @@ import Todo from "../Todo";
 
 import "../../_App.scss";
 
-function Home({ newTodo, todos }) {
+function Home({ newTodo, todos, handleDelete }) {
   return (
     <>
       <main className="background_container">
@@ -15,7 +15,7 @@ function Home({ newTodo, todos }) {
         <section className="parent_container">
           <h1>TODO</h1>
           <Form newTodo={newTodo} />
-          <Todo todos={todos} />
+          <Todo todos={todos} handleDelete={handleDelete} />
           <Footer />
         </section>
       </main>

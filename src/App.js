@@ -16,6 +16,20 @@ class App extends Component {
     this.newTodo = this.newTodo.bind(this);
   }
 
+  handleDelete() {
+    const { todos } = this.props;
+    const { todo } = this.props;
+    // eslint-disable-next-line
+    console.log("no eleminado", todos);
+    todos.filter((item) => item.id !== todo.id);
+
+    // eslint-disable-next-line
+    console.log(this.state);
+
+    // eslint-disable-next-line
+    console.log("eleminado", todos);
+  }
+
   newTodo(item) {
     const { todos } = this.state;
 
@@ -35,7 +49,12 @@ class App extends Component {
           path="/"
           exact
           render={(routeProps) => (
-            <Home {...routeProps} todos={todos} newTodo={this.newTodo} />
+            <Home
+              {...routeProps}
+              todos={todos}
+              newTodo={this.newTodo}
+              handleDelete={this.handleDelete}
+            />
           )}
         />
         <Route
