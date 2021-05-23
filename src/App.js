@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-// import { ButtonCompleted } from "./components/Button/Button";
-import Footer from "./components/Footer";
-import Form from "./components/Form";
-import Header from "./components/Header/Header";
-import Todo from "./components/Todo";
-import Completed from "./components/pages/complete/comletepage";
+
+import Home from "./components/pages/Home";
+import Active from "./components/pages/Active";
+import Completed from "./components/pages/Complete";
+
 import "./_App.scss";
 
 class App extends Component {
@@ -35,19 +34,20 @@ class App extends Component {
         <Route
           path="/"
           exact
-          render={() => (
-            <main className="background_container">
-              <Header />
-              <section className="parent_container">
-                <h1>TODO</h1>
-                <Form newTodo={this.newTodo} />
-                <Todo todos={todos} />
-                <Footer />
-              </section>
-            </main>
+          render={(routeProps) => (
+            <Home {...routeProps} todos={todos} newTodo={this.newTodo} />
           )}
         />
-        <Route exact component={Completed} render={() => <Footer />} />
+        <Route
+          path="/active"
+          exact
+          render={(routeProps) => <Active {...routeProps} todos={todos} />}
+        />
+        <Route
+          path="/completed"
+          exact
+          render={(routeProps) => <Completed {...routeProps} todos={todos} />}
+        />
       </BrowserRouter>
     );
   }
