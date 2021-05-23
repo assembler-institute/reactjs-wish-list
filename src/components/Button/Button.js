@@ -1,5 +1,6 @@
 import React from "react";
 import "./_Button.scss";
+// import { Link } from "react-router-dom";
 
 const Checkbox = ({ handleSelected }) => {
   return <input className="check" type="checkbox" onChange={handleSelected} />;
