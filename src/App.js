@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       todos: defaultTodos,
       hasTodos: false,
+      lightMode: true,
       isLoading: false,
       hasError: false,
     };
@@ -22,6 +23,7 @@ class App extends Component {
     this.handleDone = this.handleDone.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEditedTodo = this.handleEditedTodo.bind(this);
+    this.handleMode = this.handleMode.bind(this);
   }
 
   /* -------------------------------------------------------------------------- */
@@ -82,6 +84,13 @@ class App extends Component {
     this.setState({ todos: updatedTodos });
   }
 
+  handleMode() {
+    const { lightMode } = this.state;
+    this.setState({ lightMode: !lightMode });
+    // eslint-disable-next-line
+    console.log("Changed mode", lightMode);
+  }
+
   /* -------------------------------------------------------------------------- */
   /*                                REACT METHODS                               */
   /* -------------------------------------------------------------------------- */
@@ -128,7 +137,9 @@ class App extends Component {
         <main className="container mt-5 main-container px-0">
           <div className="main-header">
             <h1 className="main-header-title">T O D O</h1>
-            <i className="uil uil-moon" />
+            <button type="button" onClick={this.handleMode}>
+              <i className="uil uil-moon" />
+            </button>
           </div>
           <CreateTodo handleAddTodo={this.handleAddTodo} />
           <BrowserRouter>
