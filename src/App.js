@@ -17,6 +17,7 @@ function loadLocalStorage() {
       todo: "",
       todoList: [],
       editTodo: false,
+      hasError: false,
     };
   }
   return data;
@@ -32,6 +33,12 @@ class App extends Component {
       todoList: [],
       editTodo: false,
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCompleteTodo = this.handleCompleteTodo.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
 
   componentDidMount() {
@@ -112,7 +119,7 @@ class App extends Component {
   };
 
   render() {
-    const { id, todo, todoList, editTodo } = this.state;
+    const { id, todo, todoList, editTodo, hasError } = this.state;
     return (
       <BrowserRouter>
         <Route
@@ -124,6 +131,7 @@ class App extends Component {
               todo={todo}
               todoList={todoList}
               editTodo={editTodo}
+              hasError={hasError}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
               handleCompleteTodo={this.handleCompleteTodo}
@@ -142,6 +150,7 @@ class App extends Component {
               todo={todo}
               todoList={todoList}
               editTodo={editTodo}
+              hasError={hasError}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
               handleCompleteTodo={this.handleCompleteTodo}
@@ -160,6 +169,7 @@ class App extends Component {
               todo={todo}
               todoList={todoList}
               editTodo={editTodo}
+              hasError={hasError}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
               handleCompleteTodo={this.handleCompleteTodo}

@@ -1,16 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;500;600&display=swap");
 
-.home {
+.mainScreen {
   width: 100%;
   height: 100%;
   font-family: "Josefin Sans", sans-serif;
-  .upper_home {
+  .upperScreen {
     background-image: linear-gradient(
         to right,
         rgb(124, 50, 131),
         rgb(64, 57, 128)
       ),
-      url("../../img/background.jpg");
+      url("../../../img/background.jpg");
     background-blend-mode: screen;
     background-repeat: no-repeat;
     background-position: center;
@@ -18,7 +18,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    .central_home {
+    .middleScreen {
       margin-top: 50px;
     }
   }

@@ -12,8 +12,8 @@ body.dark {
       fill: $mainWhite;
     }
   }
-  .home {
-    .upper_home {
+  .mainScreen {
+    .upperScreen {
       background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url("../src/img/background.jpg");
       .addTodo {
