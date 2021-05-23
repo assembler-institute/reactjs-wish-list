@@ -1,20 +1,19 @@
 import React from "react";
 
 import Footer from "../Footer";
-import Form from "../Form";
+
 import Header from "../Header";
 import Todo from "../Todo";
 
 import "../../_App.scss";
 
-function Home({ newTodo, todos }) {
+function Complete({ todos }) {
   return (
     <>
       <main className="background_container">
         <Header />
         <section className="parent_container">
           <h1>TODO</h1>
-          <Form newTodo={newTodo} />
           <Todo todos={todos} />
           <Footer />
         </section>
@@ -23,4 +22,4 @@ function Home({ newTodo, todos }) {
   );
 }
 
-export default Home;
+export default Complete;

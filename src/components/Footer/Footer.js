@@ -6,9 +6,13 @@ function Footer() {
   return (
     <footer className="todo_footer">
       <h6>5 items left</h6>
-      <h6>All</h6>
-      <h6>Active</h6>
-      <Link to="/complete">
+      <Link to="/" className="nav_links">
+        <h6>All</h6>
+      </Link>
+      <Link to="/active" className="nav_links">
+        <h6>Active</h6>
+      </Link>
+      <Link to="/completed" className="nav_links">
         <h6>Completed</h6>
       </Link>
       <h6>Clear Completed</h6>
