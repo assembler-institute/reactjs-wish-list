@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import classNames from "classnames";
 import { Route } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
@@ -6,6 +7,7 @@ import TodoList from "./components/TodoList";
 import * as api from "./api";
 import AppHeader from "./components/AppHeader";
 import { HOME, ACTIVE, COMPLETED } from "./constatnts/routes";
+import "./app.scss";
 
 const LOCAL_STORAGE_KEY = "todo-state";
 
@@ -29,6 +31,7 @@ class App extends Component {
     this.state = {
       todos: [],
       todoName: "",
+      currentTheme: false,
     };
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,6 +41,8 @@ class App extends Component {
     this.handleEdit = this.handleEdit.bind(this);
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
     this.handleResetEdit = this.handleResetEdit.bind(this);
+    this.handleClearCompleted = this.handleClearCompleted.bind(this);
+    this.handleThemeClick = this.handleThemeClick.bind(this);
   }
 
   componentDidMount() {
@@ -50,12 +55,18 @@ class App extends Component {
       return;
     }
 
-    this.setState({ todos: prevItems.todos });
+    this.setState({
+      todos: prevItems.todos,
+      currentTheme: prevItems.currentTheme,
+    });
   }
 
   componentDidUpdate() {
-    const { todos } = this.state;
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ todos }));
+    const { todos, currentTheme } = this.state;
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify({ todos, currentTheme }),
+    );
   }
 
   handleAddTodo(values) {
@@ -95,6 +106,11 @@ class App extends Component {
     this.setState({ todos: arr });
   }
 
+  handleClearCompleted(todos) {
+    const arr = todos.filter((todo) => todo.complete === false);
+    this.setState({ todos: arr });
+  }
+
   handleEdit(id) {
     const { todos } = this.state;
     const todoToEdit = todos.map((todo) => {
@@ -121,11 +137,25 @@ class App extends Component {
     this.setState({ todos: todoToEdit });
   }
 
+  handleThemeClick() {
+    const { currentTheme } = this.state;
+    this.setState({ currentTheme: !currentTheme });
+  }
+
   render() {
-    const { todos } = this.state;
+    const { todos, currentTheme } = this.state;
+    const appClasses = classNames({
+      globalContainer: true,
+      darkModeOpacity: currentTheme,
+    });
+
     return (
-      <>
-        <AppHeader handleAddTodo={this.handleAddTodo} />
+      <div className={appClasses}>
+        <AppHeader
+          handleAddTodo={this.handleAddTodo}
+          handleThemeClick={this.handleThemeClick}
+          currentTheme={currentTheme}
+        />
 
         <Route
           path={ACTIVE}
@@ -164,11 +194,13 @@ class App extends Component {
               handleEdit={this.handleEdit}
               handleEditSubmit={this.handleEditSubmit}
               handleResetEdit={this.handleResetEdit}
+              handleClearCompleted={this.handleClearCompleted}
               todos={todos}
+              currentTheme={currentTheme}
             />
           )}
         />
-      </>
+      </div>
     );
   }
 }

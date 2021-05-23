@@ -32,6 +32,9 @@
   display: block;
 }
 
+.main__todo__darkMode {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
 .completed {
   opacity: 0.5;
   text-decoration: line-through;
