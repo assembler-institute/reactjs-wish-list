@@ -175,8 +175,8 @@ class App extends Component {
                     handleIsActive={this.handleIsActive}
                     deleteTodo={this.deleteTodo}
                     handleIsEdit={this.handleIsEdit}
-                    editTodo={this.editTodo}
                     displayHashtag={this.displayHashtag}
+                    editTodo={this.editTodo}
                   />
                 </Route>
                 <Route path="/completed">
@@ -185,8 +185,8 @@ class App extends Component {
                     handleIsActive={this.handleIsActive}
                     deleteTodo={this.deleteTodo}
                     handleIsEdit={this.handleIsEdit}
-                    editTodo={this.editTodo}
                     displayHashtag={this.displayHashtag}
+                    editTodo={this.editTodo}
                   />
                 </Route>
                 <Route path="/">
@@ -195,8 +195,8 @@ class App extends Component {
                     handleIsActive={this.handleIsActive}
                     deleteTodo={this.deleteTodo}
                     handleIsEdit={this.handleIsEdit}
-                    editTodo={this.editTodo}
                     displayHashtag={this.displayHashtag}
+                    editTodo={this.editTodo}
                   />
                 </Route>
               </Switch>

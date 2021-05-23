@@ -6,7 +6,7 @@ import "./NewTodo.scss";
 
 import newTodoSchema from "./NewTodoSchema";
 
-import Input from "../Input";
+import NewTodoInput from "../NewTodoInput";
 
 function addTodoDetails(todo) {
   return {
@@ -18,14 +18,7 @@ function addTodoDetails(todo) {
   };
 }
 
-export default function NewTodo({
-  saveNewTodo,
-  editTodo,
-  id,
-  content,
-  displayHashtag,
-  hashtagDisplayed,
-}) {
+export default function NewTodo({ saveNewTodo, editTodo, id, content }) {
   function onSave(values) {
     editTodo(id, values.target.value);
   }
@@ -67,7 +60,7 @@ export default function NewTodo({
           onBlur={id && onSave}
           className="new-todo-form"
         >
-          <Input
+          <NewTodoInput
             id={id}
             type="text"
             className="input"
@@ -77,8 +70,6 @@ export default function NewTodo({
             handleBlur={handleBlur}
             hasErrorMessage={touched.title}
             errorMessage={errors.title}
-            displayHashtag={displayHashtag}
-            hashtagDisplayed={hashtagDisplayed}
           />
         </form>
       )}

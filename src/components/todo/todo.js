@@ -1,7 +1,8 @@
 import React from "react";
+import { Formik } from "formik";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../button";
 import TodoInput from "../TodoInput";
@@ -9,41 +10,69 @@ import Hashtag from "../Hashtag";
 
 import "./todo.scss";
 
+import newTodoSchema from "../NewTodo/NewTodoSchema";
+
 function Todo({
   id,
   content,
   handleIsActive,
   isActive,
-  editTodo,
   deleteTodo,
   hashtagDisplayed,
   displayHashtag,
+  editTodo,
 }) {
   function deleteTodoId() {
     deleteTodo(id);
   }
 
+  function onSave(values) {
+    editTodo(id, values.target.value);
+  }
+
   return (
-    <li className="list">
-      <div className="container__list">
-        <span className="hashtag hashtagRed"> </span>
+    <>
+      <li className="list">
+        <div className="container-list">
+          <span className="hashtag red"> </span>
 
-        <Button id={id} handleIsActive={handleIsActive} isActive={isActive} />
-        <TodoInput
-          id={id}
-          content={content}
-          editTodo={editTodo}
-          displayHashtag={displayHashtag}
-          hashtagDisplayed={hashtagDisplayed}
-        />
-
-        <div className="delete">
-          <FontAwesomeIcon icon={faTimes} onClick={deleteTodoId} />
-          <FontAwesomeIcon icon={faTrashAlt} />
+          <Button id={id} handleIsActive={handleIsActive} isActive={isActive} />
+          <div className="todo-input">
+            <Formik
+              initialValues={{
+                content: "",
+              }}
+              validationSchema={newTodoSchema}
+              onSubmit={onSave}
+              onChange={onSave}
+              onBlur={onSave}
+            >
+              {({ handleChange, handleBlur, handleSubmit }) => (
+                <form
+                  onSubmit={handleSubmit}
+                  onChange={id && onSave}
+                  onBlur={id && onSave}
+                  className="todo-form"
+                >
+                  <TodoInput
+                    id={id}
+                    content={content}
+                    displayHashtag={displayHashtag}
+                    hashtagDisplayed={hashtagDisplayed}
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                  />
+                </form>
+              )}
+            </Formik>
+          </div>
+          <div className="delete">
+            <FontAwesomeIcon icon={faTrashAlt} onClick={deleteTodoId} />
+          </div>
         </div>
-      </div>
-      <Hashtag hashtagDisplayed={hashtagDisplayed} />
-    </li>
+        <Hashtag hashtagDisplayed={hashtagDisplayed} />
+      </li>
+    </>
   );
 }
 

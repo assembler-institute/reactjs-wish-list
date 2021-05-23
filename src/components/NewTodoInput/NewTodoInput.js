@@ -1,5 +1,5 @@
 import React from "react";
-import "./input.scss";
+import "./NewTodoInput.scss";
 
 export default function Input({
   type = "text",
@@ -8,29 +8,20 @@ export default function Input({
   placeholder = "",
   handleChange,
   handleBlur,
-  handleEnterKey,
   errorMessage,
   hasErrorMessage,
-  displayHashtag,
-  hashtagDisplayed,
   ...props
 }) {
   return (
     <div className="input">
       <input
-        className={
-          hasErrorMessage && errorMessage
-            ? "form-control is-invalid"
-            : "form-control"
-        }
-        id={id}
-        name={id}
+        id="input"
+        name="content"
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
-        onKeyPress={handleEnterKey}
         {...props}
       />
       {hasErrorMessage && errorMessage && (

@@ -1,11 +1,10 @@
 import React from "react";
-import "../Input/input.scss";
+import "./TodoInput.scss";
 
 export default function Input({
   type = "text",
   id,
-  value = "",
-  placeholder = "",
+  content,
   handleChange,
   handleBlur,
   handleEnterKey,
@@ -23,19 +22,14 @@ export default function Input({
   return (
     <div className="input">
       <input
-        className={
-          hasErrorMessage && errorMessage
-            ? "form-control is-invalid"
-            : "form-control"
-        }
+        className="input"
         id={id}
         name={id}
         type={type}
-        placeholder={placeholder}
-        value={value}
+        placeholder={content}
+        value={content}
         onChange={handleChange}
         onBlur={handleBlur}
-        onKeyPress={handleEnterKey}
         onClick={isDisplayed}
         {...props}
       />

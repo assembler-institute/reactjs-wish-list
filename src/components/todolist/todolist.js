@@ -7,9 +7,9 @@ function TodoList({
   todos,
   handleIsActive,
   deleteTodo,
-  editTodo,
   handleIsEdit,
   displayHashtag,
+  editTodo,
 }) {
   const completed = todos.filter((todo) => todo.isActive === true);
   const active = todos.filter((todo) => todo.isActive === false);
@@ -28,12 +28,11 @@ function TodoList({
               content={todo.content}
               isActive={todo.isActive}
               handleIsActive={handleIsActive}
-              editTodo={editTodo}
-              isEdit={todo.isEdit}
               handleIsEdit={handleIsEdit}
               deleteTodo={deleteTodo}
               hashtagDisplayed={todo.hashtagDisplayed}
               displayHashtag={displayHashtag}
+              editTodo={editTodo}
             />
           ))}
         </ul>
@@ -59,12 +58,11 @@ function TodoList({
             content={todo.content}
             isActive={todo.isActive}
             handleIsActive={handleIsActive}
-            editTodo={editTodo}
-            isEdit={todo.isEdit}
             handleIsEdit={handleIsEdit}
             deleteTodo={deleteTodo}
             hashtagDisplayed={todo.hashtagDisplayed}
             displayHashtag={displayHashtag}
+            editTodo={editTodo}
           />
         ))}
       </ul>
