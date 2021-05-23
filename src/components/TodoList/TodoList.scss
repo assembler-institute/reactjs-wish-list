@@ -1,5 +1,6 @@
 .TodoList {
-  max-width: 500px;
+  width: 100vw;
+  min-width: 300px;
   background-color: white;
   margin-top: 20px;
   border-radius: 5px;
@@ -19,10 +20,8 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@media (min-width: 551px) {
   .TodoList {
-    max-width: 500px;
-    min-width: 300px;
-    background-color: blue;
+    width: 500px;
   }
 }
