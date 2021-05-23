@@ -2,20 +2,33 @@ import React from "react";
 import { v4 as uuid } from "uuid";
 import { Formik } from "formik";
 
+import "./NewTodo.scss";
+
 import newTodoSchema from "./NewTodoSchema";
 
 import Input from "../Input";
-import Button from "../button";
 
 function addTodoDetails(todo) {
   return {
     id: uuid(),
     ...todo,
     isActive: false,
+    isEdit: false,
+    hashtagDisplayed: false,
   };
 }
 
-export default function NewTodo({ saveNewTodo }) {
+export default function NewTodo({
+  saveNewTodo,
+  editTodo,
+  id,
+  content,
+  displayHashtag,
+  hashtagDisplayed,
+}) {
+  function onSave(values) {
+    editTodo(id, values.target.value);
+  }
   const onSubmit = async (
     values,
     { setSubmitting, setErrors, setStatus, resetForm },
@@ -36,7 +49,9 @@ export default function NewTodo({ saveNewTodo }) {
         content: "",
       }}
       validationSchema={newTodoSchema}
-      onSubmit={onSubmit}
+      onSubmit={id ? onSave : onSubmit}
+      onChange={id && onSave}
+      onBlur={id && onSave}
     >
       {({
         handleChange,
@@ -46,18 +61,24 @@ export default function NewTodo({ saveNewTodo }) {
         values,
         touched,
       }) => (
-        <form onSubmit={handleSubmit} className="new-todo">
-          <Button />
+        <form
+          onSubmit={handleSubmit}
+          onChange={id && onSave}
+          onBlur={id && onSave}
+          className="new-todo-form"
+        >
           <Input
-            id="content"
+            id={id}
             type="text"
             className="input"
-            value={values.content}
-            placeholder="Add new todo"
+            value={id ? content : values.content}
+            placeholder={id ? content : "Add new todo"}
             handleChange={handleChange}
             handleBlur={handleBlur}
             hasErrorMessage={touched.title}
             errorMessage={errors.title}
+            displayHashtag={displayHashtag}
+            hashtagDisplayed={hashtagDisplayed}
           />
         </form>
       )}

@@ -1,11 +1,16 @@
 import React from "react";
-import Todo from "../Todo";
+import Todo from "../todo";
 import "./todolist.scss";
 import NoTodo from "../NoTodo";
 
-function TodoList({ todos, handleIsActive, deleteTodo }) {
-  // eslint-disable-next-line
-  // console.log(this.state);
+function TodoList({
+  todos,
+  handleIsActive,
+  deleteTodo,
+  editTodo,
+  handleIsEdit,
+  displayHashtag,
+}) {
   const completed = todos.filter((todo) => todo.isActive === true);
   const active = todos.filter((todo) => todo.isActive === false);
 
@@ -23,7 +28,12 @@ function TodoList({ todos, handleIsActive, deleteTodo }) {
               content={todo.content}
               isActive={todo.isActive}
               handleIsActive={handleIsActive}
+              editTodo={editTodo}
+              isEdit={todo.isEdit}
+              handleIsEdit={handleIsEdit}
               deleteTodo={deleteTodo}
+              hashtagDisplayed={todo.hashtagDisplayed}
+              displayHashtag={displayHashtag}
             />
           ))}
         </ul>
@@ -49,7 +59,12 @@ function TodoList({ todos, handleIsActive, deleteTodo }) {
             content={todo.content}
             isActive={todo.isActive}
             handleIsActive={handleIsActive}
+            editTodo={editTodo}
+            isEdit={todo.isEdit}
+            handleIsEdit={handleIsEdit}
             deleteTodo={deleteTodo}
+            hashtagDisplayed={todo.hashtagDisplayed}
+            displayHashtag={displayHashtag}
           />
         ))}
       </ul>

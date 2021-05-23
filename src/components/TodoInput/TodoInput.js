@@ -1,5 +1,5 @@
 import React from "react";
-import "./input.scss";
+import "../Input/input.scss";
 
 export default function Input({
   type = "text",
@@ -15,6 +15,11 @@ export default function Input({
   hashtagDisplayed,
   ...props
 }) {
+  function isDisplayed() {
+    if (id) {
+      displayHashtag(id);
+    }
+  }
   return (
     <div className="input">
       <input
@@ -31,6 +36,7 @@ export default function Input({
         onChange={handleChange}
         onBlur={handleBlur}
         onKeyPress={handleEnterKey}
+        onClick={isDisplayed}
         {...props}
       />
       {hasErrorMessage && errorMessage && (

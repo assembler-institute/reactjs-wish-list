@@ -1,0 +1,40 @@
+.container__hashtag {
+  width: inherit;
+  display: none;
+  padding: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: display 1s ease;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.container__hashtag > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.container__hashtag > div > div {
+  width: 40px;
+  height: 20px;
+  border-radius: 4px;
+  margin: 0 0.5rem;
+  //align-self: stretch;
+}
+.hashtagRed {
+  background-color: red;
+}
+.hashtagOrange {
+  background-color: orange;
+}
+.hashtagGreen {
+  background-color: green;
+}
+.hashtag {
+  align-self: stretch;
+}
