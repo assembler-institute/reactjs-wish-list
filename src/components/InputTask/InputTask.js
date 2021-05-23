@@ -8,7 +8,7 @@ function InputTask({ handleKeyDown }) {
   }
   return (
     <div className="container d-flex bg-white box-shadow py-4 input-container">
-      <input className="mx-lg-2 align-self-center" type="checkbox" />
+      <input className="mx-lg-2 align-self-center" type="checkbox" disabled />
       <input
         className="d-flex align-self-center flex-fill border-0"
         type="text"

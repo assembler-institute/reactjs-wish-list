@@ -2,4 +2,7 @@
   border-radius: 5px;
   margin-bottom: 35px;
   box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+  :focus{
+    outline: none;
+  }
 }

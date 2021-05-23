@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { v4 as uuid } from "uuid";
 import $ from "jquery";
-// import { BrowserRouter, Route } from "react-router-dom";
 import Main from "./components/Main";
 import Section from "./components/Section";
 import AppHeader from "./components/AppHeader";
@@ -47,7 +46,6 @@ class App extends Component {
   componentDidUpdate() {
     const { tasks } = this.state;
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
-    // console.log(tasks);
   }
 
   handleKeyDown(event) {
@@ -71,7 +69,6 @@ class App extends Component {
   }
 
   handleRemoveTask(taskId) {
-    // console.log(taskId);
     const { tasks } = this.state;
     this.setState({
       tasks: tasks.filter((task) => task.id !== taskId),

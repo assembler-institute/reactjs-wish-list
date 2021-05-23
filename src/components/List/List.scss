@@ -1,16 +1,16 @@
 .list-container{
   border-radius: 5px;
   box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
-  max-height: 40vh;
+  height: 40vh;
   display: flex;
   ul {
+    border-radius: 5px;
     line-height: 300%;
-    overflow-y: scroll;
+    overflow-y: auto;
     flex-grow: 1;
     flex-basis: 0;
     list-style-type: none;
     vertical-align: top;
-    width: 16%;
     li {
       &:hover {
         font-weight: 500;
@@ -18,4 +18,11 @@
       border: 1px solid lightgrey;
     }
   }
+}
+
+.empty-list {
+  background-image: url("../../img/nothing-todo.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
