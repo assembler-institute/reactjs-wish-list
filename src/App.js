@@ -31,6 +31,8 @@ class App extends Component {
       tasks: [],
     };
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleRemoveTask = this.handleRemoveTask.bind(this);
+    this.handleCompleteTask = this.handleCompleteTask.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +47,7 @@ class App extends Component {
   componentDidUpdate() {
     const { tasks } = this.state;
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
+    // console.log(tasks);
   }
 
   handleKeyDown(event) {
@@ -67,6 +70,22 @@ class App extends Component {
     }
   }
 
+  handleRemoveTask(taskId) {
+    // console.log(taskId);
+    const { tasks } = this.state;
+    this.setState({
+      tasks: tasks.filter((task) => task.id !== taskId),
+    });
+  }
+
+  handleCompleteTask(taskId) {
+    const { tasks } = this.state;
+    tasks[tasks.findIndex((task) => task.id === taskId)].completed = true;
+    this.setState({
+      tasks: tasks,
+    });
+  }
+
   render() {
     const { tasks } = this.state;
 
@@ -75,7 +94,11 @@ class App extends Component {
         <Section>
           <AppHeader />
           <InputTask handleKeyDown={this.handleKeyDown} />
-          <List tasks={tasks} />
+          <List
+            tasks={tasks}
+            handleRemoveTask={this.handleRemoveTask}
+            handleCompleteTask={this.handleCompleteTask}
+          />
         </Section>
       </Main>
     );
