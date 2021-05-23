@@ -87,8 +87,6 @@ class App extends Component {
   handleMode() {
     const { lightMode } = this.state;
     this.setState({ lightMode: !lightMode });
-    // eslint-disable-next-line
-    console.log("Changed mode", lightMode);
   }
 
   /* -------------------------------------------------------------------------- */
@@ -113,10 +111,13 @@ class App extends Component {
   }
 
   componentDidUpdate() {
+    const { lightMode } = this.state;
     // eslint-disable-next-line no-console
     console.clear();
     // eslint-disable-next-line no-console
     console.log(this.state);
+    // eslint-disable-next-line
+    console.log("Light mode", lightMode);
   }
 
   render() {

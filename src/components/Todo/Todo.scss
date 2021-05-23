@@ -33,6 +33,7 @@
 
     input:checked ~ .custom-checkbox {
       color: white;
+      border: none;
 
       background-image: linear-gradient(
         125deg,
