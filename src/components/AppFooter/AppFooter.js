@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+import "./AppFooter.scss";
 
 import { HOME, ACTIVE, COMPLETED } from "../../constatnts/routes";
 
@@ -8,15 +10,30 @@ function AppFooter({ todos }) {
     <section className="main__footer">
       <span>{todos.filter((v) => !v.complete).length} items left</span>
       <div className="main__footer__lwrp">
-        <Link className="main__footer__link" to={HOME}>
+        <NavLink
+          className="main__footer__link"
+          activeClassName="selected"
+          exact
+          to={HOME}
+        >
           All
-        </Link>
-        <Link className="main__footer__link" to={ACTIVE}>
+        </NavLink>
+        <NavLink
+          className="main__footer__link"
+          activeClassName="selected"
+          exact
+          to={ACTIVE}
+        >
           Active
-        </Link>
-        <Link className="main__footer__link" to={COMPLETED}>
+        </NavLink>
+        <NavLink
+          className="main__footer__link"
+          activeClassName="selected"
+          exact
+          to={COMPLETED}
+        >
           Completed
-        </Link>
+        </NavLink>
       </div>
       <button className="main__footer__link" type="button">
         Clear completed
