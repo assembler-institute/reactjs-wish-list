@@ -1,10 +1,15 @@
 .heroImg {
   // height: 33vh;
   min-height: 210px;
-  width: 100vw;
-  margin: 0;
-  display: grid;
-  place-content: center;
+  // width: 100vw;
+  width: 100%;
+  // margin: 0;
+  // display: grid;
+  // place-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(
       135deg,
       hsl(348, 97%, 63%, 0.65),
@@ -16,7 +21,9 @@
 
 .TODO__Header {
   margin-bottom: 20px;
-  width: 500px;
+  // width: 500px;
+  width: 100%;
+  max-width: 500px;
   letter-spacing: 10px;
   color: white;
 }
@@ -30,4 +37,6 @@
   border-radius: 5px;
   overflow: hidden;
   padding-left: 0.7rem;
+  width: 100%;
+  max-width: 500px;
 }

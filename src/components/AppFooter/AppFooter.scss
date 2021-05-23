@@ -7,10 +7,19 @@
 
   &__link:hover {
     text-decoration: none;
+    color: rgba($color: #6c63ff, $alpha: 1);
   }
 }
 
 .selected {
-  color: rgba($color: #5481d6, $alpha: 1);
+  color: rgba($color: #6c63ff, $alpha: 1);
   font-weight: bold;
+}
+
+@media only screen and (max-width: 500px) {
+  .main__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

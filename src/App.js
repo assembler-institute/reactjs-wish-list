@@ -43,7 +43,7 @@ class App extends Component {
   componentDidMount() {
     const prevItems = loadLocalStorageData();
 
-    if (!prevItems) {
+    if (!prevItems || !prevItems.todos.length) {
       api.getProducts().then((data) => {
         this.setState({ todos: data });
       });
