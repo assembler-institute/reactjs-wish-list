@@ -10,12 +10,14 @@ import NoTodos from "../../components/NoTodos";
 function All({
   handleSubmit,
   handleChange,
+  handleChecked,
   todoName,
   isEmpty,
   allTodos,
   handleCompleted,
   handleSetCompleted,
   handleRemove,
+  todoLenght,
   ...props
 }) {
   return (
@@ -45,10 +47,11 @@ function All({
                 handleSetCompleted={handleSetCompleted}
                 handleCompleted={handleCompleted}
                 handleRemove={handleRemove}
+                handleChecked={handleChecked}
               />
             )}
           </div>
-          <AppFooter />
+          <AppFooter todoLenght={todoLenght} />
         </article>
       </section>
     </Main>

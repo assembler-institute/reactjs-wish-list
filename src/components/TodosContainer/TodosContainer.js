@@ -10,10 +10,15 @@ function TodosContainer({
   handleRemove,
   handleSubmit,
   handleChange,
+  handleChecked,
 }) {
   return (
     <div className="d-flex justify-content-center align-items-center px-3 input-group borders">
-      <CompletedButton id={id} isComplete={isComplete} />
+      <CompletedButton
+        id={id}
+        isComplete={isComplete}
+        handleChecked={handleChecked}
+      />
       <form className="mx-1" onSubmit={handleSubmit}>
         <input
           className="form-control bg-light"

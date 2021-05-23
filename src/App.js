@@ -41,6 +41,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleChecked = this.handleChecked.bind(this);
   }
 
   componentDidMount() {
@@ -102,6 +103,18 @@ class App extends Component {
     }
   }
 
+  handleChecked(id) {
+    const { allTodos } = this.state;
+    const arr = allTodos.map((todo) => {
+      if (todo.id === id) {
+        // todo.complete = !todo.complete;
+        return { ...todo, complete: !todo.complete };
+      }
+      return todo;
+    });
+    this.setState({ allTodos: arr });
+  }
+
   render() {
     const { allTodos, todoName, isEmpty } = this.state;
     return (
@@ -109,9 +122,11 @@ class App extends Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         handleRemove={this.handleRemove}
+        handleChecked={this.handleChecked}
         allTodos={allTodos}
         todoName={todoName}
         isEmpty={isEmpty}
+        todoLenght={allTodos.length}
       />
     );
   }
