@@ -3,9 +3,9 @@
 import React from "react";
 import "./Checkbox.scss";
 
-export default function Checkbox({ checked, handleChange, id }) {
+export default function Checkbox({ checked, handleChangeCheck, id }) {
   return (
-    <div className="border" onClick={() => handleChange(id)}>
+    <div className="border" onClick={() => handleChangeCheck(id)}>
       <div className={`indicator ${checked ? "checked" : ""}`} />
     </div>
   );

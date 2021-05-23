@@ -14,6 +14,7 @@ function Todo({
   handleEdit = () => {},
   handleEditSubmit = () => {},
   handleResetEdit,
+  currentTheme,
 }) {
   function onHandleRemove() {
     handleRemove(todo.id);
@@ -22,14 +23,21 @@ function Todo({
     handleEdit(todo.id);
   }
 
+  const mainTodoClasses = classNames({
+    main__todo: true,
+    main__todo__darkMode: currentTheme,
+  });
+
   const completedTask = classNames({
     completed: todo.complete,
+    darkMode: currentTheme,
   });
+
   return (
-    <div className="main__todo">
+    <div className={mainTodoClasses}>
       <div className="main__todo__check">
         <Checkbox
-          handleChange={handleChangeCheck}
+          handleChangeCheck={handleChangeCheck}
           checked={todo.complete}
           id={todo.id}
         />

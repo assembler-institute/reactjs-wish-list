@@ -1,12 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 
 import { HOME, ACTIVE, COMPLETED } from "../../constatnts/routes";
 
-function AppFooter({ todos, handleClearCompleted }) {
+function AppFooter({ todos, handleClearCompleted, currentTheme }) {
   function onHandleClearCompleted() {
     handleClearCompleted(todos);
   }
+  const footerClearCompleteClasses = classNames({
+    main__footer__link: true,
+    main__footer__linkDarkMode: currentTheme,
+  });
   return (
     <section className="main__footer">
       <span>{todos.filter((v) => !v.complete).length} items left</span>
@@ -22,7 +27,7 @@ function AppFooter({ todos, handleClearCompleted }) {
         </Link>
       </div>
       <button
-        className="main__footer__link"
+        className={footerClearCompleteClasses}
         type="button"
         onClick={onHandleClearCompleted}
       >

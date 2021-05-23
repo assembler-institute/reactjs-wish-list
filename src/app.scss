@@ -1,0 +1,26 @@
+//light theme
+$bg-theme-light: #fff;
+$color-theme-light: #222;
+
+//dark theme_color
+$bg-theme-dark: #222;
+$color-theme-dark: #fff;
+
+body {
+  background-color: $bg-theme-light;
+  color: $color-theme-light;
+  height: 100vh;
+}
+
+.globalContainer {
+  height: 100vh;
+}
+
+.darkMode {
+  background-color: rgba($color: $bg-theme-dark, $alpha: 1);
+  color: $color-theme-dark;
+}
+.darkModeOpacity {
+  background-color: rgba($color: $bg-theme-dark, $alpha: 0.6);
+  color: $color-theme-dark;
+}
