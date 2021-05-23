@@ -43,7 +43,6 @@ class App extends Component {
     this.handleResetEdit = this.handleResetEdit.bind(this);
     this.handleClearCompleted = this.handleClearCompleted.bind(this);
     this.handleThemeClick = this.handleThemeClick.bind(this);
-    // this.handleReloadCurrentTheme = this.handleReloadCurrentTheme.bind(this);
   }
 
   componentDidMount() {
@@ -56,12 +55,18 @@ class App extends Component {
       return;
     }
 
-    this.setState({ todos: prevItems.todos });
+    this.setState({
+      todos: prevItems.todos,
+      currentTheme: prevItems.currentTheme,
+    });
   }
 
   componentDidUpdate() {
-    const { todos } = this.state;
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ todos }));
+    const { todos, currentTheme } = this.state;
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify({ todos, currentTheme }),
+    );
   }
 
   handleAddTodo(values) {
