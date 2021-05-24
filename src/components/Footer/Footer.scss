@@ -1,0 +1,19 @@
+footer > div {
+  display: flex;
+  font-size: small;
+  justify-content: flex-end;
+  button {
+    border: 0;
+    background: transparent;
+    &:hover {
+      font-weight: bold;
+    }
+  }
+  link:hover {
+    color: black;
+  }
+}
+
+.active {
+  color: blue;
+}

@@ -9,7 +9,6 @@ import InputTask from "./components/InputTask";
 import Home from "./pages/Home";
 import Completed from "./pages/Completed";
 import Active from "./pages/Active";
-import Footer from "./components/Footer";
 
 const LOCAL_STORAGE_KEY = "tasks";
 
@@ -145,7 +144,6 @@ class App extends Component {
                 />
               )}
             />
-            <Footer handleClearCompleted={this.handleClearCompleted} />
           </Section>
         </Main>
       </BrowserRouter>
