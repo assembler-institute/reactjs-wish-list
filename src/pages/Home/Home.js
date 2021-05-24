@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter } from "react-router-dom";
 
 import "./Home.scss";
 import AppHeader from "../../components/AppHeader/index";
@@ -12,34 +11,44 @@ import CardFooter from "../../components/CardFooter/index";
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      toDoList: [],
+    };
+    this.newToDo = this.newToDo.bind(this);
+  }
+
+  newToDo(toDo) {
+    const { toDoList } = this.state;
+
+    this.setState({
+      toDoList: [toDo, ...toDoList],
+    });
+
+    // console.log(toDo);
   }
 
   render() {
+    const { toDoList } = this.state;
+
     return (
-      <BrowserRouter>
-        <div className="mainBackground allWidth minHeight gridBody">
-          <BgPicture />
-          <main className="gridMain">
-            <AppHeader />
-            <section className="whiteBg roundedCorner shadow margBot">
-              <NewTodoCard />
+      <div className="mainBackground allWidth minHeight gridBody">
+        <BgPicture />
+        <main className="gridMain">
+          <AppHeader />
+          <section className="whiteBg roundedCorner shadow margBot">
+            <NewTodoCard newToDo={this.newToDo} />
+          </section>
+          <div className="shadow roundedCorner">
+            <section className="whiteBg">
+              {toDoList.map((e) => (
+                <TodoCard toDo={e} key={e} />
+              ))}
             </section>
-            <div className="shadow roundedCorner">
-              <section className="whiteBg">
-                <TodoCard />
-                <TodoCard />
-                <TodoCard />
-                <TodoCard />
-                <TodoCard />
-                <TodoCard />
-              </section>
-              <CardFooter />
-            </div>
-          </main>
-          <Footer />
-        </div>
-      </BrowserRouter>
+            <CardFooter />
+          </div>
+        </main>
+        <Footer />
+      </div>
     );
   }
 }

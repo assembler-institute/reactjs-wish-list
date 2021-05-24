@@ -9,6 +9,8 @@ class TodoCard extends Component {
   }
 
   render() {
+    const { toDo } = this.props;
+
     return (
       <div className="flex-row card-wide">
         <label>
@@ -18,7 +20,7 @@ class TodoCard extends Component {
             className="blue-checkbox clickable"
           />
         </label>
-        <span className="font-bold font-big full-width">TodoCard</span>
+        <span className="font-bold font-big full-width">{toDo}</span>
         <div>
           <i className="bi bi-x-lg font-light clickable" />
         </div>
