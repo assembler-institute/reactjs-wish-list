@@ -135,6 +135,7 @@ class App extends Component {
       <>
         <div className="general-background d-flex flex-column">
           <div className="top-background">
+            <div className="gradient" />
             <img
               className="img-background"
               src={

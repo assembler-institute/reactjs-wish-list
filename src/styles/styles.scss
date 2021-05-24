@@ -37,6 +37,22 @@ body {
 
     .top-background {
       height: 33%;
+      position: relative;
+      .gradient {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(
+          90deg,
+          #b62b86,
+          #9f589e,
+          #7e76b7,
+          #3a8fd1
+        );
+        mix-blend-mode: multiply;
+        opacity: 85%;
+        z-index: 1;
+      }
       .img-background {
         object-fit: cover;
         height: 100%;
