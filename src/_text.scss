@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika&display=swap");
+
+.text__normal--check {
+  font-family: "Signika", sans-serif;
+  font-size: 16px;
+  color: rgb(161, 161, 161);
+}
+.text__normal {
+  font-family: "Signika", sans-serif;
+  font-size: 16px;
+  color: rgb(66, 66, 66);
+}
+
+.text__small {
+  font-family: "Signika", sans-serif;
+  font-size: 13px;
+  color: rgb(161, 161, 161);
+}
+.text__small:hover {
+  color: rgb(122, 122, 122);
+  font-weight: bold;
+}

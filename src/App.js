@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import "./_text.scss";
 import "./styles.scss";
 import "./components/Footer/Footer.scss";
 
@@ -142,19 +142,29 @@ class App extends Component {
                 </Route>
               </Switch>
               <footer>
-                <div>{active.length} items left</div>
+                <div className="text__small">{active.length} items left</div>
                 <div>
                   <Link to="/">
-                    <button type="button">All</button>
+                    <button type="button" className="text__small">
+                      All
+                    </button>
                   </Link>
                   <Link to="/active">
-                    <button type="button">Actived</button>
+                    <button type="button" className="text__small">
+                      Actived
+                    </button>
                   </Link>
                   <Link to="/completed">
-                    <button type="button">Completed</button>
+                    <button type="button" className="text__small">
+                      Completed
+                    </button>
                   </Link>
                 </div>
-                <button type="button" onClick={this.clearCompleted}>
+                <button
+                  className="text__small"
+                  type="button"
+                  onClick={this.clearCompleted}
+                >
                   Clear Completed
                 </button>
               </footer>
