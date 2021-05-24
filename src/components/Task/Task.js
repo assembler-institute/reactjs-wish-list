@@ -11,9 +11,8 @@ function Task({ task, handleRemoveTask, handleCompleteTask }) {
   }
 
   return (
-    <li>
+    <li className="list-group-item">
       <input type="checkbox" onChange={onTaskComplete} value={task.id} />
-
       {task.name}
       <button
         type="button"

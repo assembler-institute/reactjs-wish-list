@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames/bind";
+
 import Task from "../Task";
 import "./List.scss";
 
@@ -11,7 +12,7 @@ function List({ tasks, handleRemoveTask, handleCompleteTask }) {
   });
   return (
     <div className={divClass}>
-      <ul className="p-0">
+      <ul className="p-0 list-group">
         {tasks.map((task) => (
           <Task
             key={task.id}
