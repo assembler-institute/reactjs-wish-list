@@ -94,6 +94,7 @@ class App extends Component {
 
   handleEditedTodo(todoId, editedText) {
     const { todos } = this.state;
+
     const updatedTodos = todos.map((todo) => {
       if (todo.id === todoId) {
         return {

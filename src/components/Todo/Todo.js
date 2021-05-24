@@ -43,9 +43,11 @@ class Todo extends Component {
 
   insideEditedTodo(event) {
     event.preventDefault();
+
     const { id, handleEditedTodo } = this.props;
     const { todoText } = this.state;
-    handleEditedTodo(id, todoText);
+    document.getElementById(`input-${id}`).blur();
+    handleEditedTodo(id, todoText, event);
   }
 
   render() {
