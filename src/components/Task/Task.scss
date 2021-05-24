@@ -7,6 +7,14 @@ li:hover span {
   align-items: center;
 }
 
+.hidden-chkbx{
+  opacity: 0.3
+}
+
+li:hover input {
+  opacity: 1
+}
+
 input {
   margin-right: 10px;
 }
@@ -15,4 +23,9 @@ input {
   .hidden {
     display: block;
   }
+}
+
+.task-completed{
+  text-decoration: line-through; 
+  opacity: 0.4;
 }

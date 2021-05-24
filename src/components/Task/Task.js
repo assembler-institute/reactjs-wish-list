@@ -1,6 +1,8 @@
 import React from "react";
 import "./Task.scss";
 
+const classNames = require("classnames");
+
 function Task({ task, handleRemoveTask, handleCheckboxChange }) {
   function onTaskRemove(event) {
     handleRemoveTask(event.target.parentNode.value);
@@ -10,10 +12,16 @@ function Task({ task, handleRemoveTask, handleCheckboxChange }) {
     handleCheckboxChange(event.target.value, event.target.checked);
   }
 
+  const taskClass = classNames({
+    "list-group-item": true,
+    "task-completed": task.completed,
+  });
+
   return (
-    <li className="list-group-item">
+    <li className={taskClass}>
       <input
         type="checkbox"
+        className="hidden-chkbx"
         onChange={onTaskComplete}
         value={task.id}
         checked={task.completed}
