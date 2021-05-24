@@ -6,7 +6,7 @@ function Footer({ handleClearCompleted, currentFilter, itemsLeft }) {
   return (
     <footer className="mb-4">
       <div className="container justify-content-between bg-white">
-        <div>{itemsLeft} items left</div>
+        <div>{itemsLeft || 0} items left</div>
         <Link
           exact="true"
           className={`nav-link p-0 ${currentFilter === "/" ? "active" : ""}`}
