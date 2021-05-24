@@ -15,6 +15,7 @@ class Home extends Component {
       toDoList: [],
     };
     this.newToDo = this.newToDo.bind(this);
+    this.selectedTodoToDelete = this.selectedTodoToDelete.bind(this);
   }
 
   newToDo(toDo) {
@@ -25,6 +26,15 @@ class Home extends Component {
     });
 
     // console.log(toDo);
+  }
+
+  selectedTodoToDelete(id) {
+    const { toDoList } = this.state;
+
+    const filteredToDoList = toDoList.filter((e, index) => index !== id);
+    this.setState({
+      toDoList: filteredToDoList,
+    });
   }
 
   render() {
@@ -40,8 +50,13 @@ class Home extends Component {
           </section>
           <div className="shadow roundedCorner">
             <section className="whiteBg">
-              {toDoList.map((e) => (
-                <TodoCard toDo={e} key={e} />
+              {toDoList.map((e, index) => (
+                <TodoCard
+                  toDo={e}
+                  key={e}
+                  selectedTodoToDelete={this.selectedTodoToDelete}
+                  id={index}
+                />
               ))}
             </section>
             <CardFooter />
