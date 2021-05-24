@@ -15,19 +15,25 @@ function Task({ task, handleRemoveTask, handleCheckboxChange }) {
   const taskClass = classNames({
     "list-group-item": true,
     "task-completed": task.completed,
+    "d-flex": true,
+    "flex-row": true,
+    "justify-content-between": true,
   });
 
   return (
     <li className={taskClass}>
-      <input
-        type="checkbox"
-        className="hidden-chkbx"
-        onChange={onTaskComplete}
-        value={task.id}
-        checked={task.completed}
-      />
+      <div>
+        <input
+          type="checkbox"
+          className="hidden-chkbx"
+          onChange={onTaskComplete}
+          value={task.id}
+          checked={task.completed}
+        />
 
-      {task.name}
+        {task.name}
+      </div>
+
       <button
         type="button"
         className="close"

@@ -7,6 +7,12 @@ li:hover span {
   align-items: center;
 }
 
+li{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .hidden-chkbx{
   opacity: 0.3
 }
@@ -29,3 +35,6 @@ input {
   text-decoration: line-through; 
   opacity: 0.4;
 }
+
+span{
+font-size: 39px;}
