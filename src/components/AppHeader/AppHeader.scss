@@ -1,11 +1,6 @@
 .heroImg {
-  // height: 33vh;
   min-height: 210px;
-  // width: 100vw;
   width: 100%;
-  // margin: 0;
-  // display: grid;
-  // place-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,10 +16,8 @@
 
 .TODO__Header {
   margin: 0px;
-  // width: 500px;
   width: 100%;
   max-width: 500px;
-  // margin-bottom: 20px;
   flex-grow: 1;
   display: inline;
   text-align: left;
