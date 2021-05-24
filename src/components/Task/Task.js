@@ -30,7 +30,6 @@ function Task({ task, handleRemoveTask, handleCheckboxChange }) {
           value={task.id}
           checked={task.completed}
         />
-
         {task.name}
       </div>
 
