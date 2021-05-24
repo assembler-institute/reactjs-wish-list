@@ -8,16 +8,18 @@ function Active({
   handleCheckboxChange,
   handleClearCompleted,
 }) {
+  const tasksActive = tasks.filter((task) => !task.completed);
   return (
     <>
       <List
-        tasks={tasks.filter((task) => !task.completed)}
+        tasks={tasksActive}
         handleRemoveTask={handleRemoveTask}
         handleCheckboxChange={handleCheckboxChange}
       />
       <Footer
         handleClearCompleted={handleClearCompleted}
         currentFilter={window.location.pathname}
+        itemsLeft={tasksActive.length}
       />
     </>
   );
