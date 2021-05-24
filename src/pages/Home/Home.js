@@ -25,8 +25,6 @@ class Home extends Component {
     this.setState({
       toDoList: [toDo, ...toDoList],
     });
-
-    // console.log(toDo);
   }
 
   selectedToDoToDelete(id) {
@@ -69,7 +67,8 @@ class Home extends Component {
               {toDoList.map((e, index) => (
                 <TodoCard
                   toDo={e}
-                  key={e}
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={`${e}-${index}`}
                   id={index}
                   selectedToDoToDelete={this.selectedToDoToDelete}
                   updateToDo={this.updateToDo}

@@ -5,7 +5,7 @@ class NewTodoCard extends Component {
     super(props);
     this.state = {
       inputText: "",
-      validation: true,
+      validation: false,
     };
     this.formManagement = this.formManagement.bind(this);
     this.submit = this.submit.bind(this);

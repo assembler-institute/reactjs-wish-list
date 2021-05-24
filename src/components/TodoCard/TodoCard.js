@@ -8,11 +8,47 @@ class TodoCard extends Component {
     this.state = {
       editMode: false,
       newEditedText: "",
+      isDone: false,
+      showHideSidenav: "show",
+      divHidden: "hidden",
     };
     this.deleteTodo = this.deleteTodo.bind(this);
     this.editToDo = this.editToDo.bind(this);
     this.manageNewtoDoText = this.manageNewtoDoText.bind(this);
     this.submitEdit = this.submitEdit.bind(this);
+    this.toggleChange = this.toggleChange.bind(this);
+    this.hoverDivIn = this.hoverDivIn.bind(this);
+    this.hoverDivOut = this.hoverDivOut.bind(this);
+  }
+
+  toggleChange() {
+    const { isDone } = this.state;
+
+    if (isDone) {
+      this.setState({
+        showHideSidenav: "show",
+      });
+    } else {
+      this.setState({
+        showHideSidenav: "taskDone",
+      });
+    }
+
+    this.setState({
+      isDone: !isDone,
+    });
+  }
+
+  hoverDivIn() {
+    this.setState({
+      divHidden: "divHover",
+    });
+  }
+
+  hoverDivOut() {
+    this.setState({
+      divHidden: "hidden",
+    });
   }
 
   editToDo() {
@@ -50,21 +86,28 @@ class TodoCard extends Component {
 
   render() {
     const { toDo } = this.props;
-    const { editMode, newEditedText } = this.state;
+    const { editMode, newEditedText, isDone, showHideSidenav, divHidden } =
+      this.state;
 
     return (
-      <div className="flex-row card-wide">
+      <div className={showHideSidenav}>
         {!editMode ? (
-          <>
+          <div
+            className="flex-row card-wide"
+            onMouseEnter={this.hoverDivIn}
+            onMouseLeave={this.hoverDivOut}
+          >
             <label>
               <input
                 type="checkbox"
                 name="completed"
+                defaultChecked={isDone}
                 className="blue-checkbox clickable"
+                onChange={this.toggleChange}
               />
             </label>
             <span className="font-bold font-big full-width">{toDo}</span>
-            <div className="d-flex">
+            <div className={`d-flex ${divHidden}`}>
               <button
                 type="button"
                 className="btn-submit btn btn-light"
@@ -80,7 +123,7 @@ class TodoCard extends Component {
                 delete
               </button>
             </div>
-          </>
+          </div>
         ) : (
           <>
             <form onSubmit={this.submitEdit}>

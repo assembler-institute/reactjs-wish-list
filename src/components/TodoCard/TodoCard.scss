@@ -57,3 +57,20 @@ input.blue-checkbox {
 .no-border {
   border: none;
 }
+
+.taskDone {
+  color:red;
+  opacity: 0.5;
+}
+.show{
+  color: black;
+}
+
+.hidden{
+  display: hidden;
+  opacity: 0;
+}
+
+.divHover{
+  display: block;
+}
