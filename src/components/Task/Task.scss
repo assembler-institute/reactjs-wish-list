@@ -2,11 +2,8 @@
   display: none;
 }
 
-li {
-  :hover span {
-    display: block;
-    align-self: center;
-  }
+li:hover span {
+  display: block;
 }
 
 input {
