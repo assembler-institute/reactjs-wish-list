@@ -6,6 +6,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Work Sans", sans-serif;
+  transition: 0.4s;
 
   ::placeholder {
     // color: #7e76b7;
@@ -33,8 +34,25 @@ body {
   align-items: center;
   .general-background {
     height: 100vh;
+
     .top-background {
       height: 33%;
+      position: relative;
+      .gradient {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(
+          90deg,
+          #b62b86,
+          #9f589e,
+          #7e76b7,
+          #3a8fd1
+        );
+        mix-blend-mode: multiply;
+        opacity: 85%;
+        z-index: 1;
+      }
       .img-background {
         object-fit: cover;
         height: 100%;
@@ -42,8 +60,11 @@ body {
       }
     }
     .bottom-background {
-      background-color: c.$backgroundColor;
+      background-color: c.$lightBgColor;
       flex-grow: 1;
+      &-dark {
+        background-color: c.$darkBgColor;
+      }
     }
   }
   .main-container {
@@ -63,18 +84,29 @@ body {
         font-weight: 300;
       }
 
-      i {
-        cursor: pointer;
-        font-size: 24px;
+      button {
+        background: none;
+        outline: none;
+        border: none;
+        color: inherit;
+        i {
+          cursor: pointer;
+          font-size: 24px;
+        }
       }
     }
 
-    section {
+    .custom-section {
       border-radius: 5px;
       -moz-box-shadow: 0px 0px 30px rgba(68, 68, 68, 0.6);
       -webkit-box-shadow: 0px 0px 30px rgba(68, 68, 68, 0.6);
       box-shadow: 0px 0px 30px rgba(68, 68, 68, 0.6);
       background-color: white;
+
+      &-dark {
+        color: white;
+        background-color: c.$darkBgColor;
+      }
     }
   }
 }
