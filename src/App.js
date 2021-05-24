@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Active from "./components/pages/Active";
 import Completed from "./components/pages/Complete";
+// import Todo from "./components/Todo";
 
 import "./_App.scss";
 
@@ -23,10 +24,8 @@ class App extends Component {
         // eslint-disable-next-line no-param-reassign
         return { ...todo, selected: !todo.selected };
       }
-
       return todo;
     });
-
     this.setState({
       todos: bolTodo,
     });
@@ -72,8 +71,9 @@ class App extends Component {
 
   render() {
     const { todos } = this.state;
-    const active = todos.filter((item) => item.selected === false);
-    const nonactive = todos.filter((item) => item.selected === true);
+    // const active = todos.filter((item) => item.selected === false);
+    // const nonactive = todos.filter((item) => item.selected === true);
+
     return (
       <BrowserRouter>
         <Route
@@ -93,13 +93,29 @@ class App extends Component {
         <Route
           path="/active"
           exact
-          render={(routeProps) => <Active {...routeProps} active={active} />}
+          render={(routeProps) => (
+            <Active
+              submitNewTitle={this.submitNewTitle}
+              handleDelete={this.handleDelete}
+              handleSelected={this.handleSelected}
+              newTodo={this.newTodo}
+              {...routeProps}
+              todos={todos.filter((item) => item.selected === false)}
+            />
+          )}
         />
         <Route
           path="/completed"
           exact
           render={(routeProps) => (
-            <Completed {...routeProps} nonactive={nonactive} />
+            <Completed
+              submitNewTitle={this.submitNewTitle}
+              handleDelete={this.handleDelete}
+              handleSelected={this.handleSelected}
+              newTodo={this.newTodo}
+              {...routeProps}
+              todos={todos.filter((item) => item.selected === true)}
+            />
           )}
         />
       </BrowserRouter>

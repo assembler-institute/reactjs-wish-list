@@ -7,14 +7,26 @@ import Todo from "../Todo";
 
 import "../../_App.scss";
 
-function Complete({ todos }) {
+function Complete({
+  todos,
+  submitNewTitle,
+  handleDelete,
+  handleSelected,
+  newTodo,
+}) {
   return (
     <>
       <main className="background_container">
         <Header />
         <section className="parent_container">
           <h1>TODO</h1>
-          <Todo todos={todos} />
+          <Todo
+            newTodo={newTodo}
+            submitNewTitle={submitNewTitle}
+            handleDelete={handleDelete}
+            handleSelected={handleSelected}
+            todos={todos}
+          />
           <Footer />
         </section>
       </main>
