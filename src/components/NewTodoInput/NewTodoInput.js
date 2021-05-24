@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./NewTodoInput.scss";
 
 export default function Input({
@@ -13,7 +14,7 @@ export default function Input({
   ...props
 }) {
   return (
-    <div className="input">
+    <div className="input dark-input">
       <input
         id="input"
         name="content"

@@ -8,7 +8,9 @@ import Button from "../button";
 import TodoInput from "../TodoInput";
 import Hashtag from "../Hashtag";
 
+import "../../_text.scss";
 import "./todo.scss";
+import "../TodoInput/TodoInput.scss";
 
 import newTodoSchema from "../NewTodo/NewTodoSchema";
 
@@ -55,6 +57,11 @@ function Todo({
                   className="todo-form"
                 >
                   <TodoInput
+                    className={
+                      isActive
+                        ? "input text__check text__normal--check"
+                        : "input text__normal"
+                    }
                     id={id}
                     content={content}
                     displayHashtag={displayHashtag}
