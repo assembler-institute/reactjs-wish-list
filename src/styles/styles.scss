@@ -20,8 +20,6 @@
   // outline: 2px red solid;
 }
 
-// background-blend-mode: multiply;
-
 body {
   height: 100vh;
 }
@@ -32,11 +30,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .general-background {
     height: 100vh;
 
     .top-background {
-      height: 33%;
+      height: 40%;
       position: relative;
       .gradient {
         position: absolute;
@@ -49,6 +48,7 @@ body {
           #7e76b7,
           #3a8fd1
         );
+
         mix-blend-mode: multiply;
         opacity: 85%;
         z-index: 1;
@@ -72,7 +72,8 @@ body {
     z-index: 1;
     width: 40%;
     min-width: 350px;
-    min-height: 80%;
+    height: fit-content;
+    margin-bottom: 110px;
 
     .main-header {
       display: flex;
@@ -105,6 +106,7 @@ body {
 
       &-dark {
         color: white;
+        border: 1px solid white;
         background-color: c.$darkBgColor;
       }
     }

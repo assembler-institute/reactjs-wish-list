@@ -6,26 +6,41 @@
   font-size: 14px;
   color: #969696;
   border-top: 1px solid lightgray;
+
   .footer-item:hover {
     color: black;
     font-weight: bold;
     cursor: pointer;
   }
+
+  .footer-item-dark:hover {
+    color: white;
+  }
+
   .navbar-nav {
     justify-content: space-between;
     flex-direction: row !important;
+
     .nav-link {
       padding: 8px;
       color: #969696;
     }
     .nav-link:hover {
       color: black;
-      font-weight: bold;
+      font-weight: 700;
+    }
+
+    .nav-link-dark:hover {
+      color: white;
     }
 
     .active {
       color: black;
-      font-weight: bold;
+      font-weight: 700;
+
+      &-dark {
+        color: white;
+      }
     }
   }
 }

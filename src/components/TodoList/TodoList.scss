@@ -1,9 +1,14 @@
 .todo-list-section {
-  height: 400px;
+  min-height: 400px;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
 
   .list-wrapper {
-    overflow: scroll;
     flex-grow: 1;
+
+    max-height: 330px;
+    overflow: scroll;
     .no-todos {
       width: 100%;
       height: 100%;
