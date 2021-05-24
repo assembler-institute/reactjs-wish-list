@@ -15,3 +15,8 @@ input {
     display: block;
   }
 }
+
+.task-completed{
+  text-decoration: line-through; 
+  opacity: 0.4;
+}
