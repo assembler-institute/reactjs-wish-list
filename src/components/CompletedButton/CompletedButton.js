@@ -2,9 +2,17 @@ import React from "react";
 
 import "./CompletedButton.scss";
 
-function CompletedButton({ id, handleChecked, isComplete }) {
+function CompletedButton({
+  id,
+  handleChecked,
+  isComplete,
+  handleAddToComplete,
+  handleAddToActive,
+}) {
   function onsetHandlecompleted() {
     handleChecked(id);
+    handleAddToComplete(id);
+    handleAddToActive(id);
   }
   return (
     <>
@@ -14,6 +22,7 @@ function CompletedButton({ id, handleChecked, isComplete }) {
         id={id}
         onClick={onsetHandlecompleted}
         checked={isComplete}
+        readOnly
       />
     </>
   );

@@ -11,6 +11,7 @@ function All({
   handleSubmit,
   handleChange,
   handleChecked,
+  handleAddToComplete,
   todoName,
   isEmpty,
   allTodos,
@@ -18,6 +19,8 @@ function All({
   handleSetCompleted,
   handleRemove,
   todoLenght,
+  handleEditTodo,
+  handleAddToActive,
   ...props
 }) {
   return (
@@ -48,6 +51,10 @@ function All({
                 handleCompleted={handleCompleted}
                 handleRemove={handleRemove}
                 handleChecked={handleChecked}
+                handleAddToComplete={handleAddToComplete}
+                handleAddToActive={handleAddToActive}
+                handleEditTodo={handleEditTodo}
+                onChange={handleChange}
               />
             )}
           </div>
