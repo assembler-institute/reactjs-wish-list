@@ -30,7 +30,7 @@ function MainFooter({ todosLeft, darkMode }) {
     });
 
     return (
-      <div className="main-footer col col-12 py-3">
+      <div className="main-footer col col-12 py-3 px-4">
         <div className={darkModeTodosLeft}>{todosLeft} todos left</div>
         <nav className="">
           <ul className="navbar-nav d-flex">
