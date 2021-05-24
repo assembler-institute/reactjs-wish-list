@@ -21,6 +21,7 @@ function Task({ task, handleRemoveTask, handleCheckboxChange }) {
     <li className={taskClass}>
       <input
         type="checkbox"
+        className="hidden-chkbx"
         onChange={onTaskComplete}
         value={task.id}
         checked={task.completed}

@@ -6,6 +6,14 @@ li:hover span {
   display: block;
 }
 
+.hidden-chkbx{
+  opacity: 0.3
+}
+
+li:hover input {
+  opacity: 1
+}
+
 input {
   margin-right: 10px;
 }
