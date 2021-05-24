@@ -53,9 +53,9 @@ class NewTodoCard extends Component {
     return (
       <div>
         <form className="flex-row card-wide no-border" onSubmit={this.submit}>
-          <label>
+          {/* <label>
             <input type="checkbox" name="completed" className="blue-checkbox" />
-          </label>
+          </label> */}
           <label>
             <input
               type="text"

@@ -7,6 +7,23 @@ import TodoCard from "../../components/TodoCard/index";
 import NewTodoCard from "../../components/NewTodoCard/index";
 import BgPicture from "../../components/BgPicture/index";
 import CardFooter from "../../components/CardFooter/index";
+// import UseLocalStorage from "../../components/UseLocalStorage/index";
+
+const LOCAL_STORAGE_KEY = "toDoListSaved";
+
+function loadLocalStorageData() {
+  const prevToDos = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+  if (!prevToDos) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(prevToDos);
+  } catch (error) {
+    return null;
+  }
+}
 
 class Home extends Component {
   constructor(props) {
@@ -17,6 +34,28 @@ class Home extends Component {
     this.newToDo = this.newToDo.bind(this);
     this.selectedToDoToDelete = this.selectedToDoToDelete.bind(this);
     this.updateToDo = this.updateToDo.bind(this);
+    // this.setLocalStorage = this.setLocalStorage.bind(this);
+    // this.getLocalStorage = this.getLocalStorage.bind(this);
+  }
+
+  componentDidMount() {
+    const prevToDos = loadLocalStorageData();
+
+    if (prevToDos) {
+      this.setState({
+        toDoList: prevToDos,
+      });
+    } else {
+      this.setState({
+        toDoList: [],
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    const { toDoList } = this.state;
+
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(toDoList));
   }
 
   newToDo(toDo) {
