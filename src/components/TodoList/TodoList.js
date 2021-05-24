@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import Todo from "../Todo";
-import MainFooter from "../MainFooter";
+import MainFooter from "../AppIndex";
 import NoTodos from "../NoTodos";
 import "./TodoList.scss";
 
@@ -14,6 +14,7 @@ export default function TodoList({
   handleDone,
   handleDelete,
   handleEditedTodo,
+  handleClearCompleted,
   todosLeft,
 }) {
   render();
@@ -46,7 +47,10 @@ export default function TodoList({
             ))
           )}
         </div>
-        <MainFooter todosLeft={todosLeft} />
+        <MainFooter
+          todosLeft={todosLeft}
+          handleClearCompleted={handleClearCompleted}
+        />
       </section>
     );
   }

@@ -2,7 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./MainFooter.scss";
 
-function MainFooter({ todosLeft }) {
+function MainFooter({ todosLeft, handleClearCompleted }) {
+  function onClearCompleted() {
+    handleClearCompleted();
+  }
   return (
     <div className="main-footer col col-12 py-3">
       <div className="items-left footer-item">{todosLeft} todos left</div>
@@ -35,7 +38,13 @@ function MainFooter({ todosLeft }) {
           </li>
         </ul>
       </nav>
-      <div className="clear-all-div footer-item">Clear All</div>
+      <div
+        aria-hidden="true"
+        onClick={onClearCompleted}
+        className="clear-all-div footer-item"
+      >
+        Clear Completed
+      </div>
     </div>
   );
 }

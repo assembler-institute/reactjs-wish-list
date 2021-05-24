@@ -34,6 +34,7 @@ class App extends Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEditedTodo = this.handleEditedTodo.bind(this);
     this.handleMode = this.handleMode.bind(this);
+    this.handleClearCompleted = this.handleClearCompleted.bind(this);
   }
 
   /* -------------------------------------------------------------------------- */
@@ -97,6 +98,13 @@ class App extends Component {
   handleMode() {
     const { darkMode } = this.state;
     this.setState({ darkMode: !darkMode });
+  }
+
+  handleClearCompleted() {
+    const { todos } = this.state;
+    const updatedTodos = todos.filter((todo) => !todo.done);
+    console.log(updatedTodos);
+    this.setState({ todos: updatedTodos });
   }
 
   /* -------------------------------------------------------------------------- */
@@ -180,6 +188,7 @@ class App extends Component {
                   darkMode={darkMode}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
+                  handleClearCompleted={this.handleClearCompleted}
                   todosLeft={todos.filter((todo) => !todo.done).length}
                   handleEditedTodo={this.handleEditedTodo}
                 />
@@ -198,6 +207,7 @@ class App extends Component {
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
                   handleEditedTodo={this.handleEditedTodo}
+                  handleClearCompleted={this.handleClearCompleted}
                 />
               )}
             />
@@ -214,6 +224,7 @@ class App extends Component {
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
                   handleEditedTodo={this.handleEditedTodo}
+                  handleClearCompleted={this.handleClearCompleted}
                 />
               )}
             />
