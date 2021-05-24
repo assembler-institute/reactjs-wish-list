@@ -1,4 +1,6 @@
 footer > div {
+  border-radius: 0px 0px 5px 5px ;
+  box-shadow: rgba(149, 157, 165, 0.2) 10px 8px 24px;
   display: flex;
   font-size: small;
   justify-content: flex-end;
@@ -15,5 +17,5 @@ footer > div {
 }
 
 .active {
-  color: blue;
+  color: rgb(191, 39, 211);
 }

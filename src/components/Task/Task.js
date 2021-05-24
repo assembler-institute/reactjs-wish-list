@@ -1,7 +1,6 @@
 import React from "react";
 import "./Task.scss";
-
-const classNames = require("classnames");
+import classNames from "classnames/bind";
 
 function Task({ task, handleRemoveTask, handleCheckboxChange }) {
   function onTaskRemove(event) {
