@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 import Task from "../Task";
 import "./List.scss";
 
-function List({ tasks, handleRemoveTask, handleCompleteTask }) {
+function List({ tasks, handleRemoveTask, handleCheckboxChange }) {
   const divClass = classNames({
     "list-container": true,
     "bg-white": true,
@@ -17,7 +17,7 @@ function List({ tasks, handleRemoveTask, handleCompleteTask }) {
             key={task.id}
             task={task}
             handleRemoveTask={handleRemoveTask}
-            handleCompleteTask={handleCompleteTask}
+            handleCheckboxChange={handleCheckboxChange}
           />
         ))}
       </ul>

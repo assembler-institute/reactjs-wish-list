@@ -1,11 +1,15 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import $ from "jquery";
 import Main from "./components/Main";
 import Section from "./components/Section";
 import AppHeader from "./components/AppHeader";
 import InputTask from "./components/InputTask";
-import List from "./components/List";
+import Home from "./pages/Home";
+import Completed from "./pages/Completed";
+import Active from "./pages/Active";
+import Footer from "./components/Footer";
 
 const LOCAL_STORAGE_KEY = "tasks";
 
@@ -31,7 +35,8 @@ class App extends Component {
     };
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleRemoveTask = this.handleRemoveTask.bind(this);
-    this.handleCompleteTask = this.handleCompleteTask.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+    this.handleClearCompleted = this.handleClearCompleted.bind(this);
   }
 
   componentDidMount() {
@@ -75,29 +80,68 @@ class App extends Component {
     });
   }
 
-  handleCompleteTask(taskId) {
+  handleCheckboxChange(taskId, value) {
     const { tasks } = this.state;
-    tasks[tasks.findIndex((task) => task.id === taskId)].completed = true;
+    tasks[tasks.findIndex((task) => task.id === taskId)].completed = value;
     this.setState({
       tasks: tasks,
     });
+  }
+
+  handleClearCompleted() {
+    const { tasks } = this.state;
+    this.setState({ tasks: tasks.filter((task) => !task.completed) });
   }
 
   render() {
     const { tasks } = this.state;
 
     return (
-      <Main>
-        <Section>
-          <AppHeader />
-          <InputTask handleKeyDown={this.handleKeyDown} />
-          <List
-            tasks={tasks}
-            handleRemoveTask={this.handleRemoveTask}
-            handleCompleteTask={this.handleCompleteTask}
-          />
-        </Section>
-      </Main>
+      <BrowserRouter>
+        <Main>
+          <Section>
+            <AppHeader />
+            <InputTask handleKeyDown={this.handleKeyDown} />
+            <Route
+              path="/"
+              exact
+              render={(routeProps) => (
+                <Home
+                  {...routeProps}
+                  tasks={tasks}
+                  handleRemoveTask={this.handleRemoveTask}
+                  handleCheckboxChange={this.handleCheckboxChange}
+                />
+              )}
+            />
+            <Route
+              path="/completed"
+              exact
+              render={(routeProps) => (
+                <Completed
+                  {...routeProps}
+                  tasks={tasks}
+                  handleRemoveTask={this.handleRemoveTask}
+                  handleCheckboxChange={this.handleCheckboxChange}
+                />
+              )}
+            />
+            <Route
+              path="/active"
+              exact
+              render={(routeProps) => (
+                <Active
+                  {...routeProps}
+                  tasks={tasks}
+                  handleRemoveTask={this.handleRemoveTask}
+                  handleCheckboxChange={this.handleCheckboxChange}
+                />
+              )}
+            />
+            <Footer handleClearCompleted={this.handleClearCompleted} />
+          </Section>
+        </Main>
+      </BrowserRouter>
     );
   }
 }

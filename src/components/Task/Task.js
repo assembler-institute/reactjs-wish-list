@@ -1,18 +1,23 @@
 import React from "react";
 import "./Task.scss";
 
-function Task({ task, handleRemoveTask, handleCompleteTask }) {
+function Task({ task, handleRemoveTask, handleCheckboxChange }) {
   function onTaskRemove(event) {
     handleRemoveTask(event.target.parentNode.value);
   }
 
   function onTaskComplete(event) {
-    handleCompleteTask(event.target.value);
+    handleCheckboxChange(event.target.value, event.target.checked);
   }
 
   return (
     <li>
-      <input type="checkbox" onChange={onTaskComplete} value={task.id} />
+      <input
+        type="checkbox"
+        onChange={onTaskComplete}
+        value={task.id}
+        checked={task.completed}
+      />
 
       {task.name}
       <button
