@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-
 import { v4 as uuidv4 } from "uuid";
 import CreateTodo from "./components/CreateTodo";
 import TodoList from "./components/TodoList";
 
 import defaultTodos from "./utils/demo-data";
 
+const CUSTOM_LS_KEY = "todos";
+
 const classNames = require("classnames");
+
+// Function to be called when updating LocalStorage
+function setLocalStorage() {
+  console.log(CUSTOM_LS_KEY);
+}
+
+setLocalStorage();
 
 class App extends Component {
   constructor(props) {
