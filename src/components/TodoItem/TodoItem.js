@@ -8,37 +8,37 @@ class TodoItem extends newForm {
     super(props);
 
     this.handleSelected = this.handleSelected.bind(this);
-    // this.handleDelete = this.handleDelete.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
-  render() {
-    // const { handleDelete } = this.props;
+  delete() {
+    const { handleDelete } = this.props;
+    const { todos } = this.props;
+    const { todo } = this.props;
+    handleDelete(todos, todo);
+  }
+  /*
+  editItem() {
     const { text } = this.props;
-    // eslint-disable-next-line
-    console.log();
+
+  }
+  */
+
+  render() {
+    const { text } = this.props;
+
     return (
       <div>
         <li className="Items">
           <Checkbox handleSelected={this.handleSelected} />
-          {text}
-          <Button handleDelete={this.handleDelete} />
+          <div className="editableText" contentEditable="true">
+            {text}
+          </div>
+          <Button onClick={this.delete} />
         </li>
       </div>
     );
   }
 }
-/*
-const TodoItem = ({ text }) => {
-  return (
-    <div>
-      <li className="Items">
-        <Checkbox />
-        {text}
-        <Button />
-      </li>
-    </div>
-  );
-};
-*/
 
 export default TodoItem;

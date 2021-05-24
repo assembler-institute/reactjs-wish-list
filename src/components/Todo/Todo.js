@@ -11,10 +11,10 @@ function Todo({ todos, handleDelete }) {
         {todos.map((todo) => (
           <TodoItem
             handleDelete={handleDelete}
-            todo={todo}
-            todos={todos}
             key={todo.id}
             text={todo.title}
+            todo={todo}
+            todos={todos}
           />
         ))}
       </ul>

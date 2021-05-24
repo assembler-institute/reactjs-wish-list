@@ -6,7 +6,7 @@ const Checkbox = ({ handleSelected }) => {
   return <input className="check" type="checkbox" onChange={handleSelected} />;
 };
 
-const Button = ({ handleDelete }) => {
-  return <input className="but" type="button" onClick={handleDelete} />;
-};
+function Button({ ...newers }) {
+  return <input className="but" type="button" {...newers} />;
+}
 export { Button, Checkbox };

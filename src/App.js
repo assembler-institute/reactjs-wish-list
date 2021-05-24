@@ -14,20 +14,20 @@ class App extends Component {
       todos: [],
     };
     this.newTodo = this.newTodo.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleDelete() {
-    const { todos } = this.props;
-    const { todo } = this.props;
+  handleDelete(arry, item) {
     // eslint-disable-next-line
-    console.log("no eleminado", todos);
-    todos.filter((item) => item.id !== todo.id);
-
+    console.log("item", item);
     // eslint-disable-next-line
-    console.log(this.state);
-
+    console.log("con el item", arry);
+    const notDelete = arry.filter((el) => el.id !== item.id);
+    this.setState({
+      todos: notDelete,
+    });
     // eslint-disable-next-line
-    console.log("eleminado", todos);
+    console.log("sin el item", arry);
   }
 
   newTodo(item) {
