@@ -51,7 +51,7 @@ function NewTask({ saveNewTask }) {
                 className="isCompleted-class"
               />
             </div>
-            <div className="d-flex flex-row justify-content-between text-input-wrapper">
+            <div className="d-flex flex-row justify-content-between align-items-center text-input-wrapper">
               <input
                 className={
                   touched.title && errors.title
@@ -69,7 +69,10 @@ function NewTask({ saveNewTask }) {
               {touched.title && errors.title && (
                 <p className="text-input-failed">{errors.title}</p>
               )}
-              <button className="submit-new-task" type="submit">
+              <button
+                className="d-flex justify-content-center align-items-center submit-new-task"
+                type="submit"
+              >
                 {touched.title && errors.title ? (
                   <img
                     className="icon-submit"
