@@ -15,7 +15,8 @@ class Home extends Component {
       toDoList: [],
     };
     this.newToDo = this.newToDo.bind(this);
-    this.selectedTodoToDelete = this.selectedTodoToDelete.bind(this);
+    this.selectedToDoToDelete = this.selectedToDoToDelete.bind(this);
+    this.updateToDo = this.updateToDo.bind(this);
   }
 
   newToDo(toDo) {
@@ -28,12 +29,27 @@ class Home extends Component {
     // console.log(toDo);
   }
 
-  selectedTodoToDelete(id) {
+  selectedToDoToDelete(id) {
     const { toDoList } = this.state;
 
     const filteredToDoList = toDoList.filter((e, index) => index !== id);
     this.setState({
       toDoList: filteredToDoList,
+    });
+  }
+
+  updateToDo(id, toDo) {
+    const { toDoList } = this.state;
+
+    const updatedList = toDoList.map((e, index) => {
+      if (index === id) {
+        // eslint-disable-next-line no-param-reassign
+        e = toDo;
+      }
+      return e;
+    });
+    this.setState({
+      toDoList: updatedList,
     });
   }
 
@@ -54,8 +70,9 @@ class Home extends Component {
                 <TodoCard
                   toDo={e}
                   key={e}
-                  selectedTodoToDelete={this.selectedTodoToDelete}
                   id={index}
+                  selectedToDoToDelete={this.selectedToDoToDelete}
+                  updateToDo={this.updateToDo}
                 />
               ))}
             </section>
