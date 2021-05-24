@@ -17,7 +17,7 @@
   :disabled {
     background-color: transparent;
   }
-  outline: 2px red solid;
+  // outline: 2px red solid;
 }
 
 // background-blend-mode: multiply;
@@ -71,7 +71,7 @@ body {
     position: absolute;
     z-index: 1;
     width: 40%;
-    min-width: 500px;
+    min-width: 350px;
     min-height: 80%;
 
     .main-header {
