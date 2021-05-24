@@ -50,14 +50,6 @@
   grid-template-rows: 1fr;
 }
 
-.mainBackground {
-  background-color: rgb(235, 235, 235);
-}
-
-.whiteBg {
-  background-color: rgb(255, 255, 255);
-}
-
 .allWidth {
   width: 100vw;
 }
@@ -115,4 +107,9 @@
 
 .margBot {
   margin-bottom: 20px;
+}
+
+.btnDarkMode{
+  background-color: rgba(222, 184, 135, 0);
+  border: 0;
 }

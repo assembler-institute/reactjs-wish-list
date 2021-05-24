@@ -52,11 +52,11 @@ class NewTodoCard extends Component {
 
     return (
       <div>
-        <form className="flex-row card-wide no-border" onSubmit={this.submit}>
-          {/* <label>
-            <input type="checkbox" name="completed" className="blue-checkbox" />
-          </label> */}
-          <label>
+        <form
+          className="flex-row card-widetWo no-border"
+          onSubmit={this.submit}
+        >
+          <label className="flex-row card-widetWo">
             <input
               type="text"
               name="newTodo"
@@ -67,10 +67,7 @@ class NewTodoCard extends Component {
             />
           </label>
           <div className="d-flex flex-row">
-            <button
-              type="submit"
-              className="btn-submit btn btn-light justify-content-end"
-            >
+            <button type="submit" className="btn-submit btn btn-light">
               Submit
             </button>
           </div>

@@ -11,10 +11,10 @@ class BgPicture extends Component {
   render() {
     return (
       <div className="bgPicture">
-        <img
+        <div
           className="bgImg"
           alt="foto"
-          src="https://images.pexels.com/photos/1232594/pexels-photo-1232594.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+          // src="https://images.pexels.com/photos/1232594/pexels-photo-1232594.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
           // src="https://images.pexels.com/photos/6439051/pexels-photo-6439051.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
         />
       </div>

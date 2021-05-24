@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 
 import "./Home.scss";
+import { ThemeProvider } from "styled-components";
 import AppHeader from "../../components/AppHeader/index";
 import Footer from "../../components/Footer/index";
 import TodoCard from "../../components/TodoCard/index";
 import NewTodoCard from "../../components/NewTodoCard/index";
 import BgPicture from "../../components/BgPicture/index";
+import { GlobalStyles } from "../../components/DarkMode/globalStyles";
+import { lightTheme, darkTheme } from "../../components/DarkMode/Theme";
 import CardFooter from "../../components/CardFooter/index";
-// import UseLocalStorage from "../../components/UseLocalStorage/index";
 
 const LOCAL_STORAGE_KEY = "toDoListSaved";
 
@@ -30,12 +32,12 @@ class Home extends Component {
     super(props);
     this.state = {
       toDoList: [],
+      theme: "light",
     };
     this.newToDo = this.newToDo.bind(this);
     this.selectedToDoToDelete = this.selectedToDoToDelete.bind(this);
     this.updateToDo = this.updateToDo.bind(this);
-    // this.setLocalStorage = this.setLocalStorage.bind(this);
-    // this.getLocalStorage = this.getLocalStorage.bind(this);
+    this.themeToggler = this.themeToggler.bind(this);
   }
 
   componentDidMount() {
@@ -90,35 +92,64 @@ class Home extends Component {
     });
   }
 
+  themeToggler() {
+    const { theme } = this.state;
+    if (theme === "light") {
+      this.setState({
+        theme: "dark",
+      });
+    } else {
+      this.setState({
+        theme: "light",
+      });
+    }
+  }
+
+  // noActiveToDos() {
+  //   // eslint-disable-next-line no-unused-vars
+  //   const { toDoList } = this.state;
+  //   toDoList.toDoList.filter(
+  //     (e, index) => {isDone !== false}
+  //   );
+  //   this.setState({
+  //     toDoList: filteredToDoList,
+  //   });
+  // }
+
   render() {
-    const { toDoList } = this.state;
+    const { toDoList, theme } = this.state;
 
     return (
-      <div className="mainBackground allWidth minHeight gridBody">
-        <BgPicture />
-        <main className="gridMain">
-          <AppHeader />
-          <section className="whiteBg roundedCorner shadow margBot">
-            <NewTodoCard newToDo={this.newToDo} />
-          </section>
-          <div className="shadow roundedCorner">
-            <section className="whiteBg">
-              {toDoList.map((e, index) => (
-                <TodoCard
-                  toDo={e}
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={`${e}-${index}`}
-                  id={index}
-                  selectedToDoToDelete={this.selectedToDoToDelete}
-                  updateToDo={this.updateToDo}
-                />
-              ))}
-            </section>
-            <CardFooter />
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <>
+          <GlobalStyles />
+          <div className="mainBackground allWidth minHeight gridBody">
+            <BgPicture />
+            <main className="gridMain">
+              <AppHeader themeToggler={this.themeToggler} />
+              <section className="whiteBg roundedCorner shadow margBot">
+                <NewTodoCard newToDo={this.newToDo} />
+              </section>
+              <div className="shadow roundedCorner">
+                <section className="whiteBg">
+                  {toDoList.map((e, index) => (
+                    <TodoCard
+                      toDo={e}
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={`${e}-${index}`}
+                      id={index}
+                      selectedToDoToDelete={this.selectedToDoToDelete}
+                      updateToDo={this.updateToDo}
+                    />
+                  ))}
+                </section>
+                <CardFooter allToDos={toDoList.length} />
+              </div>
+            </main>
+            <Footer />
           </div>
-        </main>
-        <Footer />
-      </div>
+        </>
+      </ThemeProvider>
     );
   }
 }

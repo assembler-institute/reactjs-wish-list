@@ -131,16 +131,20 @@ class TodoCard extends Component {
           </div>
         ) : (
           <>
-            <form onSubmit={this.submitEdit}>
-              <label>
+            <form onSubmit={this.submitEdit} className="flex-row card-widetWo">
+              <label className="flex-row card-widetWo">
                 <input
                   type="text"
                   name="newToDoText"
+                  placeholder="edit ToDo"
                   value={newEditedText}
                   onChange={this.manageNewtoDoText}
+                  className="font-bold font-big full-width input-no-border"
                 />
               </label>
-              <button type="submit">Save</button>
+              <button type="submit" className="btn-submit btn btn-light">
+                Save
+              </button>
             </form>
           </>
         )}
