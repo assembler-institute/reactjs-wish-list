@@ -1,9 +1,14 @@
 .hidden {
-  display: none;
+  opacity: 0;
 }
 
 li:hover span {
-  display: block;
+  opacity: 1;
+}
+
+li:hover input{
+  opacity: 1;
+
 }
 
 input{

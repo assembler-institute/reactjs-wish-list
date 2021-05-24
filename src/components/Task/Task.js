@@ -11,8 +11,14 @@ function Task({ task, handleRemoveTask, handleCompleteTask }) {
   }
 
   return (
-    <li className="list-group-item">
-      <input type="checkbox" onChange={onTaskComplete} value={task.id} />
+    <li className="list-group-item ">
+      <input
+        type="checkbox"
+        onChange={onTaskComplete}
+        value={task.id}
+        aria-hidden="true"
+        className="hidden"
+      />
       {task.name}
       <button
         type="button"
