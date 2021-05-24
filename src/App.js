@@ -30,6 +30,20 @@ class App extends Component {
     console.log("sin el item", arry);
   }
 
+  submitNewTitle = (newTitle, id) => {
+    const { todos } = this.state;
+
+    this.setState({
+      todos: todos.map((todo) => {
+        if (todo.id === id) {
+          // eslint-disable-next-line no-param-reassign
+          todo.title = newTitle;
+        }
+        return todo;
+      }),
+    });
+  };
+
   newTodo(item) {
     const { todos } = this.state;
 
@@ -51,6 +65,7 @@ class App extends Component {
           render={(routeProps) => (
             <Home
               {...routeProps}
+              submitNewTitle={this.submitNewTitle}
               todos={todos}
               newTodo={this.newTodo}
               handleDelete={this.handleDelete}

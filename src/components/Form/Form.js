@@ -12,6 +12,8 @@ class newForm extends Component {
     };
     this.handleInput = this.handleInput.bind(this);
     this.submitTitle = this.submitTitle.bind(this);
+    this.handleEditing = this.handleEditing.bind(this);
+    this.closeEditMode = this.closeEditMode.bind(this);
   }
 
   handleSelected() {
@@ -44,6 +46,15 @@ class newForm extends Component {
     // eslint-disable-next-line
     console.log("Este es titile", title);
   }
+
+  closeEditMode = (event) => {
+    event.preventDefault();
+    let { editing } = this.state;
+    editing = false;
+    this.setState({
+      editing: editing,
+    });
+  };
 
   submitTitle(event) {
     if (event.key === "Enter") {

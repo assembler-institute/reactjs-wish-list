@@ -7,7 +7,14 @@ import Todo from "../Todo";
 
 import "../../_App.scss";
 
-function Home({ newTodo, todos, handleDelete, handleEditing }) {
+function Home({
+  newTodo,
+  todos,
+  handleDelete,
+  handleEditing,
+  submitNewTitle,
+  closeEditMode,
+}) {
   return (
     <>
       <main className="background_container">
@@ -16,6 +23,8 @@ function Home({ newTodo, todos, handleDelete, handleEditing }) {
           <h1>TODO</h1>
           <Form newTodo={newTodo} />
           <Todo
+            closeEditMode={closeEditMode}
+            submitNewTitle={submitNewTitle}
             newTodo={newTodo}
             todos={todos}
             handleDelete={handleDelete}

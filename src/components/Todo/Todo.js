@@ -2,7 +2,7 @@ import React from "react";
 import "./_Todo.scss";
 import TodoItem from "../TodoItem";
 
-function Todo({ todos, handleDelete, handleEditing, newTodo }) {
+function Todo({ todos, handleDelete, handleEditing, submitNewTitle }) {
   // eslint-disable-next-line
   console.log("que recive", todos);
   return (
@@ -10,7 +10,7 @@ function Todo({ todos, handleDelete, handleEditing, newTodo }) {
       <ul className="todo_print">
         {todos.map((todo) => (
           <TodoItem
-            newTodo={newTodo}
+            submitNewTitle={submitNewTitle}
             handleDelete={handleDelete}
             handleEditing={handleEditing}
             key={todo.id}
