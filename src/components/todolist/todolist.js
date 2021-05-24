@@ -1,5 +1,5 @@
 import React from "react";
-import Todo from "../todo";
+import Todo from "../Todo";
 import "./todolist.scss";
 import NoTodo from "../NoTodo";
 
