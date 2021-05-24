@@ -18,7 +18,7 @@ function All({
   handleCompleted,
   handleSetCompleted,
   handleRemove,
-  todoLenght,
+  todoLength,
   handleEditTodo,
   handleAddToActive,
   ...props
@@ -58,7 +58,7 @@ function All({
               />
             )}
           </div>
-          <AppFooter todoLenght={todoLenght} />
+          <AppFooter todoLength={todoLength} />
         </article>
       </section>
     </Main>

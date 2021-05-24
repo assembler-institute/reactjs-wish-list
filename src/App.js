@@ -45,6 +45,10 @@ class App extends Component {
 
   componentDidMount() {
     const prevItems = loadLocalStorageData(LOCAL_STORAGE_KEY);
+    const prevCompletedItems = loadLocalStorageData(
+      LOCAL_STORAGE_KEY_COMPLETED,
+    );
+    const prevActiveItems = loadLocalStorageData(LOCAL_STORAGE_KEY_ACTIVE);
     if (!prevItems) {
       this.setState({
         isEmpty: true,
@@ -54,6 +58,8 @@ class App extends Component {
     if (prevItems.length > 0) {
       this.setState({
         allTodos: prevItems,
+        completeTodos: prevCompletedItems,
+        activeTodos: prevActiveItems,
         isEmpty: false,
       });
     }
@@ -69,7 +75,7 @@ class App extends Component {
     localStorage.setItem(LOCAL_STORAGE_KEY_ACTIVE, JSON.stringify(activeTodos));
   }
 
-  handleAddTodo({ todoName, allTodos }) {
+  handleAddTodo({ todoName, allTodos, activeTodos }) {
     const newTodo = {
       id: uuidv4(),
       name: todoName,
@@ -77,6 +83,7 @@ class App extends Component {
     };
     this.setState({
       allTodos: [...allTodos, newTodo],
+      activeTodos: [...activeTodos, newTodo],
       todoName: "",
       isEmpty: false,
     });
@@ -101,10 +108,16 @@ class App extends Component {
   }
 
   handleRemove(id) {
-    const { allTodos } = this.state;
-    const arr = allTodos.filter((todo) => todo.id !== id);
-    this.setState({ allTodos: arr });
-    if (arr.length === 0) {
+    const { allTodos, activeTodos } = this.state;
+    const restOfTodosInAll = allTodos.filter((todo) => todo.id !== id);
+    const restOfTodosActives = activeTodos.filter((todo) => todo.id !== id);
+
+    this.setState({
+      allTodos: restOfTodosInAll,
+      activeTodos: restOfTodosActives,
+    });
+
+    if (restOfTodosInAll.length === 0) {
       this.setState({
         isEmpty: true,
       });
@@ -181,7 +194,7 @@ class App extends Component {
         allTodos={allTodos}
         todoName={todoName}
         isEmpty={isEmpty}
-        todoLenght={allTodos.length}
+        todoLength={allTodos.length}
       />
     );
   }
