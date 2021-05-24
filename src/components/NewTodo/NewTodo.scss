@@ -1,0 +1,26 @@
+.new-todo {
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  justify-content: center;
+  box-shadow: 0px 5px 20px 3px rgba(128, 128, 128, 0.432);
+
+  &.dark {
+    background-color: #121669;
+    color: white;
+    box-shadow: 0px 5px 20px 3px #535690;
+  }
+}
+
+.new-todo-form {
+  width: 95%;
+
+  &.dark {
+    background-color: #121669;
+    color: white;
+  }
+}

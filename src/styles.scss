@@ -1,0 +1,82 @@
+@use "colors";
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+html,
+body,
+#root,
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  background-image: url("./img/background.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  width: inherit;
+  height: inherit;
+  justify-content: center;
+
+  &.dark {
+    background-color: #121669;
+  }
+
+  .container {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    .shadow {
+      background-color: rgba(128, 128, 128, 0);
+      border-radius: 8px;
+      box-shadow: 0px 5px 50px 3px rgba(128, 128, 128, 0.432);
+
+      &.dark {
+        box-shadow: 0px 5px 20px 1px #6167df;
+      }
+    }
+  }
+}
+
+footer {
+  background-color: #fff;
+  border-radius: 0 0 8px 8px;
+
+  .count {
+    width: 15%;
+  }
+
+  .pages {
+    width: 66%;
+    display: inline-flex;
+    justify-content: center;
+
+    .page {
+      width: fit-content;
+    }
+  }
+
+  .delete-completed {
+    width: 19%;
+  }
+
+  &.dark {
+    background-color: #121669;
+    color: white;
+  }
+}

@@ -12,10 +12,16 @@
   "private": true,
   "main": "src/index.js",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.5",
     "bootstrap": "^4.6.0",
+    "formik": "^2.2.7",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -25,7 +31,9 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.32.11",
-    "web-vitals": "^1.1.1"
+    "uuid": "^8.3.2",
+    "web-vitals": "^1.1.1",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",

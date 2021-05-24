@@ -1,0 +1,38 @@
+.todo-list {
+  background-color: #fff;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+}
+
+ul {
+  width: 100%;
+  list-style: none;
+}
+
+li.img {
+  text-align: center;
+  width: auto;
+  height: auto;
+  padding: 0.5rem;
+  border-bottom: #dadce0 1.8px solid;
+}
+img {
+  width: 400px;
+  max-height: 400px;
+}
+.text {
+  color: #612fb5;
+  margin-bottom: 2rem;
+
+  &.dark {
+    color: white;
+  }
+}
+.svg {
+  color: #612fb5;
+  font-size: 1.2rem;
+
+  &.dark {
+    color: white;
+  }
+}

@@ -1,0 +1,72 @@
+.list {
+  width: 100%;
+  background-color: transparent;
+  border-bottom: #dadce0 1.8px solid;
+
+  &.dark {
+    background-color: #121669;
+  }
+}
+.container-list {
+  width: inherit;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  height: 64px;
+  cursor: pointer;
+}
+.delete {
+  display: none;
+  width: 10%;
+}
+li:hover {
+  .delete {
+    display: block;
+    svg {
+      color: rgb(122, 122, 122);
+      font-size: 1.2rem;
+    }
+
+    & > .dark {
+      color: #6a71ee;
+    }
+  }
+}
+
+.todo-input {
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  width: 89%;
+  justify-content: center;
+
+  &.dark {
+    background-color: #121669;
+  }
+}
+
+.todo-form {
+  width: 100%;
+}
+
+.hashtag {
+  width: 1%;
+}
+
+.red {
+  background-color: rgb(216, 100, 100);
+}
+
+.green {
+  background-color: rgb(55, 141, 55);
+}
+
+.yellow {
+  background-color: rgb(233, 174, 37);
+}
+
+.text__check {
+  text-decoration: line-through;
+}
