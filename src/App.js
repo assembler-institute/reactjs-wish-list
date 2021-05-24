@@ -37,6 +37,7 @@ class App extends Component {
     this.handleRemoveTask = this.handleRemoveTask.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.handleClearCompleted = this.handleClearCompleted.bind(this);
+    this.addNewTask = this.addNewTask.bind(this);
   }
 
   componentDidMount() {
@@ -54,22 +55,8 @@ class App extends Component {
   }
 
   handleKeyDown(event) {
-    if (
-      event.target.value &&
-      !/^\s*$/.test(event.target.value) &&
-      event.key === "Enter"
-    ) {
-      this.setState(
-        (prevState) => ({
-          tasks: [
-            { id: uuid(), name: event.target.value, completed: false },
-            ...prevState.tasks,
-          ],
-        }),
-        () => {
-          $(event.target).val("");
-        },
-      );
+    if (event.key === "Enter") {
+      this.addNewTask();
     }
   }
 
@@ -93,6 +80,23 @@ class App extends Component {
     this.setState({ tasks: tasks.filter((task) => !task.completed) });
   }
 
+  addNewTask() {
+    const inputTaskValue = $("#inputTask").val();
+    if (inputTaskValue && !/^\s*$/.test(inputTaskValue)) {
+      this.setState(
+        (prevState) => ({
+          tasks: [
+            { id: uuid(), name: inputTaskValue, completed: false },
+            ...prevState.tasks,
+          ],
+        }),
+        () => {
+          $("#inputTask").val("");
+        },
+      );
+    }
+  }
+
   render() {
     const { tasks } = this.state;
 
@@ -101,7 +105,10 @@ class App extends Component {
         <Main>
           <Section>
             <AppHeader />
-            <InputTask handleKeyDown={this.handleKeyDown} />
+            <InputTask
+              handleKeyDown={this.handleKeyDown}
+              addNewTask={this.addNewTask}
+            />
             <Route
               path="/"
               exact

@@ -2,7 +2,16 @@
   border-radius: 5px;
   margin-bottom: 35px;
   box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
-  :focus{
+  :focus {
     outline: none;
+  }
+  button {
+    display: none;
+    border: 0;
+  }
+}
+@media only screen and (max-width: 767px){
+  .input-container button {
+    display: block;
   }
 }

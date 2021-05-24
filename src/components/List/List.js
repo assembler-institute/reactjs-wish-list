@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames/bind";
-import Task from "../Task";
 import "./List.scss";
+import Task from "../Task";
 
 function List({ tasks, handleRemoveTask, handleCheckboxChange }) {
   const divClass = classNames({
@@ -11,7 +11,7 @@ function List({ tasks, handleRemoveTask, handleCheckboxChange }) {
   });
   return (
     <div className={divClass}>
-      <ul className="p-0">
+      <ul className="p-0 list-group">
         {tasks.map((task) => (
           <Task
             key={task.id}

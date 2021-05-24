@@ -11,7 +11,7 @@ function Task({ task, handleRemoveTask, handleCheckboxChange }) {
   }
 
   return (
-    <li>
+    <li className="list-group-item">
       <input
         type="checkbox"
         onChange={onTaskComplete}
