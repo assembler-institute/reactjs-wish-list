@@ -25,6 +25,7 @@ function Todo({
   editTodo,
   hashtag,
   changeHashtag,
+  darkMode,
 }) {
   function deleteTodoId() {
     deleteTodo(id);
@@ -41,7 +42,7 @@ function Todo({
           <span className={`hashtag ${hashtag}`}> </span>
 
           <Button id={id} handleIsActive={handleIsActive} isActive={isActive} />
-          <div className="todo-input">
+          <div className={darkMode ? "todo-input dark" : "todo-input"}>
             <Formik
               initialValues={{
                 content: "",
@@ -60,9 +61,10 @@ function Todo({
                 >
                   <TodoInput
                     className={
-                      isActive
+                      (isActive
                         ? "input text__check text__normal--check"
-                        : "input text__normal"
+                        : "input text__normal",
+                      darkMode ? "input dark" : "input")
                     }
                     id={id}
                     content={content}
@@ -70,13 +72,18 @@ function Todo({
                     hashtagDisplayed={hashtagDisplayed}
                     handleBlur={handleBlur}
                     handleChange={handleChange}
+                    darkMode={darkMode}
                   />
                 </form>
               )}
             </Formik>
           </div>
           <div className="delete">
-            <FontAwesomeIcon icon={faTrashAlt} onClick={deleteTodoId} />
+            <FontAwesomeIcon
+              icon={faTrashAlt}
+              onClick={deleteTodoId}
+              className={darkMode ? "dark" : ""}
+            />
           </div>
         </div>
         <Hashtag

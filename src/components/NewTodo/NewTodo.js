@@ -19,7 +19,13 @@ function addTodoDetails(todo) {
   };
 }
 
-export default function NewTodo({ saveNewTodo, editTodo, id, content }) {
+export default function NewTodo({
+  saveNewTodo,
+  editTodo,
+  id,
+  content,
+  darkMode,
+}) {
   function onSave(values) {
     editTodo(id, values.target.value);
   }
@@ -59,18 +65,19 @@ export default function NewTodo({ saveNewTodo, editTodo, id, content }) {
           onSubmit={handleSubmit}
           onChange={id && onSave}
           onBlur={id && onSave}
-          className="new-todo-form"
+          className={darkMode ? "new-todo-form dark" : "new-todo-form"}
         >
           <NewTodoInput
             id={id}
             type="text"
-            className="input"
+            className={darkMode ? "input dark" : "input"}
             value={id ? content : values.content}
             placeholder={id ? content : "Add new todo"}
             handleChange={handleChange}
             handleBlur={handleBlur}
             hasErrorMessage={touched.title}
             errorMessage={errors.title}
+            darkMode={darkMode}
           />
         </form>
       )}

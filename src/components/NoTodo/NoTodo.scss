@@ -10,10 +10,6 @@ ul {
 }
 
 li.img {
-  //display: flex;
-  //flex-direction: row;
-  //align-items: center;
-  //justify-content: center;
   text-align: center;
   width: auto;
   height: auto;
@@ -25,12 +21,18 @@ img {
   max-height: 400px;
 }
 .text {
-  //position: absolute;
-  //top: 50%;
-  //right: 15%;
   color: #612fb5;
+  margin-bottom: 2rem;
+
+  &.dark {
+    color: white;
+  }
 }
 .svg {
   color: #612fb5;
   font-size: 1.2rem;
+
+  &.dark {
+    color: white;
+  }
 }

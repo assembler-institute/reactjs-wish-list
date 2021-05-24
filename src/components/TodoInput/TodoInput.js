@@ -12,6 +12,7 @@ export default function Input({
   hasErrorMessage,
   displayHashtag,
   hashtagDisplayed,
+  darkMode,
   ...props
 }) {
   function isDisplayed() {
@@ -20,7 +21,7 @@ export default function Input({
     }
   }
   return (
-    <div className="input">
+    <div className={darkMode ? "input dark" : "input"}>
       <input
         id={id}
         name={id}

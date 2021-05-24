@@ -43,6 +43,7 @@ class App extends Component {
     this.editTodo = this.editTodo.bind(this);
     this.displayHashtag = this.displayHashtag.bind(this);
     this.changeHashtag = this.changeHashtag.bind(this);
+    this.toggleDarkMode = this.toggleDarkMode.bind(this);
   }
 
   componentDidMount() {
@@ -62,13 +63,17 @@ class App extends Component {
     }
 
     this.setState({
+      darkMode: prevItems.darkMode,
       todos: prevItems.todos,
     });
   }
 
   componentDidUpdate() {
-    const { todos } = this.state;
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ todos }));
+    const { todos, darkMode } = this.state;
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify({ todos, darkMode }),
+    );
   }
 
   handleIsActive(todosId) {
@@ -182,21 +187,32 @@ class App extends Component {
     this.setState({ todos: updatedTodos });
   }
 
+  toggleDarkMode() {
+    const { darkMode } = this.state;
+    // eslint-disable-next-line
+    console.log({ darkMode });
+    this.setState({ darkMode: !darkMode });
+  }
+
   render() {
     const { todos } = this.state;
     const completed = todos.filter((todo) => todo.isActive === true);
     const active = todos.filter((todo) => todo.isActive === false);
+    const { darkMode } = this.state;
 
     return (
       <>
         <Router>
-          <main>
+          <main className={darkMode ? "dark" : ""}>
             <section className="container">
-              <Header />
-              <div className="new-todo">
-                <NewTodo saveNewTodo={this.saveNewTodo} />
+              <Header
+                toggleDarkMode={this.toggleDarkMode}
+                darkMode={darkMode}
+              />
+              <div className={darkMode ? "new-todo dark" : "new-todo"}>
+                <NewTodo saveNewTodo={this.saveNewTodo} darkMode={darkMode} />
               </div>
-              <div className="shadow">
+              <div className={darkMode ? "shadow dark" : "shadow"}>
                 <Switch>
                   <Route path="/active">
                     <TodoList
@@ -207,6 +223,7 @@ class App extends Component {
                       displayHashtag={this.displayHashtag}
                       changeHashtag={this.changeHashtag}
                       editTodo={this.editTodo}
+                      darkMode={darkMode}
                     />
                   </Route>
                   <Route path="/completed">
@@ -218,6 +235,7 @@ class App extends Component {
                       displayHashtag={this.displayHashtag}
                       changeHashtag={this.changeHashtag}
                       editTodo={this.editTodo}
+                      darkMode={darkMode}
                     />
                   </Route>
                   <Route path="/">
@@ -229,32 +247,62 @@ class App extends Component {
                       displayHashtag={this.displayHashtag}
                       changeHashtag={this.changeHashtag}
                       editTodo={this.editTodo}
+                      darkMode={darkMode}
                     />
                   </Route>
                 </Switch>
-                <footer>
-                  <div className="count text__small">
+                <footer className={darkMode ? "dark" : ""}>
+                  <div
+                    className={
+                      darkMode ? "count text__small dark" : "count text__small"
+                    }
+                  >
                     {active.length} items left
                   </div>
                   <div className="pages">
                     <Link to="/">
-                      <button type="button" className="page text__small">
+                      <button
+                        type="button"
+                        className={
+                          darkMode
+                            ? "page text__small dark"
+                            : "page text__small"
+                        }
+                      >
                         All
                       </button>
                     </Link>
                     <Link to="/active">
-                      <button type="button" className="page text__small">
+                      <button
+                        type="button"
+                        className={
+                          darkMode
+                            ? "page text__small dark"
+                            : "page text__small"
+                        }
+                      >
                         Actived
                       </button>
                     </Link>
                     <Link to="/completed">
-                      <button type="button" className="page text__small">
+                      <button
+                        type="button"
+                        className={
+                          darkMode
+                            ? "page text__small dark"
+                            : "page text__small"
+                        }
+                      >
                         Completed
                       </button>
                     </Link>
                   </div>
                   <button
-                    className="delete-completed text__small"
+                    className={
+                      darkMode
+                        ? "delete-completed text__small dark"
+                        : "delete-completed text__small"
+                    }
                     type="button"
                     onClick={this.clearCompleted}
                   >

@@ -11,10 +11,11 @@ export default function Input({
   handleBlur,
   errorMessage,
   hasErrorMessage,
+  darkMode,
   ...props
 }) {
   return (
-    <div className="input dark-input">
+    <div className={darkMode ? "input dark" : "input"}>
       <input
         id="input"
         name="content"

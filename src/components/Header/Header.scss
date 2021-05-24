@@ -9,6 +9,10 @@
   .title {
     width: 90%;
     letter-spacing: 0.8rem;
+
+    &.dark {
+      color: #151a80;
+    }
   }
 
   .dark-mode {
@@ -16,8 +20,15 @@
     width: 10%;
     justify-content: center;
     align-items: center;
+    transform: scale(3);
   }
 }
+
 .moon {
   transform: rotateY(180deg);
+  color: white;
+
+  &.dark {
+    color: #151a80;
+  }
 }

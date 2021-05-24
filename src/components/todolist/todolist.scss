@@ -1,7 +1,10 @@
 .todo-list {
   background-color: #fff;
   border-radius: 8px 8px 0 0;
-  overflow: hidden;
+
+  &.dark {
+    background-color: #121669;
+  }
 }
 
 ul {

@@ -11,16 +11,17 @@ function TodoList({
   displayHashtag,
   changeHashtag,
   editTodo,
+  darkMode,
 }) {
   const completed = todos.filter((todo) => todo.isActive === true);
   const active = todos.filter((todo) => todo.isActive === false);
 
   if (todos.length === 0) {
-    return <NoTodo />;
+    return <NoTodo darkMode={darkMode} />;
   }
   if (active > 0 && completed > 0) {
     return (
-      <section className="todo-list">
+      <section className={darkMode ? "todo-list dark" : "todo-list"}>
         <ul>
           {todos.map((todo) => (
             <Todo
@@ -36,6 +37,7 @@ function TodoList({
               changeHashtag={changeHashtag}
               displayHashtag={displayHashtag}
               editTodo={editTodo}
+              darkMode={darkMode}
             />
           ))}
         </ul>
@@ -44,7 +46,7 @@ function TodoList({
   }
   if (active > 0 && completed === 0) {
     return (
-      <section className="todo-list">
+      <section className={darkMode ? "todo-list dark" : "todo-list"}>
         <ul>
           <li>error</li>
         </ul>
@@ -52,7 +54,7 @@ function TodoList({
     );
   }
   return (
-    <section className="todo-list">
+    <section className={darkMode ? "todo-list dark" : "todo-list"}>
       <ul>
         {todos.map((todo) => (
           <Todo
@@ -68,6 +70,7 @@ function TodoList({
             hashtag={todo.hashtag}
             changeHashtag={changeHashtag}
             editTodo={editTodo}
+            darkMode={darkMode}
           />
         ))}
       </ul>

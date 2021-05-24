@@ -6,6 +6,21 @@
   height: 2rem;
   border: none;
   outline: none;
+
+  &.dark {
+    background-color: #121669;
+    color: white;
+  }
+
+  &.dark::placeholder {
+    background-color: #121669;
+    color: white;
+  }
+
+  &.dark:-webkit-autofill {
+    transition: background-color 5000s;
+    -webkit-text-fill-color: white !important;
+  }
 }
 .input:hover {
   border-bottom: #dadce0 2px solid;

@@ -2,6 +2,10 @@
   width: 100%;
   background-color: transparent;
   border-bottom: #dadce0 1.8px solid;
+
+  &.dark {
+    background-color: #121669;
+  }
 }
 .container-list {
   width: inherit;
@@ -22,6 +26,10 @@ li:hover {
       color: rgb(122, 122, 122);
       font-size: 1.2rem;
     }
+
+    & > .dark {
+      color: #6a71ee;
+    }
   }
 }
 
@@ -33,6 +41,10 @@ li:hover {
   padding: 1rem;
   width: 89%;
   justify-content: center;
+
+  &.dark {
+    background-color: #121669;
+  }
 }
 
 .todo-form {

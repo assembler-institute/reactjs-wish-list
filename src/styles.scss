@@ -6,26 +6,37 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+html,
+body,
+#root,
+.App {
+  width: 100%;
+  height: 100%;
+}
 
 body {
-  background-image: url("./img/background.jpg");
-  background-position: top;
-  background-color: colors.$body-background;
-  background-repeat: no-repeat;
-  width: 100vw;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
+  background-image: url("./img/background.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
   position: relative;
   display: flex;
-  width: 100vw;
+  width: inherit;
+  height: inherit;
   justify-content: center;
 
+  &.dark {
+    background-color: #121669;
+  }
+
   .container {
-    position: relative;
-    top: 5vh;
+    margin-top: 50px;
+    margin-bottom: 100px;
     width: 600px;
-    height: auto;
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -34,9 +45,14 @@ main {
       background-color: rgba(128, 128, 128, 0);
       border-radius: 8px;
       box-shadow: 0px 5px 50px 3px rgba(128, 128, 128, 0.432);
+
+      &.dark {
+        box-shadow: 0px 5px 20px 1px #6167df;
+      }
     }
   }
 }
+
 footer {
   background-color: #fff;
   border-radius: 0 0 8px 8px;
@@ -57,5 +73,10 @@ footer {
 
   .delete-completed {
     width: 19%;
+  }
+
+  &.dark {
+    background-color: #121669;
+    color: white;
   }
 }
