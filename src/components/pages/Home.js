@@ -11,6 +11,7 @@ function Home({
   newTodo,
   todos,
   handleDelete,
+  handleSelected,
   handleEditing,
   submitNewTitle,
   closeEditMode,
@@ -28,6 +29,7 @@ function Home({
             newTodo={newTodo}
             todos={todos}
             handleDelete={handleDelete}
+            handleSelected={handleSelected}
             handleEditing={handleEditing}
           />
           <Footer />

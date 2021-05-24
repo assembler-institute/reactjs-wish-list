@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-
 import Home from "./components/pages/Home";
 import Active from "./components/pages/Active";
 import Completed from "./components/pages/Complete";
@@ -15,6 +14,22 @@ class App extends Component {
     };
     this.newTodo = this.newTodo.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleSelected = this.handleSelected.bind(this);
+  }
+
+  handleSelected(arry, item) {
+    const bolTodo = arry.map((todo) => {
+      if (todo.id === item.id) {
+        // eslint-disable-next-line no-param-reassign
+        return { ...todo, selected: !todo.selected };
+      }
+
+      return todo;
+    });
+
+    this.setState({
+      todos: bolTodo,
+    });
   }
 
   handleDelete(arry, item) {
@@ -57,6 +72,7 @@ class App extends Component {
 
   render() {
     const { todos } = this.state;
+    const active = todos.filter((item) => item.selected === false);
     return (
       <BrowserRouter>
         <Route
@@ -69,13 +85,14 @@ class App extends Component {
               todos={todos}
               newTodo={this.newTodo}
               handleDelete={this.handleDelete}
+              handleSelected={this.handleSelected}
             />
           )}
         />
         <Route
           path="/active"
           exact
-          render={(routeProps) => <Active {...routeProps} todos={todos} />}
+          render={(routeProps) => <Active {...routeProps} active={active} />}
         />
         <Route
           path="/completed"

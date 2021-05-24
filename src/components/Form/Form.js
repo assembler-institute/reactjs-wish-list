@@ -16,14 +16,11 @@ class newForm extends Component {
     this.closeEditMode = this.closeEditMode.bind(this);
   }
 
-  handleSelected() {
-    let { selected } = this.state;
-    selected = true;
-    this.setState({
-      selected: selected,
-    });
+  handleDelete(event) {
     // eslint-disable-next-line
-    console.log("Este es el valor", selected);
+    console.log("on, off", event.target.value);
+    // eslint-disable-next-line
+    console.log(this.state);
   }
 
   handleEditing = (event) => {
@@ -39,6 +36,9 @@ class newForm extends Component {
 
   handleInput(event) {
     let { title } = this.state;
+    const { selected } = this.state;
+    // eslint-disable-next-line
+    console.log(selected);
     title = event.target.value;
     this.setState({
       title: title,
