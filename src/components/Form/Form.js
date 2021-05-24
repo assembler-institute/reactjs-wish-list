@@ -22,6 +22,8 @@ class newForm extends Component {
     });
     // eslint-disable-next-line
     console.log("Este es el valor", selected);
+    // eslint-disable-next-line
+    console.log("Este es el valor", this.state);
   }
 
   handleInput(event) {

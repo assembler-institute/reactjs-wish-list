@@ -31,9 +31,7 @@ class TodoItem extends newForm {
       <div>
         <li className="Items">
           <Checkbox handleSelected={this.handleSelected} />
-          <div className="editableText" contentEditable="true">
-            {text}
-          </div>
+          <div className="editableText">{text}</div>
           <Button onClick={this.delete} />
         </li>
       </div>

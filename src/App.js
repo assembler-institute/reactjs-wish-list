@@ -43,6 +43,7 @@ class App extends Component {
 
   render() {
     const { todos } = this.state;
+    const active = todos.filter((item) => item.selected === false);
     return (
       <BrowserRouter>
         <Route
@@ -60,7 +61,7 @@ class App extends Component {
         <Route
           path="/active"
           exact
-          render={(routeProps) => <Active {...routeProps} todos={todos} />}
+          render={(routeProps) => <Active {...routeProps} active={active} />}
         />
         <Route
           path="/completed"
