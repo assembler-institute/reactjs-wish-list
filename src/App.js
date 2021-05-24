@@ -73,6 +73,7 @@ class App extends Component {
   render() {
     const { todos } = this.state;
     const active = todos.filter((item) => item.selected === false);
+    const nonactive = todos.filter((item) => item.selected === true);
     return (
       <BrowserRouter>
         <Route
@@ -97,7 +98,9 @@ class App extends Component {
         <Route
           path="/completed"
           exact
-          render={(routeProps) => <Completed {...routeProps} todos={todos} />}
+          render={(routeProps) => (
+            <Completed {...routeProps} nonactive={nonactive} />
+          )}
         />
       </BrowserRouter>
     );

@@ -46,6 +46,7 @@ class TodoItem extends newForm {
 
   render() {
     const { text } = this.props;
+    const { todo } = this.props;
 
     const viewMode = {};
     const editMode = {};
@@ -59,7 +60,7 @@ class TodoItem extends newForm {
     return (
       <div>
         <li className="Items">
-          <Checkbox onChange={this.selected} />
+          <Checkbox onChange={this.selected} checked={todo.selected} />
           <div className="editableText" onDoubleClick={this.handleEditing}>
             {text}
           </div>

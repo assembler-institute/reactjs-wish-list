@@ -6,7 +6,7 @@ class newForm extends Component {
     super(props);
     this.state = {
       title: "",
-      id: 0,
+      id: Math.random(),
       selected: false,
       editing: false,
     };
