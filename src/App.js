@@ -6,7 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import TodoList from "./components/TodoList";
 import * as api from "./api";
 import AppHeader from "./components/AppHeader";
+
 import { HOME, ACTIVE, COMPLETED } from "./constatnts/routes";
+
 import "./app.scss";
 
 const LOCAL_STORAGE_KEY = "todo-state";
@@ -106,7 +108,8 @@ class App extends Component {
     this.setState({ todos: arr });
   }
 
-  handleClearCompleted(todos) {
+  handleClearCompleted() {
+    const { todos } = this.state;
     const arr = todos.filter((todo) => todo.complete === false);
     this.setState({ todos: arr });
   }
@@ -166,6 +169,8 @@ class App extends Component {
               handleChangeCheck={this.handleChangeCheck}
               handleRemove={this.handleRemove}
               todos={todos.filter((todo) => !todo.complete)}
+              handleClearCompleted={this.handleClearCompleted}
+              currentTheme={currentTheme}
             />
           )}
         />
@@ -179,6 +184,8 @@ class App extends Component {
               handleChangeCheck={this.handleChangeCheck}
               handleRemove={this.handleRemove}
               todos={todos.filter((todo) => todo.complete)}
+              handleClearCompleted={this.handleClearCompleted}
+              currentTheme={currentTheme}
             />
           )}
         />

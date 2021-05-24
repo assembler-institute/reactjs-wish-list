@@ -8,7 +8,7 @@ import { HOME, ACTIVE, COMPLETED } from "../../constatnts/routes";
 
 function AppFooter({ todos, handleClearCompleted, currentTheme }) {
   function onHandleClearCompleted() {
-    handleClearCompleted(todos);
+    handleClearCompleted();
   }
   const footerClearCompleteClasses = classNames({
     main__footer__link: true,

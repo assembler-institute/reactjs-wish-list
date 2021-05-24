@@ -1,5 +1,5 @@
 //light theme
-$bg-theme-light: #fff;
+$bg-theme-light: #fafafa;
 $color-theme-light: #222;
 
 //dark theme_color
@@ -10,6 +10,13 @@ body {
   background-color: $bg-theme-light;
   color: $color-theme-light;
   height: 100vh;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  // outline: 1px solid black;
 }
 
 .globalContainer {
