@@ -23,7 +23,8 @@ function NewTask({ saveNewTask }) {
           isCompleted: false,
         }}
         validationSchema={taskSchema}
-        onSubmit={(values) => {
+        onSubmit={(values, onSubmitProps) => {
+          onSubmitProps.resetForm({});
           const newTask = addDetailsNewTask(values);
           saveNewTask(newTask);
         }}
