@@ -10,7 +10,11 @@ function Button({ id, handleIsActive, isActive }) {
     handleIsActive(id);
   }
   return (
-    <button type="button" className="buttonCheck" onClick={onSetActive}>
+    <button
+      type="button"
+      className="buttonCheck todo-button"
+      onClick={onSetActive}
+    >
       {isActive ? (
         <div className="checked">
           <FontAwesomeIcon icon={faCheck} />

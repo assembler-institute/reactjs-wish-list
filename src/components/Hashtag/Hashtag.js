@@ -2,7 +2,17 @@ import React from "react";
 
 import "./Hashtag.scss";
 
-export default function Hashtag({ hashtagDisplayed }) {
+function Hashtag({ id, hashtagDisplayed, changeHashtag }) {
+  function changeRed() {
+    changeHashtag(id, "red");
+  }
+  function changeYellow() {
+    changeHashtag(id, "yellow");
+  }
+  function changeGreen() {
+    changeHashtag(id, "green");
+  }
+
   return (
     <div
       className={
@@ -11,18 +21,25 @@ export default function Hashtag({ hashtagDisplayed }) {
           : "container__hashtag"
       }
     >
-      <div>
-        <div className="hashtagRed"> </div>
+      <button type="button" className="hashtagButton red" onClick={changeRed}>
         <p>Very important</p>
-      </div>
-      <div>
-        <div className="hashtagOrange"> </div>
+      </button>
+      <button
+        type="button"
+        className="hashtagButton yellow"
+        onClick={changeYellow}
+      >
         <p>Important</p>
-      </div>
-      <div>
-        <div className="hashtagGreen"> </div>
+      </button>
+      <button
+        type="button"
+        className="hashtagButton green"
+        onClick={changeGreen}
+      >
         <p>Slope</p>
-      </div>
+      </button>
     </div>
   );
 }
+
+export default Hashtag;

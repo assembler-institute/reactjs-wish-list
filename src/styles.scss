@@ -5,8 +5,6 @@
   margin: 0px;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-  // overflow-x: hidden;
-  // outline: 1px solid red !important;
 }
 
 body {
@@ -14,6 +12,7 @@ body {
   background-position: top;
   background-color: colors.$body-background;
   background-repeat: no-repeat;
+  width: 100vw;
 }
 
 main {
@@ -31,29 +30,32 @@ main {
     flex-direction: column;
     padding: 1rem;
 
-    .header {
-      width: 100%;
-      display: flex;
-      color: white;
-      font-size: 3rem;
-      font-weight: bold;
-      margin-bottom: 3rem;
-
-      .title {
-        width: 90%;
-        letter-spacing: 0.8rem;
-      }
-
-      .dark-mode {
-        display: flex;
-        width: 10%;
-        justify-content: center;
-        align-items: center;
-      }
+    .shadow {
+      background-color: rgba(128, 128, 128, 0);
+      border-radius: 8px;
+      box-shadow: 0px 5px 50px 3px rgba(128, 128, 128, 0.432);
     }
   }
 }
 footer {
   background-color: #fff;
   border-radius: 0 0 8px 8px;
+
+  .count {
+    width: 15%;
+  }
+
+  .pages {
+    width: 66%;
+    display: inline-flex;
+    justify-content: center;
+
+    .page {
+      width: fit-content;
+    }
+  }
+
+  .delete-completed {
+    width: 19%;
+  }
 }

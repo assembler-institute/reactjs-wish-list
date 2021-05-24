@@ -8,6 +8,8 @@ import Header from "./components/Header";
 import NewTodo from "./components/NewTodo";
 import TodoList from "./components/todolist";
 
+import * as api from "./api";
+
 // import * as api from "./api";
 
 const LOCAL_STORAGE_KEY = "react-todo-app";
@@ -40,6 +42,7 @@ class App extends Component {
     this.handleIsEdit = this.handleIsEdit.bind(this);
     this.editTodo = this.editTodo.bind(this);
     this.displayHashtag = this.displayHashtag.bind(this);
+    this.changeHashtag = this.changeHashtag.bind(this);
   }
 
   componentDidMount() {
@@ -48,6 +51,12 @@ class App extends Component {
     if (!prevItems) {
       this.setState({
         todos: [],
+      });
+
+      api.getTodos().then((data) => {
+        this.setState({
+          todos: data,
+        });
       });
       return;
     }
@@ -105,8 +114,6 @@ class App extends Component {
   deleteTodo(todoId) {
     const { todos } = this.state;
     const todoDelete = todos.filter((todo) => todo.id !== todoId);
-    // eslint-disable-next-line
-    console.log(todoDelete);
     this.setState(() => ({
       todos: todoDelete,
     }));
@@ -136,8 +143,6 @@ class App extends Component {
   }
 
   displayHashtag(todoId) {
-    // eslint-disable-next-line
-    console.log({ todoId });
     const { todos } = this.state;
 
     const updatedTodos = todos.map((todo) => {
@@ -145,6 +150,29 @@ class App extends Component {
         return {
           ...todo,
           hashtagDisplayed: !todo.hashtagDisplayed,
+        };
+      }
+
+      return todo;
+    });
+
+    this.setState({ todos: updatedTodos });
+  }
+
+  changeHashtag(todoId, color) {
+    const { todos } = this.state;
+
+    const updatedTodos = todos.map((todo) => {
+      let updateColor;
+      if (todo.id === todoId) {
+        if (color === todo.hashtag) {
+          updateColor = "";
+        } else {
+          updateColor = color;
+        }
+        return {
+          ...todo,
+          hashtag: updateColor,
         };
       }
 
@@ -168,65 +196,72 @@ class App extends Component {
               <div className="new-todo">
                 <NewTodo saveNewTodo={this.saveNewTodo} />
               </div>
-              <Switch>
-                <Route path="/active">
-                  <TodoList
-                    todos={active}
-                    handleIsActive={this.handleIsActive}
-                    deleteTodo={this.deleteTodo}
-                    handleIsEdit={this.handleIsEdit}
-                    displayHashtag={this.displayHashtag}
-                    editTodo={this.editTodo}
-                  />
-                </Route>
-                <Route path="/completed">
-                  <TodoList
-                    todos={completed}
-                    handleIsActive={this.handleIsActive}
-                    deleteTodo={this.deleteTodo}
-                    handleIsEdit={this.handleIsEdit}
-                    displayHashtag={this.displayHashtag}
-                    editTodo={this.editTodo}
-                  />
-                </Route>
-                <Route path="/">
-                  <TodoList
-                    todos={todos}
-                    handleIsActive={this.handleIsActive}
-                    deleteTodo={this.deleteTodo}
-                    handleIsEdit={this.handleIsEdit}
-                    displayHashtag={this.displayHashtag}
-                    editTodo={this.editTodo}
-                  />
-                </Route>
-              </Switch>
-              <footer>
-                <div className="text__small">{active.length} items left</div>
-                <div>
-                  <Link to="/">
-                    <button type="button" className="text__small">
-                      All
-                    </button>
-                  </Link>
-                  <Link to="/active">
-                    <button type="button" className="text__small">
-                      Actived
-                    </button>
-                  </Link>
-                  <Link to="/completed">
-                    <button type="button" className="text__small">
-                      Completed
-                    </button>
-                  </Link>
-                </div>
-                <button
-                  className="text__small"
-                  type="button"
-                  onClick={this.clearCompleted}
-                >
-                  Clear Completed
-                </button>
-              </footer>
+              <div className="shadow">
+                <Switch>
+                  <Route path="/active">
+                    <TodoList
+                      todos={active}
+                      handleIsActive={this.handleIsActive}
+                      deleteTodo={this.deleteTodo}
+                      handleIsEdit={this.handleIsEdit}
+                      displayHashtag={this.displayHashtag}
+                      changeHashtag={this.changeHashtag}
+                      editTodo={this.editTodo}
+                    />
+                  </Route>
+                  <Route path="/completed">
+                    <TodoList
+                      todos={completed}
+                      handleIsActive={this.handleIsActive}
+                      deleteTodo={this.deleteTodo}
+                      handleIsEdit={this.handleIsEdit}
+                      displayHashtag={this.displayHashtag}
+                      changeHashtag={this.changeHashtag}
+                      editTodo={this.editTodo}
+                    />
+                  </Route>
+                  <Route path="/">
+                    <TodoList
+                      todos={todos}
+                      handleIsActive={this.handleIsActive}
+                      deleteTodo={this.deleteTodo}
+                      handleIsEdit={this.handleIsEdit}
+                      displayHashtag={this.displayHashtag}
+                      changeHashtag={this.changeHashtag}
+                      editTodo={this.editTodo}
+                    />
+                  </Route>
+                </Switch>
+                <footer>
+                  <div className="count text__small">
+                    {active.length} items left
+                  </div>
+                  <div className="pages">
+                    <Link to="/">
+                      <button type="button" className="page text__small">
+                        All
+                      </button>
+                    </Link>
+                    <Link to="/active">
+                      <button type="button" className="page text__small">
+                        Actived
+                      </button>
+                    </Link>
+                    <Link to="/completed">
+                      <button type="button" className="page text__small">
+                        Completed
+                      </button>
+                    </Link>
+                  </div>
+                  <button
+                    className="delete-completed text__small"
+                    type="button"
+                    onClick={this.clearCompleted}
+                  >
+                    Clear Completed
+                  </button>
+                </footer>
+              </div>
             </section>
           </main>
         </Router>

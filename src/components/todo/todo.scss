@@ -5,9 +5,8 @@
 }
 .container-list {
   width: inherit;
-
   padding: 0;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   height: 64px;
   cursor: pointer;
@@ -32,7 +31,7 @@ li:hover {
   display: flex;
   align-items: center;
   padding: 1rem;
-  width: 100%;
+  width: 89%;
   justify-content: center;
 }
 
@@ -45,15 +44,15 @@ li:hover {
 }
 
 .red {
-  background-color: red;
+  background-color: rgb(216, 100, 100);
 }
 
 .green {
-  background-color: green;
+  background-color: rgb(55, 141, 55);
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: rgb(233, 174, 37);
 }
 
 .text__check {

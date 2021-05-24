@@ -23,6 +23,8 @@ function Todo({
   hashtagDisplayed,
   displayHashtag,
   editTodo,
+  hashtag,
+  changeHashtag,
 }) {
   function deleteTodoId() {
     deleteTodo(id);
@@ -36,7 +38,7 @@ function Todo({
     <>
       <li className="list">
         <div className="container-list">
-          <span className="hashtag red"> </span>
+          <span className={`hashtag ${hashtag}`}> </span>
 
           <Button id={id} handleIsActive={handleIsActive} isActive={isActive} />
           <div className="todo-input">
@@ -77,7 +79,12 @@ function Todo({
             <FontAwesomeIcon icon={faTrashAlt} onClick={deleteTodoId} />
           </div>
         </div>
-        <Hashtag hashtagDisplayed={hashtagDisplayed} />
+        <Hashtag
+          id={id}
+          hashtag={hashtag}
+          hashtagDisplayed={hashtagDisplayed}
+          changeHashtag={changeHashtag}
+        />
       </li>
     </>
   );

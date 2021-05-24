@@ -15,6 +15,7 @@ function addTodoDetails(todo) {
     isActive: false,
     isEdit: false,
     hashtagDisplayed: false,
+    hashtag: "",
   };
 }
 
