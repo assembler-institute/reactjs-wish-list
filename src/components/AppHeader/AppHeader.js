@@ -6,7 +6,7 @@ function AppHeader() {
       <h1 className="title text-white font-weight-bold bg-transparent">
         T O D O
       </h1>
-      <button type="button" className="btn btn-outline-secondary">
+      <button type="button" className="btn btn-outline-secondary border-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"

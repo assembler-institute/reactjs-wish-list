@@ -117,6 +117,7 @@ class App extends Component {
                   tasks={tasks}
                   handleRemoveTask={this.handleRemoveTask}
                   handleCheckboxChange={this.handleCheckboxChange}
+                  handleClearCompleted={this.handleClearCompleted}
                 />
               )}
             />
@@ -129,6 +130,7 @@ class App extends Component {
                   tasks={tasks}
                   handleRemoveTask={this.handleRemoveTask}
                   handleCheckboxChange={this.handleCheckboxChange}
+                  handleClearCompleted={this.handleClearCompleted}
                 />
               )}
             />
@@ -141,6 +143,7 @@ class App extends Component {
                   tasks={tasks}
                   handleRemoveTask={this.handleRemoveTask}
                   handleCheckboxChange={this.handleCheckboxChange}
+                  handleClearCompleted={this.handleClearCompleted}
                 />
               )}
             />

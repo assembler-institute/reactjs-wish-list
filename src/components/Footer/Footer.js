@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import "./Footer.scss";
 
 function Footer({ handleClearCompleted, currentFilter, itemsLeft }) {
+  function onClearCompleted() {
+    handleClearCompleted();
+  }
+
   return (
     <footer className="mb-4">
       <div className="container justify-content-between bg-white">
@@ -32,7 +36,7 @@ function Footer({ handleClearCompleted, currentFilter, itemsLeft }) {
         >
           Completed
         </Link>
-        <button type="button" onClick={handleClearCompleted}>
+        <button type="button" onClick={onClearCompleted}>
           Clear completed
         </button>
       </div>
