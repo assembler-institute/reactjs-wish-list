@@ -19,10 +19,14 @@ class CreateTodo extends Component {
     event.preventDefault();
     const { text: newText } = this.state;
     const { handleAddTodo } = this.props;
-    handleAddTodo(newText);
-    this.setState({
-      text: "",
-    });
+    if (newText === "") {
+      alert("Please enter at least one character");
+    } else {
+      handleAddTodo(newText);
+      this.setState({
+        text: "",
+      });
+    }
   }
 
   handleTodoInputChange(event) {
