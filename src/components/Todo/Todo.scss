@@ -47,19 +47,23 @@
 
   form {
     flex-grow: 1;
-
-    .done-todo-text {
-      color: lightgray;
-      text-decoration: line-through;
-    }
-
     .edit-todo-input {
+      background-color: transparent;
       cursor: pointer;
       font-size: 15px;
       width: 95%;
       margin: 0;
       outline: none;
       border: none;
+
+      &-dark {
+        color: white;
+      }
+    }
+
+    .done-todo-text {
+      color: lightgray;
+      text-decoration: line-through;
     }
   }
 
@@ -69,6 +73,10 @@
 
     .close {
       font-size: 18px;
+
+      &-dark {
+        color: white;
+      }
     }
   }
 }

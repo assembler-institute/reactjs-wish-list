@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import "./CreateTodo.scss";
 
+const classNames = require("classnames");
+
 class CreateTodo extends Component {
   constructor(props) {
     super(props);
@@ -31,9 +33,21 @@ class CreateTodo extends Component {
 
   render() {
     const { text } = this.state;
+    const { darkMode } = this.props;
+
+    // Conditional class
+    const backgroundDarkModeClass = classNames({
+      "row create-todo-section custom-section": true,
+      "custom-section-dark": darkMode,
+    });
+
+    const inputDarkModeClass = classNames({
+      "addtodo-input": true,
+      "addtodo-input-dark": darkMode,
+    });
 
     return (
-      <section className="row create-todo-section">
+      <section className={backgroundDarkModeClass}>
         <div className="col col-12 px-4 d-flex align-items-center">
           <div className="checkbox-wrapper d-flex flex-column justify-content-center align-items-center">
             {/* <input type="checkbox" name="checkbox" /> */}
@@ -43,7 +57,7 @@ class CreateTodo extends Component {
           </div>
           <form className="d-flex" onSubmit={this.handleSubmit}>
             <input
-              className="addtodo-input"
+              className={inputDarkModeClass}
               name="addtodo-input"
               id="addtodo-input"
               type="text"

@@ -49,7 +49,7 @@ class Todo extends Component {
   }
 
   render() {
-    const { id, done } = this.props;
+    const { id, done, darkMode } = this.props;
     // const { id, text, done } = this.props;
     const { todoText } = this.state;
 
@@ -57,6 +57,12 @@ class Todo extends Component {
     const inputClasses = classNames({
       "edit-todo-input": true,
       "done-todo-text": done,
+      "edit-todo-input-dark": darkMode,
+    });
+
+    const closeClasses = classNames({
+      "close uil uil-times": true,
+      "close-dark": darkMode,
     });
 
     return (
@@ -92,7 +98,7 @@ class Todo extends Component {
           onClick={this.insideDeleteTodo}
           className="d-flex justify-content-center align-items-center"
         >
-          <i className="close uil uil-times" />
+          <i className={closeClasses} />
         </button>
       </div>
     );

@@ -125,7 +125,7 @@ class App extends Component {
   render() {
     const { todos, hasTodos, darkMode } = this.state;
 
-    // Light/Dark mode styling
+    // Conditional class
     const darkModeClasses = classNames({
       "bottom-background": true,
       "bottom-background-dark": darkMode,
@@ -158,7 +158,7 @@ class App extends Component {
               )}
             </button>
           </div>
-          <CreateTodo handleAddTodo={this.handleAddTodo} />
+          <CreateTodo handleAddTodo={this.handleAddTodo} darkMode={darkMode} />
           <BrowserRouter>
             <Route
               path="/"
@@ -168,6 +168,7 @@ class App extends Component {
                   {...routeProps}
                   todos={todos}
                   hasTodos={hasTodos}
+                  darkMode={darkMode}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
                   todosLeft={todos.filter((todo) => !todo.done).length}
@@ -184,6 +185,7 @@ class App extends Component {
                   todos={todos.filter((todo) => !todo.done)}
                   todosLeft={todos.filter((todo) => !todo.done).length}
                   hasTodos={hasTodos}
+                  darkMode={darkMode}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
                   handleEditedTodo={this.handleEditedTodo}
@@ -199,6 +201,7 @@ class App extends Component {
                   todos={todos.filter((todo) => todo.done)}
                   todosLeft={todos.filter((todo) => !todo.done).length}
                   hasTodos={hasTodos}
+                  darkMode={darkMode}
                   handleDone={this.handleDone}
                   handleDelete={this.handleDelete}
                   handleEditedTodo={this.handleEditedTodo}
