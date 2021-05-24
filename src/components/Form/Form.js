@@ -8,7 +8,7 @@ class newForm extends Component {
       title: "",
       id: 0,
       selected: false,
-      // editTodo: false,
+      editing: false,
     };
     this.handleInput = this.handleInput.bind(this);
     this.submitTitle = this.submitTitle.bind(this);
@@ -23,6 +23,17 @@ class newForm extends Component {
     // eslint-disable-next-line
     console.log("Este es el valor", selected);
   }
+
+  handleEditing = (event) => {
+    let { editing } = this.state;
+    editing = event.target.value;
+    editing = true;
+    // eslint-disable-next-line
+    console.log("editmode");
+    this.setState({
+      editing: editing,
+    });
+  };
 
   handleInput(event) {
     let { title } = this.state;
