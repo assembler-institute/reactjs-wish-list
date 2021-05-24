@@ -101,8 +101,8 @@ class App extends Component {
   handleChangeCheck(id) {
     const { todos } = this.state;
     const arr = todos.map((todo) => {
-      const obj = todo.id === id ? { ...todo, complete: !todo.complete } : todo;
-      return obj;
+      return todo.id === id ? { ...todo, complete: !todo.complete } : todo;
+      // return obj;
     });
 
     this.setState({ todos: arr });

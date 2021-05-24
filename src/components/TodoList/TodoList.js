@@ -1,5 +1,5 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import classNames from "classnames";
 
 import AppFooter from "../AppFooter";
@@ -21,7 +21,7 @@ function TodoList({
   function printTodos() {
     return todos.map((todo) => (
       <Todo
-        key={uuidv4()}
+        key={todo.id}
         handleChangeCheck={handleChangeCheck}
         handleRemove={handleRemove}
         handleEdit={handleEdit}
