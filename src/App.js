@@ -6,7 +6,7 @@ import "./components/Footer/Footer.scss";
 
 import Header from "./components/Header";
 import NewTodo from "./components/NewTodo";
-import TodoList from "./components/TodoList";
+import TodoList from "./components/todolist";
 
 import * as api from "./api";
 
