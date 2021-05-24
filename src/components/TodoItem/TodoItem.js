@@ -11,11 +11,11 @@ class TodoItem extends newForm {
     this.selected = this.selected.bind(this);
   }
 
-  selected(event) {
+  selected() {
     const { handleSelected } = this.props;
-    // const { todos } = this.props;
-    // const { todo } = this.props;
-    handleSelected(event);
+    const { todos } = this.props;
+    const { todo } = this.props;
+    handleSelected(todos, todo);
   }
 
   delete() {

@@ -2,7 +2,7 @@ import React from "react";
 import "./_Todo.scss";
 import TodoItem from "../TodoItem";
 
-function Todo({ todos, handleDelete }) {
+function Todo({ todos, handleDelete, handleSelected }) {
   // eslint-disable-next-line
   console.log("que recive", todos);
   return (
@@ -11,7 +11,7 @@ function Todo({ todos, handleDelete }) {
         {todos.map((todo) => (
           <TodoItem
             handleDelete={handleDelete}
-            // handleSelected={handleSelected}
+            handleSelected={handleSelected}
             key={todo.id}
             text={todo.title}
             todo={todo}
