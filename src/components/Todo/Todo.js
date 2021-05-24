@@ -11,6 +11,7 @@ function Todo({ todos, handleDelete }) {
         {todos.map((todo) => (
           <TodoItem
             handleDelete={handleDelete}
+            // handleSelected={handleSelected}
             key={todo.id}
             text={todo.title}
             todo={todo}

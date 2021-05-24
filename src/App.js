@@ -15,7 +15,25 @@ class App extends Component {
     };
     this.newTodo = this.newTodo.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    // this.handleSelected = this.handleSelected.bind(this);
   }
+  /*
+  handleSelected(arry, item, event) {
+    // eslint-disable-next-line
+    console.log("item", item);
+    // eslint-disable-next-line
+    console.log("con el item", arry);
+    // eslint-disable-next-line
+    console.log(event.target.value);
+    // eslint-disable-next-line
+    console.log("sin el item", this.state);
+    this.setState({
+      todos: notDelete,
+    });
+    // eslint-disable-next-line
+    console.log("sin el item", arry);
+  }
+  */
 
   handleDelete(arry, item) {
     // eslint-disable-next-line
@@ -55,6 +73,7 @@ class App extends Component {
               todos={todos}
               newTodo={this.newTodo}
               handleDelete={this.handleDelete}
+              // handleSelected={this.handleSelected}
             />
           )}
         />

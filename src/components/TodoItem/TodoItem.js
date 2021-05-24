@@ -7,8 +7,15 @@ class TodoItem extends newForm {
   constructor(props) {
     super(props);
 
-    this.handleSelected = this.handleSelected.bind(this);
     this.delete = this.delete.bind(this);
+    this.selected = this.selected.bind(this);
+  }
+
+  selected(event) {
+    const { handleSelected } = this.props;
+    // const { todos } = this.props;
+    // const { todo } = this.props;
+    handleSelected(event);
   }
 
   delete() {
@@ -17,12 +24,6 @@ class TodoItem extends newForm {
     const { todo } = this.props;
     handleDelete(todos, todo);
   }
-  /*
-  editItem() {
-    const { text } = this.props;
-
-  }
-  */
 
   render() {
     const { text } = this.props;
@@ -30,7 +31,7 @@ class TodoItem extends newForm {
     return (
       <div>
         <li className="Items">
-          <Checkbox handleSelected={this.handleSelected} />
+          <Checkbox onChange={this.selected} />
           <div className="editableText">{text}</div>
           <Button onClick={this.delete} />
         </li>
