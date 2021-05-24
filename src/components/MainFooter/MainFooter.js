@@ -4,7 +4,7 @@ import "./MainFooter.scss";
 
 function MainFooter({ todosLeft }) {
   return (
-    <div className="main-footer col col-12">
+    <div className="main-footer col col-12 py-3">
       <div className="items-left footer-item">{todosLeft} todos left</div>
       <nav className="">
         <ul className="navbar-nav d-flex">
