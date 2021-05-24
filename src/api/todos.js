@@ -4,6 +4,7 @@ const todos = [
     isActive: false,
     isEdit: false,
     hashtagDisplayed: false,
+    hashtag: "green",
     content: "Eu in voluptate ut magna id sint elit est enim et officia. ",
   },
   {
@@ -11,6 +12,7 @@ const todos = [
     isActive: false,
     isEdit: false,
     hashtagDisplayed: false,
+    hashtag: "red",
     content: "Eu in voluptate ut magna id sint elit est enim et officia. ",
   },
   {
@@ -18,6 +20,7 @@ const todos = [
     isActive: false,
     isEdit: false,
     hashtagDisplayed: false,
+    hashtag: "red",
     content: "Eu in voluptate ut magna id sint elit est enim et officia. ",
   },
   {
@@ -25,6 +28,7 @@ const todos = [
     isActive: false,
     isEdit: false,
     hashtagDisplayed: false,
+    hashtag: "yellow",
     content: "Eu in voluptate ut magna id sint elit est enim et officia. ",
   },
   {
@@ -32,6 +36,7 @@ const todos = [
     isActive: false,
     isEdit: false,
     hashtagDisplayed: false,
+    hashtag: "red",
     content: "Eu in voluptate ut magna id sint elit est enim et officia. ",
   },
   {
@@ -39,6 +44,7 @@ const todos = [
     isActive: false,
     isEdit: false,
     hashtagDisplayed: false,
+    hashtag: "green",
     content: "Eu in voluptate ut magna id sint elit est enim et officia. ",
   },
 ];

@@ -31,6 +31,7 @@ function TodoList({
               handleIsEdit={handleIsEdit}
               deleteTodo={deleteTodo}
               hashtagDisplayed={todo.hashtagDisplayed}
+              hashtag={todo.hashtag}
               displayHashtag={displayHashtag}
               editTodo={editTodo}
             />
