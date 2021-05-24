@@ -2,17 +2,19 @@
   display: none;
 }
 
-li:hover span {
-  display: block;
+li {
+  :hover span {
+    display: block;
+    align-self: center;
+  }
 }
 
-input{
+input {
   margin-right: 10px;
 }
 
-@media only screen and (max-width: 767px){
+@media (hover: none) {
   .hidden {
     display: block;
   }
 }
-
