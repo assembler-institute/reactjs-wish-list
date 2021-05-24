@@ -5,7 +5,7 @@ import "./MainFooter.scss";
 function MainFooter({ todosLeft }) {
   return (
     <div className="main-footer col col-12">
-      <div className="items-left">{todosLeft} todos left</div>
+      <div className="items-left footer-item">{todosLeft} todos left</div>
       <nav className="">
         <ul className="navbar-nav d-flex">
           <li className="nav-item">
@@ -35,7 +35,7 @@ function MainFooter({ todosLeft }) {
           </li>
         </ul>
       </nav>
-      <div className="clear-all-div">Clear All</div>
+      <div className="clear-all-div footer-item">Clear All</div>
     </div>
   );
 }
