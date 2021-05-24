@@ -6,6 +6,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Work Sans", sans-serif;
+  transition: 0.4s;
 
   ::placeholder {
     // color: #7e76b7;
@@ -33,6 +34,7 @@ body {
   align-items: center;
   .general-background {
     height: 100vh;
+
     .top-background {
       height: 33%;
       .img-background {
@@ -42,8 +44,11 @@ body {
       }
     }
     .bottom-background {
-      background-color: c.$backgroundColor;
+      background-color: c.$lightBgColor;
       flex-grow: 1;
+      &-dark {
+        background-color: c.$darkBgColor;
+      }
     }
   }
   .main-container {

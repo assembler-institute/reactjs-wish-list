@@ -7,6 +7,8 @@ import TodoList from "./components/TodoList";
 
 import defaultTodos from "./utils/demo-data";
 
+const classNames = require("classnames");
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +16,7 @@ class App extends Component {
     this.state = {
       todos: defaultTodos,
       hasTodos: false,
-      lightMode: true,
+      darkMode: false,
       isLoading: false,
       hasError: false,
     };
@@ -85,8 +87,8 @@ class App extends Component {
   }
 
   handleMode() {
-    const { lightMode } = this.state;
-    this.setState({ lightMode: !lightMode });
+    const { darkMode } = this.state;
+    this.setState({ darkMode: !darkMode });
   }
 
   /* -------------------------------------------------------------------------- */
@@ -111,17 +113,23 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    const { lightMode } = this.state;
+    const { darkMode } = this.state;
     // eslint-disable-next-line no-console
     console.clear();
     // eslint-disable-next-line no-console
     console.log(this.state);
     // eslint-disable-next-line
-    console.log("Light mode", lightMode);
+    console.log("Dark mode", darkMode);
   }
 
   render() {
-    const { todos, hasTodos } = this.state;
+    const { todos, hasTodos, darkMode } = this.state;
+
+    // Light/Dark mode styling
+    const darkModeClasses = classNames({
+      "bottom-background": true,
+      "bottom-background-dark": darkMode,
+    });
 
     return (
       <>
@@ -129,17 +137,25 @@ class App extends Component {
           <div className="top-background">
             <img
               className="img-background"
-              src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80"
+              src={
+                !darkMode
+                  ? "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80"
+                  : "https://images.unsplash.com/flagged/photo-1551301622-6fa51afe75a9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+              }
               alt="bck-img"
             />
           </div>
-          <div className="bottom-background" />
+          <div className={darkModeClasses} />
         </div>
         <main className="container mt-5 main-container px-0">
           <div className="main-header">
             <h1 className="main-header-title">T O D O</h1>
             <button type="button" onClick={this.handleMode}>
-              <i className="uil uil-moon" />
+              {!darkMode ? (
+                <i className="uil uil-moon" />
+              ) : (
+                <i className="uil uil-sun" />
+              )}
             </button>
           </div>
           <CreateTodo handleAddTodo={this.handleAddTodo} />
