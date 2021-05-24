@@ -4,7 +4,7 @@ import mountainImg from "../../img/mountain.jpg";
 import AppHeader from "../../components/AppHeader";
 import AppFooter from "../../components/AppFooter";
 import CreateTodo from "../../components/CreateTodo";
-import TodoListing from "../../components/TodoListing";
+import TodosContainer from "../../components/TodosContainer";
 import NoTodos from "../../components/NoTodos";
 
 function All({
@@ -45,17 +45,21 @@ function All({
           <div className="todoRender">
             {isEmpty && <NoTodos />}
             {!isEmpty && (
-              <TodoListing
-                allTodos={allTodos}
-                handleSetCompleted={handleSetCompleted}
-                handleCompleted={handleCompleted}
-                handleRemove={handleRemove}
-                handleChecked={handleChecked}
-                handleAddToComplete={handleAddToComplete}
-                handleAddToActive={handleAddToActive}
-                handleEditTodo={handleEditTodo}
-                onChange={handleChange}
-              />
+              <>
+                {allTodos.map((todo) => (
+                  <TodosContainer
+                    key={todo.id}
+                    id={todo.id}
+                    name={todo.name}
+                    isComplete={todo.complete}
+                    handleRemove={handleRemove}
+                    handleChecked={handleChecked}
+                    handleAddToComplete={handleAddToComplete}
+                    handleAddToActive={handleAddToActive}
+                    handleEditTodo={handleEditTodo}
+                  />
+                ))}
+              </>
             )}
           </div>
           <AppFooter todoLength={todoLength} />

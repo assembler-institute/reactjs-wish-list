@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
-// import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import All from "./pages/All";
+import Completed from "./pages/Completed";
+import Actives from "./pages/Actives";
 import "./App.scss";
 
 const LOCAL_STORAGE_KEY = "all-todos";
@@ -181,21 +183,70 @@ class App extends Component {
   }
 
   render() {
-    const { allTodos, todoName, isEmpty } = this.state;
+    const { allTodos, todoName, isEmpty, activeTodos, completeTodos } =
+      this.state;
     return (
-      <All
-        handleSubmit={this.handleSubmit}
-        handleChange={this.handleChange}
-        handleRemove={this.handleRemove}
-        handleChecked={this.handleChecked}
-        handleEditTodo={this.handleEditTodo}
-        handleAddToComplete={this.handleAddToComplete}
-        handleAddToActive={this.handleAddToActive}
-        allTodos={allTodos}
-        todoName={todoName}
-        isEmpty={isEmpty}
-        todoLength={allTodos.length}
-      />
+      <BrowserRouter>
+        <Route
+          path="/"
+          exact
+          render={(routeProps) => (
+            <All
+              {...routeProps}
+              handleSubmit={this.handleSubmit}
+              handleChange={this.handleChange}
+              handleRemove={this.handleRemove}
+              handleChecked={this.handleChecked}
+              handleEditTodo={this.handleEditTodo}
+              handleAddToComplete={this.handleAddToComplete}
+              handleAddToActive={this.handleAddToActive}
+              allTodos={allTodos}
+              todoName={todoName}
+              isEmpty={isEmpty}
+              todoLength={activeTodos.length}
+            />
+          )}
+        />
+        <Route
+          path="/Active"
+          exact
+          render={(routeProps) => (
+            <Actives
+              {...routeProps}
+              handleSubmit={this.handleSubmit}
+              handleChange={this.handleChange}
+              handleRemove={this.handleRemove}
+              handleEditTodo={this.handleEditTodo}
+              handleAddToComplete={this.handleAddToComplete}
+              handleAddToActive={this.handleAddToActive}
+              activeTodos={activeTodos}
+              todoName={todoName}
+              isEmpty={isEmpty}
+              todoLength={activeTodos.length}
+            />
+          )}
+        />
+        <Route
+          path="/Completed"
+          exact
+          render={(routeProps) => (
+            <Completed
+              {...routeProps}
+              handleSubmit={this.handleSubmit}
+              handleChange={this.handleChange}
+              handleRemove={this.handleRemove}
+              // handleChecked={this.handleChecked}
+              handleEditTodo={this.handleEditTodo}
+              handleAddToComplete={this.handleAddToComplete}
+              handleAddToActive={this.handleAddToActive}
+              completeTodos={completeTodos}
+              todoName={todoName}
+              isEmpty={isEmpty}
+              todoLength={activeTodos.length}
+            />
+          )}
+        />
+      </BrowserRouter>
     );
   }
 }
