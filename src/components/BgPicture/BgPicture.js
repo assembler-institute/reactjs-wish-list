@@ -14,7 +14,8 @@ class BgPicture extends Component {
         <img
           className="bgImg"
           alt="foto"
-          src="https://images.pexels.com/photos/4215100/pexels-photo-4215100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          src="https://images.pexels.com/photos/1232594/pexels-photo-1232594.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+          // src="https://images.pexels.com/photos/6439051/pexels-photo-6439051.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
         />
       </div>
     );

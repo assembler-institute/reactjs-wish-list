@@ -60,15 +60,17 @@ input.blue-checkbox {
 
 .taskDone {
   color:red;
-  opacity: 0.5;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 1s linear;
 }
+
 .show{
   color: black;
 }
 
 .hidden{
-  display: hidden;
-  opacity: 0;
+  display: none;
 }
 
 .divHover{

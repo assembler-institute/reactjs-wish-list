@@ -32,6 +32,11 @@ class TodoCard extends Component {
       this.setState({
         showHideSidenav: "taskDone",
       });
+      setTimeout(() => {
+        this.setState({
+          showHideSidenav: "hidden",
+        });
+      }, 1000);
     }
 
     this.setState({
