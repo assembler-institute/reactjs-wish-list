@@ -7,7 +7,7 @@ import editSchema from "./edit-schema";
 
 import "./EditTodo.scss";
 
-function EditTodo({ handleEditSubmit, handleResetEdit, todo }) {
+function EditTodo({ handleEditSubmit, handleResetEdit, todo, currentTheme }) {
   return (
     <Formik
       initialValues={{
@@ -40,6 +40,7 @@ function EditTodo({ handleEditSubmit, handleResetEdit, todo }) {
             hasErrorMessage={touched.name}
             errorMessage={errors.name}
             autoFocus={true}
+            currentTheme={currentTheme}
           />
         </form>
       )}

@@ -19,7 +19,7 @@ function AppFooter({ todos, handleClearCompleted, currentTheme }) {
       <span>{todos.filter((v) => !v.complete).length} items left</span>
       <div className="main__footer__lwrp">
         <NavLink
-          className="main__footer__link"
+          className={footerClearCompleteClasses}
           activeClassName="selected"
           exact
           to={HOME}
@@ -27,7 +27,7 @@ function AppFooter({ todos, handleClearCompleted, currentTheme }) {
           All
         </NavLink>
         <NavLink
-          className="main__footer__link"
+          className={footerClearCompleteClasses}
           activeClassName="selected"
           exact
           to={ACTIVE}
@@ -35,7 +35,7 @@ function AppFooter({ todos, handleClearCompleted, currentTheme }) {
           Active
         </NavLink>
         <NavLink
-          className="main__footer__link"
+          className={footerClearCompleteClasses}
           activeClassName="selected"
           exact
           to={COMPLETED}

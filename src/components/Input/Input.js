@@ -14,12 +14,14 @@ function Input({
   errorMessage,
   hasErrorMessage,
   autoFocus,
+  currentTheme,
   ...props
 }) {
   const classes = classNames({
-    "input-class": true,
+    input__class: true,
     "input-class-err": hasErrorMessage && errorMessage,
     "is-invalid": hasErrorMessage && errorMessage,
+    input__class__darkMode: currentTheme,
   });
 
   return (

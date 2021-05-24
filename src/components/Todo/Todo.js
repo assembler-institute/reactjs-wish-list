@@ -46,6 +46,7 @@ function Todo({
             todo={todo}
             handleResetEdit={handleResetEdit}
             handleEditSubmit={handleEditSubmit}
+            currentTheme={currentTheme}
           />
         ) : (
           <button
