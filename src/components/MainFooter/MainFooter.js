@@ -5,7 +5,7 @@ import "./MainFooter.scss";
 
 const classNames = require("classnames");
 
-function MainFooter({ todosLeft, darkMode, onClearCompleted }) {
+function MainFooter({ todosLeft, darkMode, handleClearCompleted }) {
   render();
   {
     // Conditional class
@@ -68,7 +68,7 @@ function MainFooter({ todosLeft, darkMode, onClearCompleted }) {
         </nav>
         <div
           aria-hidden="true"
-          onClick={onClearCompleted}
+          onClick={handleClearCompleted}
           className={darkModeClear}
         >
           Clear Completed

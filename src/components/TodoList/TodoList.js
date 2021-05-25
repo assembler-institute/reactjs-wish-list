@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import Todo from "../Todo";
-import MainFooter from "../AppIndex";
+import MainFooter from "../MainFooter";
 import NoTodos from "../NoTodos";
 import "./TodoList.scss";
 
