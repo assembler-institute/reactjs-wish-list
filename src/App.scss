@@ -1,0 +1,66 @@
+$mainWhite: rgb(242, 247, 252);
+$mainDark: rgb(20, 2, 26);
+$mainPurple: #9291c9;
+
+body {
+  background-color: #faf5f8a6;
+}
+body.dark {
+  background-color: $mainDark;
+  .btn {
+    path {
+      fill: $mainWhite;
+    }
+  }
+  .mainScreen {
+    .upperScreen {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("../src/img/background.jpg");
+      .addTodo {
+        form {
+          input {
+            background-color: $mainDark;
+            color: $mainWhite;
+          }
+          .addBtn {
+            background-color: #2b425b;
+          }
+        }
+      }
+      .TodoList {
+        background-color: rgb(3, 17, 12);
+        color: $mainWhite;
+        .footerStyle {
+          .links {
+            color: #ebd2e3;
+          }
+          .filtered {
+            color: $mainPurple;
+          }
+          .footerBtn {
+            color: $mainWhite;
+          }
+        }
+        .todo {
+          border-bottom: 1px solid rgba(61, 1, 56, 0.445) !important;
+          background: rgb(2, 0, 36);
+          background: linear-gradient(
+            90deg,
+            rgba(2, 0, 36, 1) 0%,
+            rgba(39, 29, 50, 1) 35%,
+            $mainPurple 100%
+          );
+          color: $mainWhite;
+          button {
+            svg {
+              fill: $mainWhite;
+            }
+          }
+        }
+      }
+    }
+  }
+  .roundedLabel {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}

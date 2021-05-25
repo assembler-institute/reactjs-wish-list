@@ -1,0 +1,46 @@
+@mixin focusNone {
+  box-shadow: none !important;
+}
+.addTodo {
+  form {
+    display: flex;
+    position: relative;
+    box-shadow: 0px 5px 5px 10px rgba(0, 0, 0, 0.153);
+    input {
+      padding: 30px;
+      width: 100vw;
+      min-width: 300px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      &:focus {
+        @include focusNone();
+      }
+    }
+    .addBtn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      background-color: rgba(174, 210, 235, 0.427);
+      color: aliceblue;
+      width: 40px;
+      height: 100%;
+      &:focus {
+        @include focusNone();
+      }
+    }
+    .updateBtn {
+      background-color: rgba(194, 136, 194, 0.68);
+      color: aliceblue;
+    }
+  }
+}
+
+@media (min-width: 551px) {
+  .addTodo {
+    width: 500px;
+    input {
+      width: 500px;
+    }
+  }
+}

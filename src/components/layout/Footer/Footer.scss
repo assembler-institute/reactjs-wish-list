@@ -1,0 +1,64 @@
+@import "../../../App.scss";
+
+.footerStyle {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  align-items: center;
+  padding: 5px 0;
+  .links {
+    color: #212529;
+    &:hover {
+      color: $mainPurple;
+    }
+  }
+
+  .filtered {
+    color: $mainPurple;
+  }
+  .footerBtn {
+    border: none;
+    background-color: inherit;
+    display: inline-block;
+    color: #212529;
+    &:hover {
+      text-decoration: underline;
+      color: #007bff;
+    }
+  }
+}
+
+.links {
+  color: #212529;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #2125294b;
+  padding: 5px;
+  &:hover {
+    color: #007bff;
+  }
+  &:first-child {
+    border-top: 1px solid #2125294b;
+  }
+}
+
+.filtered {
+  color: #007bff;
+}
+
+@media (min-width: 551px) {
+  .footerStyle {
+    flex-direction: row;
+    justify-content: space-around;
+    height: 50px;
+    font-size: 15px;
+    padding: 0;
+  }
+  .links {
+    width: auto;
+    border: 0px solid transparent;
+    &:first-child {
+      border: 0px solid transparent;
+    }
+  }
+}

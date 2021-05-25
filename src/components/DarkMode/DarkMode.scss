@@ -1,0 +1,14 @@
+#darkMode {
+  position: absolute;
+  top: 25px;
+  right: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(40, 26, 44, 0.345);
+  &:hover,
+  &:focus {
+    filter: none;
+    background-color: rgba(210, 193, 214, 0.345);
+    cursor: pointer;
+  }
+}
