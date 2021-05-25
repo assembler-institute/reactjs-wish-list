@@ -28,7 +28,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      id: Math.random() * 1000,
+      id: Math.ceil(Math.random() * 1000),
       todo: "",
       todoList: [],
       editTodo: false,
@@ -64,7 +64,7 @@ class App extends Component {
     e.preventDefault();
     const { todo, todoList } = this.state;
     const newTodo = {
-      id: Math.random() * 1000,
+      id: Math.ceil(Math.random() * 1000),
       title: todo,
       completed: false,
     };
@@ -72,7 +72,7 @@ class App extends Component {
     this.setState({
       todoList: updatedList,
       todo: "",
-      id: Math.random() * 1000,
+      id: updatedList.id,
       editTodo: false,
     });
   };
