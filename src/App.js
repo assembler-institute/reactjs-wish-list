@@ -89,9 +89,8 @@ class App extends Component {
   newTodo(item) {
     const { todos } = this.state;
 
-    todos.push(item);
     this.setState({
-      todos: todos,
+      todos: [...todos, item],
     });
     // eslint-disable-next-line
     console.log("some", todos);
