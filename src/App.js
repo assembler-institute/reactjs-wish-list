@@ -46,9 +46,10 @@ class App extends Component {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this.state));
   }
 
-  handleSelected(arry, item) {
-    const bolTodo = arry.map((todo) => {
-      if (todo.id === item.id) {
+  handleSelected(itemId) {
+    const { todos } = this.state;
+    const bolTodo = todos.map((todo) => {
+      if (todo.id === itemId) {
         // eslint-disable-next-line no-param-reassign
         return { ...todo, selected: !todo.selected };
       }
@@ -59,17 +60,12 @@ class App extends Component {
     });
   }
 
-  handleDelete(arry, item) {
-    // eslint-disable-next-line
-    console.log("item", item);
-    // eslint-disable-next-line
-    console.log("con el item", arry);
-    const notDelete = arry.filter((el) => el.id !== item.id);
+  handleDelete(itemId) {
+    const { todos } = this.state;
+    const notDelete = todos.filter((el) => el.id !== itemId);
     this.setState({
       todos: notDelete,
     });
-    // eslint-disable-next-line
-    console.log("sin el item", arry);
   }
 
   submitNewTitle = (newTitle, id) => {
@@ -92,13 +88,9 @@ class App extends Component {
     this.setState({
       todos: [...todos, item],
     });
-    // eslint-disable-next-line
-    console.log("some", todos);
   }
 
   clear() {
-    // eslint-disable-next-line
-    console.log("entro");
     const { todos } = this.state;
     const cleared = todos.filter((item) => item.selected !== true);
     this.setState({
@@ -108,8 +100,6 @@ class App extends Component {
 
   render() {
     const { todos } = this.state;
-    // const active = todos.filter((item) => item.selected === false);
-    // const nonactive = todos.filter((item) => item.selected === true);
 
     return (
       <BrowserRouter>

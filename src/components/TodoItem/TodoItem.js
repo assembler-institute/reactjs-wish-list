@@ -16,28 +16,18 @@ class TodoItem extends newForm {
   }
 
   selected() {
-    const { handleSelected } = this.props;
-    const { todos } = this.props;
-    const { todo } = this.props;
-    handleSelected(todos, todo);
+    const { handleSelected, todo } = this.props;
+    handleSelected(todo.id);
   }
 
   delete() {
-    const { handleDelete } = this.props;
-    const { todos } = this.props;
-    const { todo } = this.props;
-    handleDelete(todos, todo);
+    const { handleDelete, todo } = this.props;
+    handleDelete(todo.id);
   }
 
   submitTitle(e) {
-    const { submitNewTitle } = this.props;
-    const { todo } = this.props;
-    // eslint-disable-next-line
-    console.log(e.target.value);
-
+    const { submitNewTitle, todo } = this.props;
     submitNewTitle(e.target.value, todo.id);
-    // eslint-disable-next-line
-    console.log(todo.id, todo);
   }
 
   docloseEditMode = (event) => {
@@ -45,8 +35,7 @@ class TodoItem extends newForm {
   };
 
   render() {
-    const { text } = this.props;
-    const { todo } = this.props;
+    const { text, todo } = this.props;
 
     const viewMode = {};
     const editMode = {};

@@ -10,7 +10,7 @@ function Todo({
   handleSelected,
 }) {
   // eslint-disable-next-line
-  console.log("que recive", todos);
+  // console.log("que recive", todos);
   return (
     <div className="main-todo-container">
       <ul className="todo_print">
@@ -23,7 +23,6 @@ function Todo({
             key={todo.id}
             text={todo.title}
             todo={todo}
-            todos={todos}
           />
         ))}
       </ul>
