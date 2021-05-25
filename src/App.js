@@ -5,13 +5,6 @@ import Home from "./pages/Home";
 import Completed from "./pages/Completed";
 import Active from "./pages/Active";
 
-/* function findObjectByIdInArray(id, array) {
-  const productData = array.find((element) => {
-    return element.id === id;
-  });
-  return productData;
-} */
-
 const LOCAL_STORAGE_KEY = "react-todo-state";
 
 function loadLocalStorageData() {
@@ -40,32 +33,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      todos: [
-        /* {
-          key: 1,
-          id: 1,
-          title: "prueba 1",
-          isComplete: true,
-        },
-        {
-          key: 2,
-          id: 2,
-          title: "prueba 2",
-          isComplete: false,
-        },
-        {
-          key: 3,
-          id: 3,
-          title: "prueba 3",
-          isComplete: true,
-        },
-        {
-          key: 4,
-          id: 4,
-          title: "prueba 4",
-          isComplete: false,
-        }, */
-      ],
+      todos: [],
     };
     this.handleCompleted = this.handleCompleted.bind(this);
     this.saveNewTodo = this.saveNewTodo.bind(this);
