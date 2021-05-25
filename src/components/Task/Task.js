@@ -29,11 +29,7 @@ function Task({
   });
 
   return (
-    <li
-      className={
-        ("list-group-item", "d-flex", "flex-row", "justify-content-between")
-      }
-    >
+    <li className="list-group-item d-flex flex-row justify-content-between">
       <input
         type="checkbox"
         className="hidden-chkbx"
