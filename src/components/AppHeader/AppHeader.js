@@ -22,9 +22,14 @@ function Appheader({ handleAddTodo, handleThemeClick, currentTheme }) {
     TODO__Form__DarkMode: currentTheme,
   });
 
+  const heroClasses = classNames({
+    heroImg: true,
+    heroImg__darkMode: currentTheme,
+  });
+
   return (
     <header>
-      <div className="heroImg" alt="hero" src={hero}>
+      <div className={heroClasses} alt="hero" src={hero}>
         <div className="themeSwitcherWrap">
           <h1 className={headerClasses}>TODO</h1>
           <ThemeToggle
