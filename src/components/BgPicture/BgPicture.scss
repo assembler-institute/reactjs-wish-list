@@ -6,9 +6,13 @@
   height: 40vh;
   width: 100%;
   overflow: hidden;
+  //mix-blend-mode: luminosity;
+  background-color: #a675ef;
 }
 
 .bgImg {
   width: 100%;
   object-fit: cover;
+  mix-blend-mode: luminosity;
+  opacity: 0.5;
 }

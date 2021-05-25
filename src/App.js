@@ -72,6 +72,7 @@ class App extends Component {
     this.handleTodoChange = this.handleTodoChange.bind(this);
     this.handleTodoDelete = this.handleTodoDelete.bind(this);
     this.activeTodosCount = this.activeTodosCount.bind(this);
+    this.removeCompleted = this.removeCompleted.bind(this);
   }
 
   componentDidMount() {
@@ -124,6 +125,14 @@ class App extends Component {
     this.setState({ todos });
   }
 
+  removeCompleted() {
+    const { todos } = this.state;
+    const filteredTodos = todos.filter((element) => {
+      return element.isComplete === false;
+    });
+    this.setState({ todos: filteredTodos });
+  }
+
   render() {
     const { todos } = this.state;
     return (
@@ -140,6 +149,7 @@ class App extends Component {
               handleTodoChange={this.handleTodoChange}
               handleTodoDelete={this.handleTodoDelete}
               activeTodos={this.activeTodosCount()}
+              removeCompleted={this.removeCompleted}
             />
           )}
         />
@@ -155,6 +165,7 @@ class App extends Component {
               handleTodoChange={this.handleTodoChange}
               handleTodoDelete={this.handleTodoDelete}
               activeTodos={this.activeTodosCount()}
+              removeCompleted={this.removeCompleted}
             />
           )}
         />
@@ -170,6 +181,7 @@ class App extends Component {
               handleTodoChange={this.handleTodoChange}
               handleTodoDelete={this.handleTodoDelete}
               activeTodos={this.activeTodosCount()}
+              removeCompleted={this.removeCompleted}
             />
           )}
         />

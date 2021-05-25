@@ -8,7 +8,7 @@ export default function BgPicture() {
       <img
         className="bgImg"
         alt="foto"
-        src="https://images.pexels.com/photos/4215100/pexels-photo-4215100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        src="https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
       />
     </div>
   );

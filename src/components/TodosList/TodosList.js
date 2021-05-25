@@ -13,6 +13,7 @@ export default function TodosList({
   handleTodoDelete,
   activeTodos,
   pageName,
+  removeCompleted,
   ...props
 }) {
   const todoMap = (
@@ -34,7 +35,11 @@ export default function TodosList({
     <div className="shadow roundedCorner" props={props}>
       {todos[0] ? todoMap : <EmptyList pageName={pageName} />}
 
-      <CardFooter activeTodos={activeTodos} />
+      <CardFooter
+        activeTodos={activeTodos}
+        removeCompleted={removeCompleted}
+        pageName={pageName}
+      />
     </div>
   );
 }

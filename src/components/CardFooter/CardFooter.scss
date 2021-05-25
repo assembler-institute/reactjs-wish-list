@@ -49,6 +49,10 @@
     text-align: center;
     margin-bottom: 0px;
   }
-  button {
+  button[disabled] {
+    cursor: not-allowed;
+  }
+  button[disabled]:hover {
+    transform: scale(1);
   }
 }

@@ -14,6 +14,7 @@ export default function Home({
   handleTodoChange,
   handleTodoDelete,
   activeTodos,
+  removeCompleted,
 }) {
   const pageName = "Home";
   return (
@@ -31,6 +32,7 @@ export default function Home({
           handleTodoDelete={handleTodoDelete}
           activeTodos={activeTodos}
           pageName={pageName}
+          removeCompleted={removeCompleted}
         />
       </main>
       <Footer />
