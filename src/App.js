@@ -89,8 +89,9 @@ class App extends Component {
 
   saveNewTodo(newTodo) {
     const { todos } = this.state;
-    todos.push(newTodo);
-    this.setState({ todos });
+    this.setState({
+      todos: [...todos, newTodo],
+    });
   }
 
   removeCompleted() {
