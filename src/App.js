@@ -7,6 +7,21 @@ import Completed from "./components/pages/Complete";
 
 import "./_App.scss";
 
+const LOCAL_STORAGE_KEY = "react-sc-state";
+
+function loadLocalStorage() {
+  const json = localStorage.getItem(LOCAL_STORAGE_KEY);
+  const state = JSON.parse(json);
+
+  if (!state) {
+    return {
+      todos: [],
+    };
+  }
+
+  return state;
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +31,18 @@ class App extends Component {
     this.newTodo = this.newTodo.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSelected = this.handleSelected.bind(this);
+  }
+
+  componentDidMount() {
+    const prevState = loadLocalStorage();
+
+    this.setState({
+      todos: prevState.todos,
+    });
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this.state));
   }
 
   handleSelected(arry, item) {
