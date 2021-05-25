@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import taskSchema from "./task-schema";
 
 import "./NewTask.scss";
+import "../Checkbox/Checkbox.scss";
 
 function addDetailsNewTask(data) {
   return {
@@ -42,14 +43,7 @@ function NewTask({ saveNewTask }) {
             onSubmit={handleSubmit}
           >
             <div className="d-flex justify-content-center align-items-center isCompleted-wrapper">
-              <label
-                className={
-                  values.isCompleted
-                    ? "isCompleted-class check-true"
-                    : "isCompleted-class check-false"
-                }
-                htmlFor="isCompleted"
-              >
+              <div className="round-checkbox check-new-task">
                 <input
                   id="isCompleted"
                   name="isCompleted"
@@ -59,7 +53,9 @@ function NewTask({ saveNewTask }) {
                   onBlur={handleBlur}
                   className="d-none"
                 />
-              </label>
+                {/* eslint-disable-next-line */}
+                <label htmlFor="isCompleted" />
+              </div>
             </div>
             <div className="d-flex flex-row justify-content-between align-items-center text-input-wrapper">
               <input

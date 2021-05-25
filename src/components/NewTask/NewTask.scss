@@ -1,6 +1,7 @@
 .form-wrapper {
-  border: 1px solid black;
-  border-radius: 10px;
+  box-shadow: rgb(16 16 16 / 60%) 0 8px 30px;
+  border-radius: 8px;
+  background-color: white;
 }
 
 .isCompleted-wrapper {
@@ -8,16 +9,10 @@
   width: 75px;
 }
 
-.isCompleted-class {
-  border: 1px solid grey;
-  border-radius: 50%;
-  height: 25px;
-  width: 25px;
-  margin: 0;
-}
-
-.check-true {
-  background-color: yellow;
+.check-new-task {
+  position: relative;
+  left: -14px;
+  top: -14px;
 }
 
 .text-input-wrapper {
