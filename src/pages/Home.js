@@ -6,14 +6,17 @@ function Home({
   handleDeleteTask,
   handleUpdateTask,
   handleToggleEditing,
+  handleToggleCheck,
 }) {
   return (
-    <ul className="col col-12">
+    <ul className="col col-12 mb-0">
       <TasksList
         tasks={tasks}
+        noTasksMessage=""
         handleDeleteTask={handleDeleteTask}
         handleUpdateTask={handleUpdateTask}
         handleToggleEditing={handleToggleEditing}
+        handleToggleCheck={handleToggleCheck}
       />
     </ul>
   );

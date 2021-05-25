@@ -28,7 +28,7 @@ function TaskUpdater({ id, title, handleUpdateTask }) {
           touched,
         }) => (
           <form onSubmit={handleSubmit}>
-            <div className="form-group">
+            <div className="form-group mb-0">
               <input
                 className={
                   touched.title && errors.title
@@ -46,7 +46,6 @@ function TaskUpdater({ id, title, handleUpdateTask }) {
                 <p className="invalid-feedback">{errors.title}</p>
               )}
             </div>
-            <button type="submit" />
           </form>
         )}
       </Formik>

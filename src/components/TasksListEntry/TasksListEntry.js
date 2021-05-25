@@ -12,24 +12,33 @@ function TasksListEntry({
   handleDeleteTask,
   handleUpdateTask,
   handleToggleEditing,
+  handleToggleCheck,
   ...props
 }) {
   function onHandleDeleteTask(event) {
     handleDeleteTask(event, id);
+  }
+  function onHandleUpdateTask(event) {
+    handleUpdateTask(event, id);
   }
   function onHandleToggleEditing() {
     handleToggleEditing(id);
   }
 
   return (
-    <li>
-      <Checkbox defaultChecked={isCompleted} taskId={id} {...props} />
+    <li className="entry">
+      <Checkbox
+        defaultChecked={isCompleted}
+        taskId={id}
+        handleToggleCheck={handleToggleCheck}
+        {...props}
+      />
       <div>
         {editing ? (
           <TaskUpdater
             id={id}
             title={title}
-            handleUpdateTask={handleUpdateTask}
+            handleUpdateTask={onHandleUpdateTask}
           />
         ) : (
           <button
@@ -44,8 +53,13 @@ function TasksListEntry({
           </button>
         )}
       </div>
-      <button type="button" onClick={onHandleDeleteTask}>
-        X
+      <button
+        type="button"
+        className="close"
+        aria-label="Close"
+        onClick={onHandleDeleteTask}
+      >
+        <span aria-hidden="true">&times;</span>
       </button>
     </li>
   );

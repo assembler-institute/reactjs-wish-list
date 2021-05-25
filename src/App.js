@@ -43,6 +43,7 @@ class App extends Component {
     this.handleClearCompleted = this.handleClearCompleted.bind(this);
     this.handleUpdateTask = this.handleUpdateTask.bind(this);
     this.handleToggleEditing = this.handleToggleEditing.bind(this);
+    this.handleToggleCheck = this.handleToggleCheck.bind(this);
   }
 
   componentDidMount() {
@@ -80,6 +81,22 @@ class App extends Component {
     const { tasks } = this.state;
 
     const updatedTasks = tasks.filter((task) => !task.isCompleted);
+
+    this.setState({ tasks: updatedTasks });
+  }
+
+  handleToggleCheck(taskId) {
+    const { tasks } = this.state;
+
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        return {
+          ...task,
+          isCompleted: !task.isCompleted,
+        };
+      }
+      return task;
+    });
 
     this.setState({ tasks: updatedTasks });
   }
@@ -138,53 +155,63 @@ class App extends Component {
 
     return (
       <Main>
-        <Header
-          toggleDarkLightMode={this.toggleDarkLightMode}
-          isDark={isDark}
-        />
-        <NewTask saveNewTask={this.saveNewTask} />
-        <BrowserRouter>
-          <Route
-            path="/"
-            exact
-            render={(routeProps) => (
-              <Home
-                {...routeProps}
-                tasks={tasks}
-                handleDeleteTask={this.handleDeleteTask}
-                handleUpdateTask={this.handleUpdateTask}
-                handleToggleEditing={this.handleToggleEditing}
-              />
-            )}
+        <div className="list-header">
+          <Header
+            toggleDarkLightMode={this.toggleDarkLightMode}
+            isDark={isDark}
           />
-          <Route
-            path="/completed"
-            exact
-            render={(routeProps) => (
-              <Completed
-                {...routeProps}
-                tasks={tasks}
-                handleDeleteTask={this.handleDeleteTask}
-                handleUpdateTask={this.handleUpdateTask}
-                handleToggleEditing={this.handleToggleEditing}
-              />
-            )}
-          />
-          <Route
-            path="/active"
-            exact
-            render={(routeProps) => (
-              <Active
-                {...routeProps}
-                tasks={tasks}
-                handleDeleteTask={this.handleDeleteTask}
-                handleUpdateTask={this.handleUpdateTask}
-                handleToggleEditing={this.handleToggleEditing}
-              />
-            )}
-          />
-          <ListFooter handleClearCompleted={this.handleClearCompleted} />
-        </BrowserRouter>
+          <NewTask saveNewTask={this.saveNewTask} />
+        </div>
+        <div className="list-container">
+          <BrowserRouter>
+            <Route
+              path="/"
+              exact
+              render={(routeProps) => (
+                <Home
+                  {...routeProps}
+                  tasks={tasks}
+                  handleDeleteTask={this.handleDeleteTask}
+                  handleUpdateTask={this.handleUpdateTask}
+                  handleToggleEditing={this.handleToggleEditing}
+                  handleToggleCheck={this.handleToggleCheck}
+                />
+              )}
+            />
+            <Route
+              path="/completed"
+              exact
+              render={(routeProps) => (
+                <Completed
+                  {...routeProps}
+                  tasks={tasks}
+                  handleDeleteTask={this.handleDeleteTask}
+                  handleUpdateTask={this.handleUpdateTask}
+                  handleToggleEditing={this.handleToggleEditing}
+                  handleToggleCheck={this.handleToggleCheck}
+                />
+              )}
+            />
+            <Route
+              path="/active"
+              exact
+              render={(routeProps) => (
+                <Active
+                  {...routeProps}
+                  tasks={tasks}
+                  handleDeleteTask={this.handleDeleteTask}
+                  handleUpdateTask={this.handleUpdateTask}
+                  handleToggleEditing={this.handleToggleEditing}
+                  handleToggleCheck={this.handleToggleCheck}
+                />
+              )}
+            />
+            <ListFooter
+              handleClearCompleted={this.handleClearCompleted}
+              tasksLeft={tasks.filter((task) => !task.isCompleted).length}
+            />
+          </BrowserRouter>
+        </div>
       </Main>
     );
   }

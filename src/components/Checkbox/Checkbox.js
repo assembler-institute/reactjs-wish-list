@@ -1,30 +1,39 @@
 import React, { Component } from "react";
 
+import "./Checkbox.scss";
+
 class Checkbox extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isChecked: props.defaultChecked,
-      // taskId: props.taskId,
+      taskId: props.taskId,
     };
     this.toggleChange = this.toggleChange.bind(this);
+    this.handleToggleCheck = props.handleToggleCheck;
   }
 
   toggleChange() {
     this.setState((prevState) => ({
       isChecked: !prevState.isChecked,
     }));
-    // TODO toggle overlined text
+    const { taskId } = this.state;
+    this.handleToggleCheck(taskId);
   }
 
   render() {
-    const { isChecked } = this.state;
+    const { taskId, isChecked } = this.state;
     return (
-      <input
-        type="checkbox"
-        defaultChecked={isChecked}
-        onChange={this.toggleChange}
-      />
+      <div className="round-checkbox">
+        <input
+          id={taskId}
+          type="checkbox"
+          defaultChecked={isChecked}
+          onChange={this.toggleChange}
+        />
+        {/* eslint-disable-next-line */}
+        <label htmlFor={taskId} />
+      </div>
     );
   }
 }

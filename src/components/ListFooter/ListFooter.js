@@ -1,22 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "./ListFooter.scss";
 
-function ListFooter({ handleClearCompleted }) {
+function ListFooter({ handleClearCompleted, tasksLeft }) {
   return (
-    <footer className="mb-4">
-      <div className="row">
-        <Link exact="true" className="nav-link" to="/">
-          All
-        </Link>
-        <Link exact="true" className="nav-link" to="/active">
-          Active
-        </Link>
-        <Link exact="true" className="nav-link" to="/completed">
-          Completed
-        </Link>
-        <button type="button" onClick={handleClearCompleted}>
+    <footer>
+      <div className="justify-content-between list-footer">
+        <div>
+          <span>{tasksLeft} items left</span>
+        </div>
+        <div className="filter-panel">
+          <NavLink exact activeClassName="is-active" to="/">
+            All
+          </NavLink>
+          <NavLink exact activeClassName="is-active" to="/active">
+            Active
+          </NavLink>
+          <NavLink exact activeClassName="is-active" to="/completed">
+            Completed
+          </NavLink>
+        </div>
+        <button
+          type="button"
+          className="camouflaged-button"
+          onClick={handleClearCompleted}
+        >
           Clear completed
         </button>
       </div>

@@ -1,2 +1,37 @@
-.ListFooter {
+.list-footer {
+  display: inline-flex;
+  align-items: center;
+  color: grey;
+  font-size: small;
+  padding: 10px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  & .filter-panel {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    & .is-active {
+      color: #007bff;
+      font-weight: bold;
+    }
+    & > a {
+      display: flex;
+      justify-content: center;
+      margin: auto 10px auto 10px;
+      color: grey;
+      &:hover {
+        color: rgb(16, 16, 16);
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+  }
+  & > button {
+    color: grey;
+    &:hover {
+      font-weight: bold;
+    }
+  }
 }

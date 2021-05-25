@@ -4,16 +4,16 @@ import TasksListEntry from "../TasksListEntry";
 
 function TasksList({
   tasks,
+  noTasksMessage,
   handleDeleteTask,
   handleUpdateTask,
   handleToggleEditing,
+  handleToggleCheck,
   ...props
 }) {
   return (
     <aside {...props}>
-      <div className="row flex-column">
-        <br />
-
+      <div className="row flex-column tasks-list">
         {tasks.length > 0 ? (
           tasks.map((task) => (
             <TasksListEntry
@@ -25,11 +25,12 @@ function TasksList({
               handleDeleteTask={handleDeleteTask}
               handleUpdateTask={handleUpdateTask}
               handleToggleEditing={handleToggleEditing}
+              handleToggleCheck={handleToggleCheck}
             />
           ))
         ) : (
-          <div className="col mb-4">
-            <h4>You have no tasks</h4>
+          <div className="col mb-4 mt-4">
+            <h4>You have no{noTasksMessage} tasks</h4>
           </div>
         )}
       </div>
