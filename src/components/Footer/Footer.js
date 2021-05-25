@@ -1,8 +1,9 @@
 import React from "react";
 import "./footer.scss";
 import { Link } from "react-router-dom";
+import { ClearBut } from "../Button/Button";
 
-function Footer() {
+function Footer({ clear }) {
   return (
     <footer className="todo_footer">
       <h6>5 items left</h6>
@@ -15,7 +16,7 @@ function Footer() {
       <Link to="/completed" className="nav_links">
         <h6>Completed</h6>
       </Link>
-      <h6>Clear Completed</h6>
+      <ClearBut onClick={clear} />
     </footer>
   );
 }

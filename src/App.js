@@ -16,6 +16,7 @@ class App extends Component {
     this.newTodo = this.newTodo.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSelected = this.handleSelected.bind(this);
+    this.clear = this.clear.bind(this);
   }
 
   handleSelected(arry, item) {
@@ -69,6 +70,16 @@ class App extends Component {
     console.log("some", todos);
   }
 
+  clear() {
+    // eslint-disable-next-line
+    console.log("entro");
+    const { todos } = this.state;
+    const cleared = todos.filter((item) => item.selected !== true);
+    this.setState({
+      todos: cleared,
+    });
+  }
+
   render() {
     const { todos } = this.state;
     // const active = todos.filter((item) => item.selected === false);
@@ -77,44 +88,47 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Route
-          path="/"
           exact
+          path="/"
           render={(routeProps) => (
             <Home
-              {...routeProps}
+              clear={this.clear}
               submitNewTitle={this.submitNewTitle}
               todos={todos}
               newTodo={this.newTodo}
               handleDelete={this.handleDelete}
               handleSelected={this.handleSelected}
+              {...routeProps}
             />
           )}
         />
         <Route
-          path="/active"
           exact
+          path="/active"
           render={(routeProps) => (
             <Active
+              clear={this.clear}
               submitNewTitle={this.submitNewTitle}
               handleDelete={this.handleDelete}
               handleSelected={this.handleSelected}
               newTodo={this.newTodo}
-              {...routeProps}
               todos={todos.filter((item) => item.selected === false)}
+              {...routeProps}
             />
           )}
         />
         <Route
-          path="/completed"
           exact
+          path="/completed"
           render={(routeProps) => (
             <Completed
+              clear={this.clear}
               submitNewTitle={this.submitNewTitle}
               handleDelete={this.handleDelete}
               handleSelected={this.handleSelected}
               newTodo={this.newTodo}
-              {...routeProps}
               todos={todos.filter((item) => item.selected === true)}
+              {...routeProps}
             />
           )}
         />

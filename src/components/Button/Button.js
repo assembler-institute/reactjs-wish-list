@@ -9,4 +9,7 @@ const Checkbox = ({ ...newers }) => {
 function Button({ ...newers }) {
   return <input className="but" type="button" {...newers} />;
 }
-export { Button, Checkbox };
+function ClearBut({ ...newers }) {
+  return <input className="butClear" type="button" {...newers} />;
+}
+export { Button, Checkbox, ClearBut };
