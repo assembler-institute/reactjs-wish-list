@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+header {
+  background-image: url(./img/montaña.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200px;
+}
+
+.todo-title {
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1em;
+  font-size: 4rem;
+}
+
+.addItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2em;
+}
+
+input {
+  width: 440px;
+  height: 60px;
+  border-radius: 7px;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
+  padding-left: 1em;
+}
+
+.btnAddItem {
+  background: rgb(41, 155, 41);
+  border: none;
+  color: white;
+  opacity: 0.7;
+  border-radius: 5px;
+  padding-left: 1.1em;
+  padding-right: 1.1em;
+  height: 60px;
+}
+
+.btnAddItem:hover {
+  background: rgb(88, 125, 206);
+  opacity: 1;
+}
+
+.filterItems {
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
+  padding-left: 0.6em;
+  opacity: 0.7;
+  margin-left: 1.3em;
+}
+
+.listItems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 440px;
+  height: 60px;
+  border-radius: 7px;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  word-wrap: break-word;
+}
+
+.todoItems {
+  list-style: none;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.checkTodo {
+  background: rgb(91, 154, 91);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin-left: 0.6em;
+}
+
+.deleteTodo {
+  background: rgb(206, 88, 88);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin-left: 0.6em;
+}
+
+.editTodo {
+  background: rgb(88, 125, 206);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin-left: 0.6em;
+}

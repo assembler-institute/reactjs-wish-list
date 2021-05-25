@@ -1,39 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Form from "./components/Form";
+import ToDoList from "./components/ToDoList";
+import "./style.css";
 
 function App() {
+  const [inputText, setInputText] = useState("");
+  const [myToDos, setMyToDos] = useState([]);
+  const [myStatus, setMyStatus] = useState("All");
+  const [filterMyToDos, setFilterMyToDos] = useState([]);
+
+  const filterHandler = () => {
+    switch (myStatus) {
+      case "Completed":
+        setFilterMyToDos(myToDos.filter((todo) => todo.completed === true));
+        break;
+      case "No completed":
+        setFilterMyToDos(myToDos.filter((todo) => todo.completed === false));
+        break;
+      default:
+        setFilterMyToDos(myToDos);
+        break;
+    }
+  };
+
+  const myLocalStorage = () => {
+    localStorage.setItem("myToDos", JSON.stringify(myToDos));
+  };
+
+  useEffect(() => {
+    filterHandler();
+    myLocalStorage();
+  }, [myToDos, myStatus]);
+
+  const getMyLocalStorage = () => {
+    if (localStorage.getItem("myToDos") === null) {
+      localStorage.setItem("myToDos", JSON.stringify([]));
+    } else {
+      const myLocalInfo = JSON.parse(localStorage.getItem("myToDos"));
+      setMyToDos(myLocalInfo);
+    }
+  };
+
+  useEffect(() => {
+    getMyLocalStorage();
+  }, []);
+
   return (
-    <main className="container mt-5">
-      <section className="row">
-        <div className="col col-12">ey</div>
-      </section>
-    </main>
+    <div>
+      <header>
+        <h1 className="todo-title">TODO</h1>
+      </header>
+      <Form
+        inputText={inputText}
+        myToDos={myToDos}
+        setMyToDos={setMyToDos}
+        setInputText={setInputText}
+        setMyStatus={setMyStatus}
+      />
+      <ToDoList
+        filterMyToDos={filterMyToDos}
+        myToDos={myToDos}
+        setMyToDos={setMyToDos}
+      />
+    </div>
   );
 }
-/*
-const toDoElements = [];
-
-class toDoList extends React.Component {
-  render() {
-    const elements = this.props.elements.map((currentValue, index) => {
-      return (
-        <toDoListElements
-          element={currentValue}
-          removeElement={this.props.removeElement}
-          clickToCheck={this.props.clickToCheck}
-        />
-      );
-    });
-
-    return <ul>{elements}</ul>;
-  }
-}
-
-class toDoTitle extends React.Component {
-  render() {
-    return <h1 className="col col-md-12 col-12">TODO</h1>;
-  }
-}
-
-*/
 
 export default App;
