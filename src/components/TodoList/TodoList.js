@@ -21,7 +21,7 @@ export default function TodoList({
   {
     // Conditional class
     const darkModeClass = classNames({
-      "row todo-list-section custom-section mx-0 d-flex": true,
+      "col todo-list-section custom-section mx-0 px-0 d-flex": true,
       "custom-section-dark": darkMode,
     });
 
@@ -29,7 +29,7 @@ export default function TodoList({
       <section className={darkModeClass}>
         <div className="col col-12 p-0 list-wrapper">
           {!hasTodos ? (
-            <div className="no-todos d-flex align-items-center">
+            <div className="no-todos d-flex justify-content-center align-items-center">
               <NoTodos />
             </div>
           ) : (
@@ -50,6 +50,7 @@ export default function TodoList({
         <MainFooter
           todosLeft={todosLeft}
           handleClearCompleted={handleClearCompleted}
+          darkMode={darkMode}
         />
       </section>
     );
