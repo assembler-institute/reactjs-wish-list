@@ -54,11 +54,7 @@ function NewTask({ saveNewTask }) {
             </div>
             <div className="d-flex flex-row justify-content-between align-items-center text-input-wrapper">
               <input
-                className={
-                  touched.title && errors.title
-                    ? "text-input is-invalid"
-                    : "text-input"
-                }
+                className="text-input"
                 id="title"
                 name="title"
                 type="text"
