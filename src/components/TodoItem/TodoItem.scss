@@ -1,0 +1,13 @@
+@use "../../global.scss" as global;
+
+.Items {
+  position: relative;
+  @include global.flex(row, left, center, none, none, 100%);
+}
+.textInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dfdfdf;
+  background-color: transparent;
+  margin-left: 15px;
+}

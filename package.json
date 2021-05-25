@@ -19,6 +19,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-innertext": "^1.1.5",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -56,7 +57,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^4.1.1",
-    "jest": "^26.6.0",
+    "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "typescript": "^4.2.4"
   },
