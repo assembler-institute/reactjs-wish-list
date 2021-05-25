@@ -4,30 +4,24 @@ import { v4 as uuidv4 } from "uuid";
 import CreateTodo from "./components/CreateTodo";
 import TodoList from "./components/TodoList";
 
-// import defaultTodos from "./utils/demo-data";
-
 const CUSTOM_LS_KEY = "todos";
 const classNames = require("classnames");
 
-// localStorage.clear();
-
 // Function to be called when updating LocalStorage
-// function setLocalStorage() {
-//   const previousTodos = localStorage.getItem(CUSTOM_LS_KEY);
-//   // eslint-disable-next-line no-console
-//   console.log(previousTodos);
+function setLocalStorage() {
+  const previousTodos = localStorage.getItem(CUSTOM_LS_KEY);
 
-//   // If there are no todos
-//   if (!previousTodos) {
-//     return null;
-//   }
-//   // If there are previous todos
-//   try {
-//     return JSON.parse(previousTodos);
-//   } catch (error) {
-//     return null;
-//   }
-// }
+  // If there are no todos
+  if (!previousTodos) {
+    return [];
+  }
+  // If there are previous todos
+  try {
+    return JSON.parse(previousTodos);
+  } catch (error) {
+    return null;
+  }
+}
 
 class App extends Component {
   constructor(props) {
@@ -50,12 +44,35 @@ class App extends Component {
   }
 
   /* -------------------------------------------------------------------------- */
+  /*                                REACT METHODS                               */
+  /* -------------------------------------------------------------------------- */
+  componentDidMount() {
+    const { todos } = this.state;
+    const previousTodos = setLocalStorage();
+
+    if (todos) {
+      this.setState({ hasTodos: true });
+    }
+
+    this.setState({
+      todos: previousTodos,
+      isLoading: false,
+    });
+  }
+
+  componentDidUpdate() {
+    const { todos } = this.state;
+    // eslint-disable-next-line no-console
+    console.log(this.state);
+
+    localStorage.setItem(CUSTOM_LS_KEY, JSON.stringify(todos));
+  }
+
+  /* -------------------------------------------------------------------------- */
   /*                                CUSTOM METHODS                              */
   /* -------------------------------------------------------------------------- */
 
-  // eslint-disable-next-line react/sort-comp
   handleDone(todoId) {
-    // eslint-disable-next-line no-param-reassign
     const selInput = document.getElementById(`input-${todoId}`);
     selInput.disabled = !selInput.disabled;
     const { todos } = this.state;
@@ -81,8 +98,6 @@ class App extends Component {
 
     if (todos.length === 0) {
       this.setState({ hasTodos: false });
-      // eslint-disable-next-line no-console
-      console.log("Empty todos");
     }
   }
 
@@ -118,38 +133,6 @@ class App extends Component {
     const updatedTodos = todos.filter((todo) => !todo.done);
     console.log(updatedTodos);
     this.setState({ todos: updatedTodos });
-  }
-
-  /* -------------------------------------------------------------------------- */
-  /*                                REACT METHODS                               */
-  /* -------------------------------------------------------------------------- */
-  componentDidMount() {
-    const { todos } = this.state;
-    // const previousTodos = setLocalStorage();
-
-    if (todos) {
-      this.setState({ hasTodos: true });
-    }
-
-    // eslint-disable-next-line no-console
-    console.log(this.state);
-
-    this.setState({
-      // todos: [previousTodos, defaultTodos],
-      isLoading: false,
-    });
-  }
-
-  componentDidUpdate() {
-    const { todos, darkMode } = this.state;
-    // eslint-disable-next-line no-console
-    console.clear();
-    // eslint-disable-next-line no-console
-    console.log(this.state);
-    // eslint-disable-next-line
-    console.log("Dark mode", darkMode);
-
-    localStorage.setItem(CUSTOM_LS_KEY, JSON.stringify(todos));
   }
 
   render() {

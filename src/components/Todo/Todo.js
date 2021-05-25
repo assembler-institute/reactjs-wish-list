@@ -52,7 +52,6 @@ class Todo extends Component {
 
   render() {
     const { id, done, darkMode } = this.props;
-    // const { id, text, done } = this.props;
     const { todoText } = this.state;
 
     // Disabled text classes
