@@ -16,7 +16,7 @@ function NavItem() {
             exact
             activeClassName="active"
             className="navigation"
-            to="/Active"
+            to="/active"
           >
             Active
           </NavLink>
@@ -26,7 +26,7 @@ function NavItem() {
             exact
             activeClassName="active"
             className="navigation"
-            to="/Completed"
+            to="/completed"
           >
             Completed
           </NavLink>

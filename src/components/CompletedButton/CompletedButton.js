@@ -20,9 +20,9 @@ function CompletedButton({
         className="checkbox-round"
         type="checkbox"
         id={id}
-        onClick={onsetHandlecompleted}
+        // onClick={onsetHandlecompleted}
         checked={isComplete}
-        readOnly
+        onChange={onsetHandlecompleted}
       />
     </>
   );

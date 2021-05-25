@@ -208,7 +208,7 @@ class App extends Component {
           )}
         />
         <Route
-          path="/Active"
+          path="/active"
           exact
           render={(routeProps) => (
             <Actives
@@ -227,7 +227,7 @@ class App extends Component {
           )}
         />
         <Route
-          path="/Completed"
+          path="/completed"
           exact
           render={(routeProps) => (
             <Completed
