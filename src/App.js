@@ -1,14 +1,18 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { HeadProvider, Title, Meta } from "react-head";
+
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <main className="container mt-5">
-      <section className="row">
-        <div className="col col-12">
-          <h1>Hola mundo</h1>
-        </div>
-      </section>
-    </main>
+    <BrowserRouter>
+      <HeadProvider>
+        <Title>Title of page</Title>
+        <Meta name="example" content="whatever" />
+      </HeadProvider>
+      <Home />
+    </BrowserRouter>
   );
 }
 
