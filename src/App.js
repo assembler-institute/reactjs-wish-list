@@ -134,7 +134,6 @@ class App extends Component {
           path="/active"
           render={(routeProps) => (
             <Active
-              clear={this.clear}
               submitNewTitle={this.submitNewTitle}
               handleDelete={this.handleDelete}
               handleSelected={this.handleSelected}

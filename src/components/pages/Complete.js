@@ -8,6 +8,7 @@ import Todo from "../Todo";
 import "../../_App.scss";
 
 function Complete({
+  clear,
   todos,
   submitNewTitle,
   handleDelete,
@@ -27,7 +28,7 @@ function Complete({
             handleSelected={handleSelected}
             todos={todos}
           />
-          <Footer />
+          <Footer clear={clear} />
         </section>
       </main>
     </>
