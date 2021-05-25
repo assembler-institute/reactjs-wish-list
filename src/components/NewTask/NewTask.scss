@@ -1,3 +1,7 @@
+body * {
+  // outline: 1px solid black;
+}
+
 .form-wrapper {
   border: 1px solid black;
   border-radius: 10px;
@@ -9,8 +13,15 @@
 }
 
 .isCompleted-class {
-  height: 20px;
-  width: 20px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  margin: 0;
+}
+
+.check-true {
+  background-color: yellow;
 }
 
 .text-input-wrapper {

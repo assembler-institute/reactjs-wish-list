@@ -42,15 +42,24 @@ function NewTask({ saveNewTask }) {
             onSubmit={handleSubmit}
           >
             <div className="d-flex justify-content-center align-items-center isCompleted-wrapper">
-              <input
-                id="isCompleted"
-                name="isCompleted"
-                type="checkbox"
-                value={values.isCompleted}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className="isCompleted-class"
-              />
+              <label
+                className={
+                  values.isCompleted
+                    ? "isCompleted-class check-true"
+                    : "isCompleted-class check-false"
+                }
+                htmlFor="isCompleted"
+              >
+                <input
+                  id="isCompleted"
+                  name="isCompleted"
+                  type="checkbox"
+                  value={values.isCompleted}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className="d-none"
+                />
+              </label>
             </div>
             <div className="d-flex flex-row justify-content-between align-items-center text-input-wrapper">
               <input
