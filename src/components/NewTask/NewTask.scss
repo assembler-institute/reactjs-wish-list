@@ -1,0 +1,55 @@
+.form-wrapper {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.isCompleted-wrapper {
+  height: 75px;
+  width: 75px;
+}
+
+.isCompleted-class {
+  border: 1px solid grey;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  margin: 0;
+}
+
+.check-true {
+  background-color: yellow;
+}
+
+.text-input-wrapper {
+  height: 40px;
+  width: 100%;
+  padding-right: 15px;
+}
+
+.text-input {
+  width: 100%;
+  border: none;
+}
+
+.text-input:focus {
+  outline: none;
+}
+
+.text-input-failed {
+  font-size: 13px;
+  color: red;
+  text-align: center;
+  margin: 0;
+}
+
+.submit-new-task {
+  height: fit-content;
+  width: fit-content;
+  border: none;
+  background-color: transparent;
+}
+
+.icon-submit {
+  height: 20px;
+  width: 20px;
+}

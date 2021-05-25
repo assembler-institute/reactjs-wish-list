@@ -4,6 +4,8 @@ import { Formik } from "formik";
 
 import taskSchema from "./task-schema";
 
+import "./NewTask.scss";
+
 function addDetailsNewTask(data) {
   return {
     id: uuid(),
@@ -21,7 +23,8 @@ function NewTask({ saveNewTask }) {
           isCompleted: false,
         }}
         validationSchema={taskSchema}
-        onSubmit={(values) => {
+        onSubmit={(values, onSubmitProps) => {
+          onSubmitProps.resetForm({});
           const newTask = addDetailsNewTask(values);
           saveNewTask(newTask);
         }}
@@ -35,37 +38,62 @@ function NewTask({ saveNewTask }) {
           touched,
         }) => (
           <form
-            className="d-flex flex-row justify-content-around"
+            className="d-flex flex-row align-items-center form-wrapper"
             onSubmit={handleSubmit}
           >
-            <input
-              id="isCompleted"
-              name="isCompleted"
-              type="checkbox"
-              value={values.isCompleted}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <div className="form-group">
-              <input
+            <div className="d-flex justify-content-center align-items-center isCompleted-wrapper">
+              <label
                 className={
-                  touched.title && errors.title
-                    ? "form-control is-invalid"
-                    : "form-control"
+                  values.isCompleted
+                    ? "isCompleted-class check-true"
+                    : "isCompleted-class check-false"
                 }
+                htmlFor="isCompleted"
+              >
+                <input
+                  id="isCompleted"
+                  name="isCompleted"
+                  type="checkbox"
+                  value={values.isCompleted}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className="d-none"
+                />
+              </label>
+            </div>
+            <div className="d-flex flex-row justify-content-between align-items-center text-input-wrapper">
+              <input
+                className="text-input"
                 id="title"
                 name="title"
                 type="text"
-                placeholder="Insert a new task..."
+                placeholder="Insert a new task ..."
                 value={values.title}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
               {touched.title && errors.title && (
-                <p className="invalid-feedback">{errors.title}</p>
+                <p className="text-input-failed">{errors.title}</p>
               )}
+              <button
+                className="d-flex justify-content-center align-items-center submit-new-task"
+                type="submit"
+              >
+                {touched.title && errors.title ? (
+                  <img
+                    className="icon-submit"
+                    src="./img/fail.png"
+                    alt="Fail"
+                  />
+                ) : (
+                  <img
+                    className="icon-submit"
+                    src="./img/enter.png"
+                    alt="Correct"
+                  />
+                )}
+              </button>
             </div>
-            <button type="submit" />
           </form>
         )}
       </Formik>
