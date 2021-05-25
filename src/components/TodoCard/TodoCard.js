@@ -36,10 +36,8 @@ class TodoCard extends Component {
     const { handleTodoChange } = this.props;
     const { id, tempTitle } = this.state;
     handleTodoChange(id, tempTitle);
-    /*     const root = document.querySelector("body");
-    root.focus();
-    console.log("foucs");
-    console.log(document.querySelector("body")); */
+    document.getElementById(id).blur();
+    this.setState({ tempTitle: tempTitle });
   }
 
   onBlur() {
@@ -54,7 +52,7 @@ class TodoCard extends Component {
   }
 
   render() {
-    const { /* key,  id, title, */ isComplete } = this.props;
+    const { /* key,   title, */ id, isComplete } = this.props;
     const { tempTitle } = this.state;
 
     return (
@@ -78,9 +76,11 @@ class TodoCard extends Component {
             "no-border",
             { crossout: isComplete },
           )}
+          type="text"
           value={tempTitle}
           onChange={this.handleChange}
           onBlur={this.onBlur}
+          id={id}
         />
         <div>
           <button type="button" onClick={this.deleteTodo} className="no-border">

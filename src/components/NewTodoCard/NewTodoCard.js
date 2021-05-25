@@ -25,6 +25,7 @@ class NewTodoCard extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    document.getElementById("newCardInput").blur();
     const { saveNewTodo } = this.props;
     const TodoData = addTodoDetails(this.state);
     saveNewTodo(TodoData);
@@ -57,6 +58,7 @@ class NewTodoCard extends Component {
             className="font-bold font-big full-width input-no-border"
             value={title}
             onChange={this.handleChange}
+            id="newCardInput"
           />
         </label>
       </form>
