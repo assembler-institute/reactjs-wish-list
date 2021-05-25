@@ -1,5 +1,5 @@
 footer > div {
-  border-radius: 0px 0px 5px 5px ;
+  border-radius: 0 0 5px 5px;
   box-shadow: rgba(149, 157, 165, 0.2) 10px 8px 24px;
   display: flex;
   font-size: small;
@@ -11,11 +11,15 @@ footer > div {
       font-weight: bold;
     }
   }
-  link:hover {
-    color: black;
+  a {
+    color: grey;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
 .active {
-  color: rgb(191, 39, 211);
+  color: #007bff;
+  font-weight: bold;
 }

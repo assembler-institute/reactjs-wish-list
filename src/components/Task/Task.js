@@ -1,8 +1,16 @@
 import React from "react";
 import "./Task.scss";
 import classNames from "classnames/bind";
+import TaskEditor from "../TaskEditor";
 
-function Task({ task, handleRemoveTask, handleCheckboxChange }) {
+function Task({
+  task,
+  editing,
+  handleRemoveTask,
+  handleCheckboxChange,
+  handleEditTask,
+  handleUpdateTask,
+}) {
   function onTaskRemove(event) {
     handleRemoveTask(event.target.parentNode.value);
   }
@@ -11,27 +19,39 @@ function Task({ task, handleRemoveTask, handleCheckboxChange }) {
     handleCheckboxChange(event.target.value, event.target.checked);
   }
 
-  const taskClass = classNames({
-    "list-group-item": true,
+  function onHandleEditTask() {
+    handleEditTask(task.id);
+  }
+
+  const taskName = classNames({
+    "hidden-btn": true,
     "task-completed": task.completed,
-    "d-flex": true,
-    "flex-row": true,
-    "justify-content-between": true,
   });
 
   return (
-    <li className={taskClass}>
-      <div>
-        <input
-          type="checkbox"
-          className="hidden-chkbx"
-          onChange={onTaskComplete}
-          value={task.id}
-          checked={task.completed}
+    <li
+      className={
+        ("list-group-item", "d-flex", "flex-row", "justify-content-between")
+      }
+    >
+      <input
+        type="checkbox"
+        className="hidden-chkbx"
+        onChange={onTaskComplete}
+        value={task.id}
+        checked={task.completed}
+      />
+      {editing ? (
+        <TaskEditor
+          id={task.id}
+          title={task.name}
+          handleUpdateTask={handleUpdateTask}
         />
-        {task.name}
-      </div>
-
+      ) : (
+        <button type="button" className={taskName} onClick={onHandleEditTask}>
+          {task.name}
+        </button>
+      )}
       <button
         type="button"
         className="close"

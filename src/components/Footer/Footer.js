@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Footer.scss";
 
-function Footer({ handleClearCompleted, currentFilter, itemsLeft }) {
+function Footer({ handleClearCompleted, itemsLeft }) {
   function onClearCompleted() {
     handleClearCompleted();
   }
@@ -11,32 +11,16 @@ function Footer({ handleClearCompleted, currentFilter, itemsLeft }) {
     <footer className="mb-4">
       <div className="container justify-content-between bg-white">
         <div>{itemsLeft || 0} items left</div>
-        <Link
-          exact="true"
-          className={`nav-link p-0 ${currentFilter === "/" ? "active" : ""}`}
-          to="/"
-        >
+        <NavLink exact activeClassName="active" to="/">
           All
-        </Link>
-        <Link
-          exact="true"
-          className={`nav-link p-0 ${
-            currentFilter === "/active" ? "active" : ""
-          }`}
-          to="/active"
-        >
+        </NavLink>
+        <NavLink exact activeClassName="active" to="/active">
           Active
-        </Link>
-        <Link
-          exact="true"
-          className={`nav-link p-0 ${
-            currentFilter === "/completed" ? "active" : ""
-          }`}
-          to="/completed"
-        >
+        </NavLink>
+        <NavLink exact activeClassName="active" to="/completed">
           Completed
-        </Link>
-        <button type="button" onClick={onClearCompleted}>
+        </NavLink>
+        <button type="button" className="py-0" onClick={onClearCompleted}>
           Clear completed
         </button>
       </div>

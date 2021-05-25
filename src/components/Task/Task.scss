@@ -1,9 +1,9 @@
 .hidden {
-  display: none;
+  visibility: hidden;
 }
 
 li:hover span {
-  display: flex;
+  visibility: visible;
   align-items: center;
 }
 
@@ -30,7 +30,7 @@ input {
 
 @media (hover: none) {
   .hidden {
-    display: block;
+    visibility: visible;
   }
 }
 
@@ -42,4 +42,9 @@ input {
 
 span {
   font-size: 39px;
+}
+
+.hidden-btn {
+  background-color: transparent;
+  border: 0;
 }

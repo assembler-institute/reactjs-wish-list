@@ -37,6 +37,8 @@ class App extends Component {
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.handleClearCompleted = this.handleClearCompleted.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
+    this.handleEditTask = this.handleEditTask.bind(this);
+    this.handleUpdateTask = this.handleUpdateTask.bind(this);
   }
 
   componentDidMount() {
@@ -79,13 +81,54 @@ class App extends Component {
     this.setState({ tasks: tasks.filter((task) => !task.completed) });
   }
 
+  handleEditTask(taskId) {
+    const { tasks } = this.state;
+
+    this.setState({
+      tasks: tasks.map((task) => {
+        if (task.id === taskId) {
+          return {
+            ...task,
+            isEditing: true,
+          };
+        }
+        return task;
+      }),
+    });
+  }
+
+  handleUpdateTask(currentTask, taskId) {
+    const { tasks } = this.state;
+
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === taskId && currentTask.title !== task.name) {
+        return {
+          ...task,
+          name: currentTask.title,
+          isEditing: false,
+        };
+      }
+      return {
+        ...task,
+        isEditing: false,
+      };
+    });
+
+    this.setState({ tasks: updatedTasks });
+  }
+
   addNewTask() {
     const inputTaskValue = $("#inputTask").val();
     if (inputTaskValue && !/^\s*$/.test(inputTaskValue)) {
       this.setState(
         (prevState) => ({
           tasks: [
-            { id: uuid(), name: inputTaskValue, completed: false },
+            {
+              id: uuid(),
+              name: inputTaskValue,
+              completed: false,
+              isEditing: false,
+            },
             ...prevState.tasks,
           ],
         }),
@@ -118,6 +161,8 @@ class App extends Component {
                   handleRemoveTask={this.handleRemoveTask}
                   handleCheckboxChange={this.handleCheckboxChange}
                   handleClearCompleted={this.handleClearCompleted}
+                  handleUpdateTask={this.handleUpdateTask}
+                  handleEditTask={this.handleEditTask}
                 />
               )}
             />
@@ -131,6 +176,8 @@ class App extends Component {
                   handleRemoveTask={this.handleRemoveTask}
                   handleCheckboxChange={this.handleCheckboxChange}
                   handleClearCompleted={this.handleClearCompleted}
+                  handleUpdateTask={this.handleUpdateTask}
+                  handleEditTask={this.handleEditTask}
                 />
               )}
             />
@@ -144,6 +191,8 @@ class App extends Component {
                   handleRemoveTask={this.handleRemoveTask}
                   handleCheckboxChange={this.handleCheckboxChange}
                   handleClearCompleted={this.handleClearCompleted}
+                  handleUpdateTask={this.handleUpdateTask}
+                  handleEditTask={this.handleEditTask}
                 />
               )}
             />

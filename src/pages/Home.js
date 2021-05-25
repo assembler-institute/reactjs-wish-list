@@ -7,6 +7,8 @@ function Home({
   handleRemoveTask,
   handleCheckboxChange,
   handleClearCompleted,
+  handleEditTask,
+  handleUpdateTask,
 }) {
   return (
     <>
@@ -14,10 +16,11 @@ function Home({
         tasks={tasks}
         handleRemoveTask={handleRemoveTask}
         handleCheckboxChange={handleCheckboxChange}
+        handleEditTask={handleEditTask}
+        handleUpdateTask={handleUpdateTask}
       />
       <Footer
         handleClearCompleted={handleClearCompleted}
-        currentFilter={window.location.pathname}
         itemsLeft={tasks.length}
       />
     </>

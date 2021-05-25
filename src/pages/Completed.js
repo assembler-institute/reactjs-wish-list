@@ -7,6 +7,8 @@ function Completed({
   handleRemoveTask,
   handleCheckboxChange,
   handleClearCompleted,
+  handleEditTask,
+  handleUpdateTask,
 }) {
   const tasksCompleted = tasks.filter((task) => task.completed);
   return (
@@ -15,10 +17,11 @@ function Completed({
         tasks={tasksCompleted}
         handleRemoveTask={handleRemoveTask}
         handleCheckboxChange={handleCheckboxChange}
+        handleEditTask={handleEditTask}
+        handleUpdateTask={handleUpdateTask}
       />
       <Footer
         handleClearCompleted={handleClearCompleted}
-        currentFilter={window.location.pathname}
         itemsLeft={tasksCompleted.length}
       />
     </>
