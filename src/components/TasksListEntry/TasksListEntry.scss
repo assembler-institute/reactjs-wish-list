@@ -1,0 +1,18 @@
+.entry {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid slategray;
+  flex-basis: 100%;
+  & > button > span {
+    visibility: hidden;
+    vertical-align: text-top;
+  }
+
+  &:hover {
+    & > button > span {
+      visibility: visible;
+    }
+  }
+}
