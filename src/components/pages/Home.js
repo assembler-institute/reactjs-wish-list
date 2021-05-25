@@ -8,6 +8,7 @@ import Todo from "../Todo";
 import "../../_App.scss";
 
 function Home({
+  clear,
   newTodo,
   todos,
   handleDelete,
@@ -32,7 +33,7 @@ function Home({
             handleSelected={handleSelected}
             handleEditing={handleEditing}
           />
-          <Footer />
+          <Footer clear={clear} />
         </section>
       </main>
     </>
