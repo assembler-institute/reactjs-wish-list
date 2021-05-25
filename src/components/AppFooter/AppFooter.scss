@@ -1,0 +1,25 @@
+.main__footer {
+  &__link {
+    text-decoration: none;
+    color: black;
+    opacity: 0.7;
+  }
+
+  &__link:hover {
+    text-decoration: none;
+    color: rgba($color: #6c63ff, $alpha: 1);
+  }
+}
+
+.selected {
+  color: rgba($color: #6c63ff, $alpha: 1);
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 500px) {
+  .main__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

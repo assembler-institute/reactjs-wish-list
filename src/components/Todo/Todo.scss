@@ -1,0 +1,40 @@
+.main__todo {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 0.7rem;
+
+  &__close {
+    opacity: 0.7;
+    display: none;
+  }
+
+  &__check {
+    display: flex;
+    align-items: center;
+    width: inherit;
+
+    button {
+      margin: 0;
+      padding: 0.7rem;
+      background: transparent;
+      border: none;
+      flex-grow: 1;
+      text-align: start;
+    }
+  }
+}
+
+.main__todo:hover .main__todo__close {
+  display: block;
+}
+
+.main__todo__darkMode {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+.completed {
+  opacity: 0.5;
+  text-decoration: line-through;
+}

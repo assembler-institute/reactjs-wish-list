@@ -1,0 +1,21 @@
+.invalid-msg {
+  color: red;
+  font-size: 80%;
+  margin: 0;
+  padding: 0;
+}
+
+.input__class {
+  flex-grow: 1;
+  padding: 0.7rem;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.input__class__darkMode {
+  color: white;
+}
+.input-class-err {
+  flex-grow: 0;
+}
