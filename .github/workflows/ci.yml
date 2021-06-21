@@ -24,6 +24,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
       - run: npm ci
       - run: npm run lint:js
       - run: npm run lint:format:check
