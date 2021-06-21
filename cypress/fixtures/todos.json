@@ -1,0 +1,26 @@
+[
+  {
+    "id": "9c34e805-7bfc-401a-b386-468c25315e46",
+    "text": "todo 01",
+    "done": false,
+    "isEditing": false
+  },
+  {
+    "id": "d733a37e-cc4e-4cde-916f-935b3e915bb3",
+    "text": "todo 02",
+    "done": false,
+    "isEditing": false
+  },
+  {
+    "id": "b0d4a269-a6d5-4eb1-94a2-be6c9b39559b",
+    "text": "todo 03",
+    "done": false,
+    "isEditing": false
+  },
+  {
+    "id": "5b368151-e6aa-4650-9a8a-7ee1527a18c8",
+    "text": "todo 04",
+    "done": false,
+    "isEditing": false
+  }
+]

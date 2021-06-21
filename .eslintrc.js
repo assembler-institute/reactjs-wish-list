@@ -9,11 +9,11 @@ module.exports = {
     "airbnb",
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:jest/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:jsx-a11y/recommended",
     "prettier",
+    "plugin:cypress/recommended",
   ],
   parser: "@babel/eslint-parser",
   parserOptions: {
@@ -24,7 +24,6 @@ module.exports = {
   },
   plugins: [
     "html",
-    "jest",
     "react",
     "react-hooks",
     "jsx-a11y",
@@ -47,9 +46,22 @@ module.exports = {
       parser: "@html-eslint/parser",
       extends: ["plugin:@html-eslint/recommended"],
     },
+    {
+      files: ["src/**/*.test.js"],
+      plugins: ["jest"],
+      rules: {
+        "jest/expect-expect": "error",
+      },
+      extends: ["plugin:jest/recommended"],
+    },
   ],
   rules: {
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
     "react/jsx-filename-extension": "off",
     "import/prefer-default-export": "off",
     "prefer-destructuring": "off",
@@ -59,5 +71,14 @@ module.exports = {
     "no-underscore-dangle": "off",
     "react/forbid-prop-types": "off",
     "react/prop-types": "off",
+    "no-unused-expressions": "off",
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        required: {
+          some: ["nesting", "id"],
+        },
+      },
+    ],
   },
 };
