@@ -10,13 +10,30 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  lint-test:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run lint:js
+      - run: npm run lint:format:check
+      - run: npm run test:ci:unit
+
+  test-cy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -27,8 +44,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          browser: chrome
-      - run: npm ci
-      - run: npm run lint:js
-      - run: npm run lint:format:check
-      - run: npm run test:ci:all
+          build: npm run build
+          start: npm start
