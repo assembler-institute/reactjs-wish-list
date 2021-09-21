@@ -1,4 +1,12 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css");
 .task {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid rgba(80, 77, 77, 0.63);
-  padding: 5px;
+  padding: 5px 20px;
+}
+.task .taskControllers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }/*# sourceMappingURL=Task.module.css.map */

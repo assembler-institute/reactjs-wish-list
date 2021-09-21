@@ -2,10 +2,14 @@
 .form {
   margin-bottom: 20px;
 }
-.form input {
+.form input[type=text] {
   border: none;
   height: 66px;
   width: 514px;
   padding: 15px;
   border-radius: 5px;
+}
+.form input[type=text]:focus {
+  outline: none;
+  box-shadow: 1px 0px 5px #25e40c;
 }/*# sourceMappingURL=FormToDo.module.css.map */

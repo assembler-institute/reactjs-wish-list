@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/components/src/components/Task/Task.module.scss","../src/components/Task/Task.module.scss"],"names":[],"mappings":"AAAA;EACE,+CAAA;EACA,YAAA;ACCF","file":"Task.module.css"}
+{"version":3,"sources":["../src/components/src/components/Task/Task.module.scss","../src/components/Task/Task.module.scss"],"names":[],"mappings":"AAAQ,8FAAA;AAER;EACE,aAAA;EACA,8BAAA;EACA,+CAAA;EACA,iBAAA;ACAF;ADEE;EACE,aAAA;EACA,8BAAA;EACA,SAAA;ACAJ","file":"Task.module.css"}

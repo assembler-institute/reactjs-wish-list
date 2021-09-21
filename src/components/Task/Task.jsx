@@ -10,8 +10,10 @@ export default function Task() {
         <input type="checkbox" />
         Task 1
       </label>
-      <EditButton />
-      <RemoveButton />
+      <div className={styles.taskControllers}>
+        <EditButton />
+        <RemoveButton />
+      </div>
     </div>
   );
 }
