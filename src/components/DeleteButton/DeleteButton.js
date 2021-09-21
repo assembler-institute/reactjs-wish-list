@@ -15,8 +15,9 @@ class DeleteButton extends React.Component {
         }
     
     render(){
-        return <button className="delete-button" onClick={(this.deleteItem(item))} >
-            X
-            </button>
+        return (
+          <button className="delete-button" onClick={(this.deleteItem(item))} >
+          </button>
+        )
     }
 }
