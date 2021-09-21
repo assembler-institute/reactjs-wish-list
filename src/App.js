@@ -5,6 +5,7 @@ import TodoCreate from "./components/TodoCreate";
 import TodoList from "./components/TodoList";
 import Footer from "./components/Footer";
 import NoTodoPreview from "./components/NoTodoPreview";
+import CheckBox from "./components/CheckBox";
 
 class App extends Component {
   constructor(props) {
@@ -88,18 +89,23 @@ class App extends Component {
   render() {
     const { todos } = this.state;
 
-    const content = todos.length > 0 ? <TodoList todos handleDelete={deleteTodo} handleSetDone={setDoneTodo} handleSetText={setTextTodo} /> : <NoTodoPreview />;
+    const content =
+      todos.length > 0 ? (
+        <TodoList todos={todos} handleDelete={this.deleteTodo} handleSetDone={this.setDoneTodo} handleSetText={this.setTextTodo} />
+      ) : (
+        <NoTodoPreview />
+      );
 
     return (
       <main className="container mt-5">
         <section className="row">
           <div className="col col-12">
             <h1>TODO</h1>
-            <TodoCreate handleSubmit={addTodo} />
-            <main>
+            <TodoCreate handleSubmit={this.addTodo} />
+            <section>
               {content}
-              <Footer count={todos.length} />
-            </main>
+              {/*<Footer count={todos.length} />*/}
+            </section>
           </div>
         </section>
       </main>

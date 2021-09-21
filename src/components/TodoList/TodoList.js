@@ -1,7 +1,8 @@
 import { Component } from "react";
+import TodoItem from "../TodoItem";
 
 export default class TodoList extends Component {
-  construct(props) {
+  constructor(props) {
     super(props);
   }
 
@@ -12,7 +13,7 @@ export default class TodoList extends Component {
       <ul>
         {todos.map((item) => (
           <li>
-            <TodoItem {...todos} handleDelete={handleDelete} handleSetDone={handleSetDone} handleSetText={handleSetText} />
+            <TodoItem {...item} handleDelete={handleDelete} handleSetDone={handleSetDone} handleSetText={handleSetText} />
           </li>
         ))}
       </ul>

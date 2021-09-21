@@ -1,7 +1,8 @@
 import { Component } from "react";
+import { Formik } from "formik";
 
 export default class TodoCreate extends Component {
-  construct(props) {
+  constructor(props) {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -12,12 +13,23 @@ export default class TodoCreate extends Component {
   }
 
   render() {
-    <>
-      <CheckBox handleSetDone={this.handleSetDone} />
-      <Formik>
-        <TodoInput handleSetText={this.handleSetText} />
-      </Formik>
-      <DeleteButton handleSetDone={this.handleSetDone} />
-    </>;
+    return (
+      <section>
+        <Formik
+          initialValues={{ text: this.props.text }}
+          onSubmit={(values) => {
+            setTimeout(() => {
+              this.handleSetText(values.text);
+            }, 500);
+          }}
+        >
+          {(props) => (
+            <form onSubmit={props.handleSubmit}>
+              <Input type="text" handleChange={props.handleChange} handleBlur={props.handleBlur} value={props.values.text} name="text" />
+            </form>
+          )}
+        </Formik>
+      </section>
+    );
   }
 }

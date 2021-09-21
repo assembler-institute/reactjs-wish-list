@@ -1,58 +1,21 @@
 import { Component } from "react";
+import { v4 as uuid } from "uuid";
 import "./CheckBox.scss";
 
 export default class CheckBox extends Component {
   constructor(props) {
     super(props);
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleCheck = (event) => {
-    //this.props.handleCheck(this.props.id, event.target.checked);
-  };
-
-  handleMouse = (event) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      isHovered: !prevState.isHovered,
-    }));
-  };
+  onChange(event) {
+    this.props.handleChange(event.target.checked);
+  }
 
   render() {
-    const { id = "dummy", checked = false } = this.props;
+    const { id = uuid(), checked, disabled } = this.props;
 
-    const checkStyle = "";
-    const labelStyle = "";
-
-    return (
-      <div
-        className="checkbox"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <input
-          className="checkbox__input"
-          type="checkbox"
-          id={id}
-          checked={checked}
-          onChange={this.handleCheck}
-        />
-        <label
-          className={
-            checked
-              ? "checkbox__label"
-              : "checkbox__label checkbox__label--checked"
-          }
-          htmlFor={id}
-        >
-          <span
-            className={
-              checked
-                ? "checkbox__checkmark"
-                : "checkbox__checkmark checkbox__checkmark--checked"
-            }
-          >{`\u2713`}</span>
-        </label>
-      </div>
-    );
+    return <input className="checkbox__input" type="checkbox" id={id} checked={checked} disabled={disabled} onChange={this.onChange} />;
   }
 }
