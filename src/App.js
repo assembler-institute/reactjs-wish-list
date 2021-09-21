@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 // import Input from "./Input";
-// import Button from "../Button";
+import { TasksList, Footer } from "./components";
 
 import taskSchema from "./task-schema";
 
@@ -219,68 +219,16 @@ class App extends Component {
               </div>
             </div>
 
-            {filteredTasks.map((task, i) => (
-              <div key={i} className="card card-body mt-2">
-                <button
-                  style={{
-                    textDecoration: task.done ? 'line-through' : '',
-                    display: task.isEditing ? 'none' : 'block'
-                  }}
-                  onClick={(e) => this.toggleEditTask(e, task.id)}>
-                  {task.text}
-                </button>
-                <input
-                  type="text"
-                  style={{ display: task.isEditing ? 'block' : 'none' }}
-                  value={task.text}
-                  onChange={e => this.saveEditTask(e, task.id)}
-                  onKeyDown={(e) => this.onKeyDownEdit(e, task.id)}
-                  autoFocus
-                />
-                <button
-                  className="btn btn-secondary"
-                  onClick={(e) => this.toggleDoneTask(e, task.id)}
-                >
-                  {task.done ? 'Done' : 'Todo'}
-                </button>
-                <button
-                  className="btn btn-secondary"
-                  onClick={(e) => this.removeTask(e, task.id)}
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
+            <TasksList
+              filteredTasks={filteredTasks}
+              toggleEditTask={this.toggleEditTask}
+              saveEditTask={this.saveEditTask}
+              onKeyDownEdit={this.onKeyDownEdit}
+              toggleDoneTask={this.toggleDoneTask}
+              removeTask={this.removeTask}
+            />
 
-            <div className="d-flex justify-content-between">
-
-              <p>
-                {filteredTasks.length} items
-              </p>
-              <div>
-                <button
-                  className="btn btn-secondary"
-                  name="all"
-                  onClick={(e) => this.filterTasks(e.target.name)}
-                >
-                  All
-                </button>
-                <button
-                  className="btn btn-secondary"
-                  name="active"
-                  onClick={(e) => this.filterTasks(e.target.name)}
-                >
-                  Active
-                </button>
-                <button
-                  className="btn btn-secondary"
-                  name="complete"
-                  onClick={(e) => this.filterTasks(e.target.name)}
-                >
-                  Complete
-                </button>
-              </div>
-            </div>
+            <Footer filteredTasks={filteredTasks} />
 
           </div>
         </section>
