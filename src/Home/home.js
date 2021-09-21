@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Input from "../Components/Input";
 import TodoList from "../Components/TodoList"
+import Footer from "../Components/Footer"
 
 import "./home.scss";
 
@@ -19,17 +20,7 @@ class Home extends Component {
           </section>
           <section className="row container-lg">
             <TodoList />
-            <div className="footer">
-              <div className="row counter__container">
-                <span>1</span><p>Tasks Left</p>
-              </div>
-              <div className="btn__group">
-                <button type="button" className="btn">All</button>
-                <button type="button" className="btn">Active</button>
-                <button type="button" className="btn">Completed</button>
-              </div>
-              <button type="button" className="btn btn__clr">Clear Completed</button>
-            </div>
+            <Footer />
           </section>
         </main>
       );
