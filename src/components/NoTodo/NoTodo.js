@@ -1,4 +1,5 @@
 import { React, Component } from "react";
+import "./NoTodo.scss";
 
 class NoTodo extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class NoTodo extends Component {
   render() {
     return (
       <>
-        <div className="notodo__image"></div>
+        <div className="notodo__img"></div>
         <div className="notodo__message">
           Type a new task and start organizing!!
         </div>
