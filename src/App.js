@@ -157,6 +157,20 @@ class App extends Component {
     }));
   }
 
+  removeAllCompletedTasks = (e) => {
+    e.preventDefault();
+
+    const { tasks } = this.state
+
+    const newTasks = tasks.filter(task => task.done !== true)
+
+    this.setState((prevState) => ({
+      ...prevState,
+      tasks: newTasks,
+      filteredTasks: newTasks,
+    }));
+  }
+
   filterTasks = (status) => {
     const { tasks } = this.state
 
@@ -200,6 +214,7 @@ class App extends Component {
             <Footer
               filterTasks={this.filterTasks}
               filteredTasks={filteredTasks}
+              removeAllCompletedTasks={this.removeAllCompletedTasks}
             />
 
           </div>

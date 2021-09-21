@@ -1,32 +1,48 @@
-function Footer({ filteredTasks, filterTasks }) {
+function Footer({
+  filteredTasks,
+  filterTasks,
+  removeAllCompletedTasks
+}) {
   return (
-    <footer className="d-flex justify-content-between">
-      <p>
-        {filteredTasks.length} items
-      </p>
-      <div>
+    <footer>
+      <div className="d-flex justify-content-between">
+        <p>
+          {filteredTasks.length} items
+        </p>
+        <div>
+          <button
+            className="btn btn-secondary"
+            name="all"
+            onClick={(e) => filterTasks(e.target.name)}
+          >
+            All
+          </button>
+          <button
+            className="btn btn-secondary"
+            name="active"
+            onClick={(e) => filterTasks(e.target.name)}
+          >
+            Active
+          </button>
+          <button
+            className="btn btn-secondary"
+            name="complete"
+            onClick={(e) => filterTasks(e.target.name)}
+          >
+            Complete
+          </button>
+        </div>
         <button
           className="btn btn-secondary"
-          name="all"
-          onClick={(e) => filterTasks(e.target.name)}
+          name="clear"
+          onClick={(e) => removeAllCompletedTasks(e)}
         >
-          All
+          Clear completed
         </button>
-        <button
-          className="btn btn-secondary"
-          name="active"
-          onClick={(e) => filterTasks(e.target.name)}
-        >
-          Active
-        </button>
-        <button
-          className="btn btn-secondary"
-          name="complete"
-          onClick={(e) => filterTasks(e.target.name)}
-        >
-          Complete
-        </button>
+
       </div>
+      <p>Drag and drop to reorder list</p>
+
     </footer>
   );
 }
