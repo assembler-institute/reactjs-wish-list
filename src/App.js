@@ -1,11 +1,7 @@
 import { Component } from "react";
 import { v4 as uuid } from "uuid";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 
-// import Input from "./Input";
-import { TasksList, Footer } from "./components";
-
-import taskSchema from "./task-schema";
+import { TasksList, Footer, NewTaskForm } from "./components";
 
 import * as api from "./api";
 
@@ -72,17 +68,19 @@ class App extends Component {
     });
   }
 
-  onKeyDownSubmit(e, handleSubmit) {
+  onKeyDownSubmit = (e, handleSubmit) => {
     if (e.key === 'Enter') {
       e.preventDefault();
 
       e.target.blur();
 
+      console.log('yes');
+
       handleSubmit();
     }
   }
 
-  onKeyDownEdit(e, taskId) {
+  onKeyDownEdit = (e, taskId) => {
     if (e.key === 'Enter') {
       e.preventDefault();
 
@@ -91,17 +89,18 @@ class App extends Component {
     }
   }
 
-  saveNewTask(newTask) {
+  saveNewTask = (newTask) => {
     this.setState((prevState) => ({
       ...prevState,
       tasks: [newTask, ...prevState.tasks],
+      filteredTasks: [newTask, ...prevState.filteredTasks],
     }));
   }
 
-  saveEditTask(e, taskId) {
+  saveEditTask = (e, taskId) => {
     e.preventDefault();
 
-    const { tasks } = this.state
+    const { tasks } = this.state;
 
     tasks.map(task => {
       if (task.id === taskId) {
@@ -112,16 +111,16 @@ class App extends Component {
 
     this.setState((prevState) => ({
       ...prevState,
-      tasks: tasks,
+      tasks: tasks
     }));
   }
 
   toggleDoneTask = (e, taskId) => {
     e.preventDefault();
 
-    const { tasks } = this.state
+    const { tasks } = this.state;
 
-    tasks.map(task => { (task.id === taskId) ? task.done = !task.done : null })
+    tasks.map(task => { (task.id === taskId) ? task.done = !task.done : null });
 
     this.setState((prevState) => ({
       ...prevState,
@@ -132,7 +131,7 @@ class App extends Component {
   toggleEditTask = (e, taskId) => {
     e.preventDefault();
 
-    const { tasks } = this.state
+    const { tasks } = this.state;
 
     tasks.map(task => { (task.id === taskId) ? task.isEditing = !task.isEditing : null })
 
@@ -182,42 +181,12 @@ class App extends Component {
         <section className="row">
           <div className="col-md-6 offset-md-3">
             <h1>Hello Taskmaker</h1>
-            <div className="card">
-              <div className="card-body">
-                <Formik
-                  initialValues={{
-                    text: '',
-                    done: false
-                  }}
-                  validationSchema={taskSchema}
-                  onSubmit={(values, { resetForm }) => {
-                    const newTask = addTaskDetails(values);
-                    this.saveNewTask(newTask);
-                    resetForm({});
-                  }}
-                >
-                  {({
-                    handleSubmit,
-                    errors,
-                    values,
-                    touched,
-                    isValidating,
-                    isValid,
-                  }) => (
-                    <Form onKeyDown={(e) => this.onKeyDownSubmit(e, handleSubmit)}>
-                      <Field
-                        type="text"
-                        className="form-control"
-                        placeholder="New task"
-                        id="text"
-                        value={values.text}
-                      />
-                      <ErrorMessage className="invalid-feedback" name="text" />
-                    </Form>
-                  )}
-                </Formik>
-              </div>
-            </div>
+
+            <NewTaskForm
+              addTaskDetails={addTaskDetails}
+              saveNewTask={this.saveNewTask}
+              onKeyDownSubmit={this.onKeyDownSubmit}
+            />
 
             <TasksList
               filteredTasks={filteredTasks}
@@ -228,7 +197,10 @@ class App extends Component {
               removeTask={this.removeTask}
             />
 
-            <Footer filteredTasks={filteredTasks} />
+            <Footer
+              filterTasks={this.filterTasks}
+              filteredTasks={filteredTasks}
+            />
 
           </div>
         </section>

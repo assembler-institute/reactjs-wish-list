@@ -1,4 +1,4 @@
-function Footer({ filteredTasks }) {
+function Footer({ filteredTasks, filterTasks }) {
   return (
     <footer className="d-flex justify-content-between">
       <p>
@@ -8,21 +8,21 @@ function Footer({ filteredTasks }) {
         <button
           className="btn btn-secondary"
           name="all"
-          onClick={(e) => this.filterTasks(e.target.name)}
+          onClick={(e) => filterTasks(e.target.name)}
         >
           All
         </button>
         <button
           className="btn btn-secondary"
           name="active"
-          onClick={(e) => this.filterTasks(e.target.name)}
+          onClick={(e) => filterTasks(e.target.name)}
         >
           Active
         </button>
         <button
           className="btn btn-secondary"
           name="complete"
-          onClick={(e) => this.filterTasks(e.target.name)}
+          onClick={(e) => filterTasks(e.target.name)}
         >
           Complete
         </button>

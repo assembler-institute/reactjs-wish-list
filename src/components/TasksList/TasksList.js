@@ -14,6 +14,7 @@ function TasksList({
         <Task
           task={task}
           index={index}
+          key={index}
           toggleEditTask={toggleEditTask}
           saveEditTask={saveEditTask}
           onKeyDownEdit={onKeyDownEdit}
