@@ -57,7 +57,7 @@ module.exports = {
   ],
   rules: {
     "prettier/prettier": [
-      "error",
+      "off",
       {
         endOfLine: "auto",
       },
