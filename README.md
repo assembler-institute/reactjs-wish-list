@@ -129,8 +129,7 @@ In this project you will build a todo app similar to the following screenshot.
 
 ## Project requirements
 
-This is an overview of the main requirements of this project. The exact ones are
-found in the doc that the academic team will provide you.
+This is an overview of the main requirements of this project.
 
 - You must follow all the instructions of the project step-by-step
 - You should always try to solve them by yourself before asking for help
