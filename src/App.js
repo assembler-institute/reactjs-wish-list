@@ -1,15 +1,8 @@
 import React from "react";
+import ToDoContainer from "./ToDoContainer/ToDoContainer";
 
 function App() {
-  return (
-    <main className="container mt-5">
-      <section className="row">
-        <div className="col col-12">
-          <h1>Hola mundo</h1>
-        </div>
-      </section>
-    </main>
-  );
+  return <ToDoContainer />;
 }
 
 export default App;
