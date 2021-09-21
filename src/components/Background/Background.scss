@@ -1,7 +1,14 @@
 .background {
     z-index: -1;
-    background-color:bisque;
+    background-color:#FAFAFA;
     height: 100vh;
     width: 100%;
     position: absolute;
+}
+.background-img {
+    background-image: linear-gradient(90deg, rgba(184, 100, 240, 0.7) 0%, rgba(131, 156, 249, 0.7) 100%), url("../../assets/img/1051-4928x3264.jpg") ;
+    height: 35%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
 }

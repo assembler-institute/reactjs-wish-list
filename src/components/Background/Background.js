@@ -6,7 +6,11 @@ class Background extends React.Component {
     super(props);
   }
   render() {
-    return <p className="background">FONDO</p>;
+    return (
+      <div className="background">
+        <div className="background-img"></div>
+      </div>
+    );
   }
 }
 

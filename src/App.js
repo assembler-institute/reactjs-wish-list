@@ -1,18 +1,23 @@
 import React from "react";
 import Background from "./components/Background";
-import Home from "./pages/home";
+import "./App.scss";
+import ChangeMode from "./components/ChangeMode";
 
 function App() {
   return (
-    <main className="container mt-5">
-      <section className="row">
-        <div className="col col-12">
-          <h1>Hola mundo</h1>
-          <Home />
-          <Background />
-        </div>
-      </section>
-    </main>
+    <>
+      <Background />
+      <main className="container pt-5 main-width">
+        <section className="row">
+          <div className="col col-12">
+            <header className="row">
+              <h1>TODO</h1>
+              <ChangeMode />
+            </header>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
 
