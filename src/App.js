@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { v4 as uuid } from "uuid";
 
 import { TasksList, Footer, NewTaskForm } from "./components";
 
@@ -17,17 +16,6 @@ function loadLocalStorageData() {
   } catch (error) {
     return null;
   }
-}
-
-function addTaskDetails(task) {
-  return {
-    id: uuid(),
-    ...task,
-    done: false,
-    isEditing: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  };
 }
 
 class App extends Component {
@@ -73,8 +61,6 @@ class App extends Component {
       e.preventDefault();
 
       e.target.blur();
-
-      console.log('yes');
 
       handleSubmit();
     }
@@ -146,8 +132,6 @@ class App extends Component {
 
     const { tasks } = this.state
 
-    console.log(taskId)
-
     const newTasks = tasks.filter(task => task.id !== taskId)
 
     this.setState((prevState) => ({
@@ -197,7 +181,6 @@ class App extends Component {
             <h1>Hello Taskmaker</h1>
 
             <NewTaskForm
-              addTaskDetails={addTaskDetails}
               saveNewTask={this.saveNewTask}
               onKeyDownSubmit={this.onKeyDownSubmit}
             />

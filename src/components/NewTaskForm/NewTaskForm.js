@@ -1,9 +1,20 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { v4 as uuid } from "uuid";
 
 import taskSchema from "./task-schema";
 
+function addTaskDetails(task) {
+  return {
+    id: uuid(),
+    ...task,
+    done: false,
+    isEditing: false,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+}
+
 function NewTaskForm({
-  addTaskDetails,
   saveNewTask,
   onKeyDownSubmit
 }) {
@@ -18,7 +29,6 @@ function NewTaskForm({
           validationSchema={taskSchema}
           onSubmit={(values, { resetForm }) => {
             const newTask = addTaskDetails(values);
-            console.log(newTask)
             saveNewTask(newTask);
             resetForm({});
           }}
