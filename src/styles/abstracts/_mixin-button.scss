@@ -1,0 +1,13 @@
+@mixin button-reset() {
+	background: none;
+	border: none;
+	padding: 0;
+}
+
+@mixin button-behaviour() {
+	cursor: pointer;
+
+	&:active {
+		opacity: 0.75;
+	}
+}

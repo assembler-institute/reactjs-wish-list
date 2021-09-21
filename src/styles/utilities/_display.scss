@@ -1,0 +1,9 @@
+/* ===== Display Mode Classes ===== */
+
+$_display-modes: inline-block, block, flex, grid;
+
+@each $display-mode in $_display-modes {
+	.#{$display-mode} {
+		display: $display-mode;
+	}
+}

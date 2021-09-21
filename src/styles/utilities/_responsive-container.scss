@@ -1,0 +1,34 @@
+@use "breakpoint";
+@use "../abstracts/responsive-width";
+
+/* ===== Responsive Container Classes ====== */
+
+.container-sm {
+	@include responsive-width.width-constraint(breakpoint.$sm);
+	@include responsive-width.width-constraint(breakpoint.$md);
+	@include responsive-width.width-constraint(breakpoint.$lg);
+	@include responsive-width.width-constraint(breakpoint.$xl);
+	@include responsive-width.width-constraint(breakpoint.$xxl);
+}
+
+.container-md {
+	@include responsive-width.width-constraint(breakpoint.$md);
+	@include responsive-width.width-constraint(breakpoint.$lg);
+	@include responsive-width.width-constraint(breakpoint.$xl);
+	@include responsive-width.width-constraint(breakpoint.$xxl);
+}
+
+.container-lg {
+	@include responsive-width.width-constraint(breakpoint.$lg);
+	@include responsive-width.width-constraint(breakpoint.$xl);
+	@include responsive-width.width-constraint(breakpoint.$xxl);
+}
+
+.container-xl {
+	@include responsive-width.width-constraint(breakpoint.$xl);
+	@include responsive-width.width-constraint(breakpoint.$xxl);
+}
+
+.container-xxl {
+	@include responsive-width.width-constraint(breakpoint.$xxl);
+}

@@ -1,0 +1,16 @@
+/* ===== Border Radius Config Variables ===== */
+
+$radius-gap: 0.125rem !default;
+$radius-iterations: 10 !default;
+
+/* ===== Border Radius Classes ===== */
+
+@for $i from 0 through $radius-iterations {
+	.radius-#{$i} {
+		border-radius: $radius-gap * $i;
+	}
+}
+
+.radius-round {
+	border-radius: 50%;
+}

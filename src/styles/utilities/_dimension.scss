@@ -1,0 +1,11 @@
+/* ===== Dimensional Classes ===== */
+
+@for $i from 0 through 20 {
+	.width-#{$i * 5} {
+		width: $i * 5%;
+	}
+
+	.height-#{$i * 5} {
+		height: $i * 5%;
+	}
+}

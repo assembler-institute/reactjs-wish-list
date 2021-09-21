@@ -1,0 +1,66 @@
+@use "sass:math";
+
+/* ===== Font Config Variables ===== */
+
+$font-size-base: 1rem !default;
+$font-size-scale: 1.25 !default;
+
+/* ===== Font Size Classes ===== */
+
+$_font-sizes: (
+	100: 	$font-size-base * math.pow($font-size-scale, -3),
+	200: 	$font-size-base * math.pow($font-size-scale, -2),
+	300: 	$font-size-base * math.pow($font-size-scale, -1),
+	400: 	$font-size-base,
+	500: 	$font-size-base * math.pow($font-size-scale, 2),
+	600: 	$font-size-base * math.pow($font-size-scale, 3),
+	700: 	$font-size-base * math.pow($font-size-scale, 4),
+	800: 	$font-size-base * math.pow($font-size-scale, 5),
+	900: 	$font-size-base * math.pow($font-size-scale, 6)
+);
+
+@each $name, $value in $_font-sizes {
+	.font-size-#{$name} {
+		font-size: $value;
+	}
+} 
+
+/* ===== Font Weight Classes ===== */
+
+$_font-weights: 100, 200, 300, 400, 500, 600, 700, 800, 900;
+
+@each $value in $_font-weights {
+	.font-weight-#{$value} {
+		font-weight: $value;
+	}
+} 
+
+/* ===== Font Style Classes ===== */
+
+$_font-styles: normal, italic;
+
+@each $value in $_font-styles {
+	.font-style-#{$value} {
+		font-style: $value;
+	}
+} 
+
+/* ===== Text Align Classes ===== */
+
+$_text-aligns: left, right, center, justify;
+
+@each $value in $_text-aligns{
+	.text-align-#{$value} {
+		text-align: $value;
+	}
+} 
+
+/* ===== Text Decoration Classes ===== */
+
+$_text-decorations: "none", "underline";
+
+@each $value in $_text-decorations {
+	.text-decoration-#{$value} {
+		text-decoration: $value;
+	}
+}

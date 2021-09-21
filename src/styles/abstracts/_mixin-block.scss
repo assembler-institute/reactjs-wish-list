@@ -1,0 +1,12 @@
+@mixin block($width: 100%, $height: auto, $padding: 0, $margin: 0, $set-inline: false) {
+	@if $set-inline {
+		display: inline-block;
+	} @else {
+		display: block;
+	}
+
+	width: $width;
+	height: $height;
+	padding: $padding;
+	margin: $margin;
+};

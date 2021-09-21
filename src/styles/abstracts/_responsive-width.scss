@@ -1,0 +1,7 @@
+@use "responsive-media";
+
+/* ===== Responsive Width Mixins ===== */
+
+@mixin width-constraint($breakpoint) {
+	@include responsive-media.media-screen-min($breakpoint) { width: $breakpoint }
+}

@@ -1,0 +1,49 @@
+/* ===== Flex Direction Classes ===== */
+
+$_direction-opts: row, column, row-reverse, column-reverse;
+
+@each $value in $_direction-opts {
+	.flex-#{$value} {
+		flex-direction: $value;
+	}
+}
+
+/* ===== Flex Wrap Classes  ===== */
+
+$_wrap-opts: wrap, wrap-reverse;
+
+@each $value in $_wrap-opts {
+	.flex-#{$value} {
+		flex-wrap: $value;
+	}
+}
+
+/* ===== Flex Main Axis Alignment Classes ===== */
+
+$_justify-content-opts: start, end, center, space-between, space-evenly, space-around;
+
+@each $value in $_justify-content-opts {
+	.justify-content-#{$value} {
+		justify-content: $value;
+	}
+}
+
+/* ===== Flex Cross Axis Alignment Classes ===== */
+
+$_align-items-opts: start, end, center, stretch;
+
+@each $value in $_align-items-opts {
+	.align-items-#{$value} {
+		align-items: $value;
+	}
+}
+
+/* =====~ Flex Content Alignment Classes ===== */
+
+$_align-content-opts: start, end, center, space-between, space-evenly, space-around;
+
+@each $value in $_align-content-opts {
+	.align-content-#{$value} {
+		align-content: $value;
+	}
+}
