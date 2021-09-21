@@ -4,41 +4,41 @@ import "./CheckBox.scss";
 export default class CheckBox extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isChecked: false,
-    };
   }
 
   handleCheck = (event) => {
-    //this.props.handleCheck(this.props.id, this.state.isChecked)
+    //this.props.handleCheck(this.props.id, event.target.checked);
+  };
 
+  handleMouse = (event) => {
     this.setState((prevState) => ({
       ...prevState,
-      isChecked: !prevState.isChecked,
+      isHovered: !prevState.isHovered,
     }));
   };
 
-  componentDidUpdate() {
-    console.log(this.state.isChecked);
-  }
-
   render() {
-    const { id = "dummy" } = this.props;
-    const { isChecked } = this.state;
+    const { id = "dummy", checked = false } = this.props;
+
+    const checkStyle = "";
+    const labelStyle = "";
 
     return (
-      <div className="checkbox">
+      <div
+        className="checkbox"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <input
           className="checkbox__input"
           type="checkbox"
           id={id}
-          checked={isChecked}
+          checked={checked}
           onChange={this.handleCheck}
         />
         <label
           className={
-            isChecked
+            checked
               ? "checkbox__label"
               : "checkbox__label checkbox__label--checked"
           }
@@ -46,7 +46,7 @@ export default class CheckBox extends Component {
         >
           <span
             className={
-              isChecked
+              checked
                 ? "checkbox__checkmark"
                 : "checkbox__checkmark checkbox__checkmark--checked"
             }

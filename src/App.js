@@ -4,6 +4,7 @@ import { v4 as uuid } from "uuid";
 import TodoCreate from "./components/TodoCreate";
 import TodoList from "./components/TodoList";
 import Footer from "./components/Footer";
+import NoTodoPreview from "./components/NoTodoPreview";
 
 class App extends Component {
   constructor(props) {
@@ -54,11 +55,26 @@ class App extends Component {
     }));
   }
 
-  setDoneTodo(id) {
+  setTextTodo(id, text) {
     const { todos } = this.state;
 
     const newTodos = todos.map((item) => {
-      if (item.id === id) item.done = !item.done;
+      if (item.id === id) item.text = text;
+
+      return item;
+    });
+
+    this.setState((prevState) => ({
+      ...prevState,
+      todos: newTodos,
+    }));
+  }
+
+  setDoneTodo(id, isDone) {
+    const { todos } = this.state;
+
+    const newTodos = todos.map((item) => {
+      if (item.id === id) item.done = isDone;
 
       return item;
     });
@@ -70,20 +86,20 @@ class App extends Component {
   }
 
   render() {
+    const { todos } = this.state;
+
+    const content = todos.length > 0 ? <TodoList todos handleDelete={deleteTodo} handleSetDone={setDoneTodo} handleSetText={setTextTodo} /> : <NoTodoPreview />;
+
     return (
       <main className="container mt-5">
         <section className="row">
           <div className="col col-12">
             <h1>TODO</h1>
-            <TodoCreate
-              handleSubmit={addTodo}
-              handleDelete={deleteTodo}
-              handleSetDone={setDoneTodo}
-            />
-            <div>
-              <TodoList todos={this.state.todos} />
-              <Footer count={this.state.todos.length} />
-            </div>
+            <TodoCreate handleSubmit={addTodo} />
+            <main>
+              {content}
+              <Footer count={todos.length} />
+            </main>
           </div>
         </section>
       </main>
