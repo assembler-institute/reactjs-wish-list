@@ -1,14 +1,19 @@
+/* eslint-disable import/no-unresolved */
 import React from "react";
-import RemoveButton from "../RemoveButton/RemoveButton";
 import Task from "../Task/Task";
+import styles from "./TaskList.module.scss";
 
 export default function TaskList() {
   return (
     <>
-      <div>
+      <div className={styles.taskList}>
+        <Task />
+        <Task />
+        <Task />
+        <Task />
+        <Task />
         <Task />
       </div>
-      <RemoveButton />
     </>
   );
 }

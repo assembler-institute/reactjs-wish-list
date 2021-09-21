@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from "react";
-import SubmitButton from "../SubmitButton/SubmitButton";
+import styles from "./FormToDo.module.scss"
 
 function FormToDo() {
   const [newInput, setNewInput] = useState("");
@@ -18,14 +18,14 @@ function FormToDo() {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <input
+        className="form__addTask"
         type="text"
         placeholder="Add a To-Do"
         value={newInput}
         onChange={handleChange} />
-      <SubmitButton />
-    </form>
+    </form >
   );
 }
 

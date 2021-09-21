@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap");
+.form {
+  margin-bottom: 20px;
+}
+.form input {
+  border: none;
+  height: 66px;
+  width: 514px;
+  padding: 15px;
+  border-radius: 5px;
+}/*# sourceMappingURL=FormToDo.module.css.map */
