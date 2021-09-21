@@ -1,4 +1,5 @@
 import React from "react";
+import { updateLocal } from "../TodoList/TodoList";
 
 export default class NewTodo extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ export default class NewTodo extends React.Component {
 
     retrieve.push(todoTask);
     localStorage.setItem(`list`, JSON.stringify(retrieve));
+    updateLocal();
   }
 
   render() {

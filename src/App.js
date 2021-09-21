@@ -1,16 +1,22 @@
-import React from "react";
-import NewTodo from "./components/NewTodo";
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <main className="container mt-5">
-      <section className="row">
-        <div className="row row-12">
-          <NewTodo />
-        </div>
-      </section>
-    </main>
-  );
+import NewTodo from "./components/NewTodo";
+import TodoList from "./components/TodoList/TodoList";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    const local = JSON.parse(localStorage.getItem(`list`));
+    return (
+      <>
+        <NewTodo />
+        {local && <TodoList />}
+        {/* {!local && <NoTodo />}; */}
+      </>
+    );
+  }
 }
 
 export default App;
