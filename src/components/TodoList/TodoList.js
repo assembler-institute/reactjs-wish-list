@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
-
 // Improve the render of the component
 
 export default class TodoList extends React.Component {
@@ -8,6 +7,16 @@ export default class TodoList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
+  }
+  
+  editHandler = (event) => {
+    const taskId = event.target.id
+    const text = event.target.innerText
+
+    // Make text editable
+    const {editTaskText} = this.props
+    editTaskText(text, taskId)
+
   }
 
   render() {
@@ -18,7 +27,7 @@ export default class TodoList extends React.Component {
         tasks.length === 0 ? 
         <h1>No hay todos</h1> :
         tasks.map(task => (
-          <h1 key={task.id}>{task.text}</h1>
+          <button type="button" key={task.id} id={task.id} onClick={this.editHandler}>{task.text}</button>
         )) 
       }
       </>

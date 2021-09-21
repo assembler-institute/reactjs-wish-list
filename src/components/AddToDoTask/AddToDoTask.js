@@ -7,8 +7,21 @@ export default class AddToDoTask extends React.Component {
 
   constructor(props) {
     super(props)
+
     this.state = {
-      title: 'Default'
+      id: '',
+      title: 'Default',
+      isEditing: false
+    }
+  }
+
+  componentDidUpdate() {
+    const { defaultValues } = this.props
+    const {text , id} = defaultValues
+    const {title} = this.state
+
+    if (id !== '' && text !== title) {
+      this.updateState({id, text, isEditing: true})
     }
   }
 
@@ -17,20 +30,26 @@ export default class AddToDoTask extends React.Component {
     
     const {handlerToDoTask} = this.props
     handlerToDoTask(this.state)
+
+    this.updateState({})
   }
 
-  updateState = (event) => {
-    this.setState(() => {
-      return {title: event.target.value}
-    })
+  updateState = ({id = '', text = '', isEditing = false}) => {
+    this.setState({id: id, title: text, isEditing: isEditing})
+  }
+
+  handlerInput = (event) => {
+    const text = event.target.value
+    const {id} = this.state
+    console.log(text)
+    this.updateState({id, text})
   }
 
   render() {
-    const {title} = this.state 
-
+    const { title } = this.state
     return (
       <form onSubmit={this.formSubmit}>
-        <input type="text" value={title} onChange={this.updateState} />
+        <input type="text" value={title} onChange={this.handlerInput} />
       </form>
     )
   }
