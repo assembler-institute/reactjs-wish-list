@@ -3,6 +3,7 @@ function Footer({
   filterTasks,
   removeAllCompletedTasks
 }) {
+  console.log(filteredTasks);
   return (
     <footer>
       <div className="d-flex justify-content-between">

@@ -1,10 +1,15 @@
 import { Component } from "react";
+import { DragDropContext } from "react-beautiful-dnd";
 
 import { TasksList, Footer, NewTaskForm } from "./components";
 
 import * as api from "./api";
 
 const LOCAL_STORAGE_KEY = "reactjs-todo-list";
+
+Array.prototype.move = function (from, to) {
+  this.splice(to, 0, this.splice(from, 1)[0]);
+};
 
 function loadLocalStorageData() {
   const prevItems = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -23,9 +28,9 @@ class App extends Component {
     super(props);
 
     this.state = {
-      status: 'active',
+      status: "active",
       tasks: [],
-      filteredTasks: []
+      filteredTasks: [],
     };
   }
 
@@ -39,7 +44,7 @@ class App extends Component {
 
       api.getTasks().then((data) => {
         this.setState({
-          status: 'all',
+          status: "all",
           tasks: data,
           filteredTasks: data,
           isLoading: false,
@@ -50,30 +55,30 @@ class App extends Component {
     }
 
     this.setState({
-      status: 'all',
+      status: "all",
       tasks: prevItems.tasks,
       filteredTasks: prevItems.tasks,
     });
   }
 
   onKeyDownSubmit = (e, handleSubmit) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       e.preventDefault();
 
       e.target.blur();
 
       handleSubmit();
     }
-  }
+  };
 
   onKeyDownEdit = (e, taskId) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       e.preventDefault();
 
-      this.toggleEditTask(e, taskId)
-      this.saveEditTask(e, taskId)
+      this.toggleEditTask(e, taskId);
+      this.saveEditTask(e, taskId);
     }
-  }
+  };
 
   saveNewTask = (newTask) => {
     this.setState((prevState) => ({
@@ -81,95 +86,103 @@ class App extends Component {
       tasks: [newTask, ...prevState.tasks],
       filteredTasks: [newTask, ...prevState.filteredTasks],
     }));
-  }
+  };
 
   saveEditTask = (e, taskId) => {
     e.preventDefault();
 
     const { tasks } = this.state;
 
-    tasks.map(task => {
+    tasks.map((task) => {
       if (task.id === taskId) {
         task.text = e.target.value;
         task.updatedAt = new Date().toISOString();
       }
-    })
+    });
 
     this.setState((prevState) => ({
       ...prevState,
-      tasks: tasks
+      tasks: tasks,
     }));
-  }
+  };
 
   toggleDoneTask = (e, taskId) => {
     e.preventDefault();
 
     const { tasks } = this.state;
 
-    tasks.map(task => { (task.id === taskId) ? task.done = !task.done : null });
+    tasks.map((task) => {
+      task.id === taskId ? (task.done = !task.done) : null;
+    });
 
     this.setState((prevState) => ({
       ...prevState,
       tasks: tasks,
     }));
-  }
+  };
 
   toggleEditTask = (e, taskId) => {
     e.preventDefault();
 
     const { tasks } = this.state;
 
-    tasks.map(task => { (task.id === taskId) ? task.isEditing = !task.isEditing : null })
+    tasks.map((task) => {
+      task.id === taskId ? (task.isEditing = !task.isEditing) : null;
+    });
 
     this.setState((prevState) => ({
       ...prevState,
       tasks: tasks,
     }));
-  }
+  };
 
   removeTask = (e, taskId) => {
     e.preventDefault();
 
-    const { tasks } = this.state
+    const { tasks } = this.state;
 
-    const newTasks = tasks.filter(task => task.id !== taskId)
+    const newTasks = tasks.filter((task) => task.id !== taskId);
 
     this.setState((prevState) => ({
       ...prevState,
       tasks: newTasks,
       filteredTasks: newTasks,
     }));
-  }
+  };
 
   removeAllCompletedTasks = (e) => {
     e.preventDefault();
 
-    const { tasks } = this.state
+    const { tasks } = this.state;
 
-    const newTasks = tasks.filter(task => task.done !== true)
+    const newTasks = tasks.filter((task) => task.done !== true);
 
     this.setState((prevState) => ({
       ...prevState,
       tasks: newTasks,
       filteredTasks: newTasks,
     }));
-  }
+  };
 
   filterTasks = (status) => {
-    const { tasks } = this.state
+    const { tasks } = this.state;
 
     let filteredTasks;
 
-    (status === 'all') ? filteredTasks = tasks : null;
-    (status === 'active') ? filteredTasks = tasks.filter(task => task.done === false) : null;
-    (status === 'complete') ? filteredTasks = tasks.filter(task => task.done === true) : null;
+    status === "all" ? (filteredTasks = tasks) : null;
+    status === "active"
+      ? (filteredTasks = tasks.filter((task) => task.done === false))
+      : null;
+    status === "complete"
+      ? (filteredTasks = tasks.filter((task) => task.done === true))
+      : null;
 
     this.setState((prevState) => ({
       ...prevState,
       filteredTasks: filteredTasks,
       status: status,
     }));
-  }
+  };
 
   render() {
     const { filteredTasks } = this.state;
@@ -177,30 +190,40 @@ class App extends Component {
     return (
       <main className="container mt-5">
         <section className="row">
-          <div className="col-md-6 offset-md-3">
-            <h1>Hello Taskmaker</h1>
+          <DragDropContext
+            onDragEnd={(result) => {
+              /* const { tasks } = this.state;
+              const { source, destination } = result;
+              if (!destination) return;
+              if (source.index === destination.index) return;
+              tasks.move(source.index, destination.index); */
+    
+            }}
+          >
+            <div className="col-md-6 offset-md-3">
+              <h1>Hello Taskmaker</h1>
 
-            <NewTaskForm
-              saveNewTask={this.saveNewTask}
-              onKeyDownSubmit={this.onKeyDownSubmit}
-            />
+              <NewTaskForm
+                saveNewTask={this.saveNewTask}
+                onKeyDownSubmit={this.onKeyDownSubmit}
+              />
 
-            <TasksList
-              filteredTasks={filteredTasks}
-              toggleEditTask={this.toggleEditTask}
-              saveEditTask={this.saveEditTask}
-              onKeyDownEdit={this.onKeyDownEdit}
-              toggleDoneTask={this.toggleDoneTask}
-              removeTask={this.removeTask}
-            />
+              <TasksList
+                filteredTasks={filteredTasks}
+                toggleEditTask={this.toggleEditTask}
+                saveEditTask={this.saveEditTask}
+                onKeyDownEdit={this.onKeyDownEdit}
+                toggleDoneTask={this.toggleDoneTask}
+                removeTask={this.removeTask}
+              />
 
-            <Footer
-              filterTasks={this.filterTasks}
-              filteredTasks={filteredTasks}
-              removeAllCompletedTasks={this.removeAllCompletedTasks}
-            />
-
-          </div>
+              <Footer
+                filterTasks={this.filterTasks}
+                filteredTasks={filteredTasks}
+                removeAllCompletedTasks={this.removeAllCompletedTasks}
+              />
+            </div>
+          </DragDropContext>
         </section>
       </main>
     );
