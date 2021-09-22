@@ -1,10 +1,13 @@
 import React from "react";
+import ReactDOM from "react-dom";
+import TodoList from "../TodoList";
 
 export default class NewTodo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "New Todo",
+      holder: "New Todo",
+      title: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -15,8 +18,8 @@ export default class NewTodo extends React.Component {
     this.setState({ title: event.target.value });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit(e) {
+    e.preventDefault();
 
     const { title } = this.state;
     let retrieve = JSON.parse(localStorage.getItem(`list`));
@@ -30,18 +33,32 @@ export default class NewTodo extends React.Component {
     const todoTask = {
       title: title,
       isFinished: false,
+      id: Math.floor(Math.random() * 1000000),
     };
 
     retrieve.push(todoTask);
     localStorage.setItem(`list`, JSON.stringify(retrieve));
+
+    e.target.reset();
+    ReactDOM.render(
+      <React.StrictMode>
+        <TodoList />
+      </React.StrictMode>,
+      document.getElementById("todo-list"),
+    );
   }
 
   render() {
-    const { title } = this.state;
+    const { holder } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" placeholder={title} onChange={this.handleChange} />
+        <input
+          type="text"
+          placeholder={holder}
+          onChange={this.handleChange}
+          required
+        />
         <button type="submit">↩</button>
       </form>
     );
