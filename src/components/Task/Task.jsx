@@ -3,7 +3,7 @@ import EditButton from "../EditButtons/EditButton";
 import RemoveButton from "../EditButtons/RemoveButton";
 import styles from "./Task.module.scss";
 
-export default function Task({ text }) {
+export default function Task({ text, toDoItem, setToDoItem }) {
   return (
     <div className={styles.task}>
       <label htmlFor="checkbox">
@@ -12,7 +12,7 @@ export default function Task({ text }) {
       </label>
       <div className={styles.taskControllers}>
         <EditButton />
-        <RemoveButton />
+        <RemoveButton toDoItem={toDoItem} setToDoItem={setToDoItem} />
       </div>
     </div>
   );
