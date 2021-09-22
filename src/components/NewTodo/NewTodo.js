@@ -1,15 +1,15 @@
-import React from "react";
-import { updateLocal } from "../TodoList/TodoList";
+import React, { Component } from "react";
 
-export default class NewTodo extends React.Component {
+export default class NewTodo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "New Todo",
+      placeHolder: "New Todo",
+      title: "",
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
@@ -19,7 +19,9 @@ export default class NewTodo extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    const { saveNewTasks } = this.props;
     const { title } = this.state;
+
     let retrieve = JSON.parse(localStorage.getItem(`list`));
 
     // if there is no data then make it an empty array, to be able to push data in array afterwards
@@ -33,17 +35,23 @@ export default class NewTodo extends React.Component {
       isFinished: false,
     };
 
+    event.target.reset();
     retrieve.push(todoTask);
     localStorage.setItem(`list`, JSON.stringify(retrieve));
-    updateLocal();
+
+    saveNewTasks(retrieve);
   }
 
   render() {
-    const { title } = this.state;
+    const { placeHolder } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" placeholder={title} onChange={this.handleChange} />
+        <input
+          type="text"
+          placeholder={placeHolder}
+          onChange={this.handleChange}
+        />
         <button type="submit">↩</button>
       </form>
     );
