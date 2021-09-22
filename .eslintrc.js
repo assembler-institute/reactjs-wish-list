@@ -13,7 +13,7 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:jsx-a11y/recommended",
     "prettier",
-    "plugin:cypress/recommended",
+    // "plugin:cypress/recommended",
   ],
   parser: "@babel/eslint-parser",
   parserOptions: {
