@@ -24,7 +24,7 @@ class App extends Component {
     }
   
     handleChange(e) {
-      this.setState({ todoName: e.target.value });
+      // this.setState({ todoName: e.target.value });
     }
 
     render(){
