@@ -104,7 +104,7 @@ class App extends Component {
         <TodoCreate handleAddTodo={this.addTodo} />
         <section>
           {content}
-          {<Footer count={todos.length} />}
+          <Footer count={todos.length} />
         </section>
       </main>
     );
