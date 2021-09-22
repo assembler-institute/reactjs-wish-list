@@ -1,6 +1,6 @@
 import React from "react";
 
-import TodoFooter from "./components/TodoFooter";
+// import TodoFooter from "./components/TodoFooter";
 import TodoList from "./components/TodoList";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
           <h1>TODO</h1>
         </header>
         <TodoList />
-        <TodoFooter />
+        {/* <TodoFooter /> */}
       </main>
       <footer className="text-center">
         <p>Drag and drop to reorder list</p>
