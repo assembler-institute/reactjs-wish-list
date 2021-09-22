@@ -3,28 +3,13 @@ import { ThemeProvider } from "styled-components";
 
 import { Home } from "./pages";
 
+import { themes } from "./themes";
+
 import * as api from "./api";
 
 import './App.scss';
 
 const LOCAL_STORAGE_KEY = "reactjs-todo-list";
-
-const LightTheme = {
-  pageBackground: "white",
-  titleColor: "#282c36",
-  tagLineColor: "black"
-};
-
-const DarkTheme = {
-  pageBackground: "#282c36",
-  titleColor: "white",
-  tagLineColor: "lavender"
-}
-
-const themes = {
-  light: LightTheme,
-  dark: DarkTheme,
-}
 
 function loadLocalStorageData() {
   const prevItems = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -48,8 +33,6 @@ class App extends Component {
       tasks: [],
       filteredTasks: []
     };
-
-    this.changeTheme = this.changeTheme.bind(this)
   }
 
   componentDidMount() {
