@@ -16,7 +16,7 @@ class TodoList extends Component {
                     <input type="checkbox" id={el.id}  value={el.value}/>
                     <span for={el.value}> {el.value}</span>
                     </li>
-                            )
+                    )
                         }
                     
               </ul>

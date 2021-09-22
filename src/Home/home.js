@@ -16,6 +16,7 @@ class Home extends Component {
         };
         this.updateInput = this.updateInput.bind(this);
         this.addItem = this.addItem.bind(this);
+        this.ChangeItem=this.ChangeItem.bind(this)
         
     }
     updateInput(key, value) {
@@ -34,6 +35,7 @@ class Home extends Component {
         newToDo: "",
         });
     }; 
+ 
   render(){
     return (
       <main className="container mt-5">
