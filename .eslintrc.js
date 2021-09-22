@@ -13,7 +13,7 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:jsx-a11y/recommended",
     "prettier",
-    // "plugin:cypress/recommended",
+    "plugin:cypress/recommended",
   ],
   parser: "@babel/eslint-parser",
   parserOptions: {
@@ -30,7 +30,6 @@ module.exports = {
     "markdown",
     "react-hooks",
     "import",
-    "prettier",
   ],
   settings: {
     react: {
@@ -56,12 +55,7 @@ module.exports = {
     },
   ],
   rules: {
-    "prettier/prettier": [
-      "error",
-      {
-        endOfLine: "auto",
-      },
-    ],
+  
     "react/jsx-filename-extension": "off",
     "import/prefer-default-export": "off",
     "prefer-destructuring": "off",
