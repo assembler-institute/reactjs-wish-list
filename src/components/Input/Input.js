@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { v4 as uuid } from "uuid";
+import "./Input.scss";
 
 export default class Input extends Component {
   constructor(props) {
@@ -16,12 +17,14 @@ export default class Input extends Component {
       handleChange = () => {},
       handleBlur = () => {},
       invalid,
+      className = "input",
+      classNameInvalid = "input--invalid",
       ...props
     } = this.props;
 
     return (
       <input
-        className={invalid ? "input-field input-field--invalid" : "input-field"}
+        className={invalid ? `${className} ${classNameInvalid}` : className}
         id={id}
         name={id}
         type={type}

@@ -1,8 +1,9 @@
 import { Component } from "react";
-import { Formik } from "formik";
+import TodoItemForm from "../TodoItemForm";
 import CheckBox from "../CheckBox";
 import Button from "../Button";
-import Input from "../Input";
+
+import "./TodoItem.scss";
 
 export default class TodoItem extends Component {
   constructor(props) {
@@ -35,46 +36,20 @@ export default class TodoItem extends Component {
 
     return (
       <>
-        <article>
+        <article className="todo-item">
           <CheckBox handleChange={this.handleSetDone} />
           {enabledForm ? (
             <TodoItemForm handleSetText={this.handleSetText} handleDisableForm={handleDisableForm} text={text} />
           ) : (
-            <Button handleClick={this.handleEnableForm}>{text}</Button>
+            <Button className="todo-item__button todo-item__button--full-width" handleClick={this.handleEnableForm}>
+              {text}
+            </Button>
           )}
-          <Button handleClick={this.handleDelete}>{"\u00d7"}</Button>
+          <Button className="todo-item__button todo-item__button--round" handleClick={this.handleDelete}>
+            {"\u00d7"}
+          </Button>
         </article>
       </>
-    );
-  }
-}
-
-class TodoItemForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { text, handleSetText, handleDisableForm } = this.props;
-
-    return (
-      <Formik
-        initialValues={{
-          text,
-        }}
-        onSubmit={(values) => {
-          setTimeout(() => {
-            handleSetText(values.text);
-            handleDisableForm();
-          }, 500);
-        }}
-      >
-        {({ handleChange, handleBlur, handleSubmit, errors, values, touched, isValidating, isValid }) => (
-          <form onSubmit={handleSubmit}>
-            <Input type="text" name="text" id="text" handleChange={handleChange} handleBlur={handleBlur} value={values.text} invalid={touched.text} />
-          </form>
-        )}
-      </Formik>
     );
   }
 }

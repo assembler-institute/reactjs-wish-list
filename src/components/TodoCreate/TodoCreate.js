@@ -16,15 +16,27 @@ export default class TodoCreate extends Component {
       <section className="todo-create">
         <Formik
           initialValues={{ text: this.props.text }}
-          onSubmit={(values) => {
+          onSubmit={(values, actions) => {
+            actions.setSubmitting(true);
+
             setTimeout(() => {
               handleAddTodo(values);
+              actions.resetForm();
             }, 500);
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, errors, values, touched, isValidating, isValid }) => (
             <form onSubmit={handleSubmit}>
-              <Input type="text" name="text" id="text" handleChange={handleChange} handleBlur={handleBlur} value={values.text} invalid={touched.text} />
+              <Input
+                type="text"
+                name="text"
+                id="text"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                value={values.text}
+                invalid={errors.text}
+                placeholder="Add a new todo..."
+              />
             </form>
           )}
         </Formik>

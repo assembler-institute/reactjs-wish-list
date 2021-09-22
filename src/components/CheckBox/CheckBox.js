@@ -12,7 +12,7 @@ export default class CheckBox extends Component {
 
     return (
       <input
-        className="checkbox__input"
+        className="checkbox"
         id={id}
         name={name}
         type="checkbox"

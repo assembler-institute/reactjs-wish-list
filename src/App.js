@@ -5,6 +5,7 @@ import TodoCreate from "./components/TodoCreate";
 import TodoList from "./components/TodoList";
 import Footer from "./components/Footer";
 import NoTodoPreview from "./components/NoTodoPreview";
+
 import "./App.scss";
 
 class App extends Component {
@@ -91,19 +92,16 @@ class App extends Component {
   render() {
     const { todos } = this.state;
 
-    const content =
-      todos.length > 0 ? (
-        <TodoList todos={todos} handleDelete={this.deleteTodo} handleSetDone={this.setDoneTodo} handleSetText={this.setTextTodo} />
-      ) : (
-        <NoTodoPreview />
-      );
-
     return (
-      <main className="container-sm container-md container-lg mx-auto p-5">
-        <h1>TODO</h1>
+      <main className="container-sm container-md mx-auto p-5 flex flex-column gap-5">
+        <h1 className="m-0">TODO</h1>
         <TodoCreate handleAddTodo={this.addTodo} />
         <section>
-          {content}
+          {todos.length > 0 ? (
+            <TodoList todos={todos} handleDelete={this.deleteTodo} handleSetDone={this.setDoneTodo} handleSetText={this.setTextTodo} />
+          ) : (
+            <NoTodoPreview />
+          )}
           {/*<Footer count={todos.length} />*/}
         </section>
       </main>

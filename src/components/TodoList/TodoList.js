@@ -1,6 +1,8 @@
 import { Component } from "react";
 import TodoItem from "../TodoItem";
 
+import "./TodoList.scss";
+
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +34,7 @@ export default class TodoList extends Component {
     const { enabledFormId } = this.state;
 
     return (
-      <ul>
+      <ul className="todo-list">
         {todos.map((item) => (
           <li key={item.id}>
             <TodoItem
