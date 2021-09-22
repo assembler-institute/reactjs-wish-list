@@ -5,17 +5,11 @@ import "./CheckBox.scss";
 export default class CheckBox extends Component {
   constructor(props) {
     super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  onChange(event) {
-    this.props.handleChange(event.target.checked);
   }
 
   render() {
-    const { id = uuid(), checked, disabled } = this.props;
+    const { id = uuid(), name = "checkbox", handleChange = () => {}, checked, ...props } = this.props;
 
-    return <input className="checkbox__input" type="checkbox" id={id} checked={checked} disabled={disabled} onChange={this.onChange} />;
+    return <input className="checkbox__input" id={id} name={name} type="checkbox" checked={checked} onChange={handleChange} {...props} />;
   }
 }

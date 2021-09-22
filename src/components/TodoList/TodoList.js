@@ -12,8 +12,8 @@ export default class TodoList extends Component {
     return (
       <ul>
         {todos.map((item) => (
-          <li>
-            <TodoItem {...item} handleDelete={handleDelete} handleSetDone={handleSetDone} handleSetText={handleSetText} />
+          <li key={item.id}>
+            <TodoItem handleDelete={handleDelete} handleSetDone={handleSetDone} handleSetText={handleSetText} {...item} />
           </li>
         ))}
       </ul>

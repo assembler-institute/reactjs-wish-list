@@ -29,6 +29,8 @@ class App extends Component {
 
     this.addTodo = this.addTodo.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
+    this.setTextTodo = this.setTextTodo.bind(this);
+    this.setDoneTodo = this.setDoneTodo.bind(this);
   }
 
   addTodo(data) {

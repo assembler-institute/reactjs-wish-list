@@ -1,1 +1,3 @@
-export default function DeleteButton() {}
+export default function DeleteButton() {
+  return <button>Borrar</button>;
+}

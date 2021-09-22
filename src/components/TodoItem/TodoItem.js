@@ -13,12 +13,12 @@ export default class TodoItem extends Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleSetText(text) {
-    this.props.handleSetText(this.props.id, text);
+  handleSetText(event) {
+    this.props.handleSetText(this.props.id, event.target.value);
   }
 
-  handleSetDone(done) {
-    this.props.handleSetDone(this.props.id, done);
+  handleSetDone(event) {
+    this.props.handleSetDone(this.props.id, event.target.checked);
   }
 
   handleDelete() {
@@ -31,16 +31,19 @@ export default class TodoItem extends Component {
         <article>
           <CheckBox handleChange={this.handleSetDone} />
           <Formik
-            initialValues={{ text: this.props.text }}
+            initialValues={{
+              text: this.props.text,
+              id: this.props.id,
+            }}
             onSubmit={(values) => {
               setTimeout(() => {
                 this.handleSetText(values.text);
               }, 500);
             }}
           >
-            {(props) => (
-              <form onSubmit={props.handleSubmit}>
-                <Input type="text" handleChange={props.handleChange} handleBlur={props.handleBlur} value={props.values.text} name="text" />
+            {({ handleChange, handleBlur, handleSubmit, errors, values, touched, isValidating, isValid }) => (
+              <form onSubmit={handleSubmit}>
+                <Input type="text" name="text" id="text" handleChange={handleChange} handleBlur={handleBlur} value={values.text} invalid={touched.text} />
               </form>
             )}
           </Formik>

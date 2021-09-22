@@ -1,6 +1,8 @@
 import { Component } from "react";
 import { Formik } from "formik";
 
+import Input from "../Input";
+
 export default class TodoCreate extends Component {
   constructor(props) {
     super(props);
@@ -23,9 +25,9 @@ export default class TodoCreate extends Component {
             }, 500);
           }}
         >
-          {(props) => (
-            <form onSubmit={props.handleSubmit}>
-              <Input type="text" handleChange={props.handleChange} handleBlur={props.handleBlur} value={props.values.text} name="text" />
+          {({ handleChange, handleBlur, handleSubmit, errors, values, touched, isValidating, isValid }) => (
+            <form onSubmit={handleSubmit}>
+              <Input type="text" name="text" id="text" handleChange={handleChange} handleBlur={handleBlur} value={values.text} invalid={touched.text} />
             </form>
           )}
         </Formik>
