@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import TodoList from "../TodoList";
+import "./NewTodo.scss";
 
 export default class NewTodo extends React.Component {
   constructor(props) {
@@ -40,7 +41,7 @@ export default class NewTodo extends React.Component {
     localStorage.setItem(`list`, JSON.stringify(retrieve));
 
     e.target.reset();
-    
+
     ReactDOM.render(
       <React.StrictMode>
         <TodoList />
@@ -54,13 +55,18 @@ export default class NewTodo extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          placeholder={holder}
-          onChange={this.handleChange}
-          required
-        />
-        <button type="submit">↩</button>
+        <div className="new__task">
+          <input
+            type="text"
+            placeholder={holder}
+            onChange={this.handleChange}
+            required
+            className="new__task--input"
+          />
+          <button type="submit" className="new__task--btn">
+            ↵
+          </button>
+        </div>
       </form>
     );
   }

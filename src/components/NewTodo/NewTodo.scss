@@ -1,0 +1,18 @@
+.new__task {
+  display: flex;
+  gap: 5px;
+  border: lightgray 1px solid;
+  width: 20rem;
+  justify-content: space-between;
+
+  &--input {
+    border: none;
+    color: rgb(73, 72, 72);
+  }
+
+  &--btn {
+    border: none;
+    color: rgb(105, 102, 102);
+    background-color: transparent;
+  }
+}
