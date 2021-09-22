@@ -33,6 +33,7 @@ export default class NewTodo extends Component {
     const todoTask = {
       title: title,
       isFinished: false,
+      id: parseInt(Math.random() * 100),
     };
 
     event.target.reset();

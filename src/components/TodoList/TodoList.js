@@ -7,7 +7,7 @@ export default class TodoList extends Component {
     super(props);
   }
   render() {
-    const { tasks } = this.props;
+    const { tasks, removeTask, completeTask } = this.props;
     return (
       <ul className="list">
         {tasks.map((item) => {
@@ -17,6 +17,8 @@ export default class TodoList extends Component {
               title={item.title}
               id={item.id}
               isFinished={item.isFinished}
+              removeTask={removeTask}
+              completeTask={completeTask}
             />
           );
         })}
