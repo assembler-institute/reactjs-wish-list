@@ -1,8 +1,10 @@
 import { Component } from "react";
 
-import { TasksList, Footer, NewTaskForm } from "./components";
+import { Home } from "./pages";
 
 import * as api from "./api";
+
+import './App.scss';
 
 const LOCAL_STORAGE_KEY = "reactjs-todo-list";
 
@@ -23,6 +25,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      theme: false,
       status: 'active',
       tasks: [],
       filteredTasks: []
@@ -56,6 +59,15 @@ class App extends Component {
     });
   }
 
+  componentDidUpdate = () => {
+    const { tasks } = this.state;
+
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify({ tasks })
+    )
+  }
+
   onKeyDownSubmit = (e, handleSubmit) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -74,6 +86,18 @@ class App extends Component {
       this.saveEditTask(e, taskId)
     }
   }
+
+  // changeTheme = (theme) => {
+  //   const html = document.querySelector("html");
+  //   html.classList.toggle("dark-mode");
+
+  //   console.log(theme);
+
+  //   this.setState((prevState) => ({
+  //     ...prevState,
+  //     theme: theme,
+  //   }));
+  // }
 
   saveNewTask = (newTask) => {
     this.setState((prevState) => ({
@@ -175,34 +199,18 @@ class App extends Component {
     const { filteredTasks } = this.state;
 
     return (
-      <main className="container mt-5">
-        <section className="row">
-          <div className="col-md-6 offset-md-3">
-            <h1>Hello Taskmaker</h1>
-
-            <NewTaskForm
-              saveNewTask={this.saveNewTask}
-              onKeyDownSubmit={this.onKeyDownSubmit}
-            />
-
-            <TasksList
-              filteredTasks={filteredTasks}
-              toggleEditTask={this.toggleEditTask}
-              saveEditTask={this.saveEditTask}
-              onKeyDownEdit={this.onKeyDownEdit}
-              toggleDoneTask={this.toggleDoneTask}
-              removeTask={this.removeTask}
-            />
-
-            <Footer
-              filterTasks={this.filterTasks}
-              filteredTasks={filteredTasks}
-              removeAllCompletedTasks={this.removeAllCompletedTasks}
-            />
-
-          </div>
-        </section>
-      </main>
+      <Home
+        filteredTasks={filteredTasks}
+        saveNewTask={this.saveNewTask}
+        onKeyDownSubmit={this.onKeyDownSubmit}
+        toggleEditTask={this.toggleEditTask}
+        saveEditTask={this.saveEditTask}
+        onKeyDownEdit={this.onKeyDownEdit}
+        toggleDoneTask={this.toggleDoneTask}
+        removeTask={this.removeTask}
+        filterTasks={this.filterTasks}
+        removeAllCompletedTasks={this.removeAllCompletedTasks}
+      />
     );
   }
 }

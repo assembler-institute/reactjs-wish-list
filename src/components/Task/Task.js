@@ -8,8 +8,14 @@ function Task({
   removeTask,
 }) {
   return (
-    <div key={index} className="card card-body mt-2">
+    <div key={index} className="card card-body mt-2 d-flex flex-row">
       <button
+        className="btn btn-secondary"
+        style={{ backgroundColor: task.done ? 'black' : 'white' }}
+        onClick={(e) => toggleDoneTask(e, task.id)}
+      />
+      <button
+        className="w-100 text-left pl-3"
         style={{
           textDecoration: task.done ? 'line-through' : '',
           display: task.isEditing ? 'none' : 'block'
@@ -18,6 +24,7 @@ function Task({
         {task.text}
       </button>
       <input
+        className="w-100 text-left pl-3"
         type="text"
         style={{ display: task.isEditing ? 'block' : 'none' }}
         value={task.text}
@@ -25,12 +32,6 @@ function Task({
         onKeyDown={(e) => onKeyDownEdit(e, task.id)}
         autoFocus
       />
-      <button
-        className="btn btn-secondary"
-        onClick={(e) => toggleDoneTask(e, task.id)}
-      >
-        {task.done ? 'Done' : 'Todo'}
-      </button>
       <button
         className="btn btn-secondary"
         onClick={(e) => removeTask(e, task.id)}
