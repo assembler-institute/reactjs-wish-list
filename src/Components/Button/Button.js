@@ -8,7 +8,7 @@ class Button extends Component {
         const {value} = this.props
 
         return (
-            <button type="button" class="btn">{value}</button>
+            <button type="button" className="btn">{value}</button>
         )
     }
 }

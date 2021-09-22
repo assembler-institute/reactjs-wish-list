@@ -3,12 +3,35 @@ import "./input.scss";
 
 
 class Input extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            newToDo: "",
+            };
+        this.updateInput = this.updateInput.bind(this);
+    }
+    
+    updateInput(key, value) {
+        this.setState({ [key]: value });
+    } 
     render(){
-        return(
+        return(<>
             <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1">@</span>
-                <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></input>
-            </div>
+                        <input 
+                        type="text" 
+                        placeholder="Insert any activity... " 
+                        aria-label="Insert any activity..." 
+                        value={this.state.newToDo}
+                        onChange={e => this.updateInput("newToDo", e.target.value)}
+                        />
+                    <div>
+                        <button onClick={() => this.props.handelSubmit(this.state.newToDo)}
+                        disabled={!this.state.newToDo.length}
+                        >prueba</button>
+                    </div>
+                    </div>
+                    
+            </>
         )
     }
 }

@@ -6,7 +6,7 @@ class Counter extends Component {
         
 
         return (
-            <div class="row counter__container">
+            <div className="row counter__container">
                 <span>1</span><p>Tasks Left</p>
             </div>
         )
