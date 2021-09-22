@@ -31,6 +31,26 @@ function App() {
   // TODO list
   const [inputText, setInputText] = useState("");
   const [todoItems, setTodoItems] = useState([]);
+  const [status, setStatus] = useState("all");
+  // const [filteredTodoItems, setFilteredTodoItems] = useState([]);
+
+  // const filterHandler = () => {
+  //   switch (status) {
+  //     case "complete":
+  //       setFilteredTodoItems(
+  //         todoItems.filter((todoItem) => todoItem.done === true),
+  //       );
+  //       break;
+  //     case "active":
+  //       setFilteredTodoItems(
+  //         todoItems.filter((todoItem) => todoItem.done === false),
+  //       );
+  //       break;
+  //     default:
+  //       setFilteredTodoItems(todoItems);
+  //       break;
+  //   }
+  // };
 
   return (
     <main className="main-app">
@@ -52,8 +72,15 @@ function App() {
         setInputText={setInputText}
         todoItems={todoItems}
         setTodoItems={setTodoItems}
+        status={status}
+        setStatus={setStatus}
       />
-      <TodoList todoItems={todoItems} setTodoItems={setTodoItems} />
+      <TodoList
+        todoItems={todoItems}
+        setTodoItems={setTodoItems}
+        status={status}
+        setStatus={setStatus}
+      />
     </main>
   );
 }
