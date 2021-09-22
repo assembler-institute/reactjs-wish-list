@@ -1,9 +1,16 @@
-const lightTheme = {
-  body: '',
-  fontColor: '#000'
+const LightTheme = {
+  pageBackground: "white",
+  titleColor: "#282c36",
+  tagLineColor: "black"
 };
 
-const darkTheme = {
-  body: '',
-  fontColor: '#000'
+const DarkTheme = {
+  pageBackground: "#282c36",
+  titleColor: "white",
+  tagLineColor: "lavender"
+}
+
+export const themes = {
+  light: LightTheme,
+  dark: DarkTheme,
 }
