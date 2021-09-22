@@ -1,7 +1,7 @@
 import React from "react";
 
-import TodoForm from "./components/TodoForm";
-import TodoFooter from "./components/TodoFooter"
+import TodoFooter from "./components/TodoFooter";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <header className="card-header">
           <h1>TODO</h1>
         </header>
-        <TodoForm />
+        <TodoList />
         <TodoFooter />
       </main>
       <footer className="text-center">
