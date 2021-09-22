@@ -10,7 +10,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [],
+      todos: JSON.parse(localStorage.getItem("todos"))
+        ? JSON.parse(localStorage.getItem("todos"))
+        : [],
     };
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
@@ -32,6 +34,17 @@ class App extends React.Component {
 
       event.target.value = null;
     }
+  }
+
+  componentDidMount() {
+    let todos = JSON.parse(localStorage.getItem("todos"));
+    if (todos != null) {
+      this.setState(todos);
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
   }
 
   render() {
