@@ -1,5 +1,6 @@
 import React from "react";
 import moonIcon from "../../assets/icons/moon.svg";
+import "./ChangeMode.scss"
 
 class ChangeMode extends React.Component {
   constructor(props) {
