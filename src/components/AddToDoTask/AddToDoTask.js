@@ -30,7 +30,7 @@ export default class AddToDoTask extends React.Component {
   handlerInput = (event) => {
     const text = event.target.value
     const error = text.length === 0
-    console.log(error)
+
     this.updateState({text, error})
   }
 
