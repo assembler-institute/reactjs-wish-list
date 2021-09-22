@@ -1,7 +1,8 @@
 import { React, Component } from "react";
+import noTodo from "../../img/NoTodo.svg";
 import "./NoTodo.scss";
 
-class NoTodo extends Component {
+export default class NoTodo extends Component {
   constructor(props) {
     super(props);
 
@@ -13,10 +14,9 @@ class NoTodo extends Component {
       <>
         <div className="notodo__img" />
         <div className="notodo__message">
-          Type a new task and start organizing!!
+          <img src={noTodo} alt="Type a new task and start organizing!!" />
         </div>
       </>
     );
   }
 }
-export default NoTodo;

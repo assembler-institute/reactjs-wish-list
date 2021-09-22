@@ -1,0 +1,24 @@
+li {
+  border-bottom: 1px solid lightgray;
+  height: 4.75rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  div {
+    width: auto;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    color: rgb(105, 102, 102);
+  }
+}
+
+.item__list {
+  padding-left: 0px;
+  padding-right: 0px;
+}

@@ -1,15 +1,7 @@
-.notodo__img {
-    background-image: url();
-
-}
-
-.notodo {
-
-    &__img {
-        background-image: url();
-    }
-
-    &__message {
-        color: red;
-    }
+.notodo__message {
+  padding: 2rem;
+  img {
+    height: 100%;
+    width: 100%;
+  }
 }

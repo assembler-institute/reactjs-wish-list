@@ -7,7 +7,7 @@ export default class NewTodo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      holder: "New Todo",
+      holder: "Add New Todo...",
       title: "",
     };
 
@@ -56,6 +56,7 @@ export default class NewTodo extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="new__task">
+          <span className="new__task--circle" />
           <input
             type="text"
             placeholder={holder}
