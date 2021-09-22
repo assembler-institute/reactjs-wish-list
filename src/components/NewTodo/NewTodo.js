@@ -40,6 +40,7 @@ export default class NewTodo extends React.Component {
     localStorage.setItem(`list`, JSON.stringify(retrieve));
 
     e.target.reset();
+    
     ReactDOM.render(
       <React.StrictMode>
         <TodoList />

@@ -12,7 +12,7 @@ export default class TodoList extends React.Component {
     return (
       <ul>
         {listDate.map((task) => (
-          <li key={task.id}>
+          <li key={task.id} id={task.id}>
             <input type="checkbox" />
             <span> {task.title}</span>
             <button type="button">del</button>

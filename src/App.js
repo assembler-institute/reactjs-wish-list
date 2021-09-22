@@ -1,5 +1,6 @@
 import React from "react";
 import NewTodo from "./components/NewTodo";
+import NoTodo from "./components/NoTodo/NoTodo";
 import TodoList from "./components/TodoList";
 
 function App() {
@@ -9,7 +10,9 @@ function App() {
         <div className="row row-12">
           <NewTodo /> {/* Input for adding the Tasks */}
         </div>
-        <div id="todo-list">{localStorage.getItem("list") && <TodoList />}</div>
+        <div id="todo-list">
+          {localStorage.getItem("list") ? <TodoList /> : <NoTodo />}
+        </div>
       </section>
     </main>
   );

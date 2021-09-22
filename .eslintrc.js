@@ -73,7 +73,7 @@ module.exports = {
     "react/prop-types": "off",
     "no-unused-expressions": "off",
     "jsx-a11y/label-has-for": [
-      "error",
+      "off",
       {
         required: {
           some: ["nesting", "id"],
