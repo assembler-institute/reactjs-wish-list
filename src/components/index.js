@@ -3,6 +3,7 @@ import Main from './Main';
 import NewTaskForm from './NewTaskForm';
 import Task from './Task';
 import TasksList from './TasksList';
+import Toggle from './Toggle';
 
 export {
   Footer,
@@ -10,4 +11,5 @@ export {
   NewTaskForm,
   Task,
   TasksList,
+  Toggle,
 }

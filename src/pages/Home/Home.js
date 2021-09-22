@@ -1,7 +1,17 @@
-import { Main, TasksList, NewTaskForm, Footer } from "../../components";
+import styled from "styled-components";
+
+import { Main, TasksList, NewTaskForm, Footer, Toggle } from "../../components";
+
+const Section = styled.section`
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+`
 
 function Home({
+  theme,
   filteredTasks,
+  changeTheme,
   saveNewTask,
   onKeyDownSubmit,
   toggleEditTask,
@@ -14,11 +24,15 @@ function Home({
 }) {
   return (
     <Main className="main container pt-5">
-      <section className="row">
+      <Section className="row w-100">
         <div className="col-md-6 offset-md-3">
 
           <div className="d-flex justify-content-between">
             <h1>Hello Taskmaker</h1>
+            <Toggle
+              changeTheme={changeTheme}
+              theme={theme}
+            />
           </div>
 
           <NewTaskForm
@@ -42,7 +56,7 @@ function Home({
           />
 
         </div>
-      </section>
+      </Section>
     </Main>
   );
 }
