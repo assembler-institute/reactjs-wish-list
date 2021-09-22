@@ -27,14 +27,19 @@ export default class TodoCreate extends Component {
             }, 500);
           }}
         >
-          {({ handleChange, handleBlur, handleSubmit, errors, values, touched, isValidating, isValid }) => (
+          {({ handleChange, handleSubmit, validateField, resetForm, errors, values, touched, isValidating, isValid }) => (
             <form onSubmit={handleSubmit}>
               <Input
                 type="text"
                 name="text"
                 id="text"
-                handleChange={handleChange}
-                handleBlur={handleBlur}
+                handleChange={(event) => {
+                  handleChange(event);
+                  validateField();
+                }}
+                handleBlur={() => {
+                  resetForm();
+                }}
                 value={values.text}
                 invalid={errors.text}
                 placeholder="Add a new todo..."

@@ -12,34 +12,43 @@ export default class TodoItemForm extends Component {
     const { text, handleSetText, handleDisableForm } = this.props;
 
     return (
-      <Formik
-        initialValues={{
-          text,
-        }}
-        validationSchema={todoSchema}
-        onSubmit={(values) => {
-          setTimeout(() => {
-            handleSetText(values.text);
-            handleDisableForm();
-          }, 500);
-        }}
-      >
-        {({ handleChange, handleSubmit, errors, values, touched, isValidating, isValid }) => (
-          <form onSubmit={handleSubmit} className="width-100">
-            <Input
-              type="text"
-              name="text"
-              id="text"
-              handleChange={handleChange}
-              handleBlur={handleDisableForm}
-              value={values.text}
-              invalid={errors.text}
-              placeholder="Set a name..."
-              autoFocus
-            />
-          </form>
-        )}
-      </Formik>
+      <div className="width-100">
+        <Formik
+          initialValues={{
+            text,
+          }}
+          validationSchema={todoSchema}
+          onSubmit={(values, actions) => {
+            setTimeout(() => {
+              handleSetText(values.text);
+              handleDisableForm();
+              actions.resetForm();
+            }, 500);
+          }}
+        >
+          {({ handleChange, handleSubmit, validateField, resetForm, errors, values, touched, isValidating, isValid }) => (
+            <form onSubmit={handleSubmit} className="width-100">
+              <Input
+                type="text"
+                name="text"
+                id="text"
+                handleChange={(event) => {
+                  handleChange(event);
+                  validateField();
+                }}
+                handleBlur={() => {
+                  handleDisableForm();
+                  resetForm();
+                }}
+                value={values.text}
+                invalid={errors.text}
+                placeholder="Set a name..."
+                autoFocus
+              />
+            </form>
+          )}
+        </Formik>
+      </div>
     );
   }
 }
