@@ -13,7 +13,7 @@ class Home extends Component {
     return (
       <main className="container mt-5">
         <div className="container-lg">
-          <h1>TO DO</h1>
+          <h1 className="title">TO DO</h1>
         </div>
           <section className="row container-lg input__todo">
             <Input />

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Button from '../Button'
+import Counter from "../Counter"
 
 class Footer extends Component{
     constructor(props){
@@ -8,24 +9,22 @@ class Footer extends Component{
     }
     render(){
         return(
-            <div class="footer">
-                <div class="row counter__container">
-                    <span>1</span><p>Tasks Left</p>
+            <div className="footer">
+                <Counter />
+                <div className="btn__group">
+                    <Button 
+                        value="All"
+                    />
+                    <Button 
+                        value="Active"
+                    />
+                    <Button 
+                        value="Completed"
+                    />
                 </div>
-            <div class="btn__group">
                 <Button 
-                    value="All"
-                />
-                <Button 
-                    value="Active"
-                />
-                <Button 
-                    value="Completed"
-                />
-            </div>
-            <Button 
                     value="Delete All"
-            />
+                />
             </div>
         )
     }
