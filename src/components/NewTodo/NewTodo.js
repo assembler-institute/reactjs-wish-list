@@ -16,8 +16,8 @@ export default class NewTodo extends Component {
     this.setState({ title: event.target.value });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit(e) {
+    e.preventDefault();
 
     const { saveNewTasks } = this.props;
     const { title } = this.state;
@@ -33,10 +33,10 @@ export default class NewTodo extends Component {
     const todoTask = {
       title: title,
       isFinished: false,
-      id: parseInt(Math.random() * 100),
+      id: Math.floor(Math.random() * 1000000),
     };
 
-    event.target.reset();
+    e.target.reset();
     retrieve.push(todoTask);
     localStorage.setItem(`list`, JSON.stringify(retrieve));
 
