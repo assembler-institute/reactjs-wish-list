@@ -1,10 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from "react";
+import React from "react";
 import styles from "./FormToDo.module.scss"
 
-function FormToDo() {
-  const [newInput, setNewInput] = useState("");
-
+function FormToDo({ newInput, setNewInput }) {
 
   const handleChange = e => {
     setNewInput(e.target.value)
@@ -13,6 +11,7 @@ function FormToDo() {
   const handleSubmit = e => {
     e.preventDefault();
     setNewInput("")
+    console.log(newInput)
 
   }
 
