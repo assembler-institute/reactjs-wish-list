@@ -3,12 +3,11 @@ function Footer({
   filterTasks,
   removeAllCompletedTasks
 }) {
-  console.log(filteredTasks);
   return (
     <footer>
       <div className="d-flex justify-content-between">
         <p>
-          {filteredTasks.length} items
+           {filteredTasks.length} items 
         </p>
         <div>
           <button

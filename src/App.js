@@ -36,6 +36,7 @@ class App extends Component {
 
   componentDidMount() {
     const prevItems = loadLocalStorageData();
+    console.log(prevItems)
 
     if (!prevItems) {
       this.setState({
@@ -43,6 +44,7 @@ class App extends Component {
       });
 
       api.getTasks().then((data) => {
+        console.log(data);
         this.setState({
           status: "all",
           tasks: data,
