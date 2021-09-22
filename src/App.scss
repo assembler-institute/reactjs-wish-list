@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  width: 100%;
+  margin: auto;
+}
+
+.main-app {
+  font-family: sans-serif;
+  text-align: center;
+} 
+
+.header {
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  min-height: 25vh;
+  padding-top: 2rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 30vw;
+  align-items:center;
+  padding: 0.5rem;
+  color: #fff;
+  margin: auto;
+}
+
+.form {
+  margin-top: -5rem;
+}
+
+
+.form-input {
+  min-width: 30vw;
+  margin: auto;
+  padding: 0.5rem;
+}
+
+
+.done {
+  text-decoration: line-through;
+}
+
+.todo {
+  display: flex;
+  max-width: 30vw;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.todo-title {
+  display: flex;
+}
+
+.todo-item {
+  list-style-type: none;
+}
+
+
