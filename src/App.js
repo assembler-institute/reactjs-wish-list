@@ -194,11 +194,11 @@ class App extends Component {
         <section className="row">
           <DragDropContext
             onDragEnd={(result) => {
-              /* const { tasks } = this.state;
+               const { tasks } = this.state;
               const { source, destination } = result;
               if (!destination) return;
               if (source.index === destination.index) return;
-              tasks.move(source.index, destination.index); */
+              tasks.move(source.index, destination.index);
     
             }}
           >
