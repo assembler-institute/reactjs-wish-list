@@ -1,23 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default class TodoList extends React.Component {
+import Todo from "../Todo/Todo";
+
+export default class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
-
   render() {
-    const listDate = JSON.parse(localStorage.getItem("list"));
-
+    const { tasks, removeTask, completeTask } = this.props;
     return (
-      <ul>
-        {listDate.map((task) => (
-          <li key={task.id} id={task.id}>
-            <input type="checkbox" />
-            <span> {task.title}</span>
-            <button type="button">del</button>
-          </li>
-        ))}
+      <ul className="list">
+        {tasks.map((item) => {
+          return (
+            <Todo
+              key={item.id}
+              title={item.title}
+              id={item.id}
+              isFinished={item.isFinished}
+              removeTask={removeTask}
+              completeTask={completeTask}
+            />
+          );
+        })}
       </ul>
     );
   }
