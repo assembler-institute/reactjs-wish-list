@@ -54,7 +54,7 @@ export default class TodoTask extends React.Component {
             </span>
           </button>
           <form onSubmit={this.handlerSubmit}>
-            <input className="input-task" type="text" key={id} id={id} value={inputValue} 
+            <input required className="input-task" type="text" key={id} id={id} value={inputValue} 
             onChange={this.editHandler} 
             onFocus={() => this.setState({isEditing: true})} 
             onBlur={() => this.setState({isEditing: false})} 

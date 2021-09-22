@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
-
+import './AddToDoTask.scss'
 // Improve the render of the component
 
 export default class AddToDoTask extends React.Component {
@@ -9,34 +9,44 @@ export default class AddToDoTask extends React.Component {
     super(props)
 
     this.state = {
-      title: 'Default'
+      title: 'Do the homework...',
+      error: false
     }
   }
 
   formSubmit = (event) => {
     event.preventDefault()
-    
-    const {handlerToDoTask} = this.props
-    handlerToDoTask(this.state)
 
-    this.updateState({})
-  }
+    const {error} = this.state
+    if (!error) {
+      // Send new task to parent
+      const {handlerToDoTask} = this.props
+      handlerToDoTask(this.state)
+      this.updateState({})  
+    }
 
-  updateState = ({text = ''}) => {
-    this.setState({title: text})
   }
 
   handlerInput = (event) => {
     const text = event.target.value
-    this.updateState({text})
+    const error = text.length === 0
+    console.log(error)
+    this.updateState({text, error})
+  }
+
+  updateState = ({text = '', error}) => {
+    this.setState({title: text, error: error})
   }
 
   render() {
-    const { title } = this.state
+    const { title, error } = this.state
     return (
+      <>
       <form onSubmit={this.formSubmit}>
-        <input type="text" value={title} onChange={this.handlerInput} />
+        <input data-testid="create-todo-input" type="text" value={title} onChange={this.handlerInput} />
       </form>
+      <span data-testid="create-todo-error-message" className={error ? `show` : `hide`}>Please enter at least one character</span>
+      </>
     )
   }
   

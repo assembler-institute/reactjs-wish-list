@@ -20,6 +20,7 @@ export default class TodoList extends React.Component {
         <div className="todo-list">
          {
          tasks.map(task => (
+           
             <TodoTask key={task.id} id={task.id} inputValue={task.inputValue} />
           ))
          }

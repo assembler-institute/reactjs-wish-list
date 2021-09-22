@@ -1,10 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from "react";
-import _ from "lodash";
-
+import React, { useState, useEffect } from "react";
 import AddToDoTask from "./components/AddToDoTask/AddToDoTask";
 
-import { saveItem } from "./utils/localStorage";
+import { generateNewKey, getItem, saveItem } from "./utils/localStorage";
 import TodoList from "./components/TodoList";
 
 
@@ -12,9 +10,16 @@ function App() {
 
   const [tasks, updateTasks] = useState([])
 
+  // Get localStorage Items
+  useEffect(() => {
+    const localStorageTasks = Object.keys(localStorage).map(key => JSON.parse(getItem(parseInt(key, 10))))
+    updateTasks((prevTasks) => [...prevTasks, ...localStorageTasks])
+  }, [])
+  
+  // Add to do task to list
   const handlerToDoTask = (task) => {
     // Save in localStorage
-    const key = _.uniqueId()
+    const key = generateNewKey()
     const taskObj = {
       id: key,
       inputValue: task.title,
@@ -24,10 +29,7 @@ function App() {
     saveItem(taskObj)
 
     // Update tasks state
-    updateTasks((prevTasks) => {
-      return [...prevTasks, taskObj]  
-    })
-    
+    updateTasks((prevTasks) => [...prevTasks, taskObj])
   }
 
 
