@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
+import { ThemeProvider } from "styled-components";
 
 import { Home } from "./pages";
 
@@ -8,6 +9,23 @@ import * as api from "./api";
 import './App.scss';
 
 const LOCAL_STORAGE_KEY = "reactjs-todo-list";
+
+const LightTheme = {
+  pageBackground: "white",
+  titleColor: "#282c36",
+  tagLineColor: "black"
+};
+
+const DarkTheme = {
+  pageBackground: "#282c36",
+  titleColor: "white",
+  tagLineColor: "lavender"
+}
+
+const themes = {
+  light: LightTheme,
+  dark: DarkTheme,
+}
 
 function loadLocalStorageData() {
   const prevItems = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -26,11 +44,13 @@ class App extends Component {
     super(props);
 
     this.state = {
-      theme: false,
+      theme: 'light',
       status: 'active',
       tasks: [],
       filteredTasks: [],
     };
+
+    this.changeTheme = this.changeTheme.bind(this)
   }
 
   componentDidMount() {
@@ -60,6 +80,23 @@ class App extends Component {
       tasks: prevItems.tasks,
       filteredTasks: prevItems.tasks,
     });
+  }
+
+  changeTheme = () => {
+    const { theme } = this.state;
+
+    if (theme === "light") {
+      this.setState((prevState) => ({
+        ...prevState,
+        theme: 'dark',
+      }));
+    }
+    if (theme === "dark") {
+      this.setState((prevState) => ({
+        ...prevState,
+        theme: 'light',
+      }));
+    }
   }
 
   componentDidUpdate = () => {
@@ -96,18 +133,6 @@ class App extends Component {
       tasks: tasks,
     }));
   }
-
-  // changeTheme = (theme) => {
-  //   const html = document.querySelector("html");
-  //   html.classList.toggle("dark-mode");
-
-  //   console.log(theme);
-
-  //   this.setState((prevState) => ({
-  //     ...prevState,
-  //     theme: theme,
-  //   }));
-  // }
 
   saveNewTask = (newTask) => {
     this.setState((prevState) => ({
@@ -214,23 +239,27 @@ class App extends Component {
   };
 
   render() {
-    const { tasks, filteredTasks } = this.state;
+    const { tasks, filteredTasks, theme } = this.state;
 
     return (
-      <Home
-        tasks={tasks}
-        filteredTasks={filteredTasks}
-        saveNewTask={this.saveNewTask}
-        saveOrderTasks={this.saveOrderTasks}
-        onKeyDownSubmit={this.onKeyDownSubmit}
-        toggleEditTask={this.toggleEditTask}
-        saveEditTask={this.saveEditTask}
-        onKeyDownEdit={this.onKeyDownEdit}
-        toggleDoneTask={this.toggleDoneTask}
-        removeTask={this.removeTask}
-        filterTasks={this.filterTasks}
-        removeAllCompletedTasks={this.removeAllCompletedTasks}
-      />
+      <ThemeProvider theme={themes[theme]}>
+
+        <Home
+          tasks={tasks}
+          filteredTasks={filteredTasks}
+          changeTheme={this.changeTheme}
+          saveNewTask={this.saveNewTask}
+          saveOrderTasks={this.saveOrderTasks}
+          onKeyDownSubmit={this.onKeyDownSubmit}
+          toggleEditTask={this.toggleEditTask}
+          saveEditTask={this.saveEditTask}
+          onKeyDownEdit={this.onKeyDownEdit}
+          toggleDoneTask={this.toggleDoneTask}
+          removeTask={this.removeTask}
+          filterTasks={this.filterTasks}
+          removeAllCompletedTasks={this.removeAllCompletedTasks}
+        />
+      </ThemeProvider>
     );
   }
 }
