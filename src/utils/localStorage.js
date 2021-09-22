@@ -6,3 +6,7 @@ export function saveItem(item) {
 export function getItem(id) {
   window.localStorage.getItem(id)
 }
+
+export function deleteItem(id) {
+  window.localStorage.removeItem(id)
+}

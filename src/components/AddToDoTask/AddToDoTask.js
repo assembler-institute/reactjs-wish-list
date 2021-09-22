@@ -9,19 +9,7 @@ export default class AddToDoTask extends React.Component {
     super(props)
 
     this.state = {
-      id: '',
-      title: 'Default',
-      isEditing: false
-    }
-  }
-
-  componentDidUpdate() {
-    const { defaultValues } = this.props
-    const {text , id} = defaultValues
-    const {title} = this.state
-
-    if (id !== '' && text !== title) {
-      this.updateState({id, text, isEditing: true})
+      title: 'Default'
     }
   }
 
@@ -34,15 +22,13 @@ export default class AddToDoTask extends React.Component {
     this.updateState({})
   }
 
-  updateState = ({id = '', text = '', isEditing = false}) => {
-    this.setState({id: id, title: text, isEditing: isEditing})
+  updateState = ({text = ''}) => {
+    this.setState({title: text})
   }
 
   handlerInput = (event) => {
     const text = event.target.value
-    const {id} = this.state
-    console.log(text)
-    this.updateState({id, text})
+    this.updateState({text})
   }
 
   render() {

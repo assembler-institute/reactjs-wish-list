@@ -12,14 +12,12 @@ function App() {
 
   const [tasks, updateTasks] = useState([])
 
-  const [defaultValues, setDefaultValues] = useState({})
-
   const handlerToDoTask = (task) => {
     // Save in localStorage
-    const key = task.id !== '' ? task.id : _.uniqueId()
+    const key = _.uniqueId()
     const taskObj = {
       id: key,
-      text: task.title,
+      inputValue: task.title,
       done: false,
       isEditing: false
     }
@@ -27,13 +25,9 @@ function App() {
 
     // Update tasks state
     updateTasks((prevTasks) => {
-      return task.id === '' ? [...prevTasks, taskObj] : [prevTasks]   
+      return [...prevTasks, taskObj]  
     })
     
-  }
-
-  const editTaskText = (newText, newId) => {
-    setDefaultValues({id: newId, text: newText})
   }
 
 
@@ -41,8 +35,8 @@ function App() {
     <main className="container mt-5">
       <section className="row">
         <div className="col col-12">
-          <AddToDoTask handlerToDoTask={handlerToDoTask} defaultValues={defaultValues} />
-          <TodoList tasks={tasks} editTaskText={editTaskText} />
+          <AddToDoTask handlerToDoTask={handlerToDoTask}/>
+          <TodoList tasks={tasks} />
         </div>
       </section>
     </main>
