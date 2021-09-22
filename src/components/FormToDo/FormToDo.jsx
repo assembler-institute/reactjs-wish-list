@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./FormToDo.module.scss"
 
-function FormToDo({ newInput, setNewInput }) {
+function FormToDo({ newInput, setNewInput, toDoItem, setTodoItem }) {
 
   const handleChange = e => {
     setNewInput(e.target.value)
@@ -10,8 +10,13 @@ function FormToDo({ newInput, setNewInput }) {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setTodoItem([...toDoItem, {
+      id: Math.random() * 1000,
+      text: newInput,
+      done: false,
+      isEditing: false,
+    }])
     setNewInput("")
-    console.log(newInput)
 
   }
 

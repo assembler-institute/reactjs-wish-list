@@ -3,12 +3,12 @@ import EditButton from "../EditButtons/EditButton";
 import RemoveButton from "../EditButtons/RemoveButton";
 import styles from "./Task.module.scss";
 
-export default function Task() {
+export default function Task({ text }) {
   return (
     <div className={styles.task}>
       <label htmlFor="checkbox">
         <input type="checkbox" />
-        Task 1
+        {text}
       </label>
       <div className={styles.taskControllers}>
         <EditButton />
