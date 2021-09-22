@@ -1,8 +1,9 @@
 import { Component } from "react";
 import { Formik } from "formik";
-import "./TodoCreate.scss";
-
+import { todoSchema } from "../../schema";
 import Input from "../Input";
+
+import "./TodoCreate.scss";
 
 export default class TodoCreate extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class TodoCreate extends Component {
       <section className="todo-create">
         <Formik
           initialValues={{ text: this.props.text }}
+          validationSchema={todoSchema}
           onSubmit={(values, actions) => {
             actions.setSubmitting(true);
 

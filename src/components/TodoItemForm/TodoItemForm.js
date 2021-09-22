@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Formik } from "formik";
+import { todoSchema } from "../../schema";
 import Input from "../Input";
 
 export default class TodoItemForm extends Component {
@@ -15,6 +16,7 @@ export default class TodoItemForm extends Component {
         initialValues={{
           text,
         }}
+        validationSchema={todoSchema}
         onSubmit={(values) => {
           setTimeout(() => {
             handleSetText(values.text);
