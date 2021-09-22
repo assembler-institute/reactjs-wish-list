@@ -2,7 +2,12 @@
 import React from "react";
 import styles from "./FormToDo.module.scss"
 
-function FormToDo({ newInput, setNewInput, toDoItem, setTodoItem }) {
+function FormToDo({
+  newInput,
+  setNewInput,
+  toDoItem,
+  setTodoItem
+}) {
 
   const handleChange = e => {
     setNewInput(e.target.value)
