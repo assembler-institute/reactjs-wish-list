@@ -1,27 +1,24 @@
 import { Component } from "react";
 import { Formik } from "formik";
+import "./TodoCreate.scss";
 
 import Input from "../Input";
 
 export default class TodoCreate extends Component {
   constructor(props) {
     super(props);
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(event) {
-    //;
   }
 
   render() {
+    const { handleAddTodo } = this.props;
+
     return (
-      <section>
+      <section className="todo-create">
         <Formik
           initialValues={{ text: this.props.text }}
           onSubmit={(values) => {
             setTimeout(() => {
-              this.handleSetText(values.text);
+              handleAddTodo(values);
             }, 500);
           }}
         >

@@ -5,7 +5,7 @@ import TodoCreate from "./components/TodoCreate";
 import TodoList from "./components/TodoList";
 import Footer from "./components/Footer";
 import NoTodoPreview from "./components/NoTodoPreview";
-import CheckBox from "./components/CheckBox";
+import "./App.scss";
 
 class App extends Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class App extends Component {
 
     this.setState((prevState) => ({
       ...prevState,
-      todos: newTodos,
+      todos: todos,
     }));
   }
 
@@ -99,16 +99,12 @@ class App extends Component {
       );
 
     return (
-      <main className="container mt-5">
-        <section className="row">
-          <div className="col col-12">
-            <h1>TODO</h1>
-            <TodoCreate handleSubmit={this.addTodo} />
-            <section>
-              {content}
-              {/*<Footer count={todos.length} />*/}
-            </section>
-          </div>
+      <main className="container-sm container-md container-lg mx-auto p-5">
+        <h1>TODO</h1>
+        <TodoCreate handleAddTodo={this.addTodo} />
+        <section>
+          {content}
+          {/*<Footer count={todos.length} />*/}
         </section>
       </main>
     );

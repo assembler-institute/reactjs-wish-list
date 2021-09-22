@@ -1,20 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
+import "./Button.scss";
 
-export default function Button() {}
+export default class Button extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-class Button extends React.Component{
-    constructor(props){
-        super(props)
-    }
-    clearCompleted(){
+  render() {
+    const { handleClick, children } = this.props;
 
-    }
-    render(){
-        return(
-        <button className="btn">
-            Clear Completed
-        </button>
-        )
-    }
-
+    return (
+      <button className="btn" onClick={handleClick}>
+        {children}
+      </button>
+    );
+  }
 }

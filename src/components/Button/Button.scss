@@ -1,7 +1,9 @@
-.btn{
-    color:grey;
+.btn {
+    padding: 1rem;
+    display: block;
 }
 
 .btn:hover{
-    color:black;
+    content: "\00d7"; /* This will render the 'X' */
 }
+
