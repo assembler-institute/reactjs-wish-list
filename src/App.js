@@ -1,15 +1,13 @@
 import { Component } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 
-import { TasksList, Footer, NewTaskForm } from "./components";
+import { Home } from "./pages";
 
 import * as api from "./api";
 
-const LOCAL_STORAGE_KEY = "reactjs-todo-list";
+import './App.scss';
 
-Array.prototype.move = function (from, to) {
-  this.splice(to, 0, this.splice(from, 1)[0]);
-};
+const LOCAL_STORAGE_KEY = "reactjs-todo-list";
 
 function loadLocalStorageData() {
   const prevItems = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -28,7 +26,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      status: "active",
+      theme: false,
+      status: 'active',
       tasks: [],
       filteredTasks: [],
     };
@@ -63,6 +62,15 @@ class App extends Component {
     });
   }
 
+  componentDidUpdate = () => {
+    const { tasks } = this.state;
+
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify({ tasks })
+    )
+  }
+
   onKeyDownSubmit = (e, handleSubmit) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -81,6 +89,25 @@ class App extends Component {
       this.saveEditTask(e, taskId);
     }
   };
+
+  saveOrderTasks = (tasks) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      tasks: tasks,
+    }));
+  }
+
+  // changeTheme = (theme) => {
+  //   const html = document.querySelector("html");
+  //   html.classList.toggle("dark-mode");
+
+  //   console.log(theme);
+
+  //   this.setState((prevState) => ({
+  //     ...prevState,
+  //     theme: theme,
+  //   }));
+  // }
 
   saveNewTask = (newTask) => {
     this.setState((prevState) => ({
@@ -187,47 +214,23 @@ class App extends Component {
   };
 
   render() {
-    const { filteredTasks } = this.state;
+    const { tasks, filteredTasks } = this.state;
 
     return (
-      <main className="container mt-5">
-        <section className="row">
-          <DragDropContext
-            onDragEnd={(result) => {
-               const { tasks } = this.state;
-              const { source, destination } = result;
-              if (!destination) return;
-              if (source.index === destination.index) return;
-              tasks.move(source.index, destination.index);
-    
-            }}
-          >
-            <div className="col-md-6 offset-md-3">
-              <h1>Hello Taskmaker</h1>
-
-              <NewTaskForm
-                saveNewTask={this.saveNewTask}
-                onKeyDownSubmit={this.onKeyDownSubmit}
-              />
-
-              <TasksList
-                filteredTasks={filteredTasks}
-                toggleEditTask={this.toggleEditTask}
-                saveEditTask={this.saveEditTask}
-                onKeyDownEdit={this.onKeyDownEdit}
-                toggleDoneTask={this.toggleDoneTask}
-                removeTask={this.removeTask}
-              />
-
-              <Footer
-                filterTasks={this.filterTasks}
-                filteredTasks={filteredTasks}
-                removeAllCompletedTasks={this.removeAllCompletedTasks}
-              />
-            </div>
-          </DragDropContext>
-        </section>
-      </main>
+      <Home
+        tasks={tasks}
+        filteredTasks={filteredTasks}
+        saveNewTask={this.saveNewTask}
+        saveOrderTasks={this.saveOrderTasks}
+        onKeyDownSubmit={this.onKeyDownSubmit}
+        toggleEditTask={this.toggleEditTask}
+        saveEditTask={this.saveEditTask}
+        onKeyDownEdit={this.onKeyDownEdit}
+        toggleDoneTask={this.toggleDoneTask}
+        removeTask={this.removeTask}
+        filterTasks={this.filterTasks}
+        removeAllCompletedTasks={this.removeAllCompletedTasks}
+      />
     );
   }
 }

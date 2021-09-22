@@ -5,7 +5,7 @@ function Footer({
 }) {
   return (
     <footer>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between pt-3">
         <p>
            {filteredTasks.length} items 
         </p>
@@ -41,7 +41,7 @@ function Footer({
         </button>
 
       </div>
-      <p>Drag and drop to reorder list</p>
+      <p className="text-center mt-4">Drag and drop to reorder list</p>
 
     </footer>
   );
