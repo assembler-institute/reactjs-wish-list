@@ -10,9 +10,7 @@ import Footer from "./components/Footer/Footer";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tasks: [],
-    };
+    this.state = {};
     this.saveNewTasks = this.saveNewTasks.bind(this);
     this.removeTask = this.removeTask.bind(this);
     this.completeTask = this.completeTask.bind(this);
@@ -66,7 +64,7 @@ class App extends Component {
             </div>
             <div className="todo__body">
               <div id="todo-list">
-                {tasks[0] ? (
+                {tasks ? (
                   <TodoList
                     tasks={tasks}
                     removeTask={this.removeTask}
