@@ -18,7 +18,14 @@ export default class TodoTask extends React.Component {
       inputValue: inputValue
     }
   }
-  
+
+  /* 
+  componentWillUnmount() {
+    const {callBackFromParent} = this.prop 
+    callBackFromParent(this.state)
+  }
+  */
+
   completeHandler = () => {
     const {done} = this.state
     !done ? this.setState({done: true}) : this.setState({done: false})

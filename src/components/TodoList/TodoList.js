@@ -7,11 +7,24 @@ export default class TodoList extends React.Component {
 
   constructor(props) {
     super(props)
+
     this.state = {}
   }
 
+  handlerTaskDeleted = (task) => {
+    console.log(task)
+
+    // Find in state deleted task
+
+    // Update state with new array
+
+    // Then render again the child components
+
+  }
+
   render() {
-    const {tasks} = this.props
+    const {tasks} = this.props 
+
     return (
       <>
       {
@@ -20,11 +33,11 @@ export default class TodoList extends React.Component {
         <div className="todo-list">
          {
          tasks.map(task => (
-           
-            <TodoTask key={task.id} id={task.id} inputValue={task.inputValue} />
+            <TodoTask key={task.id} id={task.id} inputValue={task.inputValue} callBackFromParent={this.handlerTaskDeleted} />
           ))
          }
         </div> 
+
       }
       </>
     )
