@@ -34,6 +34,10 @@ class TodoList extends Component {
     })
   }
 
+  deleteCompleted = () => {
+    this.setState({todos: this.state.todos.filter((notDelete) => !notDelete.completed)})
+  }
+
   render() {
     let { showTodos, todos } = this.state;
     if (showTodos === "all") {
@@ -51,7 +55,7 @@ class TodoList extends Component {
           {todos.map((item) => (
             <li className="list-group-item">
               <input type="checkbox" name={item.id} key={item.id} onClick={ () => this.toggleCompleted(item.id) }/>
-              <label  style={ {textDecoration: item.completed ? "line-through" : "" } } contenteditable="true" htmlFor={item.id}>{item.text}</label>
+              <label style={ {textDecoration: item.completed ? "line-through" : "" } } contenteditable="true" htmlFor={item.id}>{item.text}</label>
             </li>
           ))}
         </ul>
@@ -77,7 +81,7 @@ class TodoList extends Component {
               Completed
             </button>
           </div>
-          <span className="text-tag">Clear Completed</span>
+          <button className="text-tag" onClick={this.deleteCompleted}>Clear Completed</button>
         </footer>
       </>
     );
