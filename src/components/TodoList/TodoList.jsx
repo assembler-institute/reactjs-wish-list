@@ -5,13 +5,16 @@ import "./TodoList.scss"
 export default class TodoList extends React.Component {
   constructor(props) {
     super(props);
+
+    
   }
   render() {
-    const { todos } = this.props
+    console.log(this.props);
+    const { todos, handleCheckbox } = this.props
     return (
       <ul className="w-100 mt-4 bg-white todo-list">
         {todos.map(todo => {
-          return <TodoItem key={todo.id} todo={todo} />
+          return <TodoItem handleCheckbox={handleCheckbox} key={todo.id} todo={todo} />
         })}
       </ul>
     )

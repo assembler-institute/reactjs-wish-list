@@ -1,7 +1,6 @@
 import React from "react";
 import Background from "./components/Background";
 import ChangeMode from "./components/ChangeMode";
-import NewTodo from "./components/NewTodo";
 import TodoList from "./components/TodoList";
 import Menu from "./components/Menu";
 import "./App.scss";
@@ -16,11 +15,17 @@ class App extends React.Component {
     };
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
   }
+
+  handleEmptyInput(event) {}
 
   handleAddTodo(event) {
     let task;
     if (event.key === "Enter") {
+      if (event.target.value == "") {
+        console.log("EMPTY");
+      }
       task = event.target.value;
       let newToDo = {
         id: new Date().getTime(),
@@ -34,6 +39,11 @@ class App extends React.Component {
 
       event.target.value = null;
     }
+  }
+
+  handleCheckbox() {
+    this.props.todo.completed = !this.props.todo.completed;
+    console.log(this.props.todo.completed);
   }
 
   componentDidMount() {
@@ -68,12 +78,18 @@ class App extends React.Component {
                 ></input>
                 {todos.length > 0 ? (
                   <div className="list-container bg-white shadow">
-                    <TodoList todos={todos} />
+                    <TodoList
+                      handleCheckbox={this.handleCheckbox}
+                      todos={todos}
+                    />
                     <Menu todos={todos} />
                   </div>
                 ) : (
                   <div className="list-container bg-white shadow mt-4 p-2 ">
-                    <h4 className="m-0 text-center text-danger">
+                    <h4
+                      data-testid="no-todos"
+                      className="m-0 text-center text-danger"
+                    >
                       Create a new task please
                     </h4>
                   </div>
