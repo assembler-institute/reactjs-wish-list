@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./input.scss";
 
 
-class Input extends Component {
+class InputEdit extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -28,7 +28,7 @@ class Input extends Component {
                     <div>
                         <button 
                         type="submit"
-                        onClick={() => this.props.handelSubmit(this.state.newToDo)}
+                        onClick={() => this.props.handeledit(this.state.newToDo)}
                         disabled={!this.state.newToDo.length}
                         >prueba</button>
                     </div>
@@ -39,4 +39,4 @@ class Input extends Component {
     }
 }
 
-export default Input
+export default InputEdit

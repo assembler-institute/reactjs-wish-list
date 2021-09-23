@@ -5,7 +5,11 @@ import "./TodoList.scss";
 
 class TodoList extends Component {
     constructor(props){
-        super(props)
+        super(props);
+        this.state={
+            listToDos: [],
+            newToDo: ""
+        };
     }
     render(){
         return (
@@ -14,7 +18,9 @@ class TodoList extends Component {
               {this.props.items.map((el)=> 
                     <li key={el.id}>
                     <input type="checkbox" id={el.id}  value={el.value}/>
-                    <span for={el.value}> {el.value}</span>
+                    <span htmlFor={el.value}> {el.value}</span>
+                    <button type="button" onClick={() => this.props.handleRemove(el.id)}>Remove</button>
+                    <button type="button" onClick={()=>this.props.handelEdit(el.id)}>Edit</button>
                     </li>
                     )
                         }
