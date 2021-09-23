@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TodoForm from "../TodoForm";
 // import TodoItem from '../TodoItem/TodoItem'
+import { Button } from "../Button/Button.style"
 class TodoList extends Component {
   constructor(props) {
     super(props);
@@ -73,7 +74,7 @@ class TodoList extends Component {
               >
                 {item.text}
               </label>
-              <button onClick={() => this.onDelete(item.id)}>X</button>
+              <Button onClick={() => this.onDelete(item.id)}>X</Button>
             </li>
           ))}
         </ul>
@@ -83,25 +84,25 @@ class TodoList extends Component {
             {todos.filter((counter) => !counter.completed).length} items left
           </span>
           <div className="d-flex">
-            <button className="text-tag" onClick={() => this.showTodos("all")}>
+            <Button className="text-tag" onClick={() => this.showTodos("all")}>
               All
-            </button>
-            <button
+            </Button>
+            <Button
               className="text-tag px-2"
               onClick={() => this.showTodos("active")}
             >
               Active
-            </button>
-            <button
+            </Button>
+            <Button
               className="text-tag"
               onClick={() => this.showTodos("completed")}
             >
               Completed
-            </button>
+            </Button>
           </div>
-          <button className="text-tag" onClick={this.deleteCompleted}>
+          <Button className="text-tag" onClick={this.deleteCompleted}>
             Clear Completed
-          </button>
+          </Button>
         </footer>
       </>
     );
