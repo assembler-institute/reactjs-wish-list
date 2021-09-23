@@ -21,9 +21,6 @@ class App extends React.Component {
   }
 
   handleCheckbox(todo) {
-    // console.log(todo.completed);
-    // console.log(this.state);
-
     let test = this.state.todos.find((stateTodo) => {
       return stateTodo.id === todo.id;
     });
@@ -36,8 +33,8 @@ class App extends React.Component {
     this.setState({ todos: newTodoList });
   }
 
-  handleDelete(id, todos) {
-    const newTodoList = todos.filter((todo) => {
+  handleDelete(id) {
+    const newTodoList = this.state.todos.filter((todo) => {
       if (todo.id !== id) {
         return todo;
       }
@@ -82,12 +79,16 @@ class App extends React.Component {
     }
   }
 
+  writeLocalStorage() {
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
+  }
+
   componentDidMount() {
     this.readLocalStorage();
   }
 
   componentDidUpdate() {
-    localStorage.setItem("todos", JSON.stringify(this.state.todos));
+    this.writeLocalStorage();
   }
 
   render() {
@@ -116,6 +117,7 @@ class App extends React.Component {
                       todos={todos}
                       handleDelete={this.handleDelete}
                     />
+                    <input type="text" />
                     <Menu todos={todos} />
                   </div>
                 ) : (

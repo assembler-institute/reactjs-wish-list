@@ -7,13 +7,19 @@ export default class TodoItem extends React.Component {
 
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
     this.handleCheckboxTask = this.handleCheckboxTask.bind(this);
+    this.handleEditTask = this.handleEditTask.bind(this)
   }
 
   handleDeleteTask() {
-    const {todos, handleDelete} = this.props
+    const { handleDelete} = this.props
     const {id} = this.props.todo
-    handleDelete(id, todos);
+    handleDelete(id);
   }
+
+  handleEditTask() {
+    console.log("Hello");
+  }
+
 
   handleCheckboxTask() {
     const {todo, handleCheckbox} = this.props;
@@ -28,7 +34,11 @@ export default class TodoItem extends React.Component {
           <input checked={completed} data-testid="create-todo-input" onChange={this.handleCheckboxTask} type="checkbox" />
           <p className="ml-2 mb-0">{task}</p>
         </div>
-        <p onClick={this.handleDeleteTask} className="mb-0 delete-task">&#10006;</p>
+
+        <div className="d-flex">
+          <div onClick={this.handleEditTask} className="mb-0 task-button">&#9998;</div>
+          <div onClick={this.handleDeleteTask} className="mb-0 task-button">&#10006;</div>
+        </div>
       </li>
     )
   }
