@@ -1,21 +1,44 @@
-import React from "react";
+import React, {Component} from "react";
 import "./ToDo.scss";
 
-function ToDo ({ handleSubmit, handleChange, todoName }) {
-  return (
-    <div className="input-group todo__create">
-      <input className="todo__checkbox" type="checkbox" />
-      <form onSubmit={handleSubmit}>
-        <input
-          className="form-control bg-light todo__input" 
-          type="text"
-          placeholder="Add something"
-          onChange={handleChange}
-          value={todoName}
-          />
-      </form>
-    </div>
-  );
+class ToDo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      todoName: ""
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    e.preventDefault();
+    this.setState({ todoName: e.target.value });
+  }
+
+  handleSubmit(e) {
+  e.preventDefault();
+  this.props.handleSubmit(this.state.todoName);
+  }
+
+  render() {
+    const { todoName } = this.state;
+    
+    return (
+      <div className="input-group todo__create">
+        <input className="todo__checkbox" type="checkbox" />
+        <form onSubmit={this.handleSubmit}>
+          <input
+            className="form-control bg-light todo__input" 
+            type="text"
+            placeholder="Add something"
+            onChange={this.handleChange}
+            value={todoName}
+            />
+        </form>
+      </div>
+    );
+  }
 }
 
 export default ToDo;

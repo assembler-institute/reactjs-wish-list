@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 // import { BrowserRouter, Route } from "react-router-dom";
-// import NavItem from "./components/NavItems/NavItems";
+// import NavItems from "./components/NavItems/NavItems";
 import All from "./pages/All";
 import "./App.scss";
 import { v4 as uuidv4 } from "uuid";
@@ -13,39 +13,44 @@ class App extends Component {
 
       this.state ={
         isEmpty: true,
-        todoName: "",
         allTodos: [],
       };
-      this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleTodoComplete = this.handleTodoComplete.bind(this);
     }
 
-    handleSubmit(e) {
-      e.preventDefault();
-      this.handleAddTodo(this.state);
+    handleSubmit(todoName) {
+      this.handleAddTodo(todoName);
     }
 
-    handleAddTodo({allTodos, todoName}) {
+    handleAddTodo(todoName) {
     const newToDo = {
       id : uuidv4(),
       name: todoName,
       complete: false,
     };
-    console.log(newToDo);
-    }
-  
-    handleChange(e) {
-      this.setState({ todoName: e.target.value });
+    this.setState({allTodos: [...this.state.allTodos, newToDo], isEmpty: false})
     }
 
+    handleTodoComplete(id) {
+      this.setState({
+        allTodos: [...this.state.allTodos.map((todo) => {
+          if (todo.id === id) todo.complete = !todo.complete
+          return todo;
+        })]
+      });
+    }
+  
     render(){
-      const{ todoName, isEmpty} = this.state;
+      const{isEmpty, allTodos} = this.state;
       return(
         <All
-        handleChange={this.handleChange}
-        todoName={todoName}
+        isEmpty={isEmpty}
+        handleSubmit={this.handleSubmit}
+        allTodos={allTodos}
+        handleTodoComplete={this.handleTodoComplete}
         />
-      )
+      );
     }
 }
 export default App;

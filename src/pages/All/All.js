@@ -6,13 +6,19 @@ import bgImg from "../../img/sunset-mountain.jpg";
 import MainHeader from "../../components/MainHeader";
 import ToDo from "../../components/ToDo/ToDo";
 import NotToDo from "../../components/NotToDo";
+import TaskIndicator from "../../components/TaskIndicator";
+import ToDoList from "../../components/ToDoList";
 
 function All({
   handleSubmit,
   handleChange,
+  handleTodoComplete,
   todoName,
   isEmpty,
+  todoLength,
+  allTodos,
   ...props
+  
 })
 
 {
@@ -30,14 +36,17 @@ function All({
         <aside className="bg-light d-flex flex-row shadow rounded p-3 mb-4">
           <ToDo
             handleSubmit={handleSubmit}
-            handleChange={handleChange}
             todoName={todoName}
           />
         </aside>
         <article className="bg-light d-flex flex-column shadow rounded toContent">
         <div className="todoRender">
-            {isEmpty && <NotToDo />}
+            {isEmpty && <NotToDo/>}
+            {!isEmpty &&
+            <ToDoList handleTodoComplete={handleTodoComplete} allTodos={allTodos}/>
+            }
           </div>
+        <TaskIndicator todoLength={todoLength}/>
         </article>
         </section>
       </Main>
