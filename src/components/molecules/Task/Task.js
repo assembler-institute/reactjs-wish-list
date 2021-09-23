@@ -25,7 +25,7 @@ const TaskItem = styled.li`
   min-height: 1px;
   padding: 1.25rem;
   margin-top: 0.5rem;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #E6E6E6;
   border-top: none;
   border-right: none;
   border-left: none;

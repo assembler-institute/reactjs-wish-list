@@ -4,7 +4,8 @@ import styled, { ThemeProvider } from "styled-components";
 import background from "./img/mountains.jpg";
 import { themes } from "./themes";
 import * as api from "./api";
-import { Home } from "./pages";
+// import { Home } from "./pages";
+import { HomeTemplate } from "./components/templates";
 
 import "./App.scss";
 
@@ -235,7 +236,22 @@ class App extends Component {
         <Header >
           <img src={background}></img>
         </Header>
-        <Home
+        {/* <Home
+          tasks={tasks}
+          filteredTasks={filteredTasks}
+          changeTheme={this.changeTheme}
+          saveNewTask={this.saveNewTask}
+          saveOrderTasks={this.saveOrderTasks}
+          onKeyDownSubmit={this.onKeyDownSubmit}
+          toggleEditTask={this.toggleEditTask}
+          saveEditTask={this.saveEditTask}
+          onKeyDownEdit={this.onKeyDownEdit}
+          toggleDoneTask={this.toggleDoneTask}
+          removeTask={this.removeTask}
+          filterTasks={this.filterTasks}
+          removeAllCompletedTasks={this.removeAllCompletedTasks}
+        /> */}
+        <HomeTemplate
           tasks={tasks}
           filteredTasks={filteredTasks}
           changeTheme={this.changeTheme}

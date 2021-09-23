@@ -24,6 +24,7 @@ const Container = styled.div`
   margin-top: 20px;
   max-width: 600px;
   width: 100%;
+  background-color: white;
   box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;
 `;
 

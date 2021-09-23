@@ -5,10 +5,10 @@ import { v4 as uuid } from "uuid";
 import taskSchema from "./task-schema";
 
 const Search = styled.div`
-    border-radius: 5px;
-    padding: 1.5rem;
-    z-index: 100;
-    background-color: white;
+  border-radius: 5px;
+  padding: 1.5rem;
+  z-index: 100;
+  background-color: white;
 `;
 
 function addTaskDetails(task) {
