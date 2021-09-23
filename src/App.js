@@ -18,6 +18,10 @@ class App extends React.Component {
     this.handleAddTodo = this.handleAddTodo.bind(this);
   }
 
+  handleDelete(id) {
+    console.log(id);
+  }
+
   handleEmptyInput() {
     var toastLiveExample = document.getElementById("liveToast");
     toastLiveExample.style.opacity = "1";
@@ -83,6 +87,7 @@ class App extends React.Component {
                     <TodoList
                       // handleCheckbox={this.handleCheckbox}
                       todos={todos}
+                      handleDelete={this.handleDelete}
                     />
                     <Menu todos={todos} />
                   </div>

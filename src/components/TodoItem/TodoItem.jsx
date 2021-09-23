@@ -10,7 +10,15 @@ export default class TodoItem extends React.Component {
     }
 
     this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.handleDeleteTask = this.handleDeleteTask.bind(this);
 
+  }
+
+  handleDeleteTask() {
+    const {id} = this.props.todo
+    const {handleDelete} = this.props;
+    // console.log(id);
+    handleDelete(id);
   }
 
   handleCheckbox() {
@@ -32,7 +40,7 @@ export default class TodoItem extends React.Component {
           <input data-testid="create-todo-input" onChange={this.handleCheckbox} type="checkbox" />
           <p className="ml-2 mb-0">{task}</p>
         </div>
-        <p className="mb-0 delete-task">&#10006;</p>
+        <p onClick={this.handleDeleteTask} className="mb-0 delete-task">&#10006;</p>
       </li>
     )
   }
