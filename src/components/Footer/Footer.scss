@@ -1,4 +1,15 @@
 .footer {
-    display: flex;
-    justify-content: space-between;
+  border-top: 1px solid lightgray;
+  height: 4.75rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #969696;
+  button {
+    color: #969696;
+    background-color: transparent;
+    border: none;
+  }
 }

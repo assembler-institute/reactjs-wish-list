@@ -1,18 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import TodoList from "../TodoList";
+import React, { Component } from "react";
+
 import "./NewTodo.scss";
 
-export default class NewTodo extends React.Component {
+export default class NewTodo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      holder: "Add New Todo...",
+      placeHolder: "Add New Todo...",
       title: "",
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
@@ -22,7 +21,9 @@ export default class NewTodo extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    const { saveNewTasks } = this.props;
     const { title } = this.state;
+
     let retrieve = JSON.parse(localStorage.getItem(`list`));
 
     // if there is no data then make it an empty array, to be able to push data in array afterwards
@@ -37,21 +38,15 @@ export default class NewTodo extends React.Component {
       id: Math.floor(Math.random() * 1000000),
     };
 
+    e.target.reset();
     retrieve.push(todoTask);
     localStorage.setItem(`list`, JSON.stringify(retrieve));
 
-    e.target.reset();
-
-    ReactDOM.render(
-      <React.StrictMode>
-        <TodoList />
-      </React.StrictMode>,
-      document.getElementById("todo-list"),
-    );
+    saveNewTasks(retrieve);
   }
 
   render() {
-    const { holder } = this.state;
+    const { placeHolder } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -59,7 +54,7 @@ export default class NewTodo extends React.Component {
           <span className="new__task--circle" />
           <input
             type="text"
-            placeholder={holder}
+            placeholder={placeHolder}
             onChange={this.handleChange}
             required
             className="new__task--input"

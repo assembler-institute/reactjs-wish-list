@@ -1,0 +1,7 @@
+.finished {
+  background-color: lightcyan;
+  p {
+    text-decoration: line-through;
+    color: lighten($color: #000000, $amount: 50%);
+  }
+}
