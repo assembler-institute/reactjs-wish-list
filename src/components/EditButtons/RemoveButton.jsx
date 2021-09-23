@@ -6,6 +6,7 @@ import styles from "./RemoveButton.module.scss";
 
 export default function RemoveButton({ item, toDoItem, setToDoItem }) {
   const removeHandler = () => {
+    // eslint-disable-next-line
     console.log(item);
     setToDoItem(toDoItem.filter((el) => el.id !== item.id));
   };

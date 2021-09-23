@@ -1,17 +1,29 @@
 import React from "react";
+import CheckButton from "../EditButtons/CheckButton";
 import EditButton from "../EditButtons/EditButton";
 import RemoveButton from "../EditButtons/RemoveButton";
-import styles from "./Task.module.scss";
+import "./Task.scss";
 
-export default function Task({ text, item, toDoItem, setToDoItem }) {
+export default function Task({
+  text,
+  item,
+  toDoItem,
+  setToDoItem,
+  setTodoEdit,
+}) {
   return (
-    <li className={styles.task}>
-      <label htmlFor="checkbox">
-        <input type="checkbox" />
+    <li className="task">
+      <label htmlFor="checkbox" className={`title ${item.done ? "done" : ""}`}>
+        {/* <input type="checkbox" /> */}
+        <CheckButton
+          toDoItem={toDoItem}
+          setToDoItem={setToDoItem}
+          item={item}
+        />
         {text}
       </label>
-      <div className={styles.taskControllers}>
-        <EditButton />
+      <div className="taskControllers">
+        <EditButton setTodoEdit={setTodoEdit} />
         <RemoveButton
           toDoItem={toDoItem}
           setToDoItem={setToDoItem}
