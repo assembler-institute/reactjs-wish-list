@@ -18,10 +18,10 @@ class TodoList extends Component {
     this.setState({ showTodos: string });
   };
 
-  toggleCompleted = (completdId) => {
+  toggleCompleted = (completedId) => {
     this.setState({
       todos: this.state.todos.map((item) => {
-        if (item.id === completdId) {
+        if (item.id === completedId) {
           return {
             id: item.id,
             text: item.text,
@@ -31,6 +31,12 @@ class TodoList extends Component {
           return item;
         }
       }),
+    });
+  };
+
+  deleteCompleted = () => {
+    this.setState({
+      todos: this.state.todos.filter((notDelete) => !notDelete.completed),
     });
   };
 
@@ -46,22 +52,23 @@ class TodoList extends Component {
     return (
       <>
         <TodoForm onSubmit={this.addTodo} />
+
         <ul className="list-group list-group-flush">
           {todos.map((item) => (
-            <li className="list-group-item">
+            <li className="list-group-item" key={item.id}>
               <input
                 type="checkbox"
                 name={item.id}
-                id={item.id}
                 onClick={() => this.toggleCompleted(item.id)}
               />
               <label
-                contenteditable="true"
-                htmlFor={item.id}
                 style={{ textDecoration: item.completed ? "line-through" : "" }}
+                contentEditable="true"
+                htmlFor={item.id}
               >
                 {item.text}
               </label>
+              <button>X</button>
             </li>
           ))}
         </ul>
@@ -87,7 +94,9 @@ class TodoList extends Component {
               Completed
             </button>
           </div>
-          <span className="text-tag">Clear Completed</span>
+          <button className="text-tag" onClick={this.deleteCompleted}>
+            Clear Completed
+          </button>
         </footer>
       </>
     );
