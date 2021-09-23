@@ -39,14 +39,19 @@ export default class TodoItem extends Component {
   render() {
     const { text, isEditing, done } = this.props;
 
+    const articleStyles = !done ? "todo-item" : "todo-item todo-item--done";
+    const editButtonStyles = !done
+      ? "todo-item__button todo-item__button--full-width"
+      : "todo-item__button todo-item__button--full-width todo-item__button--done";
+
     return (
       <>
-        <article className="todo-item">
+        <article className={articleStyles}>
           <CheckBox checked={done} handleChange={this.handleSetDone} />
           {isEditing ? (
             <TodoSetTextForm handleSetText={this.handleSetText} handleCloseForm={this.handleCloseForm} text={text} />
           ) : (
-            <Button className="todo-item__button todo-item__button--full-width" handleClick={this.handleOpenForm}>
+            <Button className={editButtonStyles} handleClick={this.handleOpenForm}>
               {text}
             </Button>
           )}

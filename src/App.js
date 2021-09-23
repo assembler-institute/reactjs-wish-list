@@ -4,7 +4,7 @@ import { readLocalStorage, writeLocalStorage } from "./api";
 
 import TodoCreateForm from "./components/TodoCreateForm";
 import TodoList from "./components/TodoList";
-import Footer from "./components/Footer";
+import TodoFooter from "./components/TodoFooter";
 
 import "./App.scss";
 
@@ -23,6 +23,7 @@ class App extends Component {
     this.setTextTodo = this.setTextTodo.bind(this);
     this.setDoneTodo = this.setDoneTodo.bind(this);
     this.isEditingTodo = this.isEditingTodo.bind(this);
+    this.clearDoneTodos = this.clearDoneTodos.bind(this);
   }
 
   componentDidMount() {
@@ -102,6 +103,19 @@ class App extends Component {
     }));
   }
 
+  clearDoneTodos() {
+    const { todos } = this.state;
+
+    const newTodos = todos.filter((item) => {
+      return !item.done;
+    });
+
+    this.setState((prevState) => ({
+      ...prevState,
+      todos: newTodos,
+    }));
+  }
+
   isEditingTodo(id) {
     const { todos } = this.state;
 
@@ -124,7 +138,7 @@ class App extends Component {
       <main className="container-sm container-md mx-auto p-5 flex flex-column gap-5">
         <h1 className="m-0">TODO</h1>
         <TodoCreateForm handleAddTodo={this.addTodo} />
-        <section>
+        <section className="todo-container">
           <TodoList
             todos={todos}
             handleDelete={this.deleteTodo}
@@ -132,7 +146,7 @@ class App extends Component {
             handleSetText={this.setTextTodo}
             handleIsEditing={this.isEditingTodo}
           />
-          {/*<Footer count={todos.length} />*/}
+          <TodoFooter count={todos.length} handleClear={this.clearDoneTodos} />
         </section>
       </main>
     );

@@ -1,24 +1,15 @@
-export default function TodoCounter() {}
-import "/TodoCounter.scss"
+import { Component } from "react";
 
-class TodoCounter extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            itemsLeft: 0
-        }
-        
-    }
+import "./TodoCounter.scss";
 
-    updateCounter(){
+export default class TodoCounter extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-    }
+  render() {
+    const { count } = this.props;
 
-    render(){
-        return (
-        <label className="todo-counter">
-            Items left : {itemsLeft}
-        </label>
-        )
-    }
+    return <span className="todo-counter">{count} Items left</span>;
+  }
 }

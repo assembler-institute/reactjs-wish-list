@@ -13,9 +13,9 @@ export default class TodoList extends Component {
     const { todos, handleDelete, handleSetDone, handleSetText, handleIsEditing } = this.props;
 
     return (
-      <div>
+      <div className="todo-list">
         {todos.length > 0 ? (
-          <ul className="todo-list">
+          <ul>
             {todos.map((item) => (
               <li key={item.id}>
                 <TodoItem handleDelete={handleDelete} handleSetDone={handleSetDone} handleSetText={handleSetText} handleIsEditing={handleIsEditing} {...item} />

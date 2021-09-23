@@ -1,32 +1,39 @@
-import React from "react";
+import { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 
-export default function TodoFilter() {}
+import "./TodoFilter.scss";
 
-class TodoFilter extends React.Component{
-    constructor(props){
-        super(props)
-    }
-    filterAll(){
+export default class TodoFilter extends Component {
+  constructor(props) {
+    super(props);
+  }
+  filterAll() {}
 
-    }
+  filterActive() {}
 
-    filterActive(){
+  filterCompleted() {}
 
-    }
-
-    filterCompleted(){
-
-    }
-
-    render(){
-        return (
-        <div>
-            <ul>
-                <li className="todo-filter">All</li>
-                <li className="todo-filter">Active</li>
-                <li className="todo-filter">Completed</li>
-            </ul>
-        </div>
-        )
-    }
+  render() {
+    return (
+      <Router>
+        <ul className="todo-filter">
+          <li className="todo-link">
+            <NavLink exact to="/" className="todo-filter__link" activeClassName="todo-filter__link--selected">
+              All
+            </NavLink>
+          </li>
+          <li className="todo-link">
+            <NavLink to="/active" className="todo-filter__link" activeClassName="todo-filter__link--selected">
+              Active
+            </NavLink>
+          </li>
+          <li className="todo-link">
+            <NavLink to="/completed" className="todo-filter__link" activeClassName="todo-filter__link--selected">
+              Completed
+            </NavLink>
+          </li>
+        </ul>
+      </Router>
+    );
+  }
 }

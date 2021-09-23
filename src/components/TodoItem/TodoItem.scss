@@ -7,7 +7,11 @@
 	height: 8vh;
 	padding: 1rem;
 
-	box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+	box-shadow: 0 0px 1px rgba(0,0,0,0.25);
+
+	&--done {
+		background: linear-gradient(135deg, rgba(62,141,180,0.125) 0%, rgba(236,41,251,0.125) 100%);
+	}
 
 	&__button {
 		border: none;
@@ -39,6 +43,11 @@
 			text-align: left;
 
 			border-radius: 0.25rem;
+		}
+
+		&--done {
+			color: gray;
+			text-decoration: line-through;
 		}
 	}
 	

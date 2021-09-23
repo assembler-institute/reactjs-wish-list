@@ -1,7 +1,16 @@
 .todo-filter{
-    color:grey;
-}
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
 
-.todo-filter:hover{
-    color:black
+	&__link {
+		&--selected {
+			color: rgb(39, 94, 121);
+			font-weight: 600;
+		}
+
+		&:hover {
+			color: rgba(62,141,180,1);
+		}
+	}
 }
