@@ -20,12 +20,12 @@ export default function ToDoContainer() {
   const [filterTodoItem, setFilterTodoItem] = useState([]);
 
   const filterTodoHandler = () => {
-    switch(status) {
+    switch (status) {
       case "complete":
         setFilterTodoItem(toDoItem.filter((item) => item.done === true))
         break;
       case "active":
-        setFilterTodoItem(toDoItem.filter((item) => item.done ===  false))
+        setFilterTodoItem(toDoItem.filter((item) => item.done === false))
         break;
       default:
         setFilterTodoItem(toDoItem);
@@ -59,9 +59,9 @@ export default function ToDoContainer() {
 
   return (
     <div className={styles.listContainer}>
-      <FormToDo newInput={newInput} setNewInput={setNewInput} toDoItem={toDoItem} setTodoItem={setTodoItem}/>
-      <TaskList toDoItem={toDoItem} setTodoItem={setTodoItem} filterTodoItem={filterTodoItem}/>
-      <TaskFooter 
+      <FormToDo newInput={newInput} setNewInput={setNewInput} toDoItem={toDoItem} setTodoItem={setTodoItem} />
+      <TaskList toDoItem={toDoItem} setTodoItem={setTodoItem} filterTodoItem={filterTodoItem} />
+      <TaskFooter
         status={status}
         setStatus={setStatus}
       />
