@@ -1,16 +1,21 @@
 import React, { Component } from "react";
-import img from "./img/header-light-mode-background-image.jpeg";
+
 import DarkMode from "./components/DarkMode";
 import "./main.scss";
 import NewTodo from "./components/NewTodo";
 import TodoList from "./components/TodoList/TodoList";
 import NoTodo from "./components/NoTodo/NoTodo";
 import Footer from "./components/Footer/Footer";
+import bgImg from "./img/header-light-mode-background-image.jpeg";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      tasks: JSON.parse(localStorage.getItem(`list`))
+        ? JSON.parse(localStorage.getItem(`list`))
+        : [],
+    };
     this.saveNewTasks = this.saveNewTasks.bind(this);
     this.removeTask = this.removeTask.bind(this);
     this.completeTask = this.completeTask.bind(this);
@@ -50,7 +55,7 @@ class App extends Component {
       <>
         <div className="background">
           <div className="background--top">
-            <img src={img} alt="bg-img" />
+            <img id="bg-top" src={bgImg} alt="bg-img" />
           </div>
           <div className="background--bottom" />
         </div>
@@ -64,7 +69,7 @@ class App extends Component {
             </div>
             <div className="todo__body">
               <div id="todo-list">
-                {tasks ? (
+                {tasks[0] ? (
                   <TodoList
                     tasks={tasks}
                     removeTask={this.removeTask}

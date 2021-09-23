@@ -9,8 +9,7 @@
   border-radius: 5px;
   box-shadow: 0px 0px 30px rgb(68 68 68 / 60%);
   background-color: white;
-
-  transition: 0.4s;
+  gap: 1rem;
 
   &--circle {
     border-radius: 100%;
@@ -52,4 +51,9 @@
 .dark-mode {
   color: white;
   background-color: black;
+  transition: 0.4s;
+
+  ::after {
+    transition: 0.4s;
+  }
 }

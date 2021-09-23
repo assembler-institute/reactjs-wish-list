@@ -1,6 +1,8 @@
 .background {
   height: 100vh;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
 
   position: absolute;
   z-index: -1;
@@ -13,11 +15,14 @@
       object-fit: cover;
       height: 100%;
       width: 100%;
+      -webkit-box-reflect: below 0px
+        linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
     }
   }
   &--bottom {
     flex-grow: 1;
     position: relative;
+    z-index: -1;
   }
 }
 
@@ -51,6 +56,7 @@
 
 .todo__body {
   border-radius: 5px;
+  border: 1px solid lightgray;
   box-shadow: 0px 0px 30px rgb(68 68 68 / 60%);
   background-color: white;
   display: flex;
@@ -60,9 +66,4 @@
   min-height: 28rem;
   margin-top: 1rem;
   padding: 0;
-}
-
-.dark {
-  border: 1px solid white;
-  color: white;
 }

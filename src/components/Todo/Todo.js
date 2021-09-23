@@ -31,7 +31,7 @@ export default class Todo extends Component {
       >
         <input
           type="checkbox"
-          className="todo__check"
+          className="todo__check light"
           onChange={this.onChange}
           id={id}
           checked={isFinished ? true : false}
