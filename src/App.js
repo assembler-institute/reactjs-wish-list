@@ -3,6 +3,7 @@ import Background from "./components/Background";
 import ChangeMode from "./components/ChangeMode";
 import TodoList from "./components/TodoList";
 import Menu from "./components/Menu";
+import Toast from "./components/Toast";
 import "./App.scss";
 
 class App extends React.Component {
@@ -18,13 +19,28 @@ class App extends React.Component {
     this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 
-  handleEmptyInput(event) {}
+  handleEmptyInput() {
+    // var toastTrigger = document.getElementById('liveToastBtn')
+    var toastLiveExample = document.getElementById('liveToast')
+    // if (toastTrigger) {
+    //   toastTrigger.addEventListener('click', function () {
+    //     var toast = new bootstrap.Toast(toastLiveExample)
+    //     toast.show()
+    //   })
+    // }
+    toastLiveExample.style.opacity = "1"
+    setTimeout(() => {
+      toastLiveExample.style.opacity = "0"
+    }, 2000)
+
+  }
 
   handleAddTodo(event) {
     let task;
     if (event.key === "Enter") {
       if (event.target.value == "") {
-        console.log("EMPTY");
+        this.handleEmptyInput()
+        return
       }
       task = event.target.value;
       let newToDo = {
@@ -97,6 +113,7 @@ class App extends React.Component {
               </div>
             </div>
           </section>
+          <Toast />
         </main>
       </>
     );

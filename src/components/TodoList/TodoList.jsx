@@ -12,7 +12,7 @@ export default class TodoList extends React.Component {
     console.log(this.props);
     const { todos, handleCheckbox } = this.props
     return (
-      <ul className="w-100 mt-4 bg-white todo-list">
+      <ul data-testid="todos-list" className="w-100 mt-4 bg-white todo-list">
         {todos.map(todo => {
           return <TodoItem handleCheckbox={handleCheckbox} key={todo.id} todo={todo} />
         })}

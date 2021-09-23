@@ -14,7 +14,7 @@ export default class TodoItem extends React.Component {
     // console.log(checked);
     const { task, handleCheckbox } = this.props.todo
     return (
-      <li className="list-element d-flex justify-content-between align-items-center">
+      <li data-testid="todo-item" className="list-element d-flex justify-content-between align-items-center">
         <div className="d-flex align-items-center">
           <input data-testid="create-todo-input" onChange={handleCheckbox} type="checkbox" />
           <p className="ml-2 mb-0">{task}</p>
