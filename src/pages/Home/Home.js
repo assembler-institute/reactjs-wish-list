@@ -1,7 +1,9 @@
 import { DragDropContext } from "react-beautiful-dnd";
 import styled from "styled-components";
 
-import { Main, TasksList, NewTaskForm, Footer, Toggle } from "../../components";
+import { Main, Footer, Toggle } from "../../components";
+import { NewTaskForm } from "../../components/molecules";
+import { TasksList } from "../../components/organisms";
 
 Array.prototype.move = function (from, to) {
   this.splice(to, 0, this.splice(from, 1)[0]);
@@ -26,7 +28,7 @@ const Title = styled.h1`
 `;
 
 const Container = styled.div
-`
+  `
 border-radius: 5px;
   padding: 0;
   margin-top: 20px;
@@ -76,8 +78,8 @@ function Home({
           }}
         >
           <Header className="d-flex justify-content-between">
-              <Title>TO DO</Title>
-              <Toggle changeTheme={changeTheme} theme={theme} />
+            <Title>TO DO</Title>
+            <Toggle changeTheme={changeTheme} theme={theme} />
           </Header>
           <Container>
             <NewTaskForm

@@ -4,12 +4,8 @@ import { v4 as uuid } from "uuid";
 
 import taskSchema from "./task-schema";
 
-const Create = styled.div`
-  box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;
-`;
-
 const Search = styled.div`
-    border-radius 5px;
+    border-radius: 5px;
     padding: 1.5rem;
     z-index: 100;
     background-color: white;

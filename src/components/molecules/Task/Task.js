@@ -1,4 +1,4 @@
-import { Button } from "../../components";
+import { Button, InputEdit } from "../../atoms";
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 
@@ -35,11 +35,6 @@ const TaskItem = styled.li`
   }
 `;
 
-const InputEdit = styled.input`
-  font-size: 1.2rem;
-  font-weight: 600;
-`;
-
 function Task({
   task,
   index,
@@ -65,12 +60,9 @@ function Task({
           />
           <Button toggleDoneTask={toggleEditTask} task={task} />
           <InputEdit
-            className="w-100 text-left pl-3"
-            type="text"
-            style={{ display: task.isEditing ? "block" : "none" }}
-            value={task.text}
-            onChange={(e) => saveEditTask(e, task.id)}
-            onKeyDown={(e) => onKeyDownEdit(e, task.id)}
+            task={task}
+            saveEditTask={saveEditTask}
+            onKeyDownEdit={onKeyDownEdit}
           />
           <ButtonDelete
             className="btn btn-secondary"
