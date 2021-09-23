@@ -18,14 +18,14 @@ class TodoList extends Component {
     this.setState({ showTodos: string });
   };
 
-  toggleCompleted = (completdId) => {
+  toggleCompleted = (completedId) => {
     this.setState({ 
       todos: this.state.todos.map((item) => {
-       if(item.id === completdId){
+       if(item.id === completedId){
          return {
            id: item.id,
            text: item.text,
-           completed: !item.completed
+           completed: !item.completed,
          }
        } else{
          return item;
@@ -46,20 +46,14 @@ class TodoList extends Component {
     return (
       <>
         <TodoForm onSubmit={this.addTodo} />
-        {/* {JSON.stringify(todos)} */}
 
         <ul className="list-group list-group-flush">
           {todos.map((item) => (
-            <div style={ {textDecoration: !item.complete ? "line-through" : "" } } onClick={ () => this.toggleCompleted(item.id) }>{item.text}</div>
-            //<li className="list-group-item">
-              //<input type="checkbox" name={item.id} key={item.id} />
-              //<label htmlFor={item.id}>{item.text}</label>
-            //</li>
+            <li className="list-group-item">
+              <input type="checkbox" name={item.id} key={item.id} onClick={ () => this.toggleCompleted(item.id) }/>
+              <label  style={ {textDecoration: item.completed ? "line-through" : "" } } contenteditable="true" htmlFor={item.id}>{item.text}</label>
+            </li>
           ))}
-          <li className="list-group-item is-disabled" aria-disabled="true">
-            <input type="checkbox" name="name2" id="" />
-            <label htmlFor="name2">(lo que venga del input de arriba)</label>
-          </li>
         </ul>
 
         <footer className="card-footer text-muted d-flex justify-content-between align-items-center">
