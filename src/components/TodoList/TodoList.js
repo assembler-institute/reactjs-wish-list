@@ -53,9 +53,10 @@ class TodoList extends Component {
 
         <ul className="list-group list-group-flush">
           {todos.map((item) => (
-            <li className="list-group-item">
-              <input type="checkbox" name={item.id} key={item.id} onClick={ () => this.toggleCompleted(item.id) }/>
-              <label style={ {textDecoration: item.completed ? "line-through" : "" } } contenteditable="true" htmlFor={item.id}>{item.text}</label>
+            <li className="list-group-item" key={item.id}>
+              <input type="checkbox" name={item.id} onClick={ () => this.toggleCompleted(item.id) }/>
+              <label style={ {textDecoration: item.completed ? "line-through" : "" } } contentEditable="true" htmlFor={item.id}>{item.text}</label>
+              <button>X</button>
             </li>
           ))}
         </ul>
