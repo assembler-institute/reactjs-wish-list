@@ -1,14 +1,22 @@
 import { Component } from "react";
-import { DragDropContext } from "react-beautiful-dnd";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 
+import background from "./img/mountains.jpg";
+import { themes } from "./themes";
+import * as api from "./api";
 import { Home } from "./pages";
 
-import { themes } from "./themes";
+import "./App.scss";
 
-import * as api from "./api";
-
-import './App.scss';
+const Header = styled.header`
+  position: absolute;
+  & img{
+    height:250px;
+    filter:blur(1px);
+    width:100%;
+    width: 100vw;
+  }
+  `;
 
 const LOCAL_STORAGE_KEY = "reactjs-todo-list";
 
@@ -29,8 +37,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      theme: 'light',
-      status: 'active',
+      theme: "light",
+      status: "active",
       tasks: [],
       filteredTasks: [],
     };
@@ -38,7 +46,6 @@ class App extends Component {
 
   componentDidMount() {
     const prevItems = loadLocalStorageData();
-    console.log(prevItems)
 
     if (!prevItems) {
       this.setState({
@@ -71,25 +78,21 @@ class App extends Component {
     if (theme === "light") {
       this.setState((prevState) => ({
         ...prevState,
-        theme: 'dark',
+        theme: "dark",
       }));
     }
     if (theme === "dark") {
       this.setState((prevState) => ({
         ...prevState,
-        theme: 'light',
+        theme: "light",
       }));
     }
-  }
+  };
 
   componentDidUpdate = () => {
     const { tasks } = this.state;
-
-    localStorage.setItem(
-      LOCAL_STORAGE_KEY,
-      JSON.stringify({ tasks })
-    )
-  }
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
+  };
 
   onKeyDownSubmit = (e, handleSubmit) => {
     if (e.key === "Enter") {
@@ -115,7 +118,7 @@ class App extends Component {
       ...prevState,
       tasks: tasks,
     }));
-  }
+  };
 
   saveNewTask = (newTask) => {
     this.setState((prevState) => ({
@@ -147,10 +150,14 @@ class App extends Component {
     e.preventDefault();
 
     const { tasks } = this.state;
-
+    let result = false;
     tasks.map((task) => {
-      task.id === taskId ? (task.done = !task.done) : null;
+      if (task.id === taskId) {
+        task.done = !task.done;
+        result = task.done;
+      }
     });
+
 
     this.setState((prevState) => ({
       ...prevState,
@@ -179,7 +186,6 @@ class App extends Component {
     const { tasks } = this.state;
 
     const newTasks = tasks.filter((task) => task.id !== taskId);
-
     this.setState((prevState) => ({
       ...prevState,
       tasks: newTasks,
@@ -226,7 +232,9 @@ class App extends Component {
 
     return (
       <ThemeProvider theme={themes[theme]}>
-
+        <Header >
+          <img src={background}></img>
+        </Header>
         <Home
           tasks={tasks}
           filteredTasks={filteredTasks}

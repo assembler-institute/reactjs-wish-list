@@ -4,6 +4,7 @@ import NewTaskForm from './NewTaskForm';
 import Task from './Task';
 import TasksList from './TasksList';
 import Toggle from './Toggle';
+import Button from './Button';
 
 export {
   Footer,
@@ -12,4 +13,5 @@ export {
   Task,
   TasksList,
   Toggle,
+  Button
 }

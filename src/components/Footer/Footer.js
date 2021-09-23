@@ -1,49 +1,68 @@
-function Footer({
-  filteredTasks,
-  filterTasks,
-  removeAllCompletedTasks
-}) {
+import styled from "styled-components";
+
+const Filters = styled.button`
+  color: grey;
+  background: white;
+  border: none;
+  font-size: bold;
+  &:hover {
+    color: black;
+    background-color: white;
+    outline: none;
+  }
+  &:active {
+    color: black;
+    background-color: white;
+    outline: none;
+  }
+  &:focus {
+    color: black;
+    background-color: white;
+    outline: none;
+  }
+`;
+
+const FooterFilters = styled.footer`
+  padding: 0em 2rem 1rem 2rem;
+`;
+
+function Footer({ filteredTasks, filterTasks, removeAllCompletedTasks }) {
   return (
-    <footer>
+    <FooterFilters>
       <div className="d-flex justify-content-between pt-3">
-        <p>
-           {filteredTasks.length} items 
-        </p>
+        <p>{filteredTasks.length} items</p>
         <div>
-          <button
+          <Filters
             className="btn btn-secondary"
             name="all"
             onClick={(e) => filterTasks(e.target.name)}
           >
             All
-          </button>
-          <button
+          </Filters>
+          <Filters
             className="btn btn-secondary"
             name="active"
             onClick={(e) => filterTasks(e.target.name)}
           >
             Active
-          </button>
-          <button
+          </Filters>
+          <Filters
             className="btn btn-secondary"
             name="complete"
             onClick={(e) => filterTasks(e.target.name)}
           >
             Complete
-          </button>
+          </Filters>
         </div>
-        <button
+        <Filters
           className="btn btn-secondary"
           name="clear"
           onClick={(e) => removeAllCompletedTasks(e)}
         >
           Clear completed
-        </button>
-
+        </Filters>
       </div>
-      <p className="text-center mt-4">Drag and drop to reorder list</p>
-
-    </footer>
+    </FooterFilters>
   );
 }
 

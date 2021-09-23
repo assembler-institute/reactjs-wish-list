@@ -1,5 +1,5 @@
 const LightTheme = {
-  pageBackground: "white",
+  pageBackground: "transparent",
   titleColor: "#282c36",
   tagLineColor: "black"
 };

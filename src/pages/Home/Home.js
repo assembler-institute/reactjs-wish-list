@@ -8,10 +8,44 @@ Array.prototype.move = function (from, to) {
 };
 
 const Section = styled.section`
-  max-width: 600px;
+  /*   max-width: 600px; */
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const Title = styled.h1`
+  color: white;
+  letter-spacing: 3px;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+`;
+
+const Container = styled.div
 `
+border-radius: 5px;
+  padding: 0;
+  margin-top: 20px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;
+`;
+
+const Header = styled.header`
+  width: 100%;
+  margin-top: 20px;
+  max-width: 600px;
+  box-shadow: none;
+`;
+
+const FooterPar = styled.p`
+  text-align: center;
+  margin-top: 2rem;
+`;
 
 function Home({
   tasks,
@@ -31,31 +65,27 @@ function Home({
 }) {
   return (
     <Main className="main container pt-5">
-
-      <Section className="row w-100">
+      <Section>
         <DragDropContext
           onDragEnd={(result) => {
             const { source, destination } = result;
             if (!destination) return;
             if (source.index === destination.index) return;
             tasks.move(source.index, destination.index);
-            saveOrderTasks(tasks)
+            saveOrderTasks(tasks);
           }}
         >
-          <div className="col-md-6 offset-md-3">
-            <div className="d-flex justify-content-between">
-              <h1>Hello Taskmaker</h1>
-              <Toggle
-                changeTheme={changeTheme}
-                theme={theme}
-              />
-            </div>
-
+          <Header className="d-flex justify-content-between">
+              <Title>TO DO</Title>
+              <Toggle changeTheme={changeTheme} theme={theme} />
+          </Header>
+          <Container>
             <NewTaskForm
               saveNewTask={saveNewTask}
               onKeyDownSubmit={onKeyDownSubmit}
             />
-
+          </Container>
+          <Container>
             <TasksList
               filteredTasks={filteredTasks}
               toggleEditTask={toggleEditTask}
@@ -70,7 +100,8 @@ function Home({
               filteredTasks={filteredTasks}
               removeAllCompletedTasks={removeAllCompletedTasks}
             />
-          </div>
+          </Container>
+          <FooterPar>Drag and drop to reorder list</FooterPar>
         </DragDropContext>
       </Section>
     </Main>
