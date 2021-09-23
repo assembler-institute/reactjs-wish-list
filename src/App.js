@@ -16,31 +16,22 @@ class App extends React.Component {
     };
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
-    this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 
   handleEmptyInput() {
-    // var toastTrigger = document.getElementById('liveToastBtn')
-    var toastLiveExample = document.getElementById('liveToast')
-    // if (toastTrigger) {
-    //   toastTrigger.addEventListener('click', function () {
-    //     var toast = new bootstrap.Toast(toastLiveExample)
-    //     toast.show()
-    //   })
-    // }
-    toastLiveExample.style.opacity = "1"
+    var toastLiveExample = document.getElementById("liveToast");
+    toastLiveExample.style.opacity = "1";
     setTimeout(() => {
-      toastLiveExample.style.opacity = "0"
-    }, 2000)
-
+      toastLiveExample.style.opacity = "0";
+    }, 2000);
   }
 
   handleAddTodo(event) {
     let task;
     if (event.key === "Enter") {
       if (event.target.value == "") {
-        this.handleEmptyInput()
-        return
+        this.handleEmptyInput();
+        return;
       }
       task = event.target.value;
       let newToDo = {
@@ -55,11 +46,6 @@ class App extends React.Component {
 
       event.target.value = null;
     }
-  }
-
-  handleCheckbox() {
-    this.props.todo.completed = !this.props.todo.completed;
-    console.log(this.props.todo.completed);
   }
 
   componentDidMount() {
@@ -95,7 +81,7 @@ class App extends React.Component {
                 {todos.length > 0 ? (
                   <div className="list-container bg-white shadow">
                     <TodoList
-                      handleCheckbox={this.handleCheckbox}
+                      // handleCheckbox={this.handleCheckbox}
                       todos={todos}
                     />
                     <Menu todos={todos} />
