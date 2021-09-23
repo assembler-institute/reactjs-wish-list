@@ -90,11 +90,11 @@ class App extends Component {
     }));
   }
 
-  setDoneTodo(id, isDone) {
+  setDoneTodo(id) {
     const { todos } = this.state;
 
     const newTodos = todos.map((item) => {
-      if (item.id === id) item.done = isDone;
+      if (item.id === id) item.done = !item.done;
 
       return item;
     });
@@ -144,29 +144,31 @@ class App extends Component {
 
   render() {
     return (
-      <main className="container-sm container-md mx-auto p-5 flex flex-column gap-5">
-        <h1 className="m-0">TODO</h1>
-        <TodoCreateForm handleAddTodo={this.addTodo} />
-        <section className="todo-container">
-          <Route
-            path="/"
-            render={(routeProps) => {
-              const todos = this.getTodos(routeProps.location.pathname);
+      <div className="app-background">
+        <main className="app-content container-sm container-md mx-auto p-5 flex flex-column gap-8">
+          <h1 className="app-title">TODO</h1>
+          <TodoCreateForm handleAddTodo={this.addTodo} />
+          <section className="todo-container">
+            <Route
+              path="/"
+              render={(routeProps) => {
+                const todos = this.getTodos(routeProps.location.pathname);
 
-              return (
-                <TodoList
-                  todos={todos}
-                  handleDelete={this.deleteTodo}
-                  handleSetDone={this.setDoneTodo}
-                  handleSetText={this.setTextTodo}
-                  handleIsEditing={this.isEditingTodo}
-                />
-              );
-            }}
-          />
-          <TodoFooter count={this.getTodos("/active").length} handleClear={this.clearDoneTodos} />
-        </section>
-      </main>
+                return (
+                  <TodoList
+                    todos={todos}
+                    handleDelete={this.deleteTodo}
+                    handleSetDone={this.setDoneTodo}
+                    handleSetText={this.setTextTodo}
+                    handleIsEditing={this.isEditingTodo}
+                  />
+                );
+              }}
+            />
+            <TodoFooter count={this.getTodos("/active").length} handleClear={this.clearDoneTodos} />
+          </section>
+        </main>
+      </div>
     );
   }
 }

@@ -22,12 +22,12 @@ export default class TodoFilter extends Component {
           </NavLink>
         </li>
         <li className="todo-link">
-          <NavLink to="/active" className="todo-filter__link" activeClassName="todo-filter__link--selected">
+          <NavLink exact to="/active" className="todo-filter__link" activeClassName="todo-filter__link--selected">
             Active
           </NavLink>
         </li>
         <li className="todo-link">
-          <NavLink to="/completed" className="todo-filter__link" activeClassName="todo-filter__link--selected">
+          <NavLink exact to="/completed" className="todo-filter__link" activeClassName="todo-filter__link--selected">
             Completed
           </NavLink>
         </li>

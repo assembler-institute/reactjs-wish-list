@@ -16,23 +16,21 @@ export default class Input extends Component {
       placeholder = "",
       handleChange = () => {},
       handleBlur = () => {},
-      invalid,
+      wrong,
       className = "input",
-      classNameInvalid = "input--invalid",
-      ...props
+      classNameWrong = "input--wrong",
     } = this.props;
 
     return (
       <input
-        className={invalid ? `${className} ${classNameInvalid}` : className}
+        className={wrong ? `${className} ${classNameWrong}` : className}
         id={id}
-        name={id}
+        name={name}
         type={type}
         value={value}
         placeholder={placeholder}
         onChange={handleChange}
         onBlur={handleBlur}
-        {...props}
       />
     );
   }

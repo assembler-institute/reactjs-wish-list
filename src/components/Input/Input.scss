@@ -13,8 +13,9 @@
 		box-shadow: inset 0 0 2px lightgray;
 	}
 
-	&--invalid,
-	&--invalid:hover {
-		box-shadow: inset 0 0 4px red;
+	&--wrong,
+	&--wrong:hover {
+		box-shadow: 0 0 4px red;
+		background: rgba(255, 0, 0, 0.1);
 	}
 }

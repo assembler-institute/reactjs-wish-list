@@ -1,4 +1,28 @@
+.app-background {
+	background-image: url("./img/john-towner-JgOeRuGD_Y4-unsplash.jpg");
+	background-size: 100%;	
+	background-position-y: -100px;
+	background-repeat: no-repeat;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 100vh;
+}
+
+.app-title {
+	margin: 0;
+
+	font-size: 3rem;
+	font-weight: 400;
+
+	color: white;
+}
+
 .todo-container {
 	box-shadow: 0 0 4px rgba(0,0,0,0.25);
 	border-radius: 0.25rem;
+
+	background-color: white;
 }

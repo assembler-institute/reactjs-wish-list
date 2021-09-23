@@ -20,8 +20,8 @@ export default class TodoItem extends Component {
     this.props.handleSetText(this.props.id, text);
   }
 
-  handleSetDone(checked) {
-    this.props.handleSetDone(this.props.id, checked);
+  handleSetDone() {
+    this.props.handleSetDone(this.props.id);
   }
 
   handleDelete() {
@@ -41,13 +41,17 @@ export default class TodoItem extends Component {
 
     const articleStyles = !done ? "todo-item" : "todo-item todo-item--done";
     const editButtonStyles = !done
-      ? "todo-item__button todo-item__button--full-width"
-      : "todo-item__button todo-item__button--full-width todo-item__button--done";
+      ? "todo-item__button todo-item__button--field"
+      : "todo-item__button todo-item__button--field todo-item__button--strikethrough";
+    const setDoneButtonStyles = !done
+      ? "todo-item__button todo-item__button--round"
+      : "todo-item__button todo-item__button--round todo-item__button--show-check todo-item__button--active";
+    const deleteButtonStyles = "todo-item__button todo-item__button--round todo-item__button--show-cross";
 
     return (
       <>
         <article className={articleStyles}>
-          <CheckBox checked={done} handleChange={this.handleSetDone} />
+          <Button className={setDoneButtonStyles} handleClick={this.handleSetDone} />
           {isEditing ? (
             <TodoSetTextForm handleSetText={this.handleSetText} handleCloseForm={this.handleCloseForm} text={text} />
           ) : (
@@ -55,9 +59,7 @@ export default class TodoItem extends Component {
               {text}
             </Button>
           )}
-          <Button className="todo-item__button todo-item__button--round" handleClick={this.handleDelete}>
-            {"\u00d7"}
-          </Button>
+          <Button className={deleteButtonStyles} handleClick={this.handleDelete} />
         </article>
       </>
     );

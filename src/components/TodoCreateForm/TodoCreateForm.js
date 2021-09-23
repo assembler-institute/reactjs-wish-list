@@ -41,7 +41,7 @@ export default class TodoCreateForm extends Component {
                   resetForm();
                 }}
                 value={values.text}
-                invalid={errors.text}
+                wrong={Boolean(errors.text)}
                 placeholder="Add a new todo..."
               />
             </form>

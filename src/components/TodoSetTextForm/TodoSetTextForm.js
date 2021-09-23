@@ -43,7 +43,7 @@ export default class TodoSetTextForm extends Component {
                   resetForm();
                 }}
                 value={values.text}
-                invalid={errors.text}
+                wrong={Boolean(errors.text)}
                 placeholder="Set a name..."
                 autoFocus
               />
