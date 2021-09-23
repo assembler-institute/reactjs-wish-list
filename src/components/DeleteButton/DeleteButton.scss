@@ -1,0 +1,20 @@
+.testButton {
+  background-color: blue;
+  color: white;
+  padding: 8px 20px;
+}
+.cancel {
+  height: 100%;
+  border: none;
+  justify-content: flex-end;
+  font-size: 30px;
+  font-weight: 100;
+  background-image: url(../../img/x.svg);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
+  opacity: 0;
+}
+.cancel:hover {
+  opacity: 1;
+}
