@@ -1,5 +1,5 @@
 import { Component } from "react";
-import TodoItemForm from "../TodoItemForm";
+import TodoSetTextForm from "../TodoSetTextForm";
 import CheckBox from "../CheckBox";
 import Button from "../Button";
 
@@ -12,7 +12,8 @@ export default class TodoItem extends Component {
     this.handleSetText = this.handleSetText.bind(this);
     this.handleSetDone = this.handleSetDone.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleEnableForm = this.handleEnableForm.bind(this);
+    this.handleOpenForm = this.handleOpenForm.bind(this);
+    this.handleCloseForm = this.handleCloseForm.bind(this);
   }
 
   handleSetText(text) {
@@ -27,21 +28,25 @@ export default class TodoItem extends Component {
     this.props.handleDelete(this.props.id);
   }
 
-  handleEnableForm() {
-    this.props.handleEnableForm(this.props.id);
+  handleOpenForm() {
+    this.props.handleIsEditing(this.props.id);
+  }
+
+  handleCloseForm() {
+    this.props.handleIsEditing(null);
   }
 
   render() {
-    const { text, enabledForm, handleDisableForm } = this.props;
+    const { text, isEditing, done } = this.props;
 
     return (
       <>
         <article className="todo-item">
-          <CheckBox handleChange={this.handleSetDone} />
-          {enabledForm ? (
-            <TodoItemForm handleSetText={this.handleSetText} handleDisableForm={handleDisableForm} text={text} />
+          <CheckBox checked={done} handleChange={this.handleSetDone} />
+          {isEditing ? (
+            <TodoSetTextForm handleSetText={this.handleSetText} handleCloseForm={this.handleCloseForm} text={text} />
           ) : (
-            <Button className="todo-item__button todo-item__button--full-width" handleClick={this.handleEnableForm}>
+            <Button className="todo-item__button todo-item__button--full-width" handleClick={this.handleOpenForm}>
               {text}
             </Button>
           )}

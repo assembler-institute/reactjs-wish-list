@@ -3,31 +3,32 @@ import { Formik } from "formik";
 import { todoSchema } from "../../schema";
 import Input from "../Input";
 
-export default class TodoItemForm extends Component {
+import "./TodoCreateForm.scss";
+
+export default class TodoCreateForm extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const { text, handleSetText, handleDisableForm } = this.props;
+    const { handleAddTodo } = this.props;
 
     return (
-      <div className="width-100">
+      <section className="todo-create">
         <Formik
-          initialValues={{
-            text,
-          }}
+          initialValues={{ text: this.props.text }}
           validationSchema={todoSchema}
           onSubmit={(values, actions) => {
+            actions.setSubmitting(true);
+
             setTimeout(() => {
-              handleSetText(values.text);
-              handleDisableForm();
+              handleAddTodo(values);
               actions.resetForm();
             }, 500);
           }}
         >
           {({ handleChange, handleSubmit, validateField, resetForm, errors, values, touched, isValidating, isValid }) => (
-            <form onSubmit={handleSubmit} className="width-100">
+            <form onSubmit={handleSubmit}>
               <Input
                 type="text"
                 name="text"
@@ -37,18 +38,16 @@ export default class TodoItemForm extends Component {
                   validateField();
                 }}
                 handleBlur={() => {
-                  handleDisableForm();
                   resetForm();
                 }}
                 value={values.text}
                 invalid={errors.text}
-                placeholder="Set a name..."
-                autoFocus
+                placeholder="Add a new todo..."
               />
             </form>
           )}
         </Formik>
-      </div>
+      </section>
     );
   }
 }
