@@ -18,6 +18,7 @@ export default function ToDoContainer() {
   // Filter Item
   const [status, setStatus] = useState("all");
   const [filterTodoItem, setFilterTodoItem] = useState([]);
+  
 
   const filterTodoHandler = () => {
     switch (status) {
@@ -64,6 +65,8 @@ export default function ToDoContainer() {
       <TaskFooter
         status={status}
         setStatus={setStatus}
+        setTodoItem={setTodoItem}
+        toDoItem={toDoItem}
       />
     </div>
   );

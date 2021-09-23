@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./TaskFooter.module.scss";
 
-export default function TaskFooter({ setStatus }) {
+export default function TaskFooter({ setStatus, toDoItem, setTodoItem }) {
   const filterHandler = (e) => {
     // eslint-disable-next-line
     console.log(e.target.value);
@@ -11,8 +11,15 @@ export default function TaskFooter({ setStatus }) {
 
   const clearCompleteHandler = () => {
     // eslint-disable-next-line
-    console.log("click");
+    console.log(toDoItem);
+    setTodoItem(toDoItem.filter((item) => item.done === false));
   };
+
+  // const itemLeftCounter = () => {
+  //   console.log(toDoItem.length);
+  // };
+
+  // itemLeftCounter();
 
   return (
     <>
