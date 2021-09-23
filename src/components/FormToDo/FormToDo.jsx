@@ -11,6 +11,8 @@ function FormToDo({
 
   const handleChange = e => {
     setNewInput(e.target.value)
+    // eslint-disable-next-line no-console
+    console.log(newInput)
   }
 
   const handleSubmit = e => {

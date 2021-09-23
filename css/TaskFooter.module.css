@@ -1,0 +1,17 @@
+.taskFooter {
+  margin: 0;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  font-size: 1rem;
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+}
+
+.taskFooter button {
+  border: none;
+}/*# sourceMappingURL=TaskFooter.module.css.map */
