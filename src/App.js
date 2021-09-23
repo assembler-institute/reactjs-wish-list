@@ -1,70 +1,80 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
 
-import AddToDoTask from "./components/AddToDoTask/AddToDoTask";
-
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
+import AddToDoTask from "./components/AddToDoTask";
 import Footer from "./components/Footer/Footer";
-
-import { generateNewKey, saveItem } from "./utils/localStorage";
-import TodoList from "./components/TodoList";
+import Header from "./components/Header";
+import MainList from "./components/MainList";
 import FilterToDo from "./components/FilterToDo/FilterToDo";
+import { deleteItem, saveItem } from "./utils/localStorage";
 
-function App() {
 
-  const [tasks, updateTasks] = useState([])
+export default class App extends React.Component {
 
-  // Get localStorage Items
-  useEffect(() => {
-    const localStorageTasks = Object.values(localStorage).map(elm => JSON.parse(elm))
-    localStorageTasks.length > 0 ? updateTasks((prevTasks) => [...prevTasks, ...localStorageTasks]) : null
-  }, [])
-  
-  // Add to do task to list
-  const handlerToDoTask = (task) => {
-    // Save in localStorage
-    const key = generateNewKey()
-    const taskObj = {
-      id: key,
-      inputValue: task.title,
-      done: false,
-      isEditing: false
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      tasks: []
     }
-    saveItem(taskObj)
 
-    // Update tasks state
-    updateTasks((prevTasks) => [...prevTasks, taskObj])
+  }
+  
+  componentDidMount() {
+    // Then re-render MainList (props: task) & Footer (props: lenght)
+    this.refreshState()
   }
 
-  const handlerFilter = () => {
-
+  handlerNewToDo = (task) => {
+    // Save Todo en localStorage
+    saveItem(task)
+    // Refresh state with new localStorage
+    this.refreshState()
   } 
+  
+  handlerDeleteTask = (id) => {
+    // Delete item from locaStorage
+    deleteItem(id)
 
-  return (
-    <main className="container mt-5">
-      <section className="row">
-        <div className="col col-12">
-          <BrowserRouter>
+    // Refresh state
+    this.refreshState()
+  }
+
+  handlerClearCompleted = () => {
+    Object.values(localStorage).forEach(elm => {
+      const task = JSON.parse(elm)
+      task.done ? deleteItem(task.id) : null
+    })
+    this.refreshState()
+  }
+
+  refreshState = () => {
+    // Get items from localStorage
+    const localStorageTasks = Object.values(localStorage).map(elm => JSON.parse(elm))
+    // Refresh state with new localStorage
+    localStorageTasks.length > 0 ? this.setState({tasks: [...localStorageTasks]}) : this.setState({tasks: []})
+  }
+
+  render() {
+    const {tasks} = this.state
+
+    return (
+      <main className="container mt-5">
+        <section className="row">
+          <div className="col col-12">
             <Header>
-              <AddToDoTask handlerToDoTask={handlerToDoTask}/>
+              <AddToDoTask handlerNewToDo={this.handlerNewToDo}/>
             </Header>
-            <Main>
-              <Switch>
-                <Route path="/" render={(routeProps) => <TodoList {...routeProps} tasks={tasks} /> }/>
-                <Route path="/completed" render={(routeProps) => <TodoList {...routeProps} tasks={tasks} /> } />
-                <Route path="/active" render={(routeProps) => <TodoList {...routeProps} tasks={tasks} /> } />
-              </Switch>
-            </Main>
-            <Footer>
-              <FilterToDo handlerFilter={handlerFilter} counter={tasks.length}/>
-            </Footer>
-          </BrowserRouter>
-        </div>
-      </section>
-    </main>
-  );
+            <BrowserRouter>
+              <MainList tasks={tasks} handlerDeleteTask={this.handlerDeleteTask} />
+              <Footer>
+                <FilterToDo counter={tasks.length} handlerClearCompleted={this.handlerClearCompleted}/>
+              </Footer>
+            </BrowserRouter>
+          </div>
+        </section>
+      </main>
+    )
+  }
 }
-
-export default App;

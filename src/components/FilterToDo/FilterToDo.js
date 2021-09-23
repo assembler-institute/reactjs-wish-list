@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
-import {BrowserRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default class FilterToDo extends React.Component {
 
@@ -11,7 +11,7 @@ export default class FilterToDo extends React.Component {
 
 
   render() {
-    const {counter} = this.props
+    const {counter, handlerClearCompleted} = this.props
 
     return (
       <>
@@ -19,13 +19,11 @@ export default class FilterToDo extends React.Component {
 
           <p>{counter}</p>
 
-          <BrowserRouter>
             <Link to="/">All</Link>
             <Link to="/active">Active</Link>
             <Link to="/completed">Completed</Link>
-          </BrowserRouter>
 
-          <button type="button">Clear completed</button>
+          <button type="button" onClick={handlerClearCompleted}>Clear completed</button>
 
         </div>
       </>

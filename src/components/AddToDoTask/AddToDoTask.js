@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 import './AddToDoTask.scss'
+import { generateNewKey } from '../../utils/localStorage'
 // Improve the render of the component
 
 export default class AddToDoTask extends React.Component {
@@ -17,12 +18,24 @@ export default class AddToDoTask extends React.Component {
   formSubmit = (event) => {
     event.preventDefault()
 
-    const {error} = this.state
-    if (!error) {
-      // Send new task to parent
-      const {handlerToDoTask} = this.props
-      handlerToDoTask(this.state)
-      this.updateState({})  
+    const {error, title} = this.state
+    const {handlerNewToDo} = this.props
+
+    if (!error && title !== '') {
+
+      const key = generateNewKey()
+      const taskObj = {
+        id: key,
+        inputValue: title,
+        done: false,
+        isEditing: false
+      }
+      
+      // Send new task to App
+      handlerNewToDo(taskObj)
+
+      // Reset input state
+      this.updateState({title: '', error: false})  
     }
 
   }

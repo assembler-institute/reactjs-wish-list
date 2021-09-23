@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
-import { deleteItem, saveItem } from '../../utils/localStorage'
+import { saveItem } from '../../utils/localStorage'
 
 import "./TodoTask.scss"
 
@@ -9,32 +9,22 @@ export default class TodoTask extends React.Component {
   constructor(props) {
     super(props)
 
-    const {id, inputValue} = this.props
+    const {task} = this.props
 
     this.state = {
-      id: id,
-      done: false,
-      isEditing: false,
-      inputValue: inputValue
+      id: task.id,
+      done: task.done,
+      isEditing: task.isEditing,
+      inputValue: task.inputValue
     }
   }
 
-  /* 
-  componentWillUnmount() {
-    const {callBackFromParent} = this.prop 
-    callBackFromParent(this.state)
-  }
-  */
-
   completeHandler = () => {
     const {done} = this.state
-    !done ? this.setState({done: true}) : this.setState({done: false})
-  }
-
-  deleteHanlder = () => {
-    const {id} = this.state
-    deleteItem(id)
-    this.setState({id: ''})
+    !done ? 
+    ( saveItem({...this.state, done: true}) , this.setState({done: true}) ) 
+    : 
+    ( saveItem({...this.state, done: false}) , this.setState({done: false}) ) 
   }
 
   handlerSubmit = (event) => {
@@ -50,11 +40,12 @@ export default class TodoTask extends React.Component {
   render() {
 
     const {inputValue, id, isEditing, done} = this.state
+    const {handlerDeleteTask} = this.props
 
     if (id === '') return null
 
     return(
-      <div className={`todo-task ${isEditing ? 'editing' : ''} ${done ? 'done' : ''}`}>
+      <li className={`todo-task ${isEditing ? 'editing' : ''} ${done ? 'done' : ''}`}>
           <button className="complete-task" type="button" onClick={this.completeHandler}>
             <span role="img" aria-label='Check to complete'>
               {done ? "❌" : "✅"}
@@ -67,8 +58,8 @@ export default class TodoTask extends React.Component {
             onBlur={() => this.setState({isEditing: false})} 
             />
           </form>
-          <button className="delete-task" type="button" onClick={this.deleteHanlder}>Delete</button>
-      </div>
+          <button className="delete-task" type="button" onClick={() => handlerDeleteTask(id)}>Delete</button>
+      </li>
       
     )
   }
