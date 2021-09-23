@@ -69,7 +69,7 @@ class App extends React.Component {
                 {todos.length > 0 ? (
                   <div className="list-container bg-white shadow">
                     <TodoList todos={todos} />
-                    <Menu />
+                    <Menu todos={todos} />
                   </div>
                 ) : (
                   <div className="list-container bg-white shadow mt-4 p-2 ">
@@ -78,7 +78,6 @@ class App extends React.Component {
                     </h4>
                   </div>
                 )}
-                {}
               </div>
             </div>
           </section>

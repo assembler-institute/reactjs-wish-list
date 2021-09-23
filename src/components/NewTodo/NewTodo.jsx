@@ -12,7 +12,7 @@ export default class NewTodo extends React.Component {
 
 
   handleAddTodo(event) {
-    console.log("Hello2");
+    // console.log("Hello2");
     let task;
     if (event.key === "Enter") {
       task = event.target.value;

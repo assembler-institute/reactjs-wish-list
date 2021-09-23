@@ -1,0 +1,8 @@
+.delete-task {
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.list-element:hover .delete-task {
+  visibility: visible;
+}
