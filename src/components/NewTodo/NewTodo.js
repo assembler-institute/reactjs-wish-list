@@ -42,7 +42,9 @@ export default class NewTodo extends Component {
     retrieve.push(todoTask);
     localStorage.setItem(`list`, JSON.stringify(retrieve));
 
-    saveNewTasks(retrieve);
+    const filteredRetrieve = retrieve.filter((el) => el.isFinished === false);
+
+    saveNewTasks(retrieve, filteredRetrieve);
   }
 
   render() {

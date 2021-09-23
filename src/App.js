@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import img from "./img/header-light-mode-background-image.jpeg";
 import DarkMode from "./components/DarkMode";
@@ -18,6 +18,11 @@ class App extends Component {
       tasks: JSON.parse(localStorage.getItem(`list`))
         ? JSON.parse(localStorage.getItem(`list`))
         : [],
+      activeTasks: JSON.parse(localStorage.getItem(`list`))
+        ? JSON.parse(localStorage.getItem(`list`)).filter(
+            (el) => el.isFinished === false,
+          )
+        : [],
     };
     this.saveNewTasks = this.saveNewTasks.bind(this);
     this.removeTask = this.removeTask.bind(this);
@@ -26,9 +31,10 @@ class App extends Component {
     this.clearCompletedTasks = this.clearCompletedTasks.bind(this);
   }
 
-  saveNewTasks(tasks) {
+  saveNewTasks(tasks, activeTasks) {
     this.setState({
       tasks: tasks,
+      activeTasks: activeTasks,
     });
   }
 
@@ -45,7 +51,7 @@ class App extends Component {
   }
 
   completeTask(id) {
-    const { tasks } = this.state;
+    const { tasks, activeTasks } = this.state;
     tasks.map((el) => {
       if (el.id === parseInt(id)) {
         el.isFinished ? (el.isFinished = false) : (el.isFinished = true);
@@ -54,6 +60,7 @@ class App extends Component {
     localStorage.setItem(`list`, JSON.stringify(tasks)),
       this.setState({
         tasks: tasks,
+        activeTasks: tasks.filter((el) => el.isFinished === false),
       });
   }
 
@@ -67,7 +74,7 @@ class App extends Component {
   }
 
   render() {
-    const { tasks } = this.state;
+    const { tasks, activeTasks } = this.state;
     return (
       <Router>
         <div className="background">
@@ -110,7 +117,10 @@ class App extends Component {
                   </Route>
                 </Switch>
               </div>
-              <Footer clearCompletedTasks={this.clearCompletedTasks} />
+              <Footer
+                activeTasks={activeTasks}
+                clearCompletedTasks={this.clearCompletedTasks}
+              />
             </div>
           </section>
         </main>

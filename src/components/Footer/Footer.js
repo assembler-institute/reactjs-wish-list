@@ -16,9 +16,10 @@ class Footer extends Component {
   }
 
   render() {
+    const { activeTasks } = this.props;
     return (
       <div className="footer">
-        <div className="footer__left">X items left</div>
+        <div className="footer__left">{`${activeTasks.length} items left`}</div>
         <div className="footer__buttons">
           <Link to="/">
             <Button type="button" value="All" />
