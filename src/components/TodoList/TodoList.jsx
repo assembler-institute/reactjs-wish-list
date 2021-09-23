@@ -11,11 +11,11 @@ export default class TodoList extends React.Component {
   
 
   render() {
-    const { todos, handleDelete } = this.props
+    const { todos, handleDelete, handleCheckbox } = this.props
     return (
       <ul data-testid="todos-list" className="w-100 mt-4 bg-white todo-list">
         {todos.map(todo => {
-          return <TodoItem handleDelete={handleDelete} handleCheckbox={this.handleCheckbox} key={todo.id} todo={todo} />
+          return <TodoItem handleDelete={handleDelete} handleCheckbox={handleCheckbox} key={todo.id} todo={todo} todos={todos} />
         })}
       </ul>
     )

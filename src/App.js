@@ -16,10 +16,33 @@ class App extends React.Component {
     };
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 
-  handleDelete(id) {
-    console.log(id);
+  handleCheckbox(todo) {
+    // console.log(todo.completed);
+    // console.log(this.state);
+
+    let test = this.state.todos.find((stateTodo) => {
+      return stateTodo.id === todo.id;
+    });
+    test.completed = !test.completed;
+
+    let newTodoList = this.state.todos.map((prevTodo) => {
+      return prevTodo.id === todo.id ? test : prevTodo;
+    });
+    console.log(newTodoList);
+    this.setState({ todos: newTodoList });
+  }
+
+  handleDelete(id, todos) {
+    const newTodoList = todos.filter((todo) => {
+      if (todo.id !== id) {
+        return todo;
+      }
+    });
+    this.setState({ todos: newTodoList });
   }
 
   handleEmptyInput() {
@@ -52,11 +75,15 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
+  readLocalStorage() {
     let todos = JSON.parse(localStorage.getItem("todos"));
     if (todos != null) {
       this.setState(todos);
     }
+  }
+
+  componentDidMount() {
+    this.readLocalStorage();
   }
 
   componentDidUpdate() {
@@ -85,7 +112,7 @@ class App extends React.Component {
                 {todos.length > 0 ? (
                   <div className="list-container bg-white shadow">
                     <TodoList
-                      // handleCheckbox={this.handleCheckbox}
+                      handleCheckbox={this.handleCheckbox}
                       todos={todos}
                       handleDelete={this.handleDelete}
                     />
