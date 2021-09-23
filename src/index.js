@@ -8,7 +8,7 @@ import "./index.scss";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App className="query" />
   </React.StrictMode>,
   document.getElementById("root"),
 );
