@@ -7,7 +7,8 @@ export default class TodoListComponent extends Component {
     super(props);
   }
   render() {
-    const { tasks, removeTask, completeTask } = this.props;
+    const { tasks, removeTask, completeTask, changeTitle, editTask } =
+      this.props;
     const filteredArr = tasks.filter((item) => item.isFinished === true);
     return (
       <ul className="item__list">
@@ -18,8 +19,11 @@ export default class TodoListComponent extends Component {
               title={item.title}
               id={item.id}
               isFinished={item.isFinished}
+              isEditing={item.isEditing}
               removeTask={removeTask}
               completeTask={completeTask}
+              changeTitle={changeTitle}
+              editTask={editTask}
             />
           );
         })}

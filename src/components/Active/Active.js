@@ -7,7 +7,8 @@ export default class Active extends Component {
     super(props);
   }
   render() {
-    const { tasks, removeTask, completeTask } = this.props;
+    const { tasks, removeTask, completeTask, editTask, changeTitle } =
+      this.props;
     const finished = (el) => el.isFinished === false;
     return (
       <>
@@ -16,6 +17,8 @@ export default class Active extends Component {
             tasks={tasks}
             removeTask={removeTask}
             completeTask={completeTask}
+            editTask={editTask}
+            changeTitle={changeTitle}
           />
         ) : (
           <NoTodo />

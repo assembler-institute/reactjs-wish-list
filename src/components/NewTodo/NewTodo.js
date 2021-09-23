@@ -36,6 +36,7 @@ export default class NewTodo extends Component {
       title: title,
       isFinished: false,
       id: Math.floor(Math.random() * 1000000),
+      isEditing: false,
     };
 
     e.target.reset();

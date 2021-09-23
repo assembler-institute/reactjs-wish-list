@@ -8,7 +8,8 @@ export default class Home extends Component {
     super(props);
   }
   render() {
-    const { tasks, removeTask, completeTask } = this.props;
+    const { tasks, removeTask, completeTask, editTask, changeTitle } =
+      this.props;
     return (
       <>
         {tasks[0] ? (
@@ -16,6 +17,8 @@ export default class Home extends Component {
             tasks={tasks}
             removeTask={removeTask}
             completeTask={completeTask}
+            editTask={editTask}
+            changeTitle={changeTitle}
           />
         ) : (
           <NoTodo />

@@ -15,10 +15,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: JSON.parse(localStorage.getItem(`list`))
+      tasks: localStorage.getItem(`list`)
         ? JSON.parse(localStorage.getItem(`list`))
         : [],
-      activeTasks: JSON.parse(localStorage.getItem(`list`))
+      activeTasks: localStorage.getItem(`list`)
         ? JSON.parse(localStorage.getItem(`list`)).filter(
             (el) => el.isFinished === false,
           )
@@ -27,8 +27,9 @@ class App extends Component {
     this.saveNewTasks = this.saveNewTasks.bind(this);
     this.removeTask = this.removeTask.bind(this);
     this.completeTask = this.completeTask.bind(this);
-    //TODO this.editTask = this.editTask.bind(this);
+    this.editTask = this.editTask.bind(this);
     this.clearCompletedTasks = this.clearCompletedTasks.bind(this);
+    this.changeTitle = this.changeTitle.bind(this);
   }
 
   saveNewTasks(tasks, activeTasks) {
@@ -38,11 +39,31 @@ class App extends Component {
     });
   }
 
-  //TODO editTask(id) {}
+  editTask(id) {
+    const { tasks } = this.state;
+    tasks.map((el) =>
+      el.id == parseInt(id) ? (el.isEditing = !el.isEditing) : null,
+    );
+    localStorage.setItem(`list`, JSON.stringify(tasks)),
+      this.setState({
+        tasks: tasks,
+        activeTasks: tasks.filter((el) => el.isFinished === false),
+      });
+  }
+
+  changeTitle(task) {
+    const { tasks } = this.state;
+    tasks.map((el) => {
+      if (el.id === parseInt(task.id)) el.title = task.value;
+    });
+    this.setState({
+      tasks: tasks,
+      activeTasks: tasks.filter((el) => el.isFinished === false),
+    });
+  }
 
   clearCompletedTasks() {
     const { tasks } = this.state;
-    console.log("hello");
     const retrieve = tasks.filter((el) => el.isFinished === false);
     localStorage.setItem(`list`, JSON.stringify(retrieve));
     this.setState({
@@ -51,7 +72,7 @@ class App extends Component {
   }
 
   completeTask(id) {
-    const { tasks, activeTasks } = this.state;
+    const { tasks } = this.state;
     tasks.map((el) => {
       if (el.id === parseInt(id)) {
         el.isFinished ? (el.isFinished = false) : (el.isFinished = true);
@@ -99,6 +120,7 @@ class App extends Component {
                       tasks={tasks}
                       completeTask={this.completeTask}
                       removeTask={this.removeTask}
+                      editTask={this.editTask}
                     />
                   </Route>
                   <Route path="/active">
@@ -106,6 +128,8 @@ class App extends Component {
                       tasks={tasks}
                       completeTask={this.completeTask}
                       removeTask={this.removeTask}
+                      editTask={this.editTask}
+                      changeTitle={this.changeTitle}
                     />
                   </Route>
                   <Route path="/">
@@ -113,6 +137,8 @@ class App extends Component {
                       tasks={tasks}
                       completeTask={this.completeTask}
                       removeTask={this.removeTask}
+                      editTask={this.editTask}
+                      changeTitle={this.changeTitle}
                     />
                   </Route>
                 </Switch>
