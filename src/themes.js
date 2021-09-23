@@ -1,13 +1,13 @@
 const LightTheme = {
   pageBackground: "transparent",
   titleColor: "#282c36",
-  tagLineColor: "black"
+  toggleColor: "black"
 };
 
 const DarkTheme = {
   pageBackground: "#282c36",
   titleColor: "white",
-  tagLineColor: "lavender"
+  toggleColor: "white"
 }
 
 export const themes = {

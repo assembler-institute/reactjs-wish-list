@@ -1,6 +1,7 @@
-import { Button, InputEdit } from "../../atoms";
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
+
+import { Button, InputEdit } from "../../atoms";
 
 const CheckDone = styled.button`
   width: 23px;
@@ -58,7 +59,10 @@ function Task({
             style={{ backgroundColor: task.done ? "black" : "white" }}
             onClick={(e) => toggleDoneTask(e, task.id)}
           />
-          <Button toggleDoneTask={toggleEditTask} task={task} />
+          <Button
+            toggleEditTask={toggleEditTask}
+            task={task}
+          />
           <InputEdit
             task={task}
             saveEditTask={saveEditTask}

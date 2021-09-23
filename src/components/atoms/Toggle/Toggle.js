@@ -8,19 +8,22 @@ const ToggleButton = styled.button`
     width: 30px;
     border-radius: 50%;
     border: none;
-    background-color: ${props => props.theme.titleColor};
-    color: ${props => props.theme.pageBackground};
+    background-color: transparent;
     &:focus {
       outline: none;
     }
     transition: all .35s ease;
+
+    svg{
+      color: ${props => props.theme.toggleColor};
+    }
 `;
 
 function Toggle(props) {
 
   const { changeTheme, theme } = props
 
-  const icon = theme === "light" ? <HiMoon size={22} /> : <CgSun size={20} />;
+  const icon = theme === "light" ? <HiMoon size={24} /> : <CgSun size={24} />;
 
   return (
     <ToggleButton onClick={changeTheme}>
