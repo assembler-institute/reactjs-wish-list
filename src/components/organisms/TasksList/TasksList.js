@@ -1,5 +1,5 @@
 import { Droppable } from "react-beautiful-dnd";
-import { Task, Filters } from "../../molecules";
+import { Task, Filters, TasksListFooter } from "../../molecules";
 
 function TasksList({
   filterTasks,
@@ -13,6 +13,11 @@ function TasksList({
 }) {
   return (
     <>
+      <Filters
+        filteredTasks={filteredTasks}
+        filterTasks={filterTasks}
+        removeAllCompletedTasks={removeAllCompletedTasks}
+      />
       <Droppable droppableId="tasks">
         {(droppableProvided) => (
           <ul
@@ -36,9 +41,8 @@ function TasksList({
           </ul>
         )}
       </Droppable>
-      <Filters
+      <TasksListFooter
         filteredTasks={filteredTasks}
-        filterTasks={filterTasks}
         removeAllCompletedTasks={removeAllCompletedTasks}
       />
     </>

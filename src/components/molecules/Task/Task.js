@@ -10,12 +10,12 @@ const CheckDone = styled.button`
 
 const ButtonDelete = styled.button`
   color: grey;
-  background: white;
+  background-color: #ffffff;
   border: 0;
   font-weight: bold;
   &:hover {
-    color: black;
-    background-color: white;
+    color: #000000;
+    background-color: #ffffff;
   }
 `;
 

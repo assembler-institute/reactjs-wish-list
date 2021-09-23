@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { ThemeProvider } from "styled-components";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { themes } from "./themes";
 import * as api from "./api";
@@ -224,72 +224,80 @@ class App extends Component {
     return (
       <ThemeProvider theme={themes[theme]}>
         <Router>
-          <Route
-            path="/"
-            exact
-            render={() => (
-              <AllPage
-                tasks={tasks}
-                theme={theme}
-                filteredTasks={filteredTasks}
-                changeTheme={this.changeTheme}
-                saveNewTask={this.saveNewTask}
-                saveOrderTasks={this.saveOrderTasks}
-                onKeyDownSubmit={this.onKeyDownSubmit}
-                toggleEditTask={this.toggleEditTask}
-                saveEditTask={this.saveEditTask}
-                onKeyDownEdit={this.onKeyDownEdit}
-                toggleDoneTask={this.toggleDoneTask}
-                removeTask={this.removeTask}
-                filterTasks={this.filterTasks}
-                removeAllCompletedTasks={this.removeAllCompletedTasks}
-              />
-            )}
-          />
-          <Route
-            path="/active"
-            exact
-            render={() => (
-              <ActivePage
-                tasks={tasks}
-                theme={theme}
-                filteredTasks={filteredTasks}
-                changeTheme={this.changeTheme}
-                saveNewTask={this.saveNewTask}
-                saveOrderTasks={this.saveOrderTasks}
-                onKeyDownSubmit={this.onKeyDownSubmit}
-                toggleEditTask={this.toggleEditTask}
-                saveEditTask={this.saveEditTask}
-                onKeyDownEdit={this.onKeyDownEdit}
-                toggleDoneTask={this.toggleDoneTask}
-                removeTask={this.removeTask}
-                filterTasks={this.filterTasks}
-                removeAllCompletedTasks={this.removeAllCompletedTasks}
-              />
-            )}
-          />
-          <Route
-            path="/complete"
-            exact
-            render={() => (
-              <CompletePage
-                tasks={tasks}
-                theme={theme}
-                filteredTasks={filteredTasks}
-                changeTheme={this.changeTheme}
-                saveNewTask={this.saveNewTask}
-                saveOrderTasks={this.saveOrderTasks}
-                onKeyDownSubmit={this.onKeyDownSubmit}
-                toggleEditTask={this.toggleEditTask}
-                saveEditTask={this.saveEditTask}
-                onKeyDownEdit={this.onKeyDownEdit}
-                toggleDoneTask={this.toggleDoneTask}
-                removeTask={this.removeTask}
-                filterTasks={this.filterTasks}
-                removeAllCompletedTasks={this.removeAllCompletedTasks}
-              />
-            )}
-          />
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={(routeProps) => (
+                <AllPage
+                  {...routeProps}
+                  tasks={tasks}
+                  theme={theme}
+                  filteredTasks={filteredTasks}
+                  changeTheme={this.changeTheme}
+                  saveNewTask={this.saveNewTask}
+                  saveOrderTasks={this.saveOrderTasks}
+                  onKeyDownSubmit={this.onKeyDownSubmit}
+                  toggleEditTask={this.toggleEditTask}
+                  saveEditTask={this.saveEditTask}
+                  onKeyDownEdit={this.onKeyDownEdit}
+                  toggleDoneTask={this.toggleDoneTask}
+                  removeTask={this.removeTask}
+                  filterTasks={this.filterTasks}
+                  removeAllCompletedTasks={this.removeAllCompletedTasks}
+                />
+              )}
+            />
+            <Route
+              path="/active"
+              exact
+              render={(routeProps) => (
+                <ActivePage
+                  {...routeProps}
+                  tasks={tasks}
+                  theme={theme}
+                  filteredTasks={filteredTasks}
+                  changeTheme={this.changeTheme}
+                  saveNewTask={this.saveNewTask}
+                  saveOrderTasks={this.saveOrderTasks}
+                  onKeyDownSubmit={this.onKeyDownSubmit}
+                  toggleEditTask={this.toggleEditTask}
+                  saveEditTask={this.saveEditTask}
+                  onKeyDownEdit={this.onKeyDownEdit}
+                  toggleDoneTask={this.toggleDoneTask}
+                  removeTask={this.removeTask}
+                  filterTasks={this.filterTasks}
+                  removeAllCompletedTasks={this.removeAllCompletedTasks}
+                />
+              )}
+            />
+            <Route
+              path="/complete"
+              exact
+              render={(routeProps) => (
+                <CompletePage
+                  {...routeProps}
+                  tasks={tasks}
+                  theme={theme}
+                  filteredTasks={filteredTasks}
+                  changeTheme={this.changeTheme}
+                  saveNewTask={this.saveNewTask}
+                  saveOrderTasks={this.saveOrderTasks}
+                  onKeyDownSubmit={this.onKeyDownSubmit}
+                  toggleEditTask={this.toggleEditTask}
+                  saveEditTask={this.saveEditTask}
+                  onKeyDownEdit={this.onKeyDownEdit}
+                  toggleDoneTask={this.toggleDoneTask}
+                  removeTask={this.removeTask}
+                  filterTasks={this.filterTasks}
+                  removeAllCompletedTasks={this.removeAllCompletedTasks}
+                />
+              )}
+            />
+            <Route path="*">
+              <p>error 404</p>
+            </Route>
+          </Switch>
         </Router>
       </ThemeProvider>
     );

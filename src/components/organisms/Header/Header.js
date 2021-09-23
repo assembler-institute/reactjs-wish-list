@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Toggle } from "../../../components/atoms";
 
 const Title = styled.h1`
-  color: white;
-  letter-spacing: 3px;
+  color: #2E2E2E;
+  letter-spacing: 2px;
   font-size: 4rem;
   font-weight: bold;
 `;
@@ -13,7 +13,7 @@ const HeaderComponent = styled.header`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding-top: 12rem;
+  padding-top: 8rem;
   max-width: 600px;
   box-shadow: none;
   margin: 0 auto;
