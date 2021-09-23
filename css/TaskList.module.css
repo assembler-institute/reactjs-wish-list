@@ -1,0 +1,9 @@
+.taskList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border-radius: 5px;
+  width: 514px;
+  height: auto;
+}/*# sourceMappingURL=TaskList.module.css.map */

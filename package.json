@@ -20,10 +20,15 @@
     "clsx": "^1.1.1",
     "cypress": "^7.5.0",
     "formik": "^2.2.6",
+<<<<<<< HEAD
+=======
+    "lodash": "^4.17.21",
+>>>>>>> test
     "node-sass": "^6.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",

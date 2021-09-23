@@ -1,0 +1,11 @@
+.editButton {
+  border: none;
+  background: none;
+  font-size: 1rem;
+  color: grey;
+  padding: 0;
+}
+
+.editButton:hover {
+  color: teal;
+}/*# sourceMappingURL=EditButton.module.css.map */
