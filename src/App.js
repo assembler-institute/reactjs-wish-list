@@ -1,23 +1,13 @@
 import { Component } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import background from "./img/mountains.jpg";
 import { themes } from "./themes";
 import * as api from "./api";
-// import { Home } from "./pages";
-import { HomeTemplate } from "./components/templates";
+
+import { AllPage, ActivePage, CompletePage } from "./components/pages";
 
 import "./App.scss";
-
-const Header = styled.header`
-  position: absolute;
-  & img{
-    height:250px;
-    filter:blur(1px);
-    width:100%;
-    width: 100vw;
-  }
-  `;
 
 const LOCAL_STORAGE_KEY = "reactjs-todo-list";
 
@@ -233,39 +223,74 @@ class App extends Component {
 
     return (
       <ThemeProvider theme={themes[theme]}>
-        <Header >
-          <img src={background}></img>
-        </Header>
-        {/* <Home
-          tasks={tasks}
-          filteredTasks={filteredTasks}
-          changeTheme={this.changeTheme}
-          saveNewTask={this.saveNewTask}
-          saveOrderTasks={this.saveOrderTasks}
-          onKeyDownSubmit={this.onKeyDownSubmit}
-          toggleEditTask={this.toggleEditTask}
-          saveEditTask={this.saveEditTask}
-          onKeyDownEdit={this.onKeyDownEdit}
-          toggleDoneTask={this.toggleDoneTask}
-          removeTask={this.removeTask}
-          filterTasks={this.filterTasks}
-          removeAllCompletedTasks={this.removeAllCompletedTasks}
-        /> */}
-        <HomeTemplate
-          tasks={tasks}
-          filteredTasks={filteredTasks}
-          changeTheme={this.changeTheme}
-          saveNewTask={this.saveNewTask}
-          saveOrderTasks={this.saveOrderTasks}
-          onKeyDownSubmit={this.onKeyDownSubmit}
-          toggleEditTask={this.toggleEditTask}
-          saveEditTask={this.saveEditTask}
-          onKeyDownEdit={this.onKeyDownEdit}
-          toggleDoneTask={this.toggleDoneTask}
-          removeTask={this.removeTask}
-          filterTasks={this.filterTasks}
-          removeAllCompletedTasks={this.removeAllCompletedTasks}
-        />
+        <Router>
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <AllPage
+                tasks={tasks}
+                theme={theme}
+                filteredTasks={filteredTasks}
+                changeTheme={this.changeTheme}
+                saveNewTask={this.saveNewTask}
+                saveOrderTasks={this.saveOrderTasks}
+                onKeyDownSubmit={this.onKeyDownSubmit}
+                toggleEditTask={this.toggleEditTask}
+                saveEditTask={this.saveEditTask}
+                onKeyDownEdit={this.onKeyDownEdit}
+                toggleDoneTask={this.toggleDoneTask}
+                removeTask={this.removeTask}
+                filterTasks={this.filterTasks}
+                removeAllCompletedTasks={this.removeAllCompletedTasks}
+              />
+            )}
+          />
+          <Route
+            path="/active"
+            exact
+            render={() => (
+              <ActivePage
+                tasks={tasks}
+                theme={theme}
+                filteredTasks={filteredTasks}
+                changeTheme={this.changeTheme}
+                saveNewTask={this.saveNewTask}
+                saveOrderTasks={this.saveOrderTasks}
+                onKeyDownSubmit={this.onKeyDownSubmit}
+                toggleEditTask={this.toggleEditTask}
+                saveEditTask={this.saveEditTask}
+                onKeyDownEdit={this.onKeyDownEdit}
+                toggleDoneTask={this.toggleDoneTask}
+                removeTask={this.removeTask}
+                filterTasks={this.filterTasks}
+                removeAllCompletedTasks={this.removeAllCompletedTasks}
+              />
+            )}
+          />
+          <Route
+            path="/complete"
+            exact
+            render={() => (
+              <CompletePage
+                tasks={tasks}
+                theme={theme}
+                filteredTasks={filteredTasks}
+                changeTheme={this.changeTheme}
+                saveNewTask={this.saveNewTask}
+                saveOrderTasks={this.saveOrderTasks}
+                onKeyDownSubmit={this.onKeyDownSubmit}
+                toggleEditTask={this.toggleEditTask}
+                saveEditTask={this.saveEditTask}
+                onKeyDownEdit={this.onKeyDownEdit}
+                toggleDoneTask={this.toggleDoneTask}
+                removeTask={this.removeTask}
+                filterTasks={this.filterTasks}
+                removeAllCompletedTasks={this.removeAllCompletedTasks}
+              />
+            )}
+          />
+        </Router>
       </ThemeProvider>
     );
   }

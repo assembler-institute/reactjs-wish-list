@@ -1,13 +1,25 @@
 import { DragDropContext } from "react-beautiful-dnd";
 import styled from "styled-components";
 
-import { Main } from "../../../components";
 import { NewTaskForm } from "../../../components/molecules";
 import { TasksList, Header } from "../../../components/organisms";
+
+import background from "../../../img/mountains.jpg";
 
 Array.prototype.move = function (from, to) {
   this.splice(to, 0, this.splice(from, 1)[0]);
 };
+
+const BgImage = styled.header`
+  position: absolute;
+
+  img{
+    height:250px;
+    filter:blur(1px);
+    width:100%;
+    width: 100vw;
+  }
+`;
 
 const Section = styled.section`
   margin: 0 auto;
@@ -34,6 +46,15 @@ const Footer = styled.p`
   margin-bottom: 5rem;
 `;
 
+const Main = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: ${props => props.theme.pageBackground};
+  transition: all .5s ease;
+`;
+
 function HomeTemplate({
   tasks,
   theme,
@@ -51,7 +72,10 @@ function HomeTemplate({
   removeAllCompletedTasks,
 }) {
   return (
-    <div className="container pt-5">
+    <>
+      <BgImage >
+        <img src={background}></img>
+      </BgImage>
       <Header
         changeTheme={changeTheme}
         theme={theme}
@@ -89,7 +113,7 @@ function HomeTemplate({
         </Section>
       </Main>
       <Footer>Drag and drop to reorder list</Footer>
-    </div>
+    </>
   );
 }
 
