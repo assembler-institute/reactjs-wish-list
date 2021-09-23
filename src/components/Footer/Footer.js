@@ -5,6 +5,16 @@ import Button from "../FooterButton/FooterButton";
 import { Link } from "react-router-dom";
 
 class Footer extends Component {
+  constructor(props) {
+    super(props);
+    this.clearCompleted = this.clearCompleted.bind(this);
+  }
+
+  clearCompleted() {
+    const { clearCompletedTasks } = this.props;
+    return clearCompletedTasks();
+  }
+
   render() {
     return (
       <div className="footer">
@@ -20,7 +30,11 @@ class Footer extends Component {
             <Button type="button" value="Completed" />
           </Link>
         </div>
-        <Button type="button" value="Clear Completed" />
+        <Button
+          type="button"
+          value="Clear Completed"
+          onClick={this.clearCompleted}
+        />
       </div>
     );
   }

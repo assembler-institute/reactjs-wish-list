@@ -23,6 +23,7 @@ class App extends Component {
     this.removeTask = this.removeTask.bind(this);
     this.completeTask = this.completeTask.bind(this);
     //TODO this.editTask = this.editTask.bind(this);
+    this.clearCompletedTasks = this.clearCompletedTasks.bind(this);
   }
 
   saveNewTasks(tasks) {
@@ -32,6 +33,16 @@ class App extends Component {
   }
 
   //TODO editTask(id) {}
+
+  clearCompletedTasks() {
+    const { tasks } = this.state;
+    console.log("hello");
+    const retrieve = tasks.filter((el) => el.isFinished === false);
+    localStorage.setItem(`list`, JSON.stringify(retrieve));
+    this.setState({
+      tasks: retrieve,
+    });
+  }
 
   completeTask(id) {
     const { tasks } = this.state;
@@ -99,7 +110,7 @@ class App extends Component {
                   </Route>
                 </Switch>
               </div>
-              <Footer />
+              <Footer clearCompletedTasks={this.clearCompletedTasks} />
             </div>
           </section>
         </main>

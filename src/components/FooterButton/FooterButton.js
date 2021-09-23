@@ -5,7 +5,13 @@ export default class FooterButton extends Component {
     super(props);
   }
   render() {
-    const { value } = this.props;
+    const { value, onClick } = this.props;
+    if (onClick)
+      return (
+        <button onClick={onClick} type="button">
+          {value}
+        </button>
+      );
     return <button type="button">{value}</button>;
   }
 }
