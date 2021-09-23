@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Filters = styled.button`
+const FilterButton = styled.button`
   color: grey;
   background: white;
   border: none;
@@ -26,44 +26,44 @@ const FooterFilters = styled.footer`
   padding: 0em 2rem 1rem 2rem;
 `;
 
-function Footer({ filteredTasks, filterTasks, removeAllCompletedTasks }) {
+function Filters({ filteredTasks, filterTasks, removeAllCompletedTasks }) {
   return (
     <FooterFilters>
       <div className="d-flex justify-content-between pt-3">
         <p>{filteredTasks.length} items</p>
         <div>
-          <Filters
+          <FilterButton
             className="btn btn-secondary"
             name="all"
             onClick={(e) => filterTasks(e.target.name)}
           >
             All
-          </Filters>
-          <Filters
+          </FilterButton>
+          <FilterButton
             className="btn btn-secondary"
             name="active"
             onClick={(e) => filterTasks(e.target.name)}
           >
             Active
-          </Filters>
-          <Filters
+          </FilterButton>
+          <FilterButton
             className="btn btn-secondary"
             name="complete"
             onClick={(e) => filterTasks(e.target.name)}
           >
             Complete
-          </Filters>
+          </FilterButton>
         </div>
-        <Filters
+        <FilterButton
           className="btn btn-secondary"
           name="clear"
           onClick={(e) => removeAllCompletedTasks(e)}
         >
           Clear completed
-        </Filters>
+        </FilterButton>
       </div>
     </FooterFilters>
   );
 }
 
-export default Footer;
+export default Filters;

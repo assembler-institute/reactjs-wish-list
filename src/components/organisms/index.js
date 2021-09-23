@@ -1,5 +1,7 @@
 import TasksList from './TasksList';
+import Header from './Header';
 
 export {
-  TasksList
+  TasksList,
+  Header
 }
