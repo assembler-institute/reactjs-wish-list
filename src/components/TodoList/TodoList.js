@@ -34,6 +34,11 @@ class TodoList extends Component {
     });
   };
 
+  onDelete = (id) => {
+    this.setState({
+      todos: this.state.todos.filter(item => item.id !== id)
+    })
+  }
   deleteCompleted = () => {
     this.setState({
       todos: this.state.todos.filter((notDelete) => !notDelete.completed),
@@ -68,7 +73,7 @@ class TodoList extends Component {
               >
                 {item.text}
               </label>
-              <button>X</button>
+              <button onClick={() => this.onDelete(item.id)}>X</button>
             </li>
           ))}
         </ul>
