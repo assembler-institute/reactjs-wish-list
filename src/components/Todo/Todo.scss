@@ -1,7 +1,15 @@
 .finished {
   background-color: lightcyan;
-  p {
+  .todo__text {
     text-decoration: line-through;
-    color: lighten($color: #000000, $amount: 50%);
+    color: lighten($color: rgb(105, 102, 102), $amount: 30%);
   }
+}
+
+.todo__text {
+  font-size: 1.2rem;
+}
+
+.todo__check {
+  cursor: pointer;
 }

@@ -1,21 +1,28 @@
 import React, { Component } from "react";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 import img from "./img/header-light-mode-background-image.jpeg";
 import DarkMode from "./components/DarkMode";
 import "./main.scss";
 import NewTodo from "./components/NewTodo";
-import TodoList from "./components/TodoList/TodoList";
-import NoTodo from "./components/NoTodo/NoTodo";
 import Footer from "./components/Footer/Footer";
+import Completed from "./components/Completed/Completed";
+import Home from "./components/Home/Home";
+import Active from "./components/Active/Active";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [],
+      tasks: JSON.parse(localStorage.getItem(`list`))
+        ? JSON.parse(localStorage.getItem(`list`))
+        : [],
     };
     this.saveNewTasks = this.saveNewTasks.bind(this);
     this.removeTask = this.removeTask.bind(this);
     this.completeTask = this.completeTask.bind(this);
+    //TODO this.editTask = this.editTask.bind(this);
   }
 
   saveNewTasks(tasks) {
@@ -23,6 +30,8 @@ class App extends Component {
       tasks: tasks,
     });
   }
+
+  //TODO editTask(id) {}
 
   completeTask(id) {
     const { tasks } = this.state;
@@ -49,7 +58,7 @@ class App extends Component {
   render() {
     const { tasks } = this.state;
     return (
-      <>
+      <Router>
         <div className="background">
           <div className="background--top">
             <img src={img} alt="bg-img" />
@@ -66,21 +75,35 @@ class App extends Component {
             </div>
             <div className="todo__body">
               <div id="todo-list">
-                {tasks[0] ? (
-                  <TodoList
-                    tasks={tasks}
-                    removeTask={this.removeTask}
-                    completeTask={this.completeTask}
-                  />
-                ) : (
-                  <NoTodo /> // Error is here, tasks is read a empty array!
-                )}
+                <Switch>
+                  <Route path="/completed">
+                    <Completed
+                      tasks={tasks}
+                      completeTask={this.completeTask}
+                      removeTask={this.removeTask}
+                    />
+                  </Route>
+                  <Route path="/active">
+                    <Active
+                      tasks={tasks}
+                      completeTask={this.completeTask}
+                      removeTask={this.removeTask}
+                    />
+                  </Route>
+                  <Route path="/">
+                    <Home
+                      tasks={tasks}
+                      completeTask={this.completeTask}
+                      removeTask={this.removeTask}
+                    />
+                  </Route>
+                </Switch>
               </div>
               <Footer />
             </div>
           </section>
         </main>
-      </>
+      </Router>
     );
   }
 }

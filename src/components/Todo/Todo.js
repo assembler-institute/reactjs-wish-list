@@ -34,9 +34,17 @@ export default class Todo extends Component {
           className="todo__check"
           onChange={this.onChange}
           id={id}
+          checked={isFinished === true && true}
         />
-        <p>{title}</p>
-        <button id={id} onClick={this.onClick} type="button">
+        <button type="button" className="todo__text">
+          {title}
+        </button>
+        <button
+          className="todo__remove"
+          id={id}
+          onClick={this.onClick}
+          type="button"
+        >
           X
         </button>
       </li>
