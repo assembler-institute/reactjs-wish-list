@@ -9,23 +9,24 @@ export default function TaskFooter({ setStatus, toDoItem, setTodoItem }) {
     setStatus(e.target.value);
   };
 
+  // Delete completed tasks
   const clearCompleteHandler = () => {
     // eslint-disable-next-line
     console.log(toDoItem);
     setTodoItem(toDoItem.filter((item) => item.done === false));
   };
 
-  // const itemLeftCounter = () => {
-  //   console.log(toDoItem.length);
-  // };
-
-  // itemLeftCounter();
+  // Count active tasks
+  const itemLeftCounter = () => {
+    const list = toDoItem.filter((item) => item.done === false).length;
+    return list;
+  };
 
   return (
     <>
       <div>
         <ul className={styles.taskFooter}>
-          <li>Items left</li>
+          <li>{itemLeftCounter()} Items left</li>
           <li>
             <button type="button" value="all" onClick={filterHandler}>
               All

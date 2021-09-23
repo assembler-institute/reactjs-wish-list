@@ -11,7 +11,7 @@ export default function ToDoContainer() {
   const [toDoItem, setTodoItem] = useState([]);
 
   // Edit Item
-  // toDoEdit will be the id of the item needed to be editted
+  // toDoEdit will be the id of the item needed to be edited
   // const [toDoEdit, setTodoEdit] = useState(null);
   // const [textEdit, setTextEdit] = useState("");
 
