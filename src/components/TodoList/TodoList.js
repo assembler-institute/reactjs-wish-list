@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./TodoList.scss";
-import saveNewTask from "../../App";
 
 import Todo from "../Todo/Todo";
 
@@ -28,6 +27,5 @@ export default class TodoList extends Component {
         })}
       </ul>
     );
-    saveNewTask();
   }
 }
