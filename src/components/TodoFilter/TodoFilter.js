@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "./TodoFilter.scss";
 
@@ -15,25 +15,23 @@ export default class TodoFilter extends Component {
 
   render() {
     return (
-      <Router>
-        <ul className="todo-filter">
-          <li className="todo-link">
-            <NavLink exact to="/" className="todo-filter__link" activeClassName="todo-filter__link--selected">
-              All
-            </NavLink>
-          </li>
-          <li className="todo-link">
-            <NavLink to="/active" className="todo-filter__link" activeClassName="todo-filter__link--selected">
-              Active
-            </NavLink>
-          </li>
-          <li className="todo-link">
-            <NavLink to="/completed" className="todo-filter__link" activeClassName="todo-filter__link--selected">
-              Completed
-            </NavLink>
-          </li>
-        </ul>
-      </Router>
+      <ul className="todo-filter">
+        <li className="todo-link">
+          <NavLink exact to="/" className="todo-filter__link" activeClassName="todo-filter__link--selected">
+            All
+          </NavLink>
+        </li>
+        <li className="todo-link">
+          <NavLink to="/active" className="todo-filter__link" activeClassName="todo-filter__link--selected">
+            Active
+          </NavLink>
+        </li>
+        <li className="todo-link">
+          <NavLink to="/completed" className="todo-filter__link" activeClassName="todo-filter__link--selected">
+            Completed
+          </NavLink>
+        </li>
+      </ul>
     );
   }
 }

@@ -7,6 +7,7 @@ import TodoList from "./components/TodoList";
 import TodoFooter from "./components/TodoFooter";
 
 import "./App.scss";
+import { Route } from "react-router";
 
 const LOCAL_STORAGE_KEY = "react-todos";
 
@@ -24,6 +25,7 @@ class App extends Component {
     this.setDoneTodo = this.setDoneTodo.bind(this);
     this.isEditingTodo = this.isEditingTodo.bind(this);
     this.clearDoneTodos = this.clearDoneTodos.bind(this);
+    this.getTodos = this.getTodos.bind(this);
   }
 
   componentDidMount() {
@@ -131,22 +133,38 @@ class App extends Component {
     }));
   }
 
-  render() {
+  getTodos(pathname) {
     const { todos } = this.state;
 
+    if (pathname === "/active") return todos.filter((item) => !item.done);
+    if (pathname === "/completed") return todos.filter((item) => item.done);
+
+    return todos;
+  }
+
+  render() {
     return (
       <main className="container-sm container-md mx-auto p-5 flex flex-column gap-5">
         <h1 className="m-0">TODO</h1>
         <TodoCreateForm handleAddTodo={this.addTodo} />
         <section className="todo-container">
-          <TodoList
-            todos={todos}
-            handleDelete={this.deleteTodo}
-            handleSetDone={this.setDoneTodo}
-            handleSetText={this.setTextTodo}
-            handleIsEditing={this.isEditingTodo}
+          <Route
+            path="/"
+            render={(routeProps) => {
+              const todos = this.getTodos(routeProps.location.pathname);
+
+              return (
+                <TodoList
+                  todos={todos}
+                  handleDelete={this.deleteTodo}
+                  handleSetDone={this.setDoneTodo}
+                  handleSetText={this.setTextTodo}
+                  handleIsEditing={this.isEditingTodo}
+                />
+              );
+            }}
           />
-          <TodoFooter count={todos.length} handleClear={this.clearDoneTodos} />
+          <TodoFooter count={this.getTodos("/active").length} handleClear={this.clearDoneTodos} />
         </section>
       </main>
     );
