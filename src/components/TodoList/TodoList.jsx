@@ -1,5 +1,6 @@
 import React from "react"
 import TodoItem from "../TodoItem"
+import TodoItemEditing from "../TodoItemEditing"
 import "./TodoList.scss"
 
 export default class TodoList extends React.Component {
@@ -11,11 +12,12 @@ export default class TodoList extends React.Component {
   
 
   render() {
-    const { todos, handleDelete, handleCheckbox } = this.props
+    const { todos, handleDelete, handleCheckbox, handleEdit, handleEditName } = this.props
     return (
       <ul data-testid="todos-list" className="w-100 mt-4 bg-white todo-list">
         {todos.map(todo => {
-          return <TodoItem handleDelete={handleDelete} handleCheckbox={handleCheckbox} key={todo.id} todo={todo}  />
+          { if (todo.isEditing === false) return <TodoItem handleDelete={handleDelete} handleCheckbox={handleCheckbox} handleEdit={handleEdit} key={todo.id} todo={todo} />
+            else if (todo.isEditing === true) return <TodoItemEditing handleEdit={handleEdit} handleEditName={handleEditName} key={todo.id} todo={todo} />}
         })}
       </ul>
     )

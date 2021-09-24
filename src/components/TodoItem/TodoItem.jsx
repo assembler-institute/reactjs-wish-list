@@ -17,9 +17,10 @@ export default class TodoItem extends React.Component {
   }
 
   handleEditTask() {
-    console.log("Hello");
+    const { handleEdit } = this.props
+    const {id} = this.props.todo
+    handleEdit(id);
   }
-
 
   handleCheckboxTask() {
     const {todo, handleCheckbox} = this.props;

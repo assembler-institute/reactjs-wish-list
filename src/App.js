@@ -18,6 +18,8 @@ class App extends React.Component {
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.handleEdit = this.handleEdit.bind(this)
+    this.handleEditName = this.handleEditName.bind(this)
   }
 
   handleCheckbox(todo) {
@@ -29,7 +31,31 @@ class App extends React.Component {
     let newTodoList = this.state.todos.map((prevTodo) => {
       return prevTodo.id === todo.id ? test : prevTodo;
     });
-    console.log(newTodoList);
+    // console.log(newTodoList);
+    this.setState({ todos: newTodoList });
+  }
+
+  handleEdit(id) {
+    let test = this.state.todos.find((stateTodo) => {
+      return stateTodo.id === id;
+    });
+    test.isEditing = !test.isEditing;
+
+    let newTodoList = this.state.todos.map((prevTodo) => {
+      return prevTodo.id === id ? test : prevTodo;
+    });
+    this.setState({ todos: newTodoList });
+  }
+
+  handleEditName(id, newTask) {
+    let test = this.state.todos.find((stateTodo) => {
+      return stateTodo.id === id;
+    });
+    test.task = newTask
+
+    let newTodoList = this.state.todos.map((prevTodo) => {
+      return prevTodo.id === id ? test : prevTodo;
+    });
     this.setState({ todos: newTodoList });
   }
 
@@ -62,6 +88,7 @@ class App extends React.Component {
         id: new Date().getTime(),
         task: task,
         completed: false,
+        isEditing: false,
       };
 
       this.setState((prevState) => ({
@@ -114,10 +141,11 @@ class App extends React.Component {
                   <div className="list-container bg-white shadow">
                     <TodoList
                       handleCheckbox={this.handleCheckbox}
+                      handleEdit={this.handleEdit}
+                      handleEditName={this.handleEditName}
                       todos={todos}
                       handleDelete={this.handleDelete}
                     />
-                    <input type="text" />
                     <Menu todos={todos} />
                   </div>
                 ) : (
