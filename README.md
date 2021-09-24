@@ -388,3 +388,10 @@ Create unique key:
 - uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
 
 - https://css-tricks.com/a-dark-mode-toggle-with-react-and-themeprovider/
+
+- https://dev.to/joelynn/how-to-build-a-react-crud-todo-app-edit-todo-46g6
+
+- https://www.youtube.com/watch?v=aZGzwEjZrXc
+- https://www.youtube.com/watch?v=Law7wfdg_ls
+
+- https://blog.logrocket.com/react-router-dom-tutorial-examples/

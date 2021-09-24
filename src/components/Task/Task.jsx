@@ -23,6 +23,7 @@ export default function Task({
     const editedList = toDoItem.map((task) => {
       if (task.id === item.id) {
         task.text = newName; // eslint-disable-line no-param-reassign
+        task.isEditing = true; // eslint-disable-line no-param-reassign
       }
       return task;
     });
@@ -33,7 +34,7 @@ export default function Task({
 
   const editView = (
     <>
-      <li className="task">
+      <li className="task" key={item.id}>
         <form className="form-edit" onSubmit={handleNameChangeSubmit}>
           <input
             id={item.id}
@@ -58,7 +59,7 @@ export default function Task({
     return editView;
   }
   return (
-    <li className="task" data-testid="todo-item">
+    <li className="task" data-testid="todo-item" key={item.id}>
       <label htmlFor="checkbox" className={`title ${item.done ? "done" : ""}`}>
         {/* <input type="checkbox" /> */}
         <CheckButton
@@ -69,7 +70,11 @@ export default function Task({
         {text}
       </label>
       <div className="taskControllers">
-        <EditButton setEditing={setEditing} item={item} />
+        <EditButton
+          setEditing={setEditing}
+          item={item}
+          setNewName={setNewName}
+        />
         <RemoveButton
           toDoItem={toDoItem}
           setToDoItem={setToDoItem}
