@@ -3,14 +3,13 @@ import React from "react";
 import { FaEdit } from "react-icons/fa";
 import styles from "./EditButton.module.scss";
 
-export default function EditButton() {
-  const editHandler = () => {
-    // eslint-disable-next-line
-    console.log("check");
+export default function EditButton({ setEditing }) {
+  const openEditView = () => {
+    setEditing(true);
   };
   return (
     <button type="button" className={styles.editButton}>
-      <FaEdit onClick={editHandler} />
+      <FaEdit onClick={openEditView} />
     </button>
   );
 }

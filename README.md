@@ -378,3 +378,13 @@ Thanks goes to these wonderful people
 This project follows the
 [all-contributors](https://github.com/all-contributors/all-contributors)
 specification. Contributions of any kind welcome!
+
+- Repo: https://github.com/E-Hidalgo/reactjs-todo-list
+
+Create unique key:
+
+- npm install uuid
+- import { v4 as uuidv4 } from 'uuid';
+- uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
+
+- https://css-tricks.com/a-dark-mode-toggle-with-react-and-themeprovider/

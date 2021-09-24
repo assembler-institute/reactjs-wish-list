@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
-import styles from "./FormToDo.module.scss"
+import { v4 as uuidv4 } from 'uuid';
+import styles from "./FormToDo.module.scss";
 
 function FormToDo({
   newInput,
@@ -11,14 +12,12 @@ function FormToDo({
 
   const handleChange = e => {
     setNewInput(e.target.value)
-    // eslint-disable-next-line no-console
-    console.log(newInput)
   }
 
   const handleSubmit = e => {
     e.preventDefault();
     setTodoItem([...toDoItem, {
-      id: Math.random() * 1000,
+      id: uuidv4(),
       text: newInput,
       done: false,
       isEditing: false,
@@ -31,6 +30,7 @@ function FormToDo({
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <input
+        data-testid="create-todo-input"
         className="form__addTask"
         type="text"
         placeholder="Add a To-Do"

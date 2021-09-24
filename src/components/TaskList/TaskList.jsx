@@ -6,15 +6,15 @@ import styles from "./TaskList.module.scss";
 export default function TaskList({
   toDoItem,
   setTodoItem,
-  toDoEdit,
-  setTodoEdit,
-  textEdit,
-  setTextEdit,
   filterTodoItem,
+  isEditing,
+  setEditing,
+  newName,
+  setNewName,
 }) {
   return (
     <>
-      <ul className={styles.taskList}>
+      <ul className={styles.taskList} data-testid="todos-list">
         {filterTodoItem.map((item) => (
           /* eslint-disable*/
           <Task
@@ -23,10 +23,10 @@ export default function TaskList({
             toDoItem={toDoItem}
             setToDoItem={setTodoItem}
             item={item}
-            toDoEdit={toDoEdit}
-            setTodoEdit={setTodoEdit}
-            textEdit={textEdit}
-            setTextEdit={setTextEdit}
+            isEditing={isEditing}
+            setEditing={setEditing}
+            newName={newName}
+            setNewName={setNewName}
           />
         )
         )}

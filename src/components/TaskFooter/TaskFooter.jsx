@@ -4,15 +4,11 @@ import styles from "./TaskFooter.module.scss";
 
 export default function TaskFooter({ setStatus, toDoItem, setTodoItem }) {
   const filterHandler = (e) => {
-    // eslint-disable-next-line
-    console.log(e.target.value);
     setStatus(e.target.value);
   };
 
   // Delete completed tasks
   const clearCompleteHandler = () => {
-    // eslint-disable-next-line
-    console.log(toDoItem);
     setTodoItem(toDoItem.filter((item) => item.done === false));
   };
 
@@ -24,7 +20,7 @@ export default function TaskFooter({ setStatus, toDoItem, setTodoItem }) {
 
   return (
     <>
-      <div>
+      <footer data-testid="app-footer">
         <ul className={styles.taskFooter}>
           <li>{itemLeftCounter()} Items left</li>
           <li>
@@ -43,12 +39,16 @@ export default function TaskFooter({ setStatus, toDoItem, setTodoItem }) {
             </button>
           </li>
           <li>
-            <button type="button" onClick={clearCompleteHandler}>
+            <button
+              type="button"
+              onClick={clearCompleteHandler}
+              data-testid="clear-completed-todos"
+            >
               Clear Complete
             </button>
           </li>
         </ul>
-      </div>
+      </footer>
     </>
   );
 }

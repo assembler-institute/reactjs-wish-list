@@ -9,10 +9,56 @@ export default function Task({
   item,
   toDoItem,
   setToDoItem,
-  setTodoEdit,
+  isEditing,
+  setEditing,
+  newName,
+  setNewName,
 }) {
+  const handleNameChange = (e) => {
+    setNewName(e.target.value);
+  };
+
+  const handleNameChangeSubmit = (e) => {
+    e.preventDefault();
+    const editedList = toDoItem.map((task) => {
+      if (task.id === item.id) {
+        task.text = newName; // eslint-disable-line no-param-reassign
+      }
+      return task;
+    });
+    setToDoItem(editedList);
+    setNewName("");
+    setEditing(false);
+  };
+
+  const editView = (
+    <>
+      <li className="task">
+        <form className="form-edit" onSubmit={handleNameChangeSubmit}>
+          <input
+            id={item.id}
+            className="todo-text"
+            type="text"
+            placeholder={item.text}
+            onChange={handleNameChange}
+            data-testid="todo-item-input"
+          />
+          <button
+            type="button"
+            className="btn todo-cancel"
+            onClick={() => setEditing(false)}
+          >
+            Cancel
+          </button>
+        </form>
+      </li>
+    </>
+  );
+  if (isEditing) {
+    return editView;
+  }
   return (
-    <li className="task">
+    <li className="task" data-testid="todo-item">
       <label htmlFor="checkbox" className={`title ${item.done ? "done" : ""}`}>
         {/* <input type="checkbox" /> */}
         <CheckButton
@@ -23,7 +69,7 @@ export default function Task({
         {text}
       </label>
       <div className="taskControllers">
-        <EditButton setTodoEdit={setTodoEdit} />
+        <EditButton setEditing={setEditing} item={item} />
         <RemoveButton
           toDoItem={toDoItem}
           setToDoItem={setToDoItem}
