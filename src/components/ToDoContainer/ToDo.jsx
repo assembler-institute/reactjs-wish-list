@@ -10,22 +10,22 @@ export default function ToDoContainer() {
   const [newInput, setNewInput] = useState("");
   const [toDoItem, setTodoItem] = useState([]);
 
-  // Edit Item
-  // toDoEdit will be the id of the item needed to be editted
-  // const [toDoEdit, setTodoEdit] = useState(null);
-  // const [textEdit, setTextEdit] = useState("");
+  // Edit Item State
+  const [isEditing, setEditing] = useState(false);
+  const [newName, setNewName] = useState("");
 
-  // Filter Item
+  // Filter Item State
   const [status, setStatus] = useState("all");
   const [filterTodoItem, setFilterTodoItem] = useState([]);
+  
 
   const filterTodoHandler = () => {
-    switch(status) {
+    switch (status) {
       case "complete":
         setFilterTodoItem(toDoItem.filter((item) => item.done === true))
         break;
       case "active":
-        setFilterTodoItem(toDoItem.filter((item) => item.done ===  false))
+        setFilterTodoItem(toDoItem.filter((item) => item.done === false))
         break;
       default:
         setFilterTodoItem(toDoItem);
@@ -33,38 +33,51 @@ export default function ToDoContainer() {
     }
   }
 
-  // Use Effect 
+  // Use Effect to run function when state changes
   useEffect(() => {
     filterTodoHandler();
   }, [toDoItem, status]);
 
   // Local storage
   // const saveToLocalStorage = () => {
-  //   localStorage.setItem("toDoItem", JSON.stringify(toDoItem));
+  //   localStorage.setItem("reactjs-todo-list", JSON.stringify(toDoItem));
   // };
 
   // const getFromLocalStorage = () => {
-  //   if (localStorage.getItem("toDoItem") === null) {
-  //     localStorage.setItem("toDoItem", JSON.stringify(toDoItem));
+  //   if (localStorage.getItem("reactjs-todo-list") === null) {
+  //     localStorage.setItem("reactjs-todo-list", JSON.stringify(toDoItem));
   //   } else {
-  //     const toDoItemLocal = JSON.parse(localStorage.getItem("toDoItem"));
+  //     const toDoItemLocal = JSON.parse(localStorage.getItem("reactjs-todo-list"));
   //     setTodoItem(toDoItemLocal);
   //   }
   // };
 
   // // Run Effect
   // useEffect(() => {
-  //   getFromLocalStorage();
+  //    getFromLocalStorage();
   // }, []);
 
   return (
-    <div className={styles.listContainer}>
-      <FormToDo newInput={newInput} setNewInput={setNewInput} toDoItem={toDoItem} setTodoItem={setTodoItem}/>
-      <TaskList toDoItem={toDoItem} setTodoItem={setTodoItem} filterTodoItem={filterTodoItem}/>
-      <TaskFooter 
+    <section className={styles.listContainer}>
+      <FormToDo
+        newInput={newInput}
+        setNewInput={setNewInput}
+        toDoItem={toDoItem}
+        setTodoItem={setTodoItem} />
+      <TaskList
+        toDoItem={toDoItem}
+        setTodoItem={setTodoItem}
+        filterTodoItem={filterTodoItem}
+        isEditing={isEditing}
+        setEditing={setEditing}
+        newName={newName}
+        setNewName={setNewName}/>
+      <TaskFooter
         status={status}
         setStatus={setStatus}
+        setTodoItem={setTodoItem}
+        toDoItem={toDoItem}
       />
-    </div>
+    </section>
   );
 }

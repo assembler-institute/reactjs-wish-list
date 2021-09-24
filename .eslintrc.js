@@ -14,6 +14,7 @@ module.exports = {
     "plugin:jsx-a11y/recommended",
     "prettier",
     "plugin:cypress/recommended",
+    "plugin:react/recommended",
   ],
   parser: "@babel/eslint-parser",
   parserOptions: {

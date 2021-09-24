@@ -2,23 +2,27 @@
 import React from "react";
 import styles from "./TaskFooter.module.scss";
 
-export default function TaskFooter({ setStatus }) {
+export default function TaskFooter({ setStatus, toDoItem, setTodoItem }) {
   const filterHandler = (e) => {
-    // eslint-disable-next-line
-    console.log(e.target.value);
     setStatus(e.target.value);
   };
 
+  // Delete completed tasks
   const clearCompleteHandler = () => {
-    // eslint-disable-next-line
-    console.log("click");
+    setTodoItem(toDoItem.filter((item) => item.done === false));
+  };
+
+  // Count active tasks
+  const itemLeftCounter = () => {
+    const list = toDoItem.filter((item) => item.done === false).length;
+    return list;
   };
 
   return (
     <>
-      <div>
+      <footer data-testid="app-footer">
         <ul className={styles.taskFooter}>
-          <li>Items left</li>
+          <li>{itemLeftCounter()} Items left</li>
           <li>
             <button type="button" value="all" onClick={filterHandler}>
               All
@@ -35,12 +39,16 @@ export default function TaskFooter({ setStatus }) {
             </button>
           </li>
           <li>
-            <button type="button" onClick={clearCompleteHandler}>
+            <button
+              type="button"
+              onClick={clearCompleteHandler}
+              data-testid="clear-completed-todos"
+            >
               Clear Complete
             </button>
           </li>
         </ul>
-      </div>
+      </footer>
     </>
   );
 }

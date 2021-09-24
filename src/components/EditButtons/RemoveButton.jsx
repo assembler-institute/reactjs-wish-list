@@ -6,8 +6,6 @@ import styles from "./RemoveButton.module.scss";
 
 export default function RemoveButton({ item, toDoItem, setToDoItem }) {
   const removeHandler = () => {
-    // eslint-disable-next-line
-    console.log(item);
     setToDoItem(toDoItem.filter((el) => el.id !== item.id));
   };
 
@@ -16,6 +14,7 @@ export default function RemoveButton({ item, toDoItem, setToDoItem }) {
       onClick={removeHandler}
       type="button"
       className={styles.removeButton}
+      data-testid="todo-item-delete-button"
     >
       <FaTrashAlt onClick={removeHandler} />
     </button>

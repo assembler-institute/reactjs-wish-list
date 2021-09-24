@@ -4,6 +4,12 @@
   padding: 0;
   background-color: white;
   border-radius: 5px;
-  width: 514px;
+  width: 100%;
   height: auto;
+}
+
+@media (max-width: 560px) {
+  .taskList {
+    width: 100%;
+  }
 }/*# sourceMappingURL=TaskList.module.css.map */

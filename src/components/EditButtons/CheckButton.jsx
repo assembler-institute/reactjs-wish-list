@@ -6,8 +6,6 @@ import styles from "./CheckButton.module.scss";
 
 export default function CheckButton({ item, toDoItem, setToDoItem }) {
     const checkHandler = () => {
-        // eslint-disable-next-line
-        console.log(item);
         setToDoItem(
             toDoItem.map((element) => {
                 if (element.id === item.id) {
@@ -24,6 +22,7 @@ export default function CheckButton({ item, toDoItem, setToDoItem }) {
         <button
         type="button"
         className={styles.checkButton}
+        data-testid="todo-item-checkbox"
         >
         <FaLaughBeam onClick={checkHandler} />
         </button>
