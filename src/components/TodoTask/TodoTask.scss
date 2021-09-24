@@ -1,0 +1,17 @@
+.todo-task {
+  border: solid;
+
+  &.editing {
+    border-color: red
+  }
+}
+.done {
+
+  border-color: green;
+  opacity: 0.75;
+
+  .input-task {
+    text-decoration: line-through;
+  }
+  
+}

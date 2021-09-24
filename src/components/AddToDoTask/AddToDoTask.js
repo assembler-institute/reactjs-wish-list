@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
-
+import './AddToDoTask.scss'
+import { generateNewKey } from '../../utils/localStorage'
 // Improve the render of the component
 
 export default class AddToDoTask extends React.Component {
@@ -9,48 +10,56 @@ export default class AddToDoTask extends React.Component {
     super(props)
 
     this.state = {
-      id: '',
-      title: 'Default',
-      isEditing: false
-    }
-  }
-
-  componentDidUpdate() {
-    const { defaultValues } = this.props
-    const {text , id} = defaultValues
-    const {title} = this.state
-
-    if (id !== '' && text !== title) {
-      this.updateState({id, text, isEditing: true})
+      title: 'Do the homework...',
+      error: false
     }
   }
 
   formSubmit = (event) => {
     event.preventDefault()
-    
-    const {handlerToDoTask} = this.props
-    handlerToDoTask(this.state)
 
-    this.updateState({})
-  }
+    const {error, title} = this.state
+    const {handlerNewToDo} = this.props
 
-  updateState = ({id = '', text = '', isEditing = false}) => {
-    this.setState({id: id, title: text, isEditing: isEditing})
+    if (!error && title !== '') {
+
+      const key = generateNewKey()
+      const taskObj = {
+        id: key,
+        inputValue: title,
+        done: false,
+        isEditing: false
+      }
+      
+      // Send new task to App
+      handlerNewToDo(taskObj)
+
+      // Reset input state
+      this.updateState({title: '', error: false})  
+    }
+
   }
 
   handlerInput = (event) => {
     const text = event.target.value
-    const {id} = this.state
-    console.log(text)
-    this.updateState({id, text})
+    const error = text.length === 0
+
+    this.updateState({text, error})
+  }
+
+  updateState = ({text = '', error}) => {
+    this.setState({title: text, error: error})
   }
 
   render() {
-    const { title } = this.state
+    const { title, error } = this.state
     return (
+      <>
       <form onSubmit={this.formSubmit}>
-        <input type="text" value={title} onChange={this.handlerInput} />
+        <input data-testid="create-todo-input" type="text" value={title} onChange={this.handlerInput} />
       </form>
+      <span data-testid="create-todo-error-message" className={error ? `show` : `hide`}>Please enter at least one character</span>
+      </>
     )
   }
   

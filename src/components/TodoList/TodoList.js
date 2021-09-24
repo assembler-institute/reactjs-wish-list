@@ -1,37 +1,34 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
 // Improve the render of the component
+import TodoTask from "../TodoTask"
 
 export default class TodoList extends React.Component {
 
   constructor(props) {
     super(props)
+
     this.state = {}
-  }
-  
-  editHandler = (event) => {
-    const taskId = event.target.id
-    const text = event.target.innerText
-
-    // Make text editable
-    const {editTaskText} = this.props
-    editTaskText(text, taskId)
-
   }
 
   render() {
-    const {tasks} = this.props
+    const {tasks} = this.props 
+
     return (
       <>
       {
         tasks.length === 0 ? 
-        <h1>No hay todos</h1> :
-        tasks.map(task => (
-          <button type="button" key={task.id} id={task.id} onClick={this.editHandler}>{task.text}</button>
-        )) 
+        <h1 data-testid="no-todos">There is any to do yet <span role="img" aria-label="sad face">😥</span></h1> :
+        <ul className="todo-list">
+         {
+         tasks.map(task => (
+            <TodoTask key={task.id} task={task} {...this.props} />
+          ))
+         }
+        </ul> 
+
       }
       </>
     )
   }
-  
 }
