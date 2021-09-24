@@ -6,6 +6,9 @@ const Input = styled.input`
   width: 100%;
   text-align: left;
   padding-left: 1rem;
+  border-bottom: 1px solid black;
+  outline: none;
+  &:active {border-bottom: 1px solid black;}
 `;
 
 function InputEdit({

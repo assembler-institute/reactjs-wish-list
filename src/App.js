@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import ClipLoader from "react-spinners/ClipLoader";
 import { themes } from "./themes";
 import * as api from "./api";
 
@@ -29,7 +29,7 @@ class App extends Component {
 
     this.state = {
       theme: "light",
-      status: "active",
+      status: "all",
       tasks: [],
       filteredTasks: [],
     };
@@ -44,7 +44,6 @@ class App extends Component {
       });
 
       api.getTasks().then((data) => {
-        console.log(data);
         this.setState({
           status: "all",
           tasks: data,
@@ -55,13 +54,39 @@ class App extends Component {
 
       return;
     }
-
-    this.setState({
-      status: "all",
+    
+    const status = window.location.pathname.substring(1);
+    this.setState((prevState) => ({
+      ...prevState,
+      status: status,
       tasks: prevItems.tasks,
-      filteredTasks: prevItems.tasks,
-    });
+    }));
+
+    this.pageFiltered(prevItems.tasks, status);
   }
+
+  componentDidUpdate = () => {
+    const { tasks } = this.state;
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
+  };
+
+  pageFiltered = (tasks, status) => {
+    let filteredTasks;
+    if (status === "active")
+      filteredTasks = tasks.filter((task) => task.done === false);
+    else if (status === "complete")
+      filteredTasks = tasks.filter((task) => task.done === true);
+    else {
+      filteredTasks = tasks;
+      status = "all";
+    }
+
+    this.setState((prevState) => ({
+      ...prevState,
+      filteredTasks: filteredTasks,
+      status: status,
+    }));
+  };
 
   changeTheme = () => {
     const { theme } = this.state;
@@ -78,11 +103,6 @@ class App extends Component {
         theme: "light",
       }));
     }
-  };
-
-  componentDidUpdate = () => {
-    const { tasks } = this.state;
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
   };
 
   onKeyDownSubmit = (e, handleSubmit) => {
@@ -117,6 +137,8 @@ class App extends Component {
       tasks: [newTask, ...prevState.tasks],
       filteredTasks: [newTask, ...prevState.filteredTasks],
     }));
+    const status = window.location.pathname.substring(1);
+    this.pageFiltered(this.state.tasks, status);
   };
 
   saveEditTask = (e, taskId) => {
@@ -141,19 +163,21 @@ class App extends Component {
     e.preventDefault();
 
     const { tasks } = this.state;
-    let result = false;
-    tasks.map((task) => {
-      if (task.id === taskId) {
-        task.done = !task.done;
-        result = task.done;
-      }
-    });
 
+    tasks.map((task) => {
+      if (task.id === taskId){
+        task.done = !task.done;
+        task.updatedAt = new Date().toISOString();
+      } 
+    });
+    console.log(tasks);
 
     this.setState((prevState) => ({
       ...prevState,
       tasks: tasks,
     }));
+    const status = window.location.pathname.substring(1);
+    this.pageFiltered(tasks, status);
   };
 
   toggleEditTask = (e, taskId) => {
@@ -252,6 +276,7 @@ class App extends Component {
               path="/active"
               exact
               render={(routeProps) => (
+                /*           tasks.filter((task) => {task.done === true} */
                 <ActivePage
                   {...routeProps}
                   tasks={tasks}

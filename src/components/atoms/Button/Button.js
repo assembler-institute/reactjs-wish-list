@@ -6,6 +6,8 @@ const ButtonComponent = styled.button`
   width: 100%;
   text-align: left;
   font-size: 1.2rem;
+  font-weight:bold;
+  margin-left:1rem;
 `;
 
 function Button({
