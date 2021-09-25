@@ -17,6 +17,7 @@ class App extends Component {
       };
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleTodoComplete = this.handleTodoComplete.bind(this);
+      this.handleRemove = this.handleRemove.bind(this);
     }
 
     handleSubmit(todoName) {
@@ -32,8 +33,10 @@ class App extends Component {
     this.setState({allTodos: [...this.state.allTodos, newToDo], isEmpty: false})
     }
 
-    handleRemove(deleteId) {
-      allTodos = allTodos.filter(/* todos los elementos cuyo id != deleteId */)
+    handleRemove(id) {
+      this.setState({
+          allTodos: this.state.allTodos.filter((todo) => todo.id !== id)
+      })
     }
 
     handleTodoComplete(id) {
@@ -53,6 +56,7 @@ class App extends Component {
         handleSubmit={this.handleSubmit}
         allTodos={allTodos}
         handleTodoComplete={this.handleTodoComplete}
+        handleRemove={this.handleRemove}
         />
       );
     }

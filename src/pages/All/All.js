@@ -14,6 +14,7 @@ function All({
   handleSubmit,
   handleChange,
   handleTodoComplete,
+  handleRemove,
   todoName,
   isEmpty,
   todoLength,
@@ -45,7 +46,7 @@ function All({
         <div className="todoRender">
             {isEmpty && <NotToDo/>}
             {!isEmpty &&
-            <ToDoList handleTodoComplete={handleTodoComplete} allTodos={allTodos}/>
+            <ToDoList handleTodoComplete={handleTodoComplete} handleRemove={handleRemove} allTodos={allTodos}/>
             }
           </div>
         <TaskIndicator todoLength={todoLength}/>
