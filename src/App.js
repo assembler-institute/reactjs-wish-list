@@ -18,8 +18,9 @@ class App extends React.Component {
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleCheckbox = this.handleCheckbox.bind(this);
-    this.handleEdit = this.handleEdit.bind(this)
-    this.handleEditName = this.handleEditName.bind(this)
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleEditName = this.handleEditName.bind(this);
+    this.handleClearAll = this.handleClearAll.bind(this);
   }
 
   handleCheckbox(todo) {
@@ -51,7 +52,7 @@ class App extends React.Component {
     let test = this.state.todos.find((stateTodo) => {
       return stateTodo.id === id;
     });
-    test.task = newTask
+    test.task = newTask;
 
     let newTodoList = this.state.todos.map((prevTodo) => {
       return prevTodo.id === id ? test : prevTodo;
@@ -97,6 +98,13 @@ class App extends React.Component {
 
       event.target.value = null;
     }
+  }
+
+  handleClearAll() {
+    let pendingTodos = this.state.todos.filter((completedTodo) => {
+      return completedTodo.completed == false;
+    });
+    this.setState({ todos: pendingTodos });
   }
 
   readLocalStorage() {
@@ -146,7 +154,7 @@ class App extends React.Component {
                       todos={todos}
                       handleDelete={this.handleDelete}
                     />
-                    <Menu todos={todos} />
+                    <Menu todos={todos} handleClearAll={this.handleClearAll} />
                   </div>
                 ) : (
                   <div className="list-container bg-white shadow mt-4 p-2 ">
