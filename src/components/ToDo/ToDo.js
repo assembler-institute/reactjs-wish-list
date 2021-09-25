@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import "./ToDo.scss";
+import CompletedCheckBox from "../CompletedCheckBox/CompletedCheckBox";
 
 class ToDo extends Component {
   constructor(props) {
@@ -17,8 +18,8 @@ class ToDo extends Component {
   }
 
   handleSubmit(e) {
-  e.preventDefault();
-  this.props.handleSubmit(this.state.todoName);
+    e.preventDefault();
+    this.props.handleSubmit(this.state.todoName);
   }
 
   render() {
@@ -26,7 +27,7 @@ class ToDo extends Component {
     
     return (
       <div className="input-group todo__create">
-        <input className="todo__checkbox" type="checkbox" />
+        <CompletedCheckBox/>
         <form onSubmit={this.handleSubmit}>
           <input
             className="form-control bg-light todo__input" 

@@ -32,6 +32,10 @@ class App extends Component {
     this.setState({allTodos: [...this.state.allTodos, newToDo], isEmpty: false})
     }
 
+    handleRemove(deleteId) {
+      allTodos = allTodos.filter(/* todos los elementos cuyo id != deleteId */)
+    }
+
     handleTodoComplete(id) {
       this.setState({
         allTodos: [...this.state.allTodos.map((todo) => {

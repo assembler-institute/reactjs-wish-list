@@ -1,4 +1,5 @@
 import React from "react";
+import CompletedCheckBox from "../CompletedCheckBox/CompletedCheckBox";
 
 import "./toDoList.scss";
 
@@ -9,13 +10,16 @@ function ToDoList ({allTodos, handleTodoComplete}) {
     {allTodos.map ((i) => {
       return(
       <li className="border" key={i.id}>
-        <input className="todo__checkbox" type="checkbox"
-        checked={i.complete}
+        <CompletedCheckBox
+        isChecked={i.complete}
         onChange={(e) =>{
           e.preventDefault();
           handleTodoComplete(i.id)
         }} />
-        {i.name}</li>)
+        {i.name}
+        <button type="button" className="cancel"  />
+        </li>
+        )
     })}
   </ul>
   );

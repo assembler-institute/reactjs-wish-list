@@ -36,6 +36,7 @@ function All({
         <MainHeader />
         <aside className="bg-light d-flex flex-row shadow rounded p-3 mb-4">
           <ToDo
+            allTodos={allTodos}
             handleSubmit={handleSubmit}
             todoName={todoName}
           />
