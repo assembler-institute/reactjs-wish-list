@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 // import { BrowserRouter, Route } from "react-router-dom";
 // import NavItems from "./components/NavItems/NavItems";
+import { v4 as uuidv4 } from "uuid";
 import All from "./pages/All";
 import "./App.scss";
-import { v4 as uuidv4 } from "uuid";
+
 
 
 class App extends Component {

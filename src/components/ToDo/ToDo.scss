@@ -21,18 +21,19 @@ form{
   outline: none;
   cursor: pointer;
   margin-top: 5px;
-
+  min-width: 25px;
 
     &:checked{
     width: 25px;
     height: 25px;
+    transition: 0.3s;
     border-radius: 50%;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0.143);
     -webkit-appearance: none;
     outline: none;
     cursor: pointer;
     margin-top: 5px;
-    background-color: #7b5ee7;
+    background-color: #7c5ee7b4;
   }
 
 }

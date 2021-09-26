@@ -9,7 +9,10 @@ class DeleteButton extends Component {
 
   render() {
     return (
-      <button type="button" className="cancel" onClick={this.props.onClick}/>
+      <div className="container">
+        <button type="button" className="cancel" onClick={this.props.onClick}/>
+      </div>
+      
     );
   }
 }
