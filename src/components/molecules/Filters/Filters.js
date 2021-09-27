@@ -10,7 +10,6 @@ const StyledFilters = styled.div`
 
 const NavItem = styled(NavLink)`
   color: #A4A4A4;
-  background: white;
   border: none;
   font-size: bold;
   width: 33,3333%;
@@ -19,7 +18,6 @@ const NavItem = styled(NavLink)`
   &:focus,
   &.active {
     color: black;
-    background-color: white;
     outline: none;
     box-shadow: none;
   }
