@@ -53,9 +53,10 @@ export default class App extends React.Component {
     const localStorageTasks = Object.values(localStorage).map((elm) =>
       JSON.parse(elm),
     );
+    const sortedTasks = localStorageTasks.sort((a, b) => b.id - a.id);
     // Refresh state with new localStorage
-    localStorageTasks.length > 0
-      ? this.setState({ tasks: [...localStorageTasks] })
+    sortedTasks.length > 0
+      ? this.setState({ tasks: [...sortedTasks] })
       : this.setState({ tasks: [] });
   };
 
@@ -76,6 +77,7 @@ export default class App extends React.Component {
                 <MainList
                   tasks={tasks}
                   handlerDeleteTask={this.handlerDeleteTask}
+                  refreshState={this.refreshState}
                 />
                 <Footer>
                   <FilterToDo

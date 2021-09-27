@@ -20,16 +20,22 @@ export default class TodoTask extends React.Component {
 
   completeHandler = () => {
     const { done } = this.state;
+    const { refreshState } = this.props;
     !done
-      ? (saveItem({ ...this.state, done: true }), this.setState({ done: true }))
-      : (saveItem({ ...this.state, done: false }),
-        this.setState({ done: false }));
+      ? saveItem({ ...this.state, done: true }, this.setState({ done: true }))
+      : saveItem(
+          { ...this.state, done: false },
+          this.setState({ done: false }),
+        );
+    refreshState();
   };
 
   handlerSubmit = (event) => {
+    const { refreshState } = this.props;
     event.preventDefault();
+    event.target.firstChild.blur();
     saveItem({ ...this.state, isEditing: false });
-    this.setState({ isEditing: false });
+    refreshState();
   };
 
   editHandler = (event) => {

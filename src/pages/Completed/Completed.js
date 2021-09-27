@@ -14,7 +14,6 @@ export default class Completed extends React.Component {
 
     return (
       <>
-        ((
         <TodoList {...this.props} tasks={completedTasks} />
       </>
     );
