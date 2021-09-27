@@ -4,17 +4,16 @@ import "../DeleteButton/DeleteButton";
 import "./toDoList.scss";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
 
-function ToDoList ({allTodos, handleTodoComplete, handleRemove}) {
+function ToDoList ({displayList, handleTodoComplete, handleRemove, handleEditTodo}) {
 
   return (
   <ul>
-    {allTodos.map ((todo) => {
+    {displayList.map ((todo) => {
       return(
       <li className="border" key={todo.id}>
         <CompletedCheckBox
         isChecked={todo.complete}
-        onChange={(e) =>{
-          e.preventDefault();
+        onChange={() =>{
           handleTodoComplete(todo.id)
         }} />
         {todo.name}

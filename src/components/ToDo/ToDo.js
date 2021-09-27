@@ -20,6 +20,7 @@ class ToDo extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.handleSubmit(this.state.todoName);
+    this.setState({ todoName: "" });
   }
 
   render() {
@@ -32,7 +33,7 @@ class ToDo extends Component {
           <input
             className="form-control bg-light todo__input" 
             type="text"
-            placeholder="Add something"
+            placeholder="Add something..."
             onChange={this.handleChange}
             value={todoName}
             />

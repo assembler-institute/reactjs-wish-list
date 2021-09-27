@@ -18,7 +18,7 @@ function All({
   todoName,
   isEmpty,
   todoLength,
-  allTodos,
+  displayList,
   ...props
   
 })
@@ -37,21 +37,27 @@ function All({
         <MainHeader />
         <aside className="bg-light d-flex flex-row shadow rounded p-3 mb-4">
           <ToDo
-            allTodos={allTodos}
+            allTodos={displayList}
             handleSubmit={handleSubmit}
             todoName={todoName}
           />
         </aside>
         <article className="bg-light d-flex flex-column shadow rounded toContent">
         <div className="todoRender">
-            {isEmpty && <NotToDo/>}
-            {!isEmpty &&
-            <ToDoList handleTodoComplete={handleTodoComplete} handleRemove={handleRemove} allTodos={allTodos}/>
+        {isEmpty ? (
+              <NotToDo/>
+            ) : (
+                <ToDoList 
+                  handleTodoComplete={handleTodoComplete}
+                  handleRemove={handleRemove} 
+                  displayList={displayList}
+                />
+              )
             }
           </div>
-        <TaskIndicator todoLength={todoLength}/>
+          <TaskIndicator todoLength={todoLength}/>
         </article>
-        </section>
+      </section>
       </Main>
   );
 }
