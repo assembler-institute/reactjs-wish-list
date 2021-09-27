@@ -1,3 +1,10 @@
 .todo-set-text {
 	width: 100%;
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 1rem;
+	}
 }

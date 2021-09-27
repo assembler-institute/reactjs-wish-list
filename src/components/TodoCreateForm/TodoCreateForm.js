@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Formik } from "formik";
 import { todoSchema } from "../../schema";
 import Input from "../Input";
+import ErrorMessage from "../ErrorMessage";
 
 import "./TodoCreateForm.scss";
 
@@ -28,7 +29,7 @@ export default class TodoCreateForm extends Component {
           }}
         >
           {({ handleChange, handleSubmit, validateField, resetForm, errors, values, touched, isValidating, isValid }) => (
-            <form onSubmit={handleSubmit}>
+            <form className="todo-create__form" onSubmit={handleSubmit}>
               <Input
                 type="text"
                 name="text"
@@ -44,6 +45,7 @@ export default class TodoCreateForm extends Component {
                 wrong={Boolean(errors.text)}
                 placeholder="Add a new todo..."
               />
+              {errors.text && <ErrorMessage>{errors.text}</ErrorMessage>}
             </form>
           )}
         </Formik>

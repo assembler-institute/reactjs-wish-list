@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Formik } from "formik";
 import { todoSchema } from "../../schema";
 import Input from "../Input";
+import ErrorMessage from "../ErrorMessage";
 
 import "./TodoSetTextForm.scss";
 
@@ -29,7 +30,7 @@ export default class TodoSetTextForm extends Component {
           }}
         >
           {({ handleChange, handleSubmit, validateField, resetForm, errors, values, touched, isValidating, isValid }) => (
-            <form onSubmit={handleSubmit} className="width-100">
+            <form onSubmit={handleSubmit} className="todo-set-text__form">
               <Input
                 type="text"
                 name="text"
@@ -47,6 +48,7 @@ export default class TodoSetTextForm extends Component {
                 placeholder="Set a name..."
                 autoFocus
               />
+              {errors.text && <ErrorMessage>{errors.text}</ErrorMessage>}
             </form>
           )}
         </Formik>

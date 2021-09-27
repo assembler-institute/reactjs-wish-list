@@ -4,9 +4,10 @@
 	justify-content: space-between;
 	gap: 2rem;
 
-	height: 8vh;
+	min-height: 8vh;
 	padding: 1rem;
 
+	background-color: white;
 	box-shadow: 0 0px 1px rgba(0,0,0,0.25);
 
 	&--done {
@@ -36,7 +37,7 @@
 		}
 
 		&--round:hover {
-			background: linear-gradient(135deg, rgba(62,141,180,0.25) 0%, rgba(236,41,251,0.25) 100%);
+			background: linear-gradient(135deg, rgba(62,141,180,0.5) 0%, rgba(236,41,251,0.5) 100%);
 			color: white;
 		}
 

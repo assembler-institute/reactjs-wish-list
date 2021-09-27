@@ -8,10 +8,18 @@ export default class NoTodoPreview extends Component {
   }
 
   render() {
+    const { pathname } = this.props;
+
+    const messages = {
+      "/": "There are no tasks. Get started and put some!",
+      "/active": "It seems there's nothing to do yet. We need to do something!",
+      "/completed": "There are no completed tasks. Come on, don't be lazy!",
+    };
+
     return (
       <div className="no-todo">
-        <img class="no-todo__image" src={image}></img>
-        <h3 class="no-todo__title">Nothing to do yet. Come on, don't be lazy!</h3>
+        <img class="no-todo__image" src={image} />
+        <h3 class="no-todo__title">{messages[pathname]}</h3>
       </div>
     );
   }

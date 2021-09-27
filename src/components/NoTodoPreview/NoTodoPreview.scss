@@ -3,8 +3,9 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	gap: 1.5rem;
 
-	height: 100%;
+	height: 40vh;
 	padding: 2rem;
 
   &__image {
@@ -12,6 +13,9 @@
 	}
 
 	&__title {
+		margin: 0;
+
+		text-align: center;
 		font-size: 1.5rem;
 		font-weight: 400;
 	}

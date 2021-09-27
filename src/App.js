@@ -5,6 +5,7 @@ import { readLocalStorage, writeLocalStorage } from "./api";
 import TodoCreateForm from "./components/TodoCreateForm";
 import TodoList from "./components/TodoList";
 import TodoFooter from "./components/TodoFooter";
+import NoTodoPreview from "./components/NoTodoPreview";
 
 import "./App.scss";
 import { Route } from "react-router";
@@ -168,11 +169,10 @@ class App extends Component {
               render={(routeProps) => {
                 const pathname = routeProps.location.pathname;
                 const todos = this.getTodos(pathname);
-                const dndEnabled = pathname === "/";
 
-                return (
+                return todos.length > 0 ? (
                   <TodoList
-                    dndEnabled={dndEnabled}
+                    pathname={pathname}
                     todos={todos}
                     handleDelete={this.deleteTodo}
                     handleSetDone={this.setDoneTodo}
@@ -180,6 +180,8 @@ class App extends Component {
                     handleIsEditing={this.isEditingTodo}
                     handleMove={this.moveTodo}
                   />
+                ) : (
+                  <NoTodoPreview pathname={pathname} />
                 );
               }}
             />
