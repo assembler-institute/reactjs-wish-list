@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 
-// import img from "./img/header-light-mode-background-image.jpeg";
 import DarkMode from "./components/DarkMode";
 import "./main.scss";
 import NewTodo from "./components/NewTodo";
@@ -30,7 +29,7 @@ class App extends Component {
         : [],
       activeTasks: localStorage.getItem(`list`)
         ? JSON.parse(localStorage.getItem(`list`)).filter(
-            (el) => el.isFinished === false,
+            (el) => !el.isFinished,
           )
         : [],
 
@@ -79,10 +78,10 @@ class App extends Component {
       });
     }
   }
-  saveNewTasks(tasks, activeTasks) {
+  saveNewTasks(tasks) {
     this.setState({
       tasks: tasks,
-      activeTasks: activeTasks,
+      activeTasks: tasks.filter((el) => !el.isFinished),
     });
   }
 
@@ -92,10 +91,7 @@ class App extends Component {
       el.id == parseInt(id) ? (el.isEditing = !el.isEditing) : null,
     );
     localStorage.setItem(`list`, JSON.stringify(tasks)),
-      this.setState({
-        tasks: tasks,
-        activeTasks: tasks.filter((el) => el.isFinished === false),
-      });
+      this.saveNewTasks(tasks);
   }
 
   changeTitle(task) {
@@ -103,19 +99,14 @@ class App extends Component {
     tasks.map((el) => {
       if (el.id === parseInt(task.id)) el.title = task.value;
     });
-    this.setState({
-      tasks: tasks,
-      activeTasks: tasks.filter((el) => el.isFinished === false),
-    });
+    this.saveNewTasks(tasks);
   }
 
   clearCompletedTasks() {
     const { tasks } = this.state;
-    const retrieve = tasks.filter((el) => el.isFinished === false);
+    const retrieve = tasks.filter((el) => !el.isFinished);
     localStorage.setItem(`list`, JSON.stringify(retrieve));
-    this.setState({
-      tasks: retrieve,
-    });
+    this.saveNewTasks(retrieve);
   }
 
   completeTask(id) {
@@ -126,19 +117,14 @@ class App extends Component {
       }
     });
     localStorage.setItem(`list`, JSON.stringify(tasks)),
-      this.setState({
-        tasks: tasks,
-        activeTasks: tasks.filter((el) => el.isFinished === false),
-      });
+      this.saveNewTasks(tasks);
   }
 
   removeTask(id) {
     const { tasks } = this.state;
     const retrieve = tasks.filter((el) => el.id !== parseInt(id));
     localStorage.setItem(`list`, JSON.stringify(retrieve));
-    this.setState({
-      tasks: retrieve,
-    });
+    this.saveNewTasks(retrieve);
   }
 
   render() {
