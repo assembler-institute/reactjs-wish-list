@@ -10,20 +10,12 @@
 	height: 100vh;
 }
 
-.app-title {
-	margin: 0;
-
-	font-size: 3rem;
-	font-weight: 400;
-
-	color: white;
-}
-
 .app-todo {
 	box-shadow: 0 0 4px rgba(0,0,0,0.25);
 	border-radius: 0.25rem;
+	overflow: hidden;
 
-	background: white;
+	background: rgba(255,255,255,0.75);
 
 	[data-ui-theme='dark'] & {
 		background: rgba(0,0,0,0.5);

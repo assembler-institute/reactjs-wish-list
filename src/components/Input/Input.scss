@@ -8,6 +8,8 @@
 	border: none;
 	outline: none;
 
+	background: rgba(255,255,255, 0.75);
+
 	[data-ui-theme='dark'] & {
 		background: rgba(64,64,64,0.5);
 		color: white;
@@ -19,7 +21,7 @@
 
 	&:focus,
 	&:hover {
-		box-shadow: inset 0 0 2px lightgray;
+		box-shadow: inset 0 0 2px rgb(228, 228, 228);
 	}
 
 	&--wrong {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { v4 as uuid } from "uuid";
 import { readLocalStorage, writeLocalStorage } from "./api";
 
+import Header from "./components/Header";
 import TodoCreateForm from "./components/TodoCreateForm";
 import TodoList from "./components/TodoList";
 import TodoFooter from "./components/TodoFooter";
@@ -9,6 +10,7 @@ import NoTodos from "./components/NoTodos";
 
 import "./App.scss";
 import { Route } from "react-router";
+import Switch from "./components/Switch";
 
 const LOCAL_STORAGE_KEY = "react-todos";
 
@@ -18,6 +20,7 @@ class App extends Component {
     this.state = {
       todos: [],
       isLoading: false,
+      isDarkMode: false,
     };
 
     this.moveTodo = this.moveTodo.bind(this);
@@ -28,6 +31,7 @@ class App extends Component {
     this.isEditingTodo = this.isEditingTodo.bind(this);
     this.clearDoneTodos = this.clearDoneTodos.bind(this);
     this.getTodos = this.getTodos.bind(this);
+    this.toggleDarkMode = this.toggleDarkMode.bind(this);
   }
 
   componentDidMount() {
@@ -157,11 +161,20 @@ class App extends Component {
     return todos;
   }
 
+  toggleDarkMode() {
+    this.setState((prevState) => ({
+      ...prevState,
+      isDarkMode: !prevState.isDarkMode,
+    }));
+  }
+
   render() {
+    const theme = this.state.isDarkMode ? "dark" : "light";
+
     return (
-      <div data-ui-theme="" className="app-background">
+      <div data-ui-theme={theme} className="app-background">
         <main className="app-content container-sm container-md mx-auto p-5 flex flex-column gap-8">
-          <h1 className="app-title">TODO</h1>
+          <Header handleTheme={this.toggleDarkMode} isDarkMode={this.state.isDarkMode} />
           <TodoCreateForm handleAddTodo={this.addTodo} />
           <section className="app-todo">
             <Route
