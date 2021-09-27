@@ -46,4 +46,7 @@ Any additional information goes here
 ## 🔗 Links
 Paris Arcos[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/paris-arcos-martin-268708217/)
 Christian Herrero[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/christian-herrero-tinoco/)
+
+## Screenshots
+![App Screenshot](./src/img/ToDoPlanning.png)
   
