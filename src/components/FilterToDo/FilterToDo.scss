@@ -1,0 +1,8 @@
+.nav-link {
+  padding: 10px;
+  color: var(--gray-dark);
+  
+  &:hover {
+    color: var(--secondary);
+  }
+}

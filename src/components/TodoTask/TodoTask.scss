@@ -1,9 +1,6 @@
-.todo-task {
-  border: solid;
-
-  &.editing {
-    border-color: red
-  }
+.list-group-item+.list-group-item {
+  border-top-width: 1px;
+  margin-bottom: 7.5px;
 }
 .done {
 
@@ -14,4 +11,8 @@
     text-decoration: line-through;
   }
   
+}
+
+.input-task {
+  border: none
 }

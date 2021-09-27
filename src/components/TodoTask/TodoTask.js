@@ -45,8 +45,8 @@ export default class TodoTask extends React.Component {
     if (id === '') return null
 
     return(
-      <li className={`todo-task ${isEditing ? 'editing' : ''} ${done ? 'done' : ''}`}>
-          <button className="complete-task" type="button" onClick={this.completeHandler}>
+      <li className={`list-group-item d-flex justify-content-between align-items-center ${isEditing ? 'editing' : ''} ${done ? 'done' : ''}`}>
+          <button className="btn btn-light" type="button" onClick={this.completeHandler}>
             <span role="img" aria-label='Check to complete'>
               {done ? "❌" : "✅"}
             </span>
@@ -58,7 +58,7 @@ export default class TodoTask extends React.Component {
             onBlur={() => this.setState({isEditing: false})} 
             />
           </form>
-          <button className="delete-task" type="button" onClick={() => handlerDeleteTask(id)}>Delete</button>
+          <button className="btn btn-light" type="button" onClick={() => handlerDeleteTask(id)}><span role="img" aria-label="trash bin">🗑️</span></button>
       </li>
       
     )
