@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 // import { set } from "lodash";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Completed from "../../pages/Completed/Completed";
-import Active from "../../pages/Active/Active";
-import Home from "../../pages/Home/Home";
+import Completed from "../pages/Completed/Completed";
+import Active from "../pages/Active/Active";
+import Home from "../pages/Home/Home";
 import { FormToDo } from "../FormToDo/FormToDo";
 import TaskList from "../TaskList/TaskList";
 import TaskFooter from "../TaskFooter/TaskFooter";
@@ -18,7 +18,7 @@ export default function ToDoContainer() {
   const [toDoItem, setTodoItem] = useState([]);
 
   // Edit Item State
-  const [isEditing, setEditing] = useState(false);
+  // const [isEditing, setEditing] = useState(false);
   const [newName, setNewName] = useState("");
 
   // Filter Item State
@@ -75,20 +75,18 @@ export default function ToDoContainer() {
         setTodoItem={setTodoItem}
         errors={errors}
         setErrors={setErrors} />
-      <TaskList
-        toDoItem={toDoItem}
-        setTodoItem={setTodoItem}
-        filterTodoItem={filterTodoItem}
-        isEditing={isEditing}
-        setEditing={setEditing}
-        newName={newName}
-        setNewName={setNewName}/>
       <TaskFooter
         status={status}
         setStatus={setStatus}
         setTodoItem={setTodoItem}
         toDoItem={toDoItem}
       />
+      <TaskList
+        toDoItem={toDoItem}
+        setTodoItem={setTodoItem}
+        filterTodoItem={filterTodoItem}
+        newName={newName}
+        setNewName={setNewName}/>
       <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/active" component={Active}/>

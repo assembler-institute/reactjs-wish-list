@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CheckButton from "../EditButtons/CheckButton";
 import EditButton from "../EditButtons/EditButton";
 import RemoveButton from "../EditButtons/RemoveButton";
@@ -9,11 +9,10 @@ export default function Task({
   item,
   toDoItem,
   setToDoItem,
-  isEditing,
-  setEditing,
   newName,
   setNewName,
 }) {
+  const [isEditing, setEditing] = useState(false);
   const handleNameChange = (e) => {
     setNewName(e.target.value);
   };
@@ -74,6 +73,8 @@ export default function Task({
           setEditing={setEditing}
           item={item}
           setNewName={setNewName}
+          toDoItem={toDoItem}
+          setToDoItem={setToDoItem}
         />
         <RemoveButton
           toDoItem={toDoItem}

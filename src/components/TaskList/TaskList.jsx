@@ -7,8 +7,6 @@ export default function TaskList({
   toDoItem,
   setTodoItem,
   filterTodoItem,
-  isEditing,
-  setEditing,
   newName,
   setNewName,
 }) {
@@ -23,8 +21,6 @@ export default function TaskList({
             toDoItem={toDoItem}
             setToDoItem={setTodoItem}
             item={item}
-            isEditing={isEditing}
-            setEditing={setEditing}
             newName={newName}
             setNewName={setNewName}
           />
