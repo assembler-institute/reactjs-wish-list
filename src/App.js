@@ -162,8 +162,6 @@ class App extends Component {
   };
 
   toggleDoneTask = (e, taskId) => {
-    e.preventDefault();
-
     const { tasks } = this.state;
 
     tasks.map((task) => {
@@ -172,12 +170,12 @@ class App extends Component {
         task.updatedAt = new Date().toISOString();
       }
     });
-    console.log(tasks);
 
     this.setState((prevState) => ({
       ...prevState,
       tasks: tasks,
     }));
+
     const status = window.location.pathname.substring(1);
     this.pageFiltered(tasks, status);
   };

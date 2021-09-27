@@ -1,5 +1,8 @@
 import { Form, Formik } from "formik";
 import styled from "styled-components";
+
+import { ErrorMessage } from 'components/atoms'
+
 import taskSchema from "components/molecules/NewTaskForm/task-schema";
 
 const Input = styled.input`
@@ -10,18 +13,9 @@ const Input = styled.input`
   padding-left: 1rem;
   border-bottom: 1px solid black;
   outline: none;
+
   &:active {
     border-bottom: 1px solid black;
-  }
-`;
-
-const ErrorInput = styled.div`
-  color: red;
-  font-weight: bold;
-  font-size: 1.2rem;
-  padding-top: 1rem;
-  svg {
-    margin-right: 0.5rem;
   }
 `;
 
@@ -51,32 +45,11 @@ function InputEdit({ task, saveEditTask, onKeyDownSubmit, onKeyDownEdit }) {
             value={values.text}
             onChange={(e) => {
               handleChange(e);
-              /* saveEditTask(values.text, task.id); */
               onKeyDownEdit(e, task.id)
             }}
-          /* onKeyDown={(e) => onKeyDownEdit(e, task.id)} */
           />
-
           {touched.text && errors.text ? (
-            <ErrorInput>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-alert-triangle"
-                width={20}
-                height={20}
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#ff2825"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 9v2m0 4v.01" />
-                <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
-              </svg>
-              {errors.text}
-            </ErrorInput>
+            <ErrorMessage errors={errors} />
           ) : null}
         </FormEditTask>
       )}

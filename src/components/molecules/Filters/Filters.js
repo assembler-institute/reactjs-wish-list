@@ -1,11 +1,19 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+const StyledFilters = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 1.2rem;
+`
+
 const NavItem = styled(NavLink)`
-  color: grey;
+  color: #A4A4A4;
   background: white;
   border: none;
   font-size: bold;
+  width: 33,3333%;
 
   &:hover,
   &:focus,
@@ -18,21 +26,20 @@ const NavItem = styled(NavLink)`
 `;
 
 const NavList = styled.nav`
-  padding: 1rem;
+  padding: 1.25rem;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #e6e6e6;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  font-size: 1.2rem;
 `;
 
 const FilterButton = styled.button`
-  color: grey;
+  color: #A4A4A4;
   background: white;
   border: none;
   font-size: bold;
+  margin-left: auto;
+  padding: 1.25rem;
 
   &:hover,
   &:focus {
@@ -43,51 +50,56 @@ const FilterButton = styled.button`
   }
 `;
 
-function Filters({ filterTasks,removeAllCompletedTasks,filteredTasks }) {
+const ItemsNumber = styled.span`
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  color: #A4A4A4;
+`
+
+function Filters({ filterTasks, removeAllCompletedTasks, filteredTasks }) {
   return (
+    <StyledFilters>
+      <ItemsNumber>{filteredTasks.length} items</ItemsNumber>
       <NavList>
-        <div>{filteredTasks.length} items</div>
-        <div>
-          <NavItem
-            exact
-            activeClassName="active"
-            className="navbar-brand"
-            name="all"
-            onClick={(e) => filterTasks(e.target.name)}
-            to="/"
-          >
-            All
-          </NavItem>
-          <NavItem
-            exact
-            activeClassName="active"
-            className="navbar-brand"
-            name="active"
-            onClick={(e) => filterTasks(e.target.name)}
-            to="/active"
-          >
-            Active
-          </NavItem>
-          <NavItem
-            exact
-            activeClassName="active"
-            className="navbar-brand"
-            name="complete"
-            onClick={(e) => filterTasks(e.target.name)}
-            to="/complete"
-          >
-            Complete
-          </NavItem>
-        </div>
-        <div>
-          <FilterButton
-            name="clear"
-            onClick={(e) => removeAllCompletedTasks(e)}
-          >
-            Clear completed
-          </FilterButton>
-        </div>
+        <NavItem
+          exact
+          activeClassName="active"
+          className="navbar-brand"
+          name="all"
+          onClick={(e) => filterTasks(e.target.name)}
+          to="/"
+        >
+          All
+        </NavItem>
+        <NavItem
+          exact
+          activeClassName="active"
+          className="navbar-brand"
+          name="active"
+          onClick={(e) => filterTasks(e.target.name)}
+          to="/active"
+        >
+          Active
+        </NavItem>
+        <NavItem
+          exact
+          activeClassName="active"
+          className="navbar-brand"
+          name="complete"
+          onClick={(e) => filterTasks(e.target.name)}
+          to="/complete"
+        >
+          Complete
+        </NavItem>
       </NavList>
+      <FilterButton
+        name="clear"
+        onClick={(e) => removeAllCompletedTasks(e)}
+      >
+        Clear completed
+      </FilterButton>
+    </StyledFilters>
   );
 }
 

@@ -19,11 +19,8 @@ const TaskItem = styled.li`
   flex-direction: row;
   min-height: 1px;
   padding: 1.25rem;
-  margin-top: 0.5rem;
+  margin: 0;
   border-bottom: 1px solid #e6e6e6;
-  border-top: none;
-  border-right: none;
-  border-left: none;
 
   &:nth-child(1) {
     border-radius: 1px 1px 0 0;

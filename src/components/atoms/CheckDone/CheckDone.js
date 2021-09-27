@@ -28,9 +28,9 @@ const StyledCheckbox = styled.div`
   display: inline-block;
   width: 25px;
   height: 25px;
-  background: ${(props) => (props.checked ? "black" : "papayawhip")};
+  background: ${(props) => (props.checked ? "black" : "ghostwhite")};
   border-radius: 100%;
-  border: 3px solid black;
+  border: 2px solid black;
   transition: all 150ms;
   cursor:pointer;
 
@@ -50,17 +50,18 @@ const Checkbox = ({ className, checked, ...props }) => (
   </CheckboxContainer>
 );
 
+const Label = styled.label`
+  margin: 0 0.5rem 0 0;
+`
+
 function CheckDone({ task, toggleDoneTask }) {
   return (
-    <div style={{ fontFamily: "system-ui" }}>
-      <label>
-        <Checkbox
-          checked={task.done}
-          onChange={(e) => toggleDoneTask(e, task.id)}
-        />
-        <span style={{ marginLeft: 8 }}></span>
-      </label>
-    </div>
+    <Label>
+      <Checkbox
+        checked={task.done}
+        onChange={(e) => toggleDoneTask(e, task.id)}
+      />
+    </Label>
   );
 }
 
