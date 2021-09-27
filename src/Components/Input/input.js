@@ -7,14 +7,19 @@ class Input extends Component {
         super(props);
         this.state={
             newToDo: "",
+        
             };
         this.updateInput = this.updateInput.bind(this);
     }
     
-    updateInput(key, value) {
-        this.setState({ [key]: value });
-    } 
+    updateInput(keycode,value) {
+        this.setState({ 
+            [keycode]: value,
+        });
+    }
+    
     render(){
+        
         return(<>
             <div className="input-group mb-3">
                         <input 
@@ -25,12 +30,14 @@ class Input extends Component {
                         onChange={e => this.updateInput("newToDo", e.target.value)}
                         />
                     <div>
-                        <button onClick={() => this.props.handelSubmit(this.state.newToDo)}
+                        <button 
+                        type="submit"
+                        onClick={() => this.props.handelSubmit(this.state.newToDo)}
                         disabled={!this.state.newToDo.length}
                         >prueba</button>
                     </div>
-                    </div>
-                    
+                     
+                </div>
             </>
         )
     }
