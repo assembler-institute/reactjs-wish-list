@@ -1,8 +1,7 @@
 .finished {
   .todo__text {
     text-decoration: line-through;
-    color: lighten($color: rgb(105, 102, 102), $amount: 30%);
-    transition: 5s;
+    color: rgb(105, 102, 102);
   }
 }
 
