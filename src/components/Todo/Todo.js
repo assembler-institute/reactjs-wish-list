@@ -47,16 +47,17 @@ export default class Todo extends Component {
           onKeyDown={this.handleTitleChange}
           value={title}
           id={id}
+          autoFocus
         />
       ) : (
-        <button
+        <span
           type="button"
           className="todo__text"
           onClick={this.handleEditChange}
           id={id}
         >
           {title}
-        </button>
+        </span>
       );
 
     return (
