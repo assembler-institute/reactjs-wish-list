@@ -22,7 +22,7 @@ export default class FilterToDo extends React.Component {
             <Link to="/" className="nav-link">All</Link>
             <Link to="/active" className="nav-link">Active</Link>
             <Link to="/completed" className="nav-link">Completed</Link>
-            <button type="button" className="btn btn-primary" onClick={handlerClearCompleted}>Clear completed <span role="img" aria-label="checkbox">✔️</span></button>
+            <button type="button" data-testid="clear-completed-todos" className="btn btn-primary" onClick={handlerClearCompleted}>Clear completed <span role="img" aria-label="checkbox">✔️</span></button>
           </div>
           </nav>
       </>

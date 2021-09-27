@@ -20,6 +20,8 @@ export default class AddToDoTask extends React.Component {
 
     const { error, title } = this.state;
     const { handlerNewToDo } = this.props;
+    
+    if (title.length === 0) this.setState({error: true})
 
     if (!error && title !== "") {
       const key = generateNewKey();
