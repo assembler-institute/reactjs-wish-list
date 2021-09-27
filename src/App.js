@@ -69,7 +69,7 @@ export default class App extends React.Component {
             <strong>To Do List</strong>
           </h1>
           <section className="row justify-content-center">
-            <div className="col col-6 p-5 rounded bg-white">
+            <div className="col col-6 p-5 rounded bg-white shadow-lg">
               <Header>
                 <AddToDoTask handlerNewToDo={this.handlerNewToDo} />
               </Header>
