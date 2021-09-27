@@ -62,11 +62,15 @@ export default class TodoTask extends React.Component {
           data-testid="todo-item-checkbox"
         >
           <span role="img" aria-label="Check to complete">
-            {done ? "❌" : "✅"}
+            {done ? "✅" : "⬜"}
           </span>
         </button>
         <form onSubmit={this.handlerSubmit}>
-          <input type="checkbox" className="d-none"  defaultChecked={done ? `checked` : ``} />
+          <input
+            type="checkbox"
+            className="d-none"
+            defaultChecked={done ? `checked` : ``}
+          />
           <input
             required
             title={inputValue}
