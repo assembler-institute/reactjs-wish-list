@@ -4,73 +4,55 @@
 	justify-content: space-between;
 	gap: 2rem;
 
-	height: 8vh;
+	min-height: 8vh;
 	padding: 1rem;
 
-	box-shadow: 0 0px 1px rgba(0,0,0,0.25);
+	background: white;
+	
+
+	.dark & {
+		background: rgba(0,0,0,0.5);
+		box-shadow: inset 0 0px 2px rgba(255,255,255,0.75);
+		color: white;
+	}
 
 	&--done {
 		background: linear-gradient(135deg, rgba(62,141,180,0.125) 0%, rgba(236,41,251,0.125) 100%);
+
+		.dark & {
+			background: linear-gradient(135deg, rgba(62,141,180,0.25) 0%, rgba(236,41,251,0.25) 100%);
+		}
 	}
 
-	&__button {
-		border: none;
-		outline: none;
-		background: none;
+	&__field-button {
+		width: 100%;
+		padding: 0.5rem;
 
 		cursor: pointer;
 		user-select: none;
+		
+		text-align: left;
 
-		&--round {
-			display: flex;
-			align-items: center;
-			justify-content: center;
+		border-radius: 0.25rem;
+		border: none;
+		outline: none;
+		background: none;
+		color: white;
 
-			width: 2rem;
-			height: 2rem;
-			min-width: 2rem;
-
-			border-radius: 50%;
-			box-shadow: 0 0 4px rgba(0,0,0,0.25);
-			background: white;
-		}
-
-		&--round:hover {
-			background: linear-gradient(135deg, rgba(62,141,180,0.25) 0%, rgba(236,41,251,0.25) 100%);
-			color: white;
-		}
-
-		&--active {
-			background: linear-gradient(135deg, rgba(62,141,180,1) 0%, rgba(236,41,251,1) 100%);
-			color: white;
-		}
-	
-		&--show-check::after {
-			content: '\2713';
-		}
-
-		&--show-cross::after {
-			content: '\00d7';
-		}
-
-		&--field {
-			width: 100%;
-			padding: 0.5rem;
-
-			text-align: left;
-
-			border-radius: 0.25rem;
-		}
-
-		&--field:hover {
+		&:hover {
 			box-shadow: inset 0 0 2px rgba(0,0,0,0.25);
 			background: linear-gradient(135deg, rgba(62,141,180,0.25) 0%, rgba(236,41,251,0.25) 100%);
 			color: white;
 		}
 
-		&--strikethrough {
+		&--done {
 			color: gray;
 			text-decoration: line-through;
+
+			.dark & {
+				color: rgba(255,255,255,0.5);
+			}
 		}
 	}
 }
+

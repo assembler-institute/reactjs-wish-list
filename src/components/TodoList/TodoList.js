@@ -1,6 +1,6 @@
 import { Component } from "react";
 import TodoItem from "../TodoItem";
-import NoTodoPreview from "../NoTodoPreview";
+
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import "./TodoList.scss";
@@ -8,42 +8,49 @@ import "./TodoList.scss";
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
+
+    this.handleDragEnd = this.handleDragEnd.bind(this);
+  }
+
+  handleDragEnd(result) {
+    const { handleMove } = this.props;
+    const [srcIndex, dstIndex] = [result.source?.index, result.destination?.index];
+
+    if (srcIndex && dstIndex) handleMove(srcIndex, dstIndex);
   }
 
   render() {
-    const { dndEnabled, todos, handleMove, handleDelete, handleSetDone, handleSetText, handleIsEditing } = this.props;
+    const { pathname, todos, handleDelete, handleSetDone, handleSetText, handleIsEditing } = this.props;
+
+    const dndEnabled = pathname === "/";
 
     return (
       <div className="todo-list">
-        {todos.length > 0 ? (
-          <DragDropContext onDragEnd={(result) => handleMove(result.source.index, result.destination.index)}>
-            <Droppable droppableId="todo-list" isDropDisabled={!dndEnabled}>
-              {(provided) => (
-                <ul ref={provided.innerRef} {...provided.innerRef}>
-                  {todos.map((item, index) => (
-                    <Draggable draggableId={item.id} key={item.id} index={index} isDragDisabled={!dndEnabled}>
-                      {(provided) => (
-                        <li key={item.id}>
-                          <TodoItem
-                            provided={provided}
-                            handleDelete={handleDelete}
-                            handleSetDone={handleSetDone}
-                            handleSetText={handleSetText}
-                            handleIsEditing={handleIsEditing}
-                            {...item}
-                          />
-                        </li>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </ul>
-              )}
-            </Droppable>
-          </DragDropContext>
-        ) : (
-          <NoTodoPreview />
-        )}
+        <DragDropContext onDragEnd={this.handleDragEnd}>
+          <Droppable droppableId="todo-list" isDropDisabled={!dndEnabled}>
+            {(provided) => (
+              <ul ref={provided.innerRef} {...provided.innerRef} data-testid="todos-list">
+                {todos.map((item, index) => (
+                  <Draggable draggableId={item.id} key={item.id} index={index} isDragDisabled={!dndEnabled}>
+                    {(provided) => (
+                      <li key={item.id} data-testid="todo-item">
+                        <TodoItem
+                          provided={provided}
+                          handleDelete={handleDelete}
+                          handleSetDone={handleSetDone}
+                          handleSetText={handleSetText}
+                          handleIsEditing={handleIsEditing}
+                          {...item}
+                        />
+                      </li>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
       </div>
     );
   }

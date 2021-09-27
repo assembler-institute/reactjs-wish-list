@@ -1,7 +1,6 @@
 .app-background {
 	background-image: url("./img/john-towner-JgOeRuGD_Y4-unsplash.jpg");
-	background-size: 100%;	
-	background-position-y: -100px;
+	background-size: cover;	
 	background-repeat: no-repeat;
 	
 	display: flex;
@@ -11,13 +10,23 @@
 	height: 100vh;
 }
 
-.todo-container {
+.app-title {
+	margin: 0;
+
+	font-size: 3rem;
+	font-weight: 400;
+
+	color: white;
+}
+
+.app-todo {
 	box-shadow: 0 0 4px rgba(0,0,0,0.25);
 	border-radius: 0.25rem;
 
-	background-color: white;
-}
+	background: white;
 
-.app-navbar{
-	
+	.dark & {
+		background: rgba(0,0,0,0.5);
+		color: white;
+	}
 }

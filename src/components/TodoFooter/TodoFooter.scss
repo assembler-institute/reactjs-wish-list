@@ -9,10 +9,14 @@
 
 	box-shadow: 0 0 4px rgba(0,0,0,0.25);
 	border-radius: 0.25rem;
-	color:grey;
+	color: grey;
+
+	.dark & {
+		color: white;
+	}
 
 	&__button {
-		color: gray;
+		color: inherit;
 		background: none;
 		border: none;
 		outline: none;

@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import TodoCreateForm from "./components/TodoCreateForm";
 import TodoList from "./components/TodoList";
 import TodoFooter from "./components/TodoFooter";
+import NoTodos from "./components/NoTodos";
 
 import "./App.scss";
 import { Route } from "react-router";
@@ -43,7 +44,7 @@ class App extends Component {
           isLoading: true,
         }));
       }
-    }, 500);
+    }, 1500);
   }
 
   componentDidUpdate() {
@@ -175,17 +176,16 @@ class App extends Component {
         <main className="app-content container-sm container-md mx-auto p-5 flex flex-column gap-8">          
           <Header />               
           <TodoCreateForm handleAddTodo={this.addTodo} />
-          <section className="todo-container">
+          <section className="app-todo">
             <Route
               path="/"
               render={(routeProps) => {
                 const pathname = routeProps.location.pathname;
                 const todos = this.getTodos(pathname);
-                const dndEnabled = pathname === "/";
 
-                return (
+                return todos.length > 0 ? (
                   <TodoList
-                    dndEnabled={dndEnabled}
+                    pathname={pathname}
                     todos={todos}
                     handleDelete={this.deleteTodo}
                     handleSetDone={this.setDoneTodo}
@@ -193,6 +193,8 @@ class App extends Component {
                     handleIsEditing={this.isEditingTodo}
                     handleMove={this.moveTodo}
                   />
+                ) : (
+                  <NoTodos pathname={pathname} />
                 );
               }}
             />

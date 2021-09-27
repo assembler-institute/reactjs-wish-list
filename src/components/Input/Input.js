@@ -19,6 +19,7 @@ export default class Input extends Component {
       wrong,
       className = "input",
       classNameWrong = "input--wrong",
+      setAutoFocus = false,
     } = this.props;
 
     return (
@@ -31,6 +32,7 @@ export default class Input extends Component {
         placeholder={placeholder}
         onChange={handleChange}
         onBlur={handleBlur}
+        autoFocus={setAutoFocus}
       />
     );
   }
