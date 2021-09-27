@@ -1,22 +1,13 @@
 import { Component } from "react";
-import styled, { ThemeProvider } from "styled-components";
-
-import background from "./img/mountains.jpg";
+import { ThemeProvider } from "styled-components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 import { themes } from "./themes";
 import * as api from "./api";
-import { Home } from "./pages";
+
+import { AllPage, ActivePage, CompletePage } from "./components/pages";
 
 import "./App.scss";
-
-const Header = styled.header`
-  position: absolute;
-  & img{
-    height:250px;
-    filter:blur(1px);
-    width:100%;
-    width: 100vw;
-  }
-  `;
 
 const LOCAL_STORAGE_KEY = "reactjs-todo-list";
 
@@ -38,7 +29,7 @@ class App extends Component {
 
     this.state = {
       theme: "light",
-      status: "active",
+      status: "all",
       tasks: [],
       filteredTasks: [],
     };
@@ -53,7 +44,6 @@ class App extends Component {
       });
 
       api.getTasks().then((data) => {
-        console.log(data);
         this.setState({
           status: "all",
           tasks: data,
@@ -64,13 +54,39 @@ class App extends Component {
 
       return;
     }
-
-    this.setState({
-      status: "all",
+    
+    const status = window.location.pathname.substring(1);
+    this.setState((prevState) => ({
+      ...prevState,
+      status: status,
       tasks: prevItems.tasks,
-      filteredTasks: prevItems.tasks,
-    });
+    }));
+
+    this.pageFiltered(prevItems.tasks, status);
   }
+
+  componentDidUpdate = () => {
+    const { tasks } = this.state;
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
+  };
+
+  pageFiltered = (tasks, status) => {
+    let filteredTasks;
+    if (status === "active")
+      filteredTasks = tasks.filter((task) => task.done === false);
+    else if (status === "complete")
+      filteredTasks = tasks.filter((task) => task.done === true);
+    else {
+      filteredTasks = tasks;
+      status = "all";
+    }
+
+    this.setState((prevState) => ({
+      ...prevState,
+      filteredTasks: filteredTasks,
+      status: status,
+    }));
+  };
 
   changeTheme = () => {
     const { theme } = this.state;
@@ -87,11 +103,6 @@ class App extends Component {
         theme: "light",
       }));
     }
-  };
-
-  componentDidUpdate = () => {
-    const { tasks } = this.state;
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ tasks }));
   };
 
   onKeyDownSubmit = (e, handleSubmit) => {
@@ -126,16 +137,20 @@ class App extends Component {
       tasks: [newTask, ...prevState.tasks],
       filteredTasks: [newTask, ...prevState.filteredTasks],
     }));
+    const status = window.location.pathname.substring(1);
+    this.pageFiltered(this.state.tasks, status);
   };
 
-  saveEditTask = (e, taskId) => {
-    e.preventDefault();
-
+  saveEditTask = (text, taskId) => {
+/*     e.preventDefault() */;
+    
     const { tasks } = this.state;
 
     tasks.map((task) => {
       if (task.id === taskId) {
-        task.text = e.target.value;
+        task.text = text;
+        task.isEditing = false;
+        console.log("guarda: " + text);
         task.updatedAt = new Date().toISOString();
       }
     });
@@ -150,19 +165,21 @@ class App extends Component {
     e.preventDefault();
 
     const { tasks } = this.state;
-    let result = false;
-    tasks.map((task) => {
-      if (task.id === taskId) {
-        task.done = !task.done;
-        result = task.done;
-      }
-    });
 
+    tasks.map((task) => {
+      if (task.id === taskId){
+        task.done = !task.done;
+        task.updatedAt = new Date().toISOString();
+      } 
+    });
+    console.log(tasks);
 
     this.setState((prevState) => ({
       ...prevState,
       tasks: tasks,
     }));
+    const status = window.location.pathname.substring(1);
+    this.pageFiltered(tasks, status);
   };
 
   toggleEditTask = (e, taskId) => {
@@ -232,24 +249,83 @@ class App extends Component {
 
     return (
       <ThemeProvider theme={themes[theme]}>
-        <Header >
-          <img src={background}></img>
-        </Header>
-        <Home
-          tasks={tasks}
-          filteredTasks={filteredTasks}
-          changeTheme={this.changeTheme}
-          saveNewTask={this.saveNewTask}
-          saveOrderTasks={this.saveOrderTasks}
-          onKeyDownSubmit={this.onKeyDownSubmit}
-          toggleEditTask={this.toggleEditTask}
-          saveEditTask={this.saveEditTask}
-          onKeyDownEdit={this.onKeyDownEdit}
-          toggleDoneTask={this.toggleDoneTask}
-          removeTask={this.removeTask}
-          filterTasks={this.filterTasks}
-          removeAllCompletedTasks={this.removeAllCompletedTasks}
-        />
+        <Router>
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={(routeProps) => (
+                <AllPage
+                  {...routeProps}
+                  tasks={tasks}
+                  theme={theme}
+                  filteredTasks={filteredTasks}
+                  changeTheme={this.changeTheme}
+                  saveNewTask={this.saveNewTask}
+                  saveOrderTasks={this.saveOrderTasks}
+                  onKeyDownSubmit={this.onKeyDownSubmit}
+                  toggleEditTask={this.toggleEditTask}
+                  saveEditTask={this.saveEditTask}
+                  onKeyDownEdit={this.onKeyDownEdit}
+                  toggleDoneTask={this.toggleDoneTask}
+                  removeTask={this.removeTask}
+                  filterTasks={this.filterTasks}
+                  removeAllCompletedTasks={this.removeAllCompletedTasks}
+                />
+              )}
+            />
+            <Route
+              path="/active"
+              exact
+              render={(routeProps) => (
+                /*           tasks.filter((task) => {task.done === true} */
+                <ActivePage
+                  {...routeProps}
+                  tasks={tasks}
+                  theme={theme}
+                  filteredTasks={filteredTasks}
+                  changeTheme={this.changeTheme}
+                  saveNewTask={this.saveNewTask}
+                  saveOrderTasks={this.saveOrderTasks}
+                  onKeyDownSubmit={this.onKeyDownSubmit}
+                  toggleEditTask={this.toggleEditTask}
+                  saveEditTask={this.saveEditTask}
+                  onKeyDownEdit={this.onKeyDownEdit}
+                  toggleDoneTask={this.toggleDoneTask}
+                  removeTask={this.removeTask}
+                  filterTasks={this.filterTasks}
+                  removeAllCompletedTasks={this.removeAllCompletedTasks}
+                />
+              )}
+            />
+            <Route
+              path="/complete"
+              exact
+              render={(routeProps) => (
+                <CompletePage
+                  {...routeProps}
+                  tasks={tasks}
+                  theme={theme}
+                  filteredTasks={filteredTasks}
+                  changeTheme={this.changeTheme}
+                  saveNewTask={this.saveNewTask}
+                  saveOrderTasks={this.saveOrderTasks}
+                  onKeyDownSubmit={this.onKeyDownSubmit}
+                  toggleEditTask={this.toggleEditTask}
+                  saveEditTask={this.saveEditTask}
+                  onKeyDownEdit={this.onKeyDownEdit}
+                  toggleDoneTask={this.toggleDoneTask}
+                  removeTask={this.removeTask}
+                  filterTasks={this.filterTasks}
+                  removeAllCompletedTasks={this.removeAllCompletedTasks}
+                />
+              )}
+            />
+            <Route path="*">
+              <p>error 404</p>
+            </Route>
+          </Switch>
+        </Router>
       </ThemeProvider>
     );
   }
