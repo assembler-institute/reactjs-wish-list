@@ -1,0 +1,26 @@
+.todo-list {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 0;
+  margin: 0;
+  height: 18rem;
+  overflow: scroll;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, rgba(184, 100, 240, 0.7) 0%, rgba(131, 156, 249, 0.7) 100%);
+    border-radius: 4px;
+  }
+}
+
+.todo-list li {
+  height: 3rem;
+  list-style-type: none;
+  border-bottom: 1px solid lightgray;
+  padding: 0 1rem;
+  margin: 0;
+}
