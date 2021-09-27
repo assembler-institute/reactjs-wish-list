@@ -67,8 +67,10 @@
 .todo__text {
   border: none;
   padding: 10px;
-  font-size: 1rem;
+  font-size: 1.3rem;
   background-color: transparent;
+  text-align: center;
+  color: rgb(143, 139, 139);
 }
 .todo__text:focus {
   color: darkgray;
@@ -77,8 +79,9 @@
   box-shadow: 0px 0px 30px rgb(68 68 68 / 100%);
   border-radius: 10px;
   background-color: transparent;
-  width: 80%;
-  text-align: center;
+  width: 70%;
+
+  font-size: 1rem;
 }
 
 .todo__remove {
