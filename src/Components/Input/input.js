@@ -7,17 +7,21 @@ class Input extends Component {
         super(props);
         this.state={
             newToDo: "",
+        
             };
         this.updateInput = this.updateInput.bind(this);
     }
+    
     updateInput(keycode,value) {
-        this.setState({ [keycode]: value,});
+        this.setState({ 
+            [keycode]: value,
+        });
     }
     
     render(){
+        
         return(<>
             <div className="input-group mb-3">
-            
                         <input 
                         type="text" 
                         placeholder="Insert any activity... " 
@@ -32,8 +36,8 @@ class Input extends Component {
                         disabled={!this.state.newToDo.length}
                         >prueba</button>
                     </div>
-                    </div>
-                    
+                     
+                </div>
             </>
         )
     }

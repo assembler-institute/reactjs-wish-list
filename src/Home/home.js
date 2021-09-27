@@ -8,17 +8,14 @@ import "./home.scss";
 
 
 
-
-
 class Home extends Component {
     constructor(props){
         super(props);
         this.state={
             listToDos: [],
-            isEditing:false
         };
         this.addItem = this.addItem.bind(this);
-        this.editItem=this.editItem.bind(this)
+         this.editItem=this.editItem.bind(this)
         this.deleteItem=this.deleteItem.bind(this)
       }
     addItem(value) {
@@ -28,45 +25,50 @@ class Home extends Component {
         }
         const{listToDos}=this.state
         listToDos.push(newToDo);
-
         this.setState({
         listToDos,
-        newToDo:""
+        newToDo:"",
+       
         }); 
-    }; 
-    editItem(id){
+      }; 
+    editItem(id,check,value,done){
       const{listToDos}=this.state
-      const itemsToedit = listToDos.map((item) =>{
-        if(item.id===newToDo.id){
-          console.log(item)
-        return{...item,
-          isEditing:true
-        }}
-        })
-        this.setState({
-          listToDos: itemsToedit,
+      listToDos.find((item) =>{
+        if(item.id===id){
+        item.done=!done
+          }
         });
-    }
+        this.setState({
+          listToDos:listToDos,
+          
+          }); 
+          
+
+    };
 
     deleteItem(id) {
       const{listToDos}=this.state
       const updatedList = listToDos.filter(item => item.id !== id);
       this.setState({ 
       listToDos: updatedList,
-      newToDo:""}); 
-
+      
+      }); 
+      console.log(listToDos);
     }
   render(){
     return (
+      <>
       <main className="container mt-5">
         <div className="container-lg">
           <h1 className="title">TO DO</h1>
         </div>
+       
           <section className="row container-lg input__todo">
             <Input handelSubmit={this.addItem}
-            
+                    handelEdit={this.editItem}
+
             />
-          </section>
+            </section>
           <section className="row container-lg">
             <TodoList items={this.state.listToDos}
                     handleRemove={this.deleteItem}
@@ -74,8 +76,8 @@ class Home extends Component {
             />
             <Footer />
           </section>
-          
         </main>
+        </>
       );
     }
   }
