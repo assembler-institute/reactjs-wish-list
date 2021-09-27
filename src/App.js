@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import { DragDropContext } from "react-beautiful-dnd";
 
 import img from "./img/header-light-mode-background-image.jpeg";
@@ -145,6 +144,7 @@ class App extends Component {
                         completeTask={this.completeTask}
                         removeTask={this.removeTask}
                         editTask={this.editTask}
+                        changeTitle={this.changeTitle}
                       />
                     </Route>
                     <Route path="/active">
