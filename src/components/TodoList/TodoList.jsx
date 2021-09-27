@@ -19,7 +19,7 @@ export default class TodoList extends React.Component {
       <ul data-testid="todos-list" className={`w-100 mt-4 ${todoListClasses} todo-list`}>
         {todos.map(todo => {
           { if (todo.isEditing === false) return <TodoItem handleDelete={handleDelete} handleCheckbox={handleCheckbox} handleEdit={handleEdit} isDarkMode={isDarkMode} key={todo.id} todo={todo} />
-            else if (todo.isEditing === true) return <TodoItemEditing handleEdit={handleEdit} handleEditName={handleEditName} key={todo.id} todo={todo} />}
+            else if (todo.isEditing === true) return <TodoItemEditing handleEdit={handleEdit} handleEditName={handleEditName} isDarkMode={isDarkMode} key={todo.id} todo={todo} />}
         })}
       </ul>
     )

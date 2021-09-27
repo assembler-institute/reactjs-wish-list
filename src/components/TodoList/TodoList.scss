@@ -6,6 +6,15 @@
   height: 18rem;
   overflow: scroll;
   overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, rgba(184, 100, 240, 0.7) 0%, rgba(131, 156, 249, 0.7) 100%);
+    border-radius: 4px;
+  }
 }
 
 .todo-list li {

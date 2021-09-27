@@ -1,3 +1,4 @@
+import classNames from "classnames"
 import React from "react"
 import "./TodoItemEditing.scss"
 
@@ -26,10 +27,13 @@ export default class TodoItemEditing extends React.Component {
 
   render() {
     const { task } = this.props.todo
+    const { isDarkMode } = this.props
+    const inputClass = classNames({ "bg-secondary text-light": isDarkMode })
+    const adviceClass = classNames({ "text-light": isDarkMode })
     return (
       <li data-testid="todo-item" className="list-element d-flex justify-content-between align-items-center">
         <div className="d-flex align-items-center">
-          <input type="text" defaultValue={task} className="ml-2 mb-0 edit-todo" onKeyUp={this.handleInput}/><span className="advice-edit-todo">Press enter to save</span>
+          <input type="text" defaultValue={task} className={`ml-2 mb-0 edit-todo ${inputClass}`} onKeyUp={this.handleInput}/><span className={`advice-edit-todo ${adviceClass}`}>Press enter to save</span>
         </div>
       </li>
     )

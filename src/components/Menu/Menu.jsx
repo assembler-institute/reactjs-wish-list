@@ -14,7 +14,7 @@ export default class Menu extends React.Component {
     let menuClass = classNames({ "bg-dark text-white": isDarkMode })
     return (
       <footer data-testid="app-footer" className={`menu-container d-flex justify-content-between align-items-center px-3 ${menuClass}`}>
-        <div className="text-muted">{totalPendingTasks} items left</div>
+        <div>{totalPendingTasks} items left</div>
         <div>
           <Link className="link-element mr-1 text-decoration-none  font-weight-bold" to="/">All</Link>
           <Link className="link-element mr-1 text-decoration-none  font-weight-bold" to="/active">Active</Link>
