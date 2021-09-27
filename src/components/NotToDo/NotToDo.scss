@@ -8,11 +8,9 @@
   }
 
   .halfsize {
-    width: 90%;
-
-    svg {
-      width: 100%;
-      height: 300px;
+    width: 300px;
+    .undraw {
+      mix-blend-mode: unset;
     }
   }
 }
