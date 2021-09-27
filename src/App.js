@@ -159,7 +159,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app-background dark">
+      <div data-ui-theme="" className="app-background">
         <main className="app-content container-sm container-md mx-auto p-5 flex flex-column gap-8">
           <h1 className="app-title">TODO</h1>
           <TodoCreateForm handleAddTodo={this.addTodo} />
