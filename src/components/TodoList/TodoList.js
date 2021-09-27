@@ -64,7 +64,7 @@ class TodoList extends Component {
             <li className="list-group-item d-flex justify-content-between align-items-center" key={item.id}>
               <div className="d-flex align-items-center">
                 <input
-                  className="input"
+                  className="checkbox"
                   type="checkbox"
                   name={item.id}
                   onClick={() => this.toggleCompleted(item.id)}

@@ -20,7 +20,6 @@ class TodoForm extends Component{
   }
 
   handleChange(e){
-    //console.log(e.target.value);
     this.setState({[e.target.name] : e.target.value});
   }
 
@@ -28,7 +27,7 @@ class TodoForm extends Component{
     const {text} = this.state;
     return(
       <form onSubmit={this.handleSubmit} className="card-body">
-        <input type="text" placeholder="insert text here" value={text} name="text" onChange={this.handleChange}/>
+        <input className="input" type="text" placeholder="insert text here" value={text} name="text" onChange={this.handleChange}/>
 
       </form>
     )
