@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import { v4 as uuid } from "uuid";
 import { readLocalStorage, writeLocalStorage } from "./api";
 
+import Header from "./components/Header";
 import TodoCreateForm from "./components/TodoCreateForm";
 import TodoList from "./components/TodoList";
 import TodoFooter from "./components/TodoFooter";
 
 import "./App.scss";
 import { Route } from "react-router";
+import Switch from "./components/Switch";
 
 const LOCAL_STORAGE_KEY = "react-todos";
 
@@ -17,6 +19,7 @@ class App extends Component {
     this.state = {
       todos: [],
       isLoading: false,
+      isDarkMode:false,
     };
 
     this.moveTodo = this.moveTodo.bind(this);
@@ -156,11 +159,21 @@ class App extends Component {
     return todos;
   }
 
+  toggleDarkMode(){
+
+    this.setState({
+      isDarkMode: !this.state.isDarkMode,
+    })
+    
+
+  }
+
   render() {
+    const classString = this.state.isDarkMode? "dark" : "app-background";
     return (
-      <div className="app-background">
-        <main className="app-content container-sm container-md mx-auto p-5 flex flex-column gap-8">
-          <h1 className="app-title">TODO</h1>
+      <div className={classString}>
+        <main className="app-content container-sm container-md mx-auto p-5 flex flex-column gap-8">          
+          <Header />               
           <TodoCreateForm handleAddTodo={this.addTodo} />
           <section className="todo-container">
             <Route
