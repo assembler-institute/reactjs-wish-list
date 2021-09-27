@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import img from "./img/header-light-mode-background-image.jpeg";
 import DarkMode from "./components/DarkMode";
 import "./main.scss";
 import NewTodo from "./components/NewTodo";
@@ -24,6 +23,8 @@ class App extends Component {
             (el) => el.isFinished === false,
           )
         : [],
+
+      lightmode: true,
     };
     this.saveNewTasks = this.saveNewTasks.bind(this);
     this.removeTask = this.removeTask.bind(this);
@@ -31,8 +32,43 @@ class App extends Component {
     this.editTask = this.editTask.bind(this);
     this.clearCompletedTasks = this.clearCompletedTasks.bind(this);
     this.changeTitle = this.changeTitle.bind(this);
+    this.handleDarkMode = this.handleDarkMode.bind(this);
   }
+  handleDarkMode() {
+    const { lightmode } = this.state;
 
+    if (lightmode) {
+      this.setState({ lightmode: false });
+      document.getElementById("bg-top").src = bgDarkImg;
+      document.querySelector(".new__task").classList.toggle("dark-mode");
+      document.querySelector(".new__task--input").classList.toggle("dark-mode");
+      document.querySelector(".todo__body").classList.toggle("dark-mode");
+      document
+        .querySelector(".background--bottom")
+        .classList.toggle("dark-mode");
+      document.querySelectorAll(".todo__remove").forEach((element) => {
+        element.classList.toggle("dark-mode");
+      });
+      document.querySelectorAll(".todo__check").forEach((element) => {
+        element.classList.toggle("dark-mode");
+      });
+    } else {
+      this.setState({ lightmode: true });
+      document.getElementById("bg-top").src = bgLightImg;
+      document.querySelector(".new__task").classList.toggle("dark-mode");
+      document.querySelector(".new__task--input").classList.toggle("dark-mode");
+      document.querySelector(".todo__body").classList.toggle("dark-mode");
+      document
+        .querySelector(".background--bottom")
+        .classList.toggle("dark-mode");
+      document.querySelectorAll(".todo__remove").forEach((element) => {
+        element.classList.toggle("dark-mode");
+      });
+      document.querySelectorAll(".todo__check").forEach((element) => {
+        element.classList.toggle("dark-mode");
+      });
+    }
+  }
   saveNewTasks(tasks, activeTasks) {
     this.setState({
       tasks: tasks,
@@ -98,6 +134,7 @@ class App extends Component {
   render() {
     const { lightmode } = this.props;
     const { tasks, activeTasks } = this.state;
+
     return (
       <Router>
         <div className="background">

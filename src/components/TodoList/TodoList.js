@@ -10,8 +10,14 @@ export default class TodoList extends Component {
   }
 
   render() {
-    const { tasks, removeTask, completeTask, editTask, changeTitle } =
-      this.props;
+    const {
+      tasks,
+      removeTask,
+      completeTask,
+      editTask,
+      changeTitle,
+      lightmode,
+    } = this.props;
     return (
       <ul className="item__list">
         {tasks.map((item) => {

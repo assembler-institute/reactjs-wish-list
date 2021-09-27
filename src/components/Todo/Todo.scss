@@ -1,22 +1,104 @@
 .finished {
-  background-color: lightcyan;
   .todo__text {
     text-decoration: line-through;
     color: lighten($color: rgb(105, 102, 102), $amount: 30%);
+    transition: 5s;
   }
 }
 
 .todo__check {
   cursor: pointer;
+  position: relative;
+  background-color: transparent;
+
+  &:before {
+    transition: (all 0.3s ease-in-out);
+
+    content: "";
+
+    position: absolute;
+    left: 0;
+    z-index: 1;
+
+    width: 1rem;
+    height: 1rem;
+
+    border: 2px solid #9b9a9a;
+    background-color: transparent;
+  }
+
+  &:checked {
+    &:before {
+      transform: (rotate(-45deg));
+
+      height: 0.5rem;
+
+      border-color: green;
+      border-top-style: none;
+      border-right-style: none;
+    }
+  }
+
+  &:after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    width: 1.1rem;
+    height: 1.1rem;
+
+    background: #fff;
+
+    cursor: pointer;
+  }
+}
+.todo__check.dark-mode {
+  &:after {
+    background-color: black;
+  }
+  &:checked {
+    &:before {
+      background-color: transparent;
+    }
+  }
 }
 
 .todo__text {
   border: none;
   padding: 10px;
   font-size: 1rem;
+  background-color: transparent;
 }
 .todo__text:focus {
+  color: darkgray;
+  border: 2px solid rgba(255, 255, 255, 0.486);
   outline: none;
-  box-shadow: 0px 0px 30px rgb(68 68 68 / 60%);
+  box-shadow: 0px 0px 30px rgb(68 68 68 / 100%);
   border-radius: 10px;
+  background-color: transparent;
+  width: 80%;
+  text-align: center;
+}
+
+.todo__remove {
+  color: transparent;
+
+  background: url("../../img/delete.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+
+  height: 1.375rem;
+  width: 1.375rem;
+}
+
+.todo__remove.dark-mode {
+  background-image: url("../../img/delete-dark.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
 }

@@ -32,6 +32,12 @@ export default class DarkMode extends React.Component {
       document
         .querySelector(".background--bottom")
         .classList.toggle("dark-mode");
+      document.querySelectorAll(".todo__remove").forEach((element) => {
+        element.classList.toggle("dark-mode");
+      });
+      document.querySelectorAll(".todo__check").forEach((element) => {
+        element.classList.toggle("dark-mode");
+      });
     } else {
       this.setState({ lightmode: true });
       document.getElementById("bg-top").src = bgLightImg;
@@ -41,11 +47,17 @@ export default class DarkMode extends React.Component {
       document
         .querySelector(".background--bottom")
         .classList.toggle("dark-mode");
+      document.querySelectorAll(".todo__remove").forEach((element) => {
+        element.classList.toggle("dark-mode");
+      });
+      document.querySelectorAll(".todo__check").forEach((element) => {
+        element.classList.toggle("dark-mode");
+      });
     }
   }
-
   render() {
     const { lightmode } = this.state;
+
     return (
       <button type="button" onClick={this.handleDarkMode}>
         <img src={lightmode ? darkImg : lightImg} alt="" />
