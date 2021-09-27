@@ -102,6 +102,7 @@ function HomeTemplate({
                 onKeyDownEdit={onKeyDownEdit}
                 toggleDoneTask={toggleDoneTask}
                 removeTask={removeTask}
+                onKeyDownSubmit={onKeyDownSubmit}
                 removeAllCompletedTasks={removeAllCompletedTasks}
               />
             </Container>

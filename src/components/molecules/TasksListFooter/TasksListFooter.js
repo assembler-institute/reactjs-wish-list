@@ -24,12 +24,12 @@ function TasksListFooter({ filteredTasks, removeAllCompletedTasks }) {
     <FooterFilters>
       <div className="d-flex justify-content-between pt-3">
         <p>{filteredTasks.length} items</p>
-        <FilterButton
+{/*         <FilterButton
           name="clear"
           onClick={(e) => removeAllCompletedTasks(e)}
         >
           Clear completed
-        </FilterButton>
+        </FilterButton> */}
       </div>
     </FooterFilters>
   );

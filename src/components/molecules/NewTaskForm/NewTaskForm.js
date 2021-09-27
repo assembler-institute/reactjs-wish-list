@@ -1,6 +1,7 @@
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import styled from "styled-components";
 import { v4 as uuid } from "uuid";
+import { InputCreate } from "../../atoms";
 
 import taskSchema from "./task-schema";
 
@@ -21,21 +22,21 @@ const ErrorInput = styled.div`
   }
 `;
 
-const InputCreate = styled(Field)`
+/* const InputCreate = styled(Field)`
   font-size: 1.2rem;
   font-weight: 600;
   &:invalid {
     border: 1px solid red;
   }
 `;
-
-const InputCreateError = styled(Field)`
+ */
+/* const InputCreateError = styled(Field)`
   font-size: 1.2rem;
   font-weight: 600;
   color: red;
   outline: none;
   border: 1px solid red;
-`;
+`; */
 function addTaskDetails(task) {
   return {
     id: uuid(),
@@ -64,27 +65,9 @@ function NewTaskForm({ saveNewTask, onKeyDownSubmit }) {
       >
         {({ handleSubmit, errors, values, touched, isValidating, isValid }) => (
           <Form onKeyDown={(e) => onKeyDownSubmit(e, handleSubmit)}>
-            {touched.text && errors.text ? (
-              <InputCreateError
-                type="text"
-                className="form-control"
-                placeholder="New task"
-                id="text"
-                name="text"
-                value={values.text}
-                title="Write your task"
-              />
-            ) : (
-              <InputCreate
-                type="text"
-                className="form-control"
-                placeholder="New task"
-                id="text"
-                name="text"
-                value={values.text}
-                title="Write your task"
-              />
-            )}
+            <InputCreate
+              text={values.text}
+            />
 
             {touched.text && errors.text ? (
               <ErrorInput>

@@ -141,14 +141,16 @@ class App extends Component {
     this.pageFiltered(this.state.tasks, status);
   };
 
-  saveEditTask = (e, taskId) => {
-    e.preventDefault();
-
+  saveEditTask = (text, taskId) => {
+/*     e.preventDefault() */;
+    
     const { tasks } = this.state;
 
     tasks.map((task) => {
       if (task.id === taskId) {
-        task.text = e.target.value;
+        task.text = text;
+        task.isEditing = false;
+        console.log("guarda: " + text);
         task.updatedAt = new Date().toISOString();
       }
     });

@@ -10,6 +10,7 @@ function TasksList({
   toggleDoneTask,
   removeTask,
   removeAllCompletedTasks,
+  onKeyDownSubmit
 }) {
   return (
     <>
@@ -35,6 +36,7 @@ function TasksList({
                   onKeyDownEdit={onKeyDownEdit}
                   toggleDoneTask={toggleDoneTask}
                   removeTask={removeTask}
+                  onKeyDownSubmit={onKeyDownSubmit}
                 />
               ))
             ) : (

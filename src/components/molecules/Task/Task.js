@@ -1,13 +1,7 @@
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 
-import { Button, InputEdit } from "../../atoms";
-
-const CheckDone = styled.button`
-  width: 23px;
-  margin-right: 1rem;
-  border-radius: 23px;
-`;
+import { Button, InputEdit, CheckDone } from "../../../components/atoms";
 
 const ButtonDelete = styled.button`
   color: grey;
@@ -44,6 +38,7 @@ function Task({
   onKeyDownEdit,
   toggleDoneTask,
   removeTask,
+  onKeyDownSubmit
 }) {
   return (
     <Draggable key={task.id} draggableId={task.id} index={index}>
@@ -54,16 +49,13 @@ function Task({
           ref={draggableProvided.innerRef}
           {...draggableProvided.dragHandleProps}
         >
-          <CheckDone
-            className="btn btn-secondary"
-            style={{ backgroundColor: task.done ? "black" : "white" }}
-            onClick={(e) => toggleDoneTask(e, task.id)}
-          />
+          <CheckDone task={task} toggleDoneTask={toggleDoneTask} />
           <Button toggleEditTask={toggleEditTask} task={task} />
           <InputEdit
             task={task}
             saveEditTask={saveEditTask}
             onKeyDownEdit={onKeyDownEdit}
+            onKeyDownSubmit={onKeyDownSubmit}
             title="Write your task"
           />
           <ButtonDelete
