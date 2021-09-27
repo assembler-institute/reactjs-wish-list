@@ -2,6 +2,8 @@
 import React from 'react'
 import './AddToDoTask.scss'
 import { generateNewKey } from '../../utils/localStorage'
+
+
 // Improve the render of the component
 
 export default class AddToDoTask extends React.Component {
@@ -56,9 +58,9 @@ export default class AddToDoTask extends React.Component {
     return (
       <>
       <form onSubmit={this.formSubmit}>
-        <input data-testid="create-todo-input" type="text" value={title} onChange={this.handlerInput} />
+        <input className="form-control" data-testid="create-todo-input" type="text" value={title} onChange={this.handlerInput} />
       </form>
-      <span data-testid="create-todo-error-message" className={error ? `show` : `hide`}>Please enter at least one character</span>
+      <div data-testid="create-todo-error-message" className={error ? `show alert alert-danger` : `hide`}  role="alert">Please enter at least one character</div>
       </>
     )
   }
