@@ -8,7 +8,7 @@ const ToggleButton = styled.button`
     width: 30px;
     border-radius: 50%;
     border: none;
-    background-color: transparent;
+    background-color: ${props => props.theme.pageBackground};
     &:focus {
       outline: none;
     }

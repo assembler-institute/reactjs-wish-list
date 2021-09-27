@@ -1,56 +1,36 @@
 import styled from "styled-components";
 
-
 const Input = styled.input`
   font-size: 1.2rem;
   font-weight: 600;
-  width: 100%;
+  width: calc(100% - 2rem);
   text-align: left;
-  padding-left: 1rem;
-  border-bottom: 1px solid black;
+  margin-left: 1rem;
+  border-bottom: 1px solid ${(props) => props.theme.titleColor};
   outline: none;
-
+  background-color: transparent;
+  color:${(props) => props.theme.titleColor};
   &:active {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid ${(props) => props.theme.titleColor};
   }
 `;
 
-
-function InputEdit({ task, values, onKeyDownEdit,handleChange,handleBlur }) {
+function InputEdit({ task, values, onKeyDownEdit, handleChange, handleBlur }) {
   return (
-/*     <Formik
-      initialValues={{
-        text: task.text,
-        done: task.done,
+    <Input
+      name="text"
+      type="text"
+      style={{ display: task.isEditing ? "block" : "none" }}
+      value={values}
+      onChange={(e) => {
+        handleChange(e);
+        onKeyDownEdit(e, task.id);
       }}
-      validationSchema={taskSchema}
-      onSubmit={(values, { resetForm }) => {
-        saveEditTask(values.text, task.id);
-        resetForm({});
+      onBlur={(e) => {
+        handleBlur(e);
+        onKeyDownEdit(e, task.id);
       }}
-    >
-      {({ handleSubmit, errors, values, touched, handleChange }) => (
-        <FormEditTask onKeyDown={(e) => onKeyDownSubmit(e, handleSubmit)}> */
-          <Input
-            name="text"
-            type="text"
-            style={{ display: task.isEditing ? "block" : "none" }}
-            value={values}
-            onChange={(e) => {
-              handleChange(e);
-              onKeyDownEdit(e, task.id)
-            }}
-            onBlur={(e) => {
-              handleBlur(e);
-              onKeyDownEdit(e, task.id)
-            }}
-          />
-     /*      {touched.text && errors.text ? (
-            <ErrorMessage errors={errors} />
-          ) : null}
-        </FormEditTask>
-      )}
-    </Formik> */
+    />
   );
 }
 

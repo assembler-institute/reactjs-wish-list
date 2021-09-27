@@ -2,18 +2,19 @@ import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import { Form, Formik } from "formik";
 import taskSchema from "components/molecules/NewTaskForm/task-schema";
-import { ErrorMessage } from 'components/atoms'
+import { ErrorMessage } from "components/atoms";
 
 import { Button, InputEdit, CheckDone } from "components/atoms";
 
 const ButtonDelete = styled.button`
-  color: grey;
-  background-color: #ffffff;
+  color: ${(props) => props.theme.titleColor};
+  background-color: transparent;
   border: 0;
-  font-weight: bold;
   &:hover {
-    color: #000000;
-    background-color: #ffffff;
+    font-weight: bold;
+    background-color: transparent;
+    color: ${(props) => props.theme.titleColor};
+    font-size: 1.2rem;
   }
 `;
 
@@ -23,13 +24,13 @@ const TaskItem = styled.li`
   min-height: 1px;
   padding: 1.25rem;
   margin: 0;
-  border-bottom: 1px solid #e6e6e6;
-
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
+  background: ${(props) => props.theme.pageBackground};
   &:nth-child(1) {
     border-radius: 1px 1px 0 0;
   }
-  &:hover{
-      background: linear-gradient(to right, #e6e6e6, white);
+  &:hover {
+    background: ${(props) => props.theme.gradientBackground};
   }
 `;
 
@@ -70,7 +71,14 @@ function Task({
               resetForm({});
             }}
           >
-            {({ handleSubmit, errors, values, touched, handleChange,handleBlur }) => (
+            {({
+              handleSubmit,
+              errors,
+              values,
+              touched,
+              handleChange,
+              handleBlur,
+            }) => (
               <FormEditTask onKeyDown={(e) => onKeyDownSubmit(e, handleSubmit)}>
                 <InputEdit
                   task={task}

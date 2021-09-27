@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const NavItemStyled = styled(NavLink)`
-color: #A4A4A4;
-background: white;
+color: ${(props) => props.theme.titleColor};
+background: ${(props) => props.theme.pageBackground };
 border: none;
 font-size: bold;
 width: 33,3333%;
@@ -12,9 +12,10 @@ width: 33,3333%;
 &:focus,
 &.active {
   color: black;
-  background-color: white;
+  font-weight:bold;
   outline: none;
   box-shadow: none;
+  color: ${(props) => props.theme.titleColor};
 }
 `;
 

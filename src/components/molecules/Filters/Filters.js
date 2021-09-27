@@ -5,7 +5,7 @@ import { NavItem } from "components/atoms";
 const StyledFilters = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
   font-size: 1.2rem;
 `;
 
@@ -18,8 +18,8 @@ const NavList = styled.nav`
 `;
 
 const FilterButton = styled.button`
-  color: #a4a4a4;
-  background: white;
+  color: ${(props) => props.theme.titleColor };
+  background: ${(props) => props.theme.pageBackground };
   border: none;
   font-size: bold;
   margin-left: auto;
@@ -27,8 +27,8 @@ const FilterButton = styled.button`
 
   &:hover,
   &:focus {
-    color: black;
-    background-color: white;
+    color: ${(props) => props.theme.titleColor };
+    font-weight:bold;
     outline: none;
     box-shadow: none;
   }
@@ -44,7 +44,7 @@ const ItemsNumber = styled.span`
 function Filters({ filterTasks, removeAllCompletedTasks, filteredTasks }) {
   return (
     <StyledFilters>
-      <ItemsNumber>{filteredTasks.length} items</ItemsNumber>
+      <ItemsNumber>{filteredTasks.length} items left</ItemsNumber>
       <NavList>
         <NavItem
           name="all"

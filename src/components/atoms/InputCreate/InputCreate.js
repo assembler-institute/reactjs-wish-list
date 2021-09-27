@@ -6,9 +6,15 @@ const InputCreateStyle = styled(Field)`
   font-weight: 500;
   padding: .875rem 1.25rem;
   height: calc(2em + 1.25rem + 2px);
-
+  background-color: transparent !important;
+  border-color: ${(props) => props.theme.borderColor};
+  color: ${(props) => props.theme.titleColor};
+  transition: none;
   &:invalid {
     border: 1px solid red;
+  }
+  &:focus{
+    color: ${(props) => props.theme.titleColor};
   }
 `;
 

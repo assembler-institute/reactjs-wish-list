@@ -10,7 +10,7 @@ const StyledNewTaskForm = styled.div`
   border-radius: 5px;
   padding: 1.5rem;
   z-index: 100;
-  background-color: white;
+  background-color: ${(props) => props.theme.pageBackground }; 
 `;
 
 function addTaskDetails(task) {

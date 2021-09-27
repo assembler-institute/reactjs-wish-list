@@ -9,6 +9,7 @@ const Icon = styled.svg`
   fill: none;
   stroke: white;
   stroke-width: 2px;
+  padding: 2px;
 `;
 
 const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
@@ -30,7 +31,7 @@ const StyledCheckbox = styled.div`
   height: 25px;
   background: ${(props) => (props.checked ? "black" : "ghostwhite")};
   border-radius: 100%;
-  border: 2px solid black;
+  border: 2px solid ${(props) => props.theme.titleColor};
   transition: all 150ms;
   cursor:pointer;
 
