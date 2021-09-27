@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+import { Draggable } from "react-beautiful-dnd";
 import "./Todo.scss";
 
 export default class Todo extends Component {
@@ -35,7 +37,7 @@ export default class Todo extends Component {
   }
 
   render() {
-    const { title, id, isFinished, isEditing } = this.props;
+    const { title, id, isFinished, isEditing, index } = this.props;
     const editableText =
       isEditing === true ? (
         <input
@@ -58,32 +60,39 @@ export default class Todo extends Component {
       );
 
     return (
-      <li
-        className={
-          "item__list--item" + (isFinished === true ? " finished" : "")
-        }
-        id={id}
-        data-finished={isFinished}
-      >
-        <input
-          type="checkbox"
-          className="todo__check"
-          onChange={this.handleCheckChange}
-          id={id}
-          checked={isFinished === true && true}
-        />
+      <Draggable draggableId={"draggable-" + id} index={index}>
+        {(draggableProvided) => (
+          <li
+            {...draggableProvided.draggableProps}
+            ref={draggableProvided.innerRef}
+            {...draggableProvided.dragHandleProps}
+            className={
+              "item__list--item" + (isFinished === true ? " finished" : "")
+            }
+            id={id}
+            data-finished={isFinished}
+          >
+            <input
+              type="checkbox"
+              className="todo__check"
+              onChange={this.handleCheckChange}
+              id={id}
+              checked={isFinished === true && true}
+            />
 
-        {editableText}
+            {editableText}
 
-        <button
-          className="todo__remove"
-          id={id}
-          onClick={this.onClick}
-          type="button"
-        >
-          X
-        </button>
-      </li>
+            <button
+              className="todo__remove"
+              id={id}
+              onClick={this.onClick}
+              type="button"
+            >
+              X
+            </button>
+          </li>
+        )}
+      </Draggable>
     );
   }
 }

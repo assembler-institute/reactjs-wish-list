@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import TodoListActive from "../TodoListActive/TodoListActive";
+import NoTodo from "../NoTodo/NoTodo";
 
 export default class Active extends Component {
   constructor(props) {
