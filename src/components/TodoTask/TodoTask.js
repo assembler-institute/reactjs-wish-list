@@ -53,17 +53,20 @@ export default class TodoTask extends React.Component {
         className={`shadow-sm list-group-item d-flex flex-wrap justify-content-between align-items-center ${
           isEditing ? "editing" : ""
         } ${done ? "done" : ""}`}
+        data-testid="todo-item"
       >
         <button
           className="btn btn-light"
           type="button"
           onClick={this.completeHandler}
+          data-testid="todo-item-checkbox"
         >
           <span role="img" aria-label="Check to complete">
             {done ? "❌" : "✅"}
           </span>
         </button>
         <form onSubmit={this.handlerSubmit}>
+          <input type="checkbox" className="d-none"  defaultChecked={done ? `checked` : ``} />
           <input
             required
             title={inputValue}
@@ -75,12 +78,14 @@ export default class TodoTask extends React.Component {
             onChange={this.editHandler}
             onFocus={() => this.setState({ isEditing: true })}
             onBlur={() => this.setState({ isEditing: false })}
+            data-testid="todo-item-input"
           />
         </form>
         <button
           className="btn btn-light"
           type="button"
           onClick={() => handlerDeleteTask(id)}
+          data-testid="todo-item-delete-button"
         >
           <span role="img" aria-label="trash bin">
             🗑️

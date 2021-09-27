@@ -13,7 +13,9 @@ export default class Footer extends React.Component {
     const {children} = this.props
     return (
       <>
-      {children}
+      <footer data-testid="app-footer">
+        {children}
+      </footer>
       </>
     )
   }
