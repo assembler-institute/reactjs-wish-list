@@ -1,8 +1,8 @@
 import { Component } from "react";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ClipLoader from "react-spinners/ClipLoader";
 import { themes } from "./themes";
+
 import * as api from "./api";
 
 import { AllPage, ActivePage, CompletePage } from "./pages";
@@ -54,6 +54,9 @@ class App extends Component {
 
       return;
     }
+
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    mq.matches ? this.changeTheme() : null;
 
     const status = window.location.pathname.substring(1);
     this.setState((prevState) => ({
@@ -142,8 +145,6 @@ class App extends Component {
   };
 
   saveEditTask = (text, taskId) => {
-/*     e.preventDefault() */;
-
     const { tasks } = this.state;
 
     tasks.map((task) => {
@@ -244,6 +245,15 @@ class App extends Component {
 
   render() {
     const { tasks, filteredTasks, theme } = this.state;
+
+    // const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    // mq.matches ? this.changeTheme : 'light';
+
+    // console.log(`${mq.matches ? 'dark' : 'light'} mode`);
+
+    // useMediaQuery({
+    //   query: '(prefers-color-scheme: dark)'
+    // }, undefined, (isDarkPreffered) => isDarkPreffered ? 'dark' : 'light')
 
     return (
       <ThemeProvider theme={themes[theme]}>
