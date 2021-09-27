@@ -16,21 +16,23 @@ const FilterButton = styled.button`
 `;
 
 const FooterFilters = styled.footer`
-  padding: 0em 2rem 1rem 2rem;
+  padding: 2rem;
+  text-align:center;
 `;
 
 function TasksListFooter({ filteredTasks, removeAllCompletedTasks }) {
   return (
     <FooterFilters>
-      <div className="d-flex justify-content-between pt-3">
-        <p>{filteredTasks.length} items</p>
-{/*         <FilterButton
+      &copy; All rights reserved
+     {/*  <div className="d-flex justify-content-between pt-3">
+     <p>{filteredTasks.length} items</p>
+        <FilterButton
           name="clear"
           onClick={(e) => removeAllCompletedTasks(e)}
         >
           Clear completed
-        </FilterButton> */}
-      </div>
+        </FilterButton> 
+      </div> */}
     </FooterFilters>
   );
 }

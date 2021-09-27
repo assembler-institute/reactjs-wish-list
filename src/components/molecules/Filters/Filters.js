@@ -43,9 +43,10 @@ const FilterButton = styled.button`
   }
 `;
 
-function Filters({ filterTasks,removeAllCompletedTasks }) {
+function Filters({ filterTasks,removeAllCompletedTasks,filteredTasks }) {
   return (
       <NavList>
+        <div>{filteredTasks.length} items</div>
         <div>
           <NavItem
             exact
