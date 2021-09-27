@@ -61,20 +61,23 @@ class TodoList extends Component {
 
         <ul className="list-group list-group-flush">
           {todos.map((item) => (
-            <li className="list-group-item" key={item.id}>
-              <input
-                type="checkbox"
-                name={item.id}
-                onClick={() => this.toggleCompleted(item.id)}
-              />
-              <label
-                style={{ textDecoration: item.completed ? "line-through" : "" }}
-                contentEditable="true"
-                htmlFor={item.id}
-              >
-                {item.text}
-              </label>
-              <Button onClick={() => this.onDelete(item.id)}>X</Button>
+            <li className="list-group-item d-flex justify-content-between align-items-center" key={item.id}>
+              <div className="d-flex align-items-center">
+                <input
+                  className="input"
+                  type="checkbox"
+                  name={item.id}
+                  onClick={() => this.toggleCompleted(item.id)}
+                />
+                <label
+                  className={`ml-2 mb-0 ${item.completed ? "is-disabled": ""}`}
+                  contentEditable="true"
+                  htmlFor={item.id}
+                >
+                  {item.text}
+                </label>
+              </div>
+              <Button onClick={() => this.onDelete(item.id)}>&times;</Button>
             </li>
           ))}
         </ul>
