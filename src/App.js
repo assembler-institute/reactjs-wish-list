@@ -4,11 +4,7 @@ import ChangeMode from "./components/ChangeMode";
 import TodoList from "./components/TodoList";
 import Menu from "./components/Menu";
 import Toast from "./components/Toast";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.scss";
 
 class App extends React.Component {
@@ -133,80 +129,80 @@ class App extends React.Component {
 
   render() {
     const { todos } = this.state;
-    const activeTodos = todos.filter(todo => todo.completed === false)
-    const completedTodos = todos.filter(todo => todo.completed === true)
+    const activeTodos = todos.filter((todo) => todo.completed === false);
+    const completedTodos = todos.filter((todo) => todo.completed === true);
     return (
       <>
-      <Router>
-        <Background />
-        <main className="container pt-5 main-width">
-          <section className="row">
-            <div className="col col-12">
-              <header className="d-flex justify-content-between align-items-center">
-                <h1>TODO</h1>
-                <ChangeMode />
-              </header>
-              <div>
-                <input
-                  onKeyDown={this.handleAddTodo}
-                  id="inputNewToDo"
-                  type="text"
-                  className="w-100 mt-4 new-todo shadow"
-                ></input>
-                {todos.length > 0 ? (
-                  <div className="list-container bg-white shadow">
-                  <Switch>
-                    
-                    <Route path="/active">
-                      <TodoList
+        <Router>
+          <Background />
+          <main className="container pt-5 main-width">
+            <section className="row">
+              <div className="col col-12">
+                <header className="d-flex justify-content-between align-items-center">
+                  <h1>TODO</h1>
+                  <ChangeMode />
+                </header>
+                <div>
+                  <input
+                    onKeyDown={this.handleAddTodo}
+                    id="inputNewToDo"
+                    type="text"
+                    className="w-100 mt-4 new-todo shadow"
+                  ></input>
+                  {todos.length > 0 ? (
+                    <div className="list-container bg-white shadow">
+                      <Switch>
+                        <Route path="/active">
+                          <TodoList
                             todos={activeTodos}
                             handleCheckbox={this.handleCheckbox}
                             handleEdit={this.handleEdit}
                             handleEditName={this.handleEditName}
                             handleDelete={this.handleDelete}
                           />
-                    </Route>
+                        </Route>
 
-                    <Route path="/completed">
-                      <TodoList
+                        <Route path="/completed">
+                          <TodoList
                             todos={completedTodos}
                             handleCheckbox={this.handleCheckbox}
                             handleEdit={this.handleEdit}
                             handleEditName={this.handleEditName}
                             handleDelete={this.handleDelete}
                           />
-                    </Route>
+                        </Route>
 
-                    <Route path="/">
-                      
-                        <TodoList
-                          todos={todos}
-                          handleCheckbox={this.handleCheckbox}
-                          handleEdit={this.handleEdit}
-                          handleEditName={this.handleEditName}
-                          handleDelete={this.handleDelete}
-                        />
-                      
-                    </Route>
-                  </Switch>
-                    <Menu todos={todos} handleClearAll={this.handleClearAll} />
-                  </div>
-                ) : (
-                  <div className="list-container bg-white shadow mt-4 p-2 ">
-                    <h4
-                      data-testid="no-todos"
-                      className="m-0 text-center text-danger"
-                    >
-                      Create a new task please
-                    </h4>
-                  </div>
-                )}
+                        <Route path="/">
+                          <TodoList
+                            todos={todos}
+                            handleCheckbox={this.handleCheckbox}
+                            handleEdit={this.handleEdit}
+                            handleEditName={this.handleEditName}
+                            handleDelete={this.handleDelete}
+                          />
+                        </Route>
+                      </Switch>
+                      <Menu
+                        todos={todos}
+                        handleClearAll={this.handleClearAll}
+                      />
+                    </div>
+                  ) : (
+                    <div className="list-container bg-white shadow mt-4 p-2 ">
+                      <h4
+                        data-testid="no-todos"
+                        className="m-0 text-center text-danger"
+                      >
+                        Create a new task please
+                      </h4>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          </section>
-          <Toast />
-        </main>
-      </Router>
+            </section>
+            <Toast />
+          </main>
+        </Router>
       </>
     );
   }

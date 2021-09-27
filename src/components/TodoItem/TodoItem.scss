@@ -14,3 +14,22 @@
   outline: none;
   padding-left: 3rem;
 }
+
+.task-completed {
+  text-decoration: line-through;
+  color: lightgrey;
+}
+
+.label {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin: 0;
+  border: 1px solid lightgrey;
+  cursor: pointer;
+
+  &-active {
+    border: 1px solid transparent;
+    background: linear-gradient(90deg, rgba(184, 100, 240, 0.7) 0%, rgba(131, 156, 249, 0.7) 100%);
+  }
+}

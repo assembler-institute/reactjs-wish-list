@@ -1,5 +1,7 @@
 import React from "react"
 import "./TodoItem.scss"
+import classnames from "classnames"
+import { check } from "prettier";
 
 export default class TodoItem extends React.Component {
   constructor(props) {
@@ -28,12 +30,25 @@ export default class TodoItem extends React.Component {
   } 
 
   render() {
-    const { task, completed } = this.props.todo
+    const { id, task, completed } = this.props.todo
+    // let checkBox="checkbox";
+    // if(completed===true) {
+    //   checkBox += "-completed"
+    // } else {
+    //   checkBox += "-pending"
+    // }
+
+    let checkBoxClass = "task"
+    checkBoxClass += classnames(completed ? "-completed" : "-pending" )
+
+    let labelClass = "label ";
+    labelClass += classnames(completed ? "label-active" : "")
     return (
       <li data-testid="todo-item" className="list-element d-flex justify-content-between align-items-center">
         <div className="d-flex align-items-center">
-          <input checked={completed} data-testid="create-todo-input" onChange={this.handleCheckboxTask} type="checkbox" />
-          <p className="ml-2 mb-0">{task}</p>
+          <label className={labelClass} htmlFor={`checkbox-${id}`}></label>
+          <input id={`checkbox-${id}`} className="d-none" checked={completed} data-testid="create-todo-input" onChange={this.handleCheckboxTask} type="checkbox" />
+          <p className={`ml-2 mb-0 ${ checkBoxClass}`}>{task}</p>
         </div>
 
         <div className="d-flex">
