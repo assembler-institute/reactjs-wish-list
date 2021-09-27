@@ -4,6 +4,11 @@ import ChangeMode from "./components/ChangeMode";
 import TodoList from "./components/TodoList";
 import Menu from "./components/Menu";
 import Toast from "./components/Toast";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import "./App.scss";
 
 class App extends React.Component {
@@ -128,8 +133,11 @@ class App extends React.Component {
 
   render() {
     const { todos } = this.state;
+    const activeTodos = todos.filter(todo => todo.completed === false)
+    const completedTodos = todos.filter(todo => todo.completed === true)
     return (
       <>
+      <Router>
         <Background />
         <main className="container pt-5 main-width">
           <section className="row">
@@ -147,13 +155,40 @@ class App extends React.Component {
                 ></input>
                 {todos.length > 0 ? (
                   <div className="list-container bg-white shadow">
-                    <TodoList
-                      handleCheckbox={this.handleCheckbox}
-                      handleEdit={this.handleEdit}
-                      handleEditName={this.handleEditName}
-                      todos={todos}
-                      handleDelete={this.handleDelete}
-                    />
+                  <Switch>
+                    
+                    <Route path="/active">
+                      <TodoList
+                            todos={activeTodos}
+                            handleCheckbox={this.handleCheckbox}
+                            handleEdit={this.handleEdit}
+                            handleEditName={this.handleEditName}
+                            handleDelete={this.handleDelete}
+                          />
+                    </Route>
+
+                    <Route path="/completed">
+                      <TodoList
+                            todos={completedTodos}
+                            handleCheckbox={this.handleCheckbox}
+                            handleEdit={this.handleEdit}
+                            handleEditName={this.handleEditName}
+                            handleDelete={this.handleDelete}
+                          />
+                    </Route>
+
+                    <Route path="/">
+                      
+                        <TodoList
+                          todos={todos}
+                          handleCheckbox={this.handleCheckbox}
+                          handleEdit={this.handleEdit}
+                          handleEditName={this.handleEditName}
+                          handleDelete={this.handleDelete}
+                        />
+                      
+                    </Route>
+                  </Switch>
                     <Menu todos={todos} handleClearAll={this.handleClearAll} />
                   </div>
                 ) : (
@@ -171,6 +206,7 @@ class App extends React.Component {
           </section>
           <Toast />
         </main>
+      </Router>
       </>
     );
   }
