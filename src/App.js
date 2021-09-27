@@ -9,6 +9,7 @@ import MainList from "./components/MainList";
 import FilterToDo from "./components/FilterToDo/FilterToDo";
 import { deleteItem, saveItem } from "./utils/localStorage";
 import Background from "./components/Background/Background";
+import Title from "./components/Title/Title";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -65,11 +66,9 @@ export default class App extends React.Component {
       <>
         <Background />
         <main id="main-app" className="container mt-5">
-          <h1 className="title display-1 text-white text-center m-5 font-weight-bold">
-            <strong>To Do List</strong>
-          </h1>
+          <Title />
           <section className="row justify-content-center">
-            <div className="col col-6 p-5 rounded bg-white shadow-lg">
+            <div className="col col-sm-12 col-md-6 p-5 rounded bg-white shadow-lg">
               <Header>
                 <AddToDoTask handlerNewToDo={this.handlerNewToDo} />
               </Header>
