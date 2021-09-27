@@ -45,7 +45,7 @@ export default class TodoTask extends React.Component {
     if (id === '') return null
 
     return(
-      <li className={`list-group-item d-flex justify-content-between align-items-center ${isEditing ? 'editing' : ''} ${done ? 'done' : ''}`}>
+      <li className={`list-group-item d-flex flex-wrap justify-content-between align-items-center ${isEditing ? 'editing' : ''} ${done ? 'done' : ''}`}>
           <button className="btn btn-light" type="button" onClick={this.completeHandler}>
             <span role="img" aria-label='Check to complete'>
               {done ? "❌" : "✅"}

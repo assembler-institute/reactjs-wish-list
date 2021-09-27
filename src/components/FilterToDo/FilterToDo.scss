@@ -1,8 +1,13 @@
-.nav-link {
+.navbar-nav .nav-link {
   padding: 10px;
   color: var(--gray-dark);
   
   &:hover {
     color: var(--secondary);
+  }
+}
+@media (max-width: 440) {
+  .navbar .navbar-nav {
+    flex-wrap: wrap;
   }
 }

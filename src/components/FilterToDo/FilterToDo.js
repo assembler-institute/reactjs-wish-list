@@ -16,14 +16,14 @@ export default class FilterToDo extends React.Component {
 
     return (
       <>
-        <nav className="navbar bg-light rounded">
+        <nav className="navbar bg-light rounded flex-wrap">
           <span className="">{counter > 1 ? `${counter} todos left` : `${counter} todo left` }</span>
-              <div className="navbar-nav flex-row">
-                <Link to="/" className="nav-link">All</Link>
-                <Link to="/active" className="nav-link">Active</Link>
-                <Link to="/completed" className="nav-link">Completed</Link>
-                <button type="button" className="btn btn-success" onClick={handlerClearCompleted}>Clear completed</button>
-              </div>
+          <div className="navbar-nav flex-row flex-wrap">
+            <Link to="/" className="nav-link">All</Link>
+            <Link to="/active" className="nav-link">Active</Link>
+            <Link to="/completed" className="nav-link">Completed</Link>
+            <button type="button" className="btn btn-success" onClick={handlerClearCompleted}>Clear completed</button>
+          </div>
           </nav>
       </>
     )
