@@ -14,6 +14,7 @@ class Home extends Component {
         super(props);
         this.state={
             listToDos: [],
+            newToDo:""
         };
         this.updateInput = this.updateInput.bind(this);
         this.addItem = this.addItem.bind(this);
@@ -32,8 +33,9 @@ class Home extends Component {
         listToDos.push(newToDo);
         this.setState({
         listToDos,
-        newToDo: "",
+        newToDo: null,
         });
+        console.log(newToDo)
     }; 
   render(){
     return (
