@@ -1,6 +1,5 @@
 import { Component } from "react";
 import TodoSetTextForm from "../TodoSetTextForm";
-import CheckBox from "../CheckBox";
 import Button from "../Button";
 
 import "./TodoItem.scss";
