@@ -1,10 +1,18 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router,
+          Switch,
+          Route,
+          Link,
+          NavLink,
+ } from "react-router-dom";
 
 import Input from "../Components/Input";
 import TodoList from "../Components/TodoList"
 import Footer from "../Components/Footer"
 
 import "./home.scss";
+import TodoListCompleted from "../Components/TodoList/TodoList_Completed";
+import TodoListActive from "../Components/TodoList/TodoList_Active";
 
 
 
@@ -33,12 +41,12 @@ class Home extends Component {
         listToDos.push(newToDo);
         this.setState({
         listToDos,
-        newToDo: null,
+        newToDo: "",
         });
-        console.log(newToDo)
     }; 
   render(){
     return (
+      <Router>
       <main className="container mt-5">
         <div className="container-lg">
           <h1 className="title">TO DO</h1>
@@ -47,10 +55,21 @@ class Home extends Component {
             <Input handelSubmit={this.addItem}/>
           </section>
           <section className="row container-lg">
-            <TodoList items={this.state.listToDos} />
+            <Switch>
+              <Route path="/" exact>
+                <TodoList id="all" items={this.state.listToDos} />
+              </Route>
+              <Route path="/active" exact>
+                <TodoListActive items={this.state.listToDos} />
+              </Route>
+              <Route path="/completed" exact>
+                <TodoListCompleted items={this.state.listToDos} />
+              </Route>
+            </Switch>
             <Footer />
           </section>
         </main>
+        </Router>
       );
     }
   }

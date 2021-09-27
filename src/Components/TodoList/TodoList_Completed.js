@@ -3,14 +3,14 @@ import "./TodoList.scss";
 
 
 
-class TodoList extends Component {
+class TodoListCompleted extends Component {
     constructor(props){
         super(props)
     }
     render(){
         return (
             <div className="todo__list__container container-lg">
-                <ul>
+                <ul id="completed">
                 {this.props.items.map((el)=> 
                     <li key={el.id}>
                         <input type="checkbox" id={el.id}  value={el.value}/>
@@ -23,4 +23,4 @@ class TodoList extends Component {
     }
 }
 
-export default TodoList;
+export default TodoListCompleted;
