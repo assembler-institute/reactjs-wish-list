@@ -5,7 +5,9 @@ export default class Todo extends Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
-    this.onChange = this.onChange.bind(this);
+    this.handleCheckChange = this.handleCheckChange.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleEditChange = this.handleEditChange.bind(this);
   }
 
   onClick(event) {
@@ -13,13 +15,47 @@ export default class Todo extends Component {
     removeTask(event.target.id);
   }
 
-  onChange(event) {
+  handleCheckChange(event) {
     const { completeTask } = this.props;
     completeTask(event.target.id);
   }
 
+  handleTitleChange(event) {
+    const { changeTitle, editTask } = this.props;
+    changeTitle(event.target);
+
+    if (event.key === "Enter") {
+      editTask(event.target.id);
+    }
+  }
+
+  handleEditChange(event) {
+    const { editTask } = this.props;
+    editTask(event.target.id);
+  }
+
   render() {
-    const { title, id, isFinished } = this.props;
+    const { title, id, isFinished, isEditing } = this.props;
+    const editableText =
+      isEditing === true ? (
+        <input
+          type="text"
+          className="todo__text"
+          onChange={this.handleTitleChange}
+          onKeyDown={this.handleTitleChange}
+          value={title}
+          id={id}
+        />
+      ) : (
+        <button
+          type="button"
+          className="todo__text"
+          onClick={this.handleEditChange}
+          id={id}
+        >
+          {title}
+        </button>
+      );
 
     return (
       <li
@@ -31,14 +67,21 @@ export default class Todo extends Component {
       >
         <input
           type="checkbox"
-          className="todo__check light"
-          onChange={this.onChange}
+          className="todo__check"
+          onChange={this.handleCheckChange}
           id={id}
-          checked={isFinished}
+          checked={isFinished === true && true}
         />
-        <p>{title}</p>
-        <button id={id} onClick={this.onClick} type="button">
-          X
+
+        {editableText}
+
+        <button
+          className="todo__remove"
+          id={id}
+          onClick={this.onClick}
+          type="button"
+        >
+          x
         </button>
       </li>
     );

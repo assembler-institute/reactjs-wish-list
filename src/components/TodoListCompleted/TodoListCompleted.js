@@ -1,20 +1,18 @@
 import React, { Component } from "react";
-import "./TodoList.scss";
 
 import Todo from "../Todo/Todo";
 
-export default class TodoList extends Component {
+export default class TodoListComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
-
   render() {
-    const { tasks, removeTask, completeTask, editTask, changeTitle } =
+    const { tasks, removeTask, completeTask, changeTitle, editTask } =
       this.props;
+    const filteredArr = tasks.filter((item) => item.isFinished === true);
     return (
       <ul className="item__list">
-        {tasks.map((item) => {
+        {filteredArr.map((item) => {
           return (
             <Todo
               key={item.id}
@@ -24,8 +22,8 @@ export default class TodoList extends Component {
               isEditing={item.isEditing}
               removeTask={removeTask}
               completeTask={completeTask}
-              editTask={editTask}
               changeTitle={changeTitle}
+              editTask={editTask}
             />
           );
         })}

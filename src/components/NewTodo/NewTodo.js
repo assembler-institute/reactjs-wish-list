@@ -36,13 +36,16 @@ export default class NewTodo extends Component {
       title: title,
       isFinished: false,
       id: Math.floor(Math.random() * 1000000),
+      isEditing: false,
     };
 
     e.target.reset();
     retrieve.push(todoTask);
     localStorage.setItem(`list`, JSON.stringify(retrieve));
 
-    saveNewTasks(retrieve);
+    const filteredRetrieve = retrieve.filter((el) => el.isFinished === false);
+
+    saveNewTasks(retrieve, filteredRetrieve);
   }
 
   render() {
