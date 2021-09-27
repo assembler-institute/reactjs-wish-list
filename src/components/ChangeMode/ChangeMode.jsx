@@ -1,5 +1,6 @@
 import React from "react";
 import moonIcon from "../../assets/icons/moon.svg";
+import sunIcon from "../../assets/icons/sun.svg";
 import "./ChangeMode.scss"
 
 class ChangeMode extends React.Component {
@@ -8,8 +9,9 @@ class ChangeMode extends React.Component {
   }
 
   render() {
+    const { handleTheme, isDarkMode } = this.props 
     return (
-      <img className="change-mode" src={moonIcon} alt="change theme mode" />
+      <img className="change-mode" src={isDarkMode ? sunIcon : moonIcon} alt="change theme mode" onClick={handleTheme} />
     );
   }
 }

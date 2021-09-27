@@ -4,6 +4,7 @@ import ChangeMode from "./components/ChangeMode";
 import TodoList from "./components/TodoList";
 import Menu from "./components/Menu";
 import Toast from "./components/Toast";
+import classNames from "classnames";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.scss";
 
@@ -14,6 +15,7 @@ class App extends React.Component {
       todos: JSON.parse(localStorage.getItem("todos"))
         ? JSON.parse(localStorage.getItem("todos"))
         : [],
+        isDarkMode: false,
     };
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
@@ -22,6 +24,12 @@ class App extends React.Component {
     this.handleEdit = this.handleEdit.bind(this);
     this.handleEditName = this.handleEditName.bind(this);
     this.handleClearAll = this.handleClearAll.bind(this);
+    this.handleTheme = this.handleTheme.bind(this)
+  }
+
+  handleTheme() {
+    let theme = !this.state.isDarkMode
+    this.setState({ isDarkMode: theme })
   }
 
   handleCheckbox(todo) {
@@ -33,7 +41,6 @@ class App extends React.Component {
     let newTodoList = this.state.todos.map((prevTodo) => {
       return prevTodo.id === todo.id ? test : prevTodo;
     });
-    // console.log(newTodoList);
     this.setState({ todos: newTodoList });
   }
 
@@ -108,46 +115,54 @@ class App extends React.Component {
     this.setState({ todos: pendingTodos });
   }
 
-  readLocalStorage() {
+  componentDidMount() {
     let todos = JSON.parse(localStorage.getItem("todos"));
+    let isDarkMode = JSON.parse(localStorage.getItem("theme"));
+
     if (todos != null) {
-      this.setState(todos);
+      this.setState({todos});
+    }
+    
+    if (isDarkMode != null) {
+      this.setState({isDarkMode});
     }
   }
 
-  writeLocalStorage() {
-    localStorage.setItem("todos", JSON.stringify(this.state.todos));
-  }
-
-  componentDidMount() {
-    this.readLocalStorage();
-  }
-
   componentDidUpdate() {
-    this.writeLocalStorage();
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
+    localStorage.setItem("theme", JSON.stringify(this.state.isDarkMode));
   }
 
   render() {
     const { todos } = this.state;
     const activeTodos = todos.filter((todo) => todo.completed === false);
     const completedTodos = todos.filter((todo) => todo.completed === true);
+
+    const isDarkMode = this.state.isDarkMode
+    const inputClass = classNames({ "bg-dark text-light": isDarkMode })
+
     return (
       <>
         <Router>
-          <Background />
+          <Background
+            isDarkMode={this.state.isDarkMode}
+          />
           <main className="container pt-5 main-width">
             <section className="row">
               <div className="col col-12">
                 <header className="d-flex justify-content-between align-items-center">
                   <h1>TODO</h1>
-                  <ChangeMode />
+                  <ChangeMode
+                    isDarkMode={this.state.isDarkMode}
+                    handleTheme={this.handleTheme}
+                  />
                 </header>
                 <div>
                   <input
                     onKeyDown={this.handleAddTodo}
                     id="inputNewToDo"
                     type="text"
-                    className="w-100 mt-4 new-todo shadow"
+                    className={`w-100 mt-4 new-todo shadow ${inputClass}`}
                   ></input>
                   {todos.length > 0 ? (
                     <div className="list-container bg-white shadow">
@@ -155,6 +170,7 @@ class App extends React.Component {
                         <Route path="/active">
                           <TodoList
                             todos={activeTodos}
+                            isDarkMode={this.state.isDarkMode}
                             handleCheckbox={this.handleCheckbox}
                             handleEdit={this.handleEdit}
                             handleEditName={this.handleEditName}
@@ -165,6 +181,7 @@ class App extends React.Component {
                         <Route path="/completed">
                           <TodoList
                             todos={completedTodos}
+                            isDarkMode={this.state.isDarkMode}
                             handleCheckbox={this.handleCheckbox}
                             handleEdit={this.handleEdit}
                             handleEditName={this.handleEditName}
@@ -175,6 +192,7 @@ class App extends React.Component {
                         <Route path="/">
                           <TodoList
                             todos={todos}
+                            isDarkMode={this.state.isDarkMode}
                             handleCheckbox={this.handleCheckbox}
                             handleEdit={this.handleEdit}
                             handleEditName={this.handleEditName}
@@ -184,6 +202,7 @@ class App extends React.Component {
                       </Switch>
                       <Menu
                         todos={todos}
+                        isDarkMode={this.state.isDarkMode}
                         handleClearAll={this.handleClearAll}
                       />
                     </div>
