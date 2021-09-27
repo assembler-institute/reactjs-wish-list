@@ -56,7 +56,7 @@ export default function Task({
     </>
   );
   if (isEditing) {
-    return editView;
+    return editView();
   }
   return (
     <li className="task" data-testid="todo-item" key={item.id}>
