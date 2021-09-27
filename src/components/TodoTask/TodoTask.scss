@@ -17,4 +17,10 @@
 .input-task {
   border: none;
   width: 100%;
+  text-overflow: ellipsis;
+  outline: none;
+  &:focus{
+    border-bottom: solid 1px;
+  }        
+
 }
