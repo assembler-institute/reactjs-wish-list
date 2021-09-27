@@ -1,9 +1,5 @@
-import { Form, Formik } from "formik";
 import styled from "styled-components";
 
-import { ErrorMessage } from 'components/atoms'
-
-import taskSchema from "components/molecules/NewTaskForm/task-schema";
 
 const Input = styled.input`
   font-size: 1.2rem;
@@ -19,13 +15,10 @@ const Input = styled.input`
   }
 `;
 
-const FormEditTask = styled(Form)`
-  width: 100%;
-`;
 
-function InputEdit({ task, saveEditTask, onKeyDownSubmit, onKeyDownEdit }) {
+function InputEdit({ task, values, onKeyDownEdit,handleChange,handleBlur }) {
   return (
-    <Formik
+/*     <Formik
       initialValues={{
         text: task.text,
         done: task.done,
@@ -37,23 +30,27 @@ function InputEdit({ task, saveEditTask, onKeyDownSubmit, onKeyDownEdit }) {
       }}
     >
       {({ handleSubmit, errors, values, touched, handleChange }) => (
-        <FormEditTask onKeyDown={(e) => onKeyDownSubmit(e, handleSubmit)}>
+        <FormEditTask onKeyDown={(e) => onKeyDownSubmit(e, handleSubmit)}> */
           <Input
             name="text"
             type="text"
             style={{ display: task.isEditing ? "block" : "none" }}
-            value={values.text}
+            value={values}
             onChange={(e) => {
               handleChange(e);
               onKeyDownEdit(e, task.id)
             }}
+            onBlur={(e) => {
+              handleBlur(e);
+              onKeyDownEdit(e, task.id)
+            }}
           />
-          {touched.text && errors.text ? (
+     /*      {touched.text && errors.text ? (
             <ErrorMessage errors={errors} />
           ) : null}
         </FormEditTask>
       )}
-    </Formik>
+    </Formik> */
   );
 }
 

@@ -1,5 +1,8 @@
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
+import { Form, Formik } from "formik";
+import taskSchema from "components/molecules/NewTaskForm/task-schema";
+import { ErrorMessage } from 'components/atoms'
 
 import { Button, InputEdit, CheckDone } from "components/atoms";
 
@@ -25,6 +28,13 @@ const TaskItem = styled.li`
   &:nth-child(1) {
     border-radius: 1px 1px 0 0;
   }
+  &:hover{
+      background: linear-gradient(to right, #e6e6e6, white);
+  }
+`;
+
+const FormEditTask = styled(Form)`
+  width: 100%;
 `;
 
 function Task({
@@ -35,7 +45,7 @@ function Task({
   onKeyDownEdit,
   toggleDoneTask,
   removeTask,
-  onKeyDownSubmit
+  onKeyDownSubmit,
 }) {
   return (
     <Draggable key={task.id} draggableId={task.id} index={index}>
@@ -48,13 +58,34 @@ function Task({
         >
           <CheckDone task={task} toggleDoneTask={toggleDoneTask} />
           <Button toggleEditTask={toggleEditTask} task={task} />
-          <InputEdit
-            task={task}
-            saveEditTask={saveEditTask}
-            onKeyDownEdit={onKeyDownEdit}
-            onKeyDownSubmit={onKeyDownSubmit}
-            title="Write your task"
-          />
+
+          <Formik
+            initialValues={{
+              text: task.text,
+              done: task.done,
+            }}
+            validationSchema={taskSchema}
+            onSubmit={(values, { resetForm }) => {
+              saveEditTask(values.text, task.id);
+              resetForm({});
+            }}
+          >
+            {({ handleSubmit, errors, values, touched, handleChange,handleBlur }) => (
+              <FormEditTask onKeyDown={(e) => onKeyDownSubmit(e, handleSubmit)}>
+                <InputEdit
+                  task={task}
+                  values={values.text}
+                  onKeyDownEdit={onKeyDownEdit}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  title="Write your task"
+                />
+                {touched.text && errors.text ? (
+                  <ErrorMessage errors={errors} />
+                ) : null}
+              </FormEditTask>
+            )}
+          </Formik>
           <ButtonDelete
             className="btn btn-secondary"
             onClick={(e) => removeTask(e, task.id)}

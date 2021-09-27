@@ -4,6 +4,7 @@ import Toggle from './Toggle';
 import CheckDone from './CheckDone'
 import InputCreate from './InputCreate';
 import ErrorMessage from './ErrorMessage';
+import NavItem from './NavItem'
 
 export {
   Button,
@@ -11,5 +12,6 @@ export {
   Toggle,
   CheckDone,
   InputCreate,
-  ErrorMessage
+  ErrorMessage,
+  NavItem
 }
