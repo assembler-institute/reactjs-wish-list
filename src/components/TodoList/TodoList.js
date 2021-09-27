@@ -18,7 +18,7 @@ export default class TodoList extends React.Component {
       <>
       {
         tasks.length === 0 ? 
-        <h1 data-testid="no-todos">There is any to do yet <span role="img" aria-label="sad face">😥</span></h1> :
+        <p className="text-center mt-3 h3" data-testid="no-todos">There is any to do yet <span role="img" aria-label="sad face">😥</span></p> :
         <ul className="list-group">
          {
          tasks.map(task => (

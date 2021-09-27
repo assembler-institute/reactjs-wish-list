@@ -53,7 +53,7 @@ export default class AddToDoTask extends React.Component {
     const { title, error } = this.state;
     return (
       <>
-        <form onSubmit={this.formSubmit}>
+        <form onSubmit={this.formSubmit} className="mb-2">
           <input
             className="form-control"
             placeholder="Do the homework..."

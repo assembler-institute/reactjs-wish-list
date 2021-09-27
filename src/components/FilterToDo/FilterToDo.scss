@@ -1,13 +1,13 @@
 .navbar-nav .nav-link {
   padding: 10px;
   color: var(--gray-dark);
+  text-decoration: underline;
   
   &:hover {
     color: var(--secondary);
   }
 }
-@media (max-width: 440) {
-  .navbar .navbar-nav {
-    flex-wrap: wrap;
-  }
+.btn.btn-primary {
+  border-color: var(--purple);
+  background-color: var(--purple);
 }

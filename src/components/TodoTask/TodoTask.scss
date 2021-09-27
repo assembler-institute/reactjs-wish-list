@@ -1,4 +1,5 @@
-.list-group-item+.list-group-item {
+.list-group-item+.list-group-item,
+.list-group-item:first-child {
   border-top-width: 1px;
   margin-bottom: 7.5px;
 }
