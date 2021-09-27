@@ -1,5 +1,13 @@
-.contaner__toDo {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.input__text{
+  border: solid 2px lightgray;
+  border-radius: 5px;
+  width: 20rem;
+  height: 2rem;
+  background-color: rgba(176, 196, 222, 0.096);;
 }
+
+.input-group{
+  padding: 0.2rem;
+  background-color: white;
+}
+

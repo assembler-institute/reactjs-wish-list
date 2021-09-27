@@ -40,24 +40,22 @@ class TodoListItem extends Component {
 
         return (
             <>
-            <input type="checkbox" 
-                   checked={done}
-                    onChange={e => this.handleCheckbox(done)}
+            <input type="checkbox"  
+                checked={done}
+                onChange={e => this.handleCheckbox(done)}
                     
                 /> 
-            {isEditing ? (<div>
-                <input type="text" 
+            {isEditing ? (<div class="input__todo__container">
+                <input type="text"
+                    class="input__text"
                     id={id} 
                     value={value}
                     onChange={e => this.updateInput("value",e.target.value) 
                     }
-                /> 
-                </div>):<p>{value}</p> }
-                <button class="btn__remove" type="button" onClick={() => handleRemove()}>Remove</button>
-                <button type="button" onClick={() => this.handleChange(id, value,done)}>
-                    {isEditing ? "Confirm": "Edit"}
-                </button> 
-                    
+                />
+                <button type="button" class="btn" onClick={() => this.handleChange(id, value,done)}>Confirm</button>
+                </div>):<p onClick={() => this.handleChange(id, value,done)}>{value}</p> }
+                <button class="btn__remove btn" type="button" onClick={() => handleRemove()}>Remove</button>
             </>
         );
     }
@@ -70,11 +68,10 @@ constructor(props){
     render(){
         
         return (
-            <>
             <div className="todo__list__container container-lg">
             <ul>
             {this.props.items.map((el)=> 
-                    <li key={el.id}>
+                    <li key={el.id} id={el.id}>
                     <TodoListItem 
                         id={el.id} 
                         value={el.value}
@@ -87,8 +84,7 @@ constructor(props){
                     
               </ul>
             </div>
-              
-        </>)
+        )
     }
 }
 

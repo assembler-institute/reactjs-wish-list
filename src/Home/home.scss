@@ -1,31 +1,11 @@
+body{
+    background-color: rgba(176, 196, 222, 0.096);
+}
 p{
     margin: 0;
 }
-.input__todo{
-    margin-top: 3rem;
-}
 
-.footer{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.btn{
-    &__group{
-        display: flex;
-        flex-direction: row;
-    }
-}
 
-.todo__list__container{
-    height: 20rem;
-}
 
-.counter__container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+
