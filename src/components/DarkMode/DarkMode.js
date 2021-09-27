@@ -25,24 +25,23 @@ export default class DarkMode extends React.Component {
 
     if (lightmode) {
       this.setState({ lightmode: false });
+      document.getElementById("bg-top").src = bgDarkImg;
+      document.querySelector(".new__task").classList.toggle("dark-mode");
+      document.querySelector(".new__task--input").classList.toggle("dark-mode");
+      document.querySelector(".todo__body").classList.toggle("dark-mode");
+      document
+        .querySelector(".background--bottom")
+        .classList.toggle("dark-mode");
     } else {
       this.setState({ lightmode: true });
-    }
-  }
-
-  componentDidUpdate() {
-    const { lightmode } = this.state;
-
-    if (!lightmode) {
-      document.getElementById("bg-top").src = bgDarkImg;
-    } else {
       document.getElementById("bg-top").src = bgLightImg;
+      document.querySelector(".new__task").classList.toggle("dark-mode");
+      document.querySelector(".new__task--input").classList.toggle("dark-mode");
+      document.querySelector(".todo__body").classList.toggle("dark-mode");
+      document
+        .querySelector(".background--bottom")
+        .classList.toggle("dark-mode");
     }
-
-    document.querySelector(".new__task").classList.toggle("dark-mode");
-    document.querySelector(".new__task--input").classList.toggle("dark-mode");
-    document.querySelector(".todo__body").classList.toggle("dark-mode");
-    document.querySelector(".background--bottom").classList.toggle("dark-mode");
   }
 
   render() {

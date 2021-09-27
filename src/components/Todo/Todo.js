@@ -34,7 +34,7 @@ export default class Todo extends Component {
           className="todo__check light"
           onChange={this.onChange}
           id={id}
-          checked={isFinished ? true : false}
+          checked={isFinished}
         />
         <p>{title}</p>
         <button id={id} onClick={this.onClick} type="button">

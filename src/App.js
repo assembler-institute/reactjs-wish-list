@@ -6,7 +6,7 @@ import NewTodo from "./components/NewTodo";
 import TodoList from "./components/TodoList/TodoList";
 import NoTodo from "./components/NoTodo/NoTodo";
 import Footer from "./components/Footer/Footer";
-import bgImg from "./img/header-light-mode-background-image.jpeg";
+import bgLightImg from "./img/header-light-mode-background-image.jpeg";
 
 class App extends Component {
   constructor(props) {
@@ -51,11 +51,16 @@ class App extends Component {
 
   render() {
     const { tasks } = this.state;
+    const { lightmode } = this.props;
     return (
       <>
         <div className="background">
           <div className="background--top">
-            <img id="bg-top" src={bgImg} alt="bg-img" />
+            <img
+              id="bg-top"
+              src={lightmode ? bgDarkImg : bgLightImg}
+              alt="bg-img"
+            />
           </div>
           <div className="background--bottom" />
         </div>
