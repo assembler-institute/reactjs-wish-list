@@ -19,9 +19,14 @@
 	color: white;
 }
 
-.todo-container {
+.app-todo {
 	box-shadow: 0 0 4px rgba(0,0,0,0.25);
 	border-radius: 0.25rem;
 
-	background-color: white;
+	background: white;
+
+	.dark & {
+		background: rgba(0,0,0,0.5);
+		color: white;
+	}
 }

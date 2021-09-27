@@ -14,9 +14,9 @@ export default class TodoList extends Component {
 
   handleDragEnd(result) {
     const { handleMove } = this.props;
-    const [srcIndex, dstIndex] = [result.source.index, result.destination.index];
+    const [srcIndex, dstIndex] = [result.source?.index, result.destination?.index];
 
-    if (dstIndex) handleMove(srcIndex, dstIndex);
+    if (srcIndex && dstIndex) handleMove(srcIndex, dstIndex);
   }
 
   render() {
@@ -29,11 +29,11 @@ export default class TodoList extends Component {
         <DragDropContext onDragEnd={this.handleDragEnd}>
           <Droppable droppableId="todo-list" isDropDisabled={!dndEnabled}>
             {(provided) => (
-              <ul ref={provided.innerRef} {...provided.innerRef}>
+              <ul ref={provided.innerRef} {...provided.innerRef} data-testid="todos-list">
                 {todos.map((item, index) => (
                   <Draggable draggableId={item.id} key={item.id} index={index} isDragDisabled={!dndEnabled}>
                     {(provided) => (
-                      <li key={item.id}>
+                      <li key={item.id} data-testid="todo-item">
                         <TodoItem
                           provided={provided}
                           handleDelete={handleDelete}

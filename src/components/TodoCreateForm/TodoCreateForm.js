@@ -44,8 +44,10 @@ export default class TodoCreateForm extends Component {
                 value={values.text}
                 wrong={Boolean(errors.text)}
                 placeholder="Add a new todo..."
+                setAutoFocus={true}
+                data-testid="create-todo-input"
               />
-              {errors.text && <ErrorMessage>{errors.text}</ErrorMessage>}
+              {errors.text && <ErrorMessage dataTestId="create-todo-error-message">{errors.text}</ErrorMessage>}
             </form>
           )}
         </Formik>

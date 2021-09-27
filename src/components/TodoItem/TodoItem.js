@@ -1,6 +1,8 @@
 import { Component } from "react";
 import TodoSetTextForm from "../TodoSetTextForm";
 import Button from "../Button";
+import DeleteButton from "../DeleteButton";
+import CheckButton from "../CheckButton";
 
 import "./TodoItem.scss";
 
@@ -39,18 +41,12 @@ export default class TodoItem extends Component {
     const { provided, text, isEditing, done } = this.props;
 
     const articleStyles = !done ? "todo-item" : "todo-item todo-item--done";
-    const editButtonStyles = !done
-      ? "todo-item__button todo-item__button--field"
-      : "todo-item__button todo-item__button--field todo-item__button--strikethrough";
-    const setDoneButtonStyles = !done
-      ? "todo-item__button todo-item__button--round"
-      : "todo-item__button todo-item__button--round todo-item__button--show-check todo-item__button--active";
-    const deleteButtonStyles = "todo-item__button todo-item__button--round todo-item__button--show-cross";
+    const editButtonStyles = !done ? "todo-item__field-button" : "todo-item__field-button todo-item__field-button--done";
 
     return (
       <>
         <article className={articleStyles} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-          <Button className={setDoneButtonStyles} handleClick={this.handleSetDone} />
+          <CheckButton handleClick={this.handleSetDone} isEnabled={done} data-testid="todo-item-checkbox" />
           {isEditing ? (
             <TodoSetTextForm handleSetText={this.handleSetText} handleCloseForm={this.handleCloseForm} text={text} />
           ) : (
@@ -58,7 +54,7 @@ export default class TodoItem extends Component {
               {text}
             </Button>
           )}
-          <Button className={deleteButtonStyles} handleClick={this.handleDelete} />
+          <DeleteButton handleClick={this.handleDelete} data-testid="todo-item-delete-button" />
         </article>
       </>
     );

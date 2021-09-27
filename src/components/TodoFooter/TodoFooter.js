@@ -17,7 +17,7 @@ export default class TodoFooter extends Component {
       <footer className="todo-footer">
         <TodoCounter count={count} />
         <TodoFilter />
-        <Button className="todo-footer__button" handleClick={handleClear}>
+        <Button className="todo-footer__button" handleClick={handleClear} data-testid="clear-completed-todos">
           Clear Completed
         </Button>
       </footer>

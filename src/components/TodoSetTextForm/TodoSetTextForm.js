@@ -46,7 +46,8 @@ export default class TodoSetTextForm extends Component {
                 value={values.text}
                 wrong={Boolean(errors.text)}
                 placeholder="Set a name..."
-                autoFocus
+                setAutoFocus={true}
+                data-testid="todo-item-input"
               />
               {errors.text && <ErrorMessage>{errors.text}</ErrorMessage>}
             </form>

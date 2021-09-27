@@ -1,8 +1,8 @@
 import { Component } from "react";
 import image from "../../img/undraw_wandering_mind_0mkm.svg";
-import "./NoTodoPreview.scss";
+import "./NoTodos.scss";
 
-export default class NoTodoPreview extends Component {
+export default class NoTodos extends Component {
   constructor(props) {
     super(props);
   }
@@ -17,9 +17,9 @@ export default class NoTodoPreview extends Component {
     };
 
     return (
-      <div className="no-todo">
-        <img class="no-todo__image" src={image} />
-        <h3 class="no-todo__title">{messages[pathname]}</h3>
+      <div className="no-todos">
+        <img class="no-todos__image" src={image} data-testid="no-todos" />
+        <h3 class="no-todos__title">{messages[pathname]}</h3>
       </div>
     );
   }

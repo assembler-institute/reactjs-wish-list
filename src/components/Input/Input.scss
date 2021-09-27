@@ -8,6 +8,15 @@
 	border: none;
 	outline: none;
 
+	.dark & {
+		background: rgba(64,64,64,0.5);
+		color: white;
+
+		&::placeholder {
+			color: rgba(255,255,255, 0.75)
+		}
+	}
+
 	&:focus,
 	&:hover {
 		box-shadow: inset 0 0 2px lightgray;

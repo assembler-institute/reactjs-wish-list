@@ -1,7 +1,11 @@
 import "./ErrorMessage.scss";
 
 export default function ErrorMessage(props) {
-  const { children } = props;
+  const { children, dataTestId } = props;
 
-  return <p className="error-message">{children}</p>;
+  return (
+    <p className="error-message" data-testid={dataTestId}>
+      {children}
+    </p>
+  );
 }
