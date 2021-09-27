@@ -32,7 +32,7 @@ export default function Task({
     setEditing(false);
   };
 
-  const editView = (
+  const editView = () => (
     <>
       <li className="task" key={item.id}>
         <form className="form-edit" onSubmit={handleNameChangeSubmit}>

@@ -9,14 +9,18 @@
 body {
   display: flex;
   justify-content: center;
-  background-image: url("https://cdn.pixabay.com/photo/2017/03/19/12/44/banner-2156399_960_720.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #213F5D;
+  // background-image: url("https://cdn.pixabay.com/photo/2017/03/19/12/44/banner-2156399_960_720.jpg");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-color: #213F5D;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 1.5rem;
-  color: rgba(37, 37, 37, 0.808);
+  // color: rgba(37, 37, 37, 0.808);
   margin: 0 auto;
+  background: var(--background-color);
+  color: var(--text-color);
+  font-weight: var(--font-weight);
+  transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
 }
 
 .root {
@@ -31,4 +35,16 @@ body {
   .root {
     width: 100%;
   }
+}
+
+body.light {
+  --background-color: var(--white);
+  --text-color: var(--blue);
+  --font-weight: 400;
+}
+
+body.dark {
+  --background-color: var(--blue);
+  --text-color: var(--black);
+  --font-weight: 500;
 }

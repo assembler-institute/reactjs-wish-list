@@ -16,6 +16,10 @@
   input[type="text"]:focus {
     outline: none;
     box-shadow: 1px 0px 5px rgb(37, 228, 12);
+  }
 
+  .error {
+    color: red;
   }
 }
+

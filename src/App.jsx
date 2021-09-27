@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import ToDoContainer from "./components/ToDoContainer/ToDo";
 import { Title } from "./components/Title/Title";
 import "./App.scss";
@@ -6,8 +7,10 @@ import "./App.scss";
 function App() {
   return (
     <>
-      <Title />
-      <ToDoContainer />
+      <Router>
+        <Title />
+        <ToDoContainer />
+      </Router>
     </>
   );
 }
