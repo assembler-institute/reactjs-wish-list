@@ -1,5 +1,5 @@
 import { Droppable } from "react-beautiful-dnd";
-import { Task, Filters, TasksListFooter } from "../../molecules";
+import { Task, Filters, TasksListFooter } from "components/molecules";
 
 function TasksList({
   filterTasks,

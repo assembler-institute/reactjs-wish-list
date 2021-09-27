@@ -1,7 +1,6 @@
-import { tsArrayType } from "@babel/types";
 import { Form, Formik } from "formik";
 import styled from "styled-components";
-import taskSchema from "../../molecules/NewTaskForm/task-schema";
+import taskSchema from "components/molecules/NewTaskForm/task-schema";
 
 const Input = styled.input`
   font-size: 1.2rem;
@@ -30,7 +29,7 @@ const FormEditTask = styled(Form)`
   width: 100%;
 `;
 
-function InputEdit({ task, saveEditTask, onKeyDownSubmit,onKeyDownEdit }) {
+function InputEdit({ task, saveEditTask, onKeyDownSubmit, onKeyDownEdit }) {
   return (
     <Formik
       initialValues={{
@@ -55,7 +54,7 @@ function InputEdit({ task, saveEditTask, onKeyDownSubmit,onKeyDownEdit }) {
               /* saveEditTask(values.text, task.id); */
               onKeyDownEdit(e, task.id)
             }}
-            /* onKeyDown={(e) => onKeyDownEdit(e, task.id)} */
+          /* onKeyDown={(e) => onKeyDownEdit(e, task.id)} */
           />
 
           {touched.text && errors.text ? (

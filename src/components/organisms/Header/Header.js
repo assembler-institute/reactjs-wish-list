@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Toggle } from "../../../components/atoms";
+import { Toggle } from "components/atoms";
 
 const Title = styled.h1`
   color: ${props => props.theme.titleColor};

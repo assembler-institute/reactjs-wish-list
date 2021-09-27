@@ -1,4 +1,4 @@
-import { HomeTemplate } from "../../templates";
+import { HomeTemplate } from "components/templates";
 
 function ActivePage({
   tasks,

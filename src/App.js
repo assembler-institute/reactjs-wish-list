@@ -5,7 +5,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { themes } from "./themes";
 import * as api from "./api";
 
-import { AllPage, ActivePage, CompletePage } from "./components/pages";
+import { AllPage, ActivePage, CompletePage } from "./pages";
 
 import "./App.scss";
 
@@ -54,7 +54,7 @@ class App extends Component {
 
       return;
     }
-    
+
     const status = window.location.pathname.substring(1);
     this.setState((prevState) => ({
       ...prevState,
@@ -143,7 +143,7 @@ class App extends Component {
 
   saveEditTask = (text, taskId) => {
 /*     e.preventDefault() */;
-    
+
     const { tasks } = this.state;
 
     tasks.map((task) => {
@@ -167,10 +167,10 @@ class App extends Component {
     const { tasks } = this.state;
 
     tasks.map((task) => {
-      if (task.id === taskId){
+      if (task.id === taskId) {
         task.done = !task.done;
         task.updatedAt = new Date().toISOString();
-      } 
+      }
     });
     console.log(tasks);
 

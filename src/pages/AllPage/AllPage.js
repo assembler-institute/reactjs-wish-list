@@ -1,6 +1,6 @@
-import { HomeTemplate } from "../../templates";
+import { HomeTemplate } from "components/templates";
 
-function CompletePage({
+function AllPage({
   tasks,
   theme,
   filteredTasks,
@@ -36,4 +36,4 @@ function CompletePage({
   );
 }
 
-export default CompletePage;
+export default AllPage;

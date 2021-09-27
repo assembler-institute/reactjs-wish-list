@@ -1,7 +1,7 @@
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 
-import { Button, InputEdit, CheckDone } from "../../../components/atoms";
+import { Button, InputEdit, CheckDone } from "components/atoms";
 
 const ButtonDelete = styled.button`
   color: grey;
