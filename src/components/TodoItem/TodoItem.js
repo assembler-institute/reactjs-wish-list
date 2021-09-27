@@ -37,7 +37,7 @@ export default class TodoItem extends Component {
   }
 
   render() {
-    const { text, isEditing, done } = this.props;
+    const { provided, text, isEditing, done } = this.props;
 
     const articleStyles = !done ? "todo-item" : "todo-item todo-item--done";
     const editButtonStyles = !done
@@ -50,7 +50,7 @@ export default class TodoItem extends Component {
 
     return (
       <>
-        <article className={articleStyles}>
+        <article className={articleStyles} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
           <Button className={setDoneButtonStyles} handleClick={this.handleSetDone} />
           {isEditing ? (
             <TodoSetTextForm handleSetText={this.handleSetText} handleCloseForm={this.handleCloseForm} text={text} />

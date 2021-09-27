@@ -19,6 +19,7 @@ class App extends Component {
       isLoading: false,
     };
 
+    this.moveTodo = this.moveTodo.bind(this);
     this.addTodo = this.addTodo.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
     this.setTextTodo = this.setTextTodo.bind(this);
@@ -61,6 +62,19 @@ class App extends Component {
     this.setState((prevState) => ({
       ...prevState,
       todos: todos,
+    }));
+  }
+
+  moveTodo(srcIndex, dstIndex) {
+    const { todos } = this.state;
+
+    const draggedTodo = todos[srcIndex];
+    todos.splice(srcIndex, 1);
+    todos.splice(dstIndex, 0, draggedTodo);
+
+    this.setState((prevState) => ({
+      ...prevState,
+      todos,
     }));
   }
 
@@ -152,15 +166,19 @@ class App extends Component {
             <Route
               path="/"
               render={(routeProps) => {
-                const todos = this.getTodos(routeProps.location.pathname);
+                const pathname = routeProps.location.pathname;
+                const todos = this.getTodos(pathname);
+                const dndEnabled = pathname === "/";
 
                 return (
                   <TodoList
+                    dndEnabled={dndEnabled}
                     todos={todos}
                     handleDelete={this.deleteTodo}
                     handleSetDone={this.setDoneTodo}
                     handleSetText={this.setTextTodo}
                     handleIsEditing={this.isEditingTodo}
+                    handleMove={this.moveTodo}
                   />
                 );
               }}
