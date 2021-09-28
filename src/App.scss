@@ -1,5 +1,6 @@
 .app-background {
-	background-image: url("./img/john-towner-JgOeRuGD_Y4-unsplash.jpg");
+	
+	background-image: url("./img/photo-1466654541527-8e65f592edb3.jpg");
 	background-size: cover;	
 	background-repeat: no-repeat;
 	
@@ -8,6 +9,12 @@
 	justify-content: center;
 
 	height: 100vh;
+
+	transition: background 0.25s ease-in-out;
+
+	&[data-ui-theme='dark'] {
+		background-image: url("./img/john-towner-JgOeRuGD_Y4-unsplash.jpg");
+	}
 }
 
 .app-todo {
@@ -19,7 +26,7 @@
 	transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
 
 	[data-ui-theme='dark'] & {
-		background: rgba(0,0,0,0.5);
+		background: rgba(0,0,0,0.75);
 		color: white;
 	}
 }

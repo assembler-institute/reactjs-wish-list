@@ -1,15 +1,15 @@
-.app-title{
-  margin: 0;
-
-	font-size: 3rem;
-	font-weight: 400;
-
-	color: white;
-}
-
-.top{
+.app-header {
     display: flex;
-		align-items: center;
+		align-items: baseline;
     justify-content: space-between;
+
+		&__title {
+			margin: 0;
+
+			font-size: 3rem;
+			font-weight: 400;
+		
+			color: white;
+		}
 }
 

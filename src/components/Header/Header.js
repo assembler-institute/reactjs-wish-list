@@ -11,8 +11,8 @@ export default class Header extends Component {
     const { handleTheme, isDarkMode } = this.props;
 
     return (
-      <header className="top">
-        <h1 className="app-title">TODO</h1>
+      <header className="app-header">
+        <h1 className="app-header__title">TODO</h1>
         <Switch handleTheme={handleTheme} isDarkMode={isDarkMode} />
       </header>
     );
