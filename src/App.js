@@ -151,7 +151,6 @@ class App extends Component {
       if (task.id === taskId) {
         task.text = text;
         task.isEditing = false;
-        console.log("guarda: " + text);
         task.updatedAt = new Date().toISOString();
       }
     });
@@ -246,15 +245,6 @@ class App extends Component {
   render() {
     const { tasks, filteredTasks, theme } = this.state;
 
-    // const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    // mq.matches ? this.changeTheme : 'light';
-
-    // console.log(`${mq.matches ? 'dark' : 'light'} mode`);
-
-    // useMediaQuery({
-    //   query: '(prefers-color-scheme: dark)'
-    // }, undefined, (isDarkPreffered) => isDarkPreffered ? 'dark' : 'light')
-
     return (
       <ThemeProvider theme={themes[theme]}>
         <Router>
@@ -286,7 +276,6 @@ class App extends Component {
               path="/active"
               exact
               render={(routeProps) => (
-                /*           tasks.filter((task) => {task.done === true} */
                 <ActivePage
                   {...routeProps}
                   tasks={tasks}
