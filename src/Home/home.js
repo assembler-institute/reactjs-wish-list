@@ -29,7 +29,7 @@ class Home extends Component {
 
         addItem(value,done) {
         const newToDo = {
-        id: Math.random(),
+        id: Math.floor(Math.random()*100),
         value:value,
         done:done
         }
@@ -40,7 +40,7 @@ class Home extends Component {
         newToDo:"",
         }); 
       }; 
-    editItem(id,value,done){
+    editItem(id, value, done){
       const{listToDos}=this.state
       listToDos.find((item) =>{
         if(item.id===id){

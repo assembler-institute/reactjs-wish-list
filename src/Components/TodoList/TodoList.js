@@ -40,24 +40,26 @@ class TodoListItem extends Component {
 
         return (
             <>
-            <input type="checkbox" 
-                   checked={done}
+            <div className="input__check__container">
+            <div className="round">
+                <input className="input__checkbox" id={"box" + id} type="checkbox"  
+                    checked={done}
                     onChange={e => this.handleCheckbox(done)}
-                    
-                /> 
-            {isEditing ? (<div>
-                <input type="text" 
+                />
+                <label htmlFor={"box" + id}></label>
+            </div> 
+            {isEditing ? (<div className="input__todo__container">
+                <input type="text"
+                    className="input__text"
                     id={id} 
                     value={value}
                     onChange={e => this.updateInput("value",e.target.value) 
                     }
-                /> 
-                </div>):<p>{value}</p> }
-                <button className="btn__remove" type="button" onClick={() => handleRemove()}>Remove</button>
-                <button type="button" onClick={() => this.handleChange(id, value,done)}>
-                    {isEditing ? "Confirm": "Edit"}
-                </button> 
-                    
+                />
+                <button type="button" className="btn btn__confirm" onClick={() => this.handleChange(id, value,done)}>Confirm</button>
+                </div>):<p className="title" onClick={() => this.handleChange(id, value,done)}>{value}</p> }
+            </div>
+                <button className="btn btn__remove" type="button" onClick={() => handleRemove()}>Remove</button>
             </>
         );
     }
@@ -68,11 +70,10 @@ class TodoList extends Component {
     render(){
         
         return (
-            <>
             <div className="todo__list__container container-lg">
             <ul>
             {this.props.items.map((el)=> 
-                    <li key={el.id}>
+                    <li key={el.id} id={el.id}>
                     <TodoListItem 
                         id={el.id} 
                         value={el.value}
@@ -85,8 +86,7 @@ class TodoList extends Component {
                     
               </ul>
             </div>
-              
-        </>)
+        )
     }
 }
 

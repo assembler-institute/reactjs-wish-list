@@ -23,18 +23,20 @@ class Input extends Component {
         return(<>
             <div className="input-group mb-3">
                         <input 
-                        type="text" 
-                        placeholder="Insert any activity... " 
-                        aria-label="Insert any activity..." 
-                        value={this.state.newToDo}
-                        onChange={e => this.updateInput("newToDo", e.target.value)}
+                            type="text" 
+                            placeholder="Insert any activity... "
+                            className="input__text" 
+                            aria-label="Insert any activity..." 
+                            value={this.state.newToDo}
+                            onChange={e => this.updateInput("newToDo", e.target.value)}
                         />
                     <div>
                         <button 
                         type="submit"
+                        className="btn"
                         onClick={() => this.props.handelSubmit(this.state.newToDo)}
                         disabled={!this.state.newToDo.length}
-                        >prueba</button>
+                        >Add</button>
                     </div>
                      
                 </div>
