@@ -38,26 +38,27 @@ export default class Todo extends Component {
 
   render() {
     const { title, id, isFinished, isEditing, index, lightmode } = this.props;
-    const editableText = isEditing ? (
-      <input
-        type="text"
-        className="todo__text"
-        onChange={this.handleTitleChange}
-        onKeyDown={this.handleTitleChange}
-        value={title}
-        id={id}
-        autoFocus
-      />
-    ) : (
-      <span
-        type="button"
-        className="todo__text"
-        onClick={this.handleEditChange}
-        id={id}
-      >
-        {title}
-      </span>
-    );
+    const editableText =
+      isEditing === true ? (
+        <input
+          type="text"
+          className="todo__text"
+          onChange={this.handleTitleChange}
+          onKeyDown={this.handleTitleChange}
+          value={title}
+          id={id}
+          autoFocus
+        />
+      ) : (
+        <span
+          type="button"
+          className="todo__text"
+          onClick={this.handleEditChange}
+          id={id}
+        >
+          {title}
+        </span>
+      );
 
     return (
       <Draggable draggableId={"draggable-" + id} index={index}>
@@ -66,23 +67,28 @@ export default class Todo extends Component {
             {...draggableProvided.draggableProps}
             ref={draggableProvided.innerRef}
             {...draggableProvided.dragHandleProps}
-            className={"item__list--item" + (isFinished ? " finished" : "")}
+            className={
+              "item__list--item" + (isFinished === true ? " finished" : "")
+            }
             id={id}
             data-finished={isFinished}
           >
             <input
               type="checkbox"
-              className={"todo__check" + (!lightmode ? "dark-mode" : "")}
+              className={
+                "todo__check" + (lightmode === false ? "dark-mode" : "")
+              }
               onChange={this.handleCheckChange}
               id={id}
-              checked={isFinished && true}
-              autoFocus
+              checked={isFinished === true && true}
             />
 
             {editableText}
 
             <button
-              className={"todo__remove" + (!lightmode ? "dark-mode" : "")}
+              className={
+                "todo__remove" + (lightmode === false ? "dark-mode" : "")
+              }
               id={id}
               onClick={this.onClick}
               type="button"
