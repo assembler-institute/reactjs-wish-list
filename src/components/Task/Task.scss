@@ -1,0 +1,10 @@
+@import "~bootstrap/scss/bootstrap";
+// solo importar lo q necesito cambiar
+
+.main-list__input {
+  width: 90%;
+}
+
+.btn-danger {
+  height: fit-content;
+}
