@@ -26,20 +26,21 @@ class Home extends Component {
          this.editItem=this.editItem.bind(this)
         this.deleteItem=this.deleteItem.bind(this)
       }
-    addItem(value) {
+
+        addItem(value,done) {
         const newToDo = {
         id: Math.random(),
         value:value,
+        done:done
         }
         const{listToDos}=this.state
         listToDos.push(newToDo);
         this.setState({
         listToDos,
         newToDo:"",
-       
         }); 
       }; 
-    editItem(id,check,value,done){
+    editItem(id,value,done){
       const{listToDos}=this.state
       listToDos.find((item) =>{
         if(item.id===id){
@@ -48,10 +49,7 @@ class Home extends Component {
         });
         this.setState({
           listToDos:listToDos,
-          
           }); 
-          
-
     };
 
     deleteItem(id) {
@@ -59,10 +57,12 @@ class Home extends Component {
       const updatedList = listToDos.filter(item => item.id !== id);
       this.setState({ 
       listToDos: updatedList,
-      
       }); 
-      console.log(listToDos);
-    }
+  }
+/*   toDoDone() {
+    const{listToDos}=this.state
+  const done= listToDos.filter((item) => console.log(item))
+  } */
   render(){
     return (
       <Router>
@@ -74,8 +74,7 @@ class Home extends Component {
           <section className="row container-lg input__todo">
             <Input handelSubmit={this.addItem}
                     handelEdit={this.editItem}
-
-            />
+          />
             </section>
           <section className="row container-lg">
             <Switch>
@@ -86,10 +85,11 @@ class Home extends Component {
                 handelEdit={this.editItem} />
               </Route>
               <Route path="/active" exact>
-                <TodoListActive items={this.state.listToDos} />
+                <TodoListActive 
+                />
               </Route>
               <Route path="/completed" exact>
-                <TodoListCompleted items={this.state.listToDos} />
+                <TodoListCompleted  handleDone={this.toDoDone}/>
               </Route>
             </Switch>
             <Footer />
@@ -101,4 +101,3 @@ class Home extends Component {
   }
 
   export default Home
-  

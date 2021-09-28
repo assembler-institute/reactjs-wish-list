@@ -53,7 +53,7 @@ class TodoListItem extends Component {
                     }
                 /> 
                 </div>):<p>{value}</p> }
-                <button class="btn__remove" type="button" onClick={() => handleRemove()}>Remove</button>
+                <button className="btn__remove" type="button" onClick={() => handleRemove()}>Remove</button>
                 <button type="button" onClick={() => this.handleChange(id, value,done)}>
                     {isEditing ? "Confirm": "Edit"}
                 </button> 
@@ -64,9 +64,7 @@ class TodoListItem extends Component {
 }
 
 class TodoList extends Component {
-constructor(props){
-    super(props)
-}
+
     render(){
         
         return (
