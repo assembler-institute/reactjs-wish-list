@@ -10,7 +10,7 @@ export default class TodoListActive extends Component {
   render() {
     const { tasks, removeTask, completeTask, changeTitle, editTask } =
       this.props;
-    const filteredArr = tasks.filter((item) => item.isFinished === false);
+    const filteredArr = tasks.filter((item) => !item.isFinished);
     return (
       <Droppable droppableId="active">
         {(droppableProvided) => (

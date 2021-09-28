@@ -76,7 +76,6 @@ export default class Todo extends Component {
               onChange={this.handleCheckChange}
               id={id}
               checked={isFinished && true}
-              autoFocus
             />
 
             {editableText}
