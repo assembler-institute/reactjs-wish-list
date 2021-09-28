@@ -1,6 +1,6 @@
 .app-background {
 	
-	background-image: url("./img/photo-1466654541527-8e65f592edb3.jpg");
+	background-image: url("./img/bg-light.jpg");
 	background-size: cover;	
 	background-repeat: no-repeat;
 	
@@ -13,7 +13,7 @@
 	transition: background 0.25s ease-in-out;
 
 	&[data-ui-theme='dark'] {
-		background-image: url("./img/john-towner-JgOeRuGD_Y4-unsplash.jpg");
+		background-image: url("./img/bg-dark.jpg");
 	}
 }
 
