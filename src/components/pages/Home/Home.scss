@@ -1,0 +1,15 @@
+.query {
+    width: 100%;
+  }
+  
+  @media (max-width: 560px) {
+  
+    .query {
+  
+      max-width: 90%;
+  
+      margin: 0 auto;
+  
+    }
+  
+  }
