@@ -19,6 +19,8 @@ function All({
   isEmpty,
   todoLength,
   displayList,
+  handleChangeEdit,
+  handleSubmitEdit,
   ...props
   
 })
@@ -51,6 +53,8 @@ function All({
                   handleTodoComplete={handleTodoComplete}
                   handleRemove={handleRemove} 
                   displayList={displayList}
+                  handleChangeEdit={handleChangeEdit}
+                  handleSubmitEdit={handleSubmitEdit}
                 />
               )
             }

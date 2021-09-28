@@ -1,35 +1,22 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./NavItems.scss";
 
 function NavItem() {
+  
   return (
     <div className="should__be__nav">
-      <ul className=" d-flex">
-        <li className="px-2 mGreyFont">
-          {/* <NavLink exact activeClassName="active" className="navigation" to="/"> */}
+      <div className=" d-flex">
+        <NavLink to="/all" className="px-2 mGreyFont">
             All
-          {/* </NavLink> */}
-        </li>
-        <li className="px-2 mGreyFont">
-          {/* <NavLink */}
-          {/*  exact
-            activeClassName="active"
-            className="navigation"
-            to="/active" */}
+        </NavLink>
+        <NavLink to="/active" className="px-2 mGreyFont">
             Active
-          {/* </NavLink> */}
-        </li>
-        <li className="px-2 mGreyFont">
-          {/* <NavLink 
-            exact
-            activeClassName="active"
-            className="navigation"
-            to="/completed">*/}
+        </NavLink>
+        <NavLink to="/completed" className="px-2 mGreyFont">
             Completed
-          {/* </NavLink> */}
-        </li>
-      </ul>
+        </NavLink>
+      </div>
     </div>
   );
 }

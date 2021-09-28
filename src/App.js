@@ -1,14 +1,24 @@
 import React, {Component} from "react";
-// import { BrowserRouter, Route } from "react-router-dom";
-// import NavItems from "./components/NavItems/NavItems";
+import { BrowserRouter, Route } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import All from "./pages/All";
 import "./App.scss";
 
+const LOCAL_STORAGE_KEY = "reactjs-todo-list";
 
+function loadLocalStorageData() {
+  const prevItems = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+  if (!prevItems) return null;
+
+  try {
+    return JSON.parse(prevItems);
+  } catch (error) {
+    return null;
+  }
+}
 
 class App extends Component {
-
     constructor(props) {
       super(props);
 
@@ -20,17 +30,36 @@ class App extends Component {
         displayList: [],
         allTodos: [],
         completedTodos: [],
-        activeTodos: []
+        activeTodos: [],
+        activePath: "/",
       };
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleTodoComplete = this.handleTodoComplete.bind(this);
       this.handleRemove = this.handleRemove.bind(this);
-      this.handleEditTodo = this.handleEditTodo.bind(this);
+      this.getTaskList = this.getTaskList.bind(this);
+      this.handleChangeEdit = this.handleChangeEdit.bind(this);
+      this.handleSubmitEdit = this.handleSubmitEdit.bind(this);
+    }
+
+    componentDidMount(){
+      const prevItems = loadLocalStorageData()
+      
+      if (prevItems) {
+        console.log(prevItems)
+        this.setState({allTodos: prevItems.allTodos, isEmpty: false})
+      }
+      else {this.setState({ isEmpty: true})}
+    }
+
+    //recorrer alltodos y 
+
+    componentDidUpdate(){
+      const {allTodos} = this.state;
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ allTodos }));
     }
 
     handleSubmit(todoName) {
       this.handleAddTodo(todoName);
-      this.todoName
     }
 
     handleAddTodo(todoName) {
@@ -38,6 +67,7 @@ class App extends Component {
         id : uuidv4(),
         name: todoName,
         complete: false,
+        isEditing: false
       };     
 
       this.setState({
@@ -45,7 +75,7 @@ class App extends Component {
         activeTodos: [...this.state.activeTodos, newToDo], isEmpty: false,
       });
 
-      if (true /*allIsShowing*/) {
+      if (true) {
         this.setState({displayList: [...this.state.allTodos, newToDo],  isEmpty: false,})
       }
     }
@@ -85,30 +115,72 @@ class App extends Component {
       }
   }
 
-    handleEditTodo(value, id) {
-      const { allTodos } = this.state;
-      const todoIndexInArray = allTodos.findIndex((todo) => todo.id === id);
-      allTodos[todoIndexInArray].name = value;
-      this.setState({
-        allTodos,
-      });
-    }
-  
+      handleChangeEdit(e, id) {
+        e.preventDefault();
+        const{ allTodos } = this.state
+        allTodos.map((todo)=> {
+          if (todo.id === id ){
+          todo.name = e.target.value
+          }
+        })
+        this.setState({
+          allTodos: allTodos
+        })
+      }
+
+      handleSubmitEdit(e, id) {
+        e.preventDefault();
+        const{ allTodos } = this.state
+        allTodos.map((todo)=> {
+          if (todo.id === id){
+            todo.isEditing = !todo.isEditing
+          }
+        
+        })
+        this.setState({
+          allTodos: allTodos
+        })
+      }
+
+      handlePath(){
+        this.setState({
+          activePath: "",
+        })
+      }
+
+      getTaskList(path) {
+        if (path === "/active") {
+          return this.state.activeTodos;
+        } else if (path === "/completed") {
+          return this.state.completedTodos;
+        }
+        return (this.state.allTodos)
+      }
+
     render(){
       const isEmpty = this.state.isEmpty;
-      const displayList = this.state.displayList;
       const activeTodos = this.state.activeTodos;
       return(
-        <All
-        isEmpty={isEmpty}
-        handleSubmit={this.handleSubmit}
-        displayList={displayList}
-        handleTodoComplete={this.handleTodoComplete}
-        handleRemove={this.handleRemove}
-        handleEditTodo={this.handleEditTodo}
-        todoLength={activeTodos.length}
-        />
-      );
-    }
+            <Route
+              path="/"
+              render={(routeProps) => 
+                {
+                  const path = routeProps.location.pathname;
+                  const taskList = this.getTaskList(path)
+                  return (
+                <All
+                isEmpty={isEmpty}
+                handleSubmit={this.handleSubmit}
+                displayList={taskList}
+                handleTodoComplete={this.handleTodoComplete}
+                handleRemove={this.handleRemove}
+                todoLength={activeTodos.length}
+                handleChangeEdit={this.handleChangeEdit}
+                handleSubmitEdit= {this.handleSubmitEdit}
+                />
+              )}}
+            />
+          );
+        }
 }
 export default App;

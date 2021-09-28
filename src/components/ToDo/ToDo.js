@@ -28,7 +28,6 @@ class ToDo extends Component {
     
     return (
       <div className="input-group todo__create">
-        <CompletedCheckBox/>
         <form onSubmit={this.handleSubmit}>
           <input
             className="form-control bg-light todo__input" 
