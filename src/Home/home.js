@@ -20,24 +20,29 @@ class Home extends Component {
         super(props);
         this.state={
             listToDos: [],
-            newToDo:""
+            newToDo:"",
+            done:false
         };
         this.addItem = this.addItem.bind(this);
          this.editItem=this.editItem.bind(this)
         this.deleteItem=this.deleteItem.bind(this)
       }
-
-        addItem(value,done) {
+      // addName = (value,done) => {
+      //   console.log({ value });
+      //   this.setState({
+      //     list: [...this.state.list, value]
+      //   });
+      //};
+        addItem(value) {
         const newToDo = {
         id: Math.floor(Math.random()*100),
         value:value,
-        done:done
+        
         }
         const{listToDos}=this.state
         listToDos.push(newToDo);
         this.setState({
-        listToDos,
-        newToDo:"",
+        listToDos,        
         }); 
       }; 
     editItem(id, value, done){
@@ -72,7 +77,7 @@ class Home extends Component {
         </div>
        
           <section className="row container-lg input__todo">
-            <Input handelSubmit={this.addItem}
+            <Input handleEnter={this.addItem}
                     handelEdit={this.editItem}
           />
             </section>
