@@ -10,7 +10,7 @@ export default class Completed extends Component {
   render() {
     const { tasks, removeTask, completeTask, editTask, changeTitle } =
       this.props;
-    const finished = (el) => el.isFinished === true;
+    const finished = (el) => el.isFinished;
     return (
       <>
         {tasks.some(finished) ? (

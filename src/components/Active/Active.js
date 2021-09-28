@@ -10,7 +10,7 @@ export default class Active extends Component {
   render() {
     const { tasks, removeTask, completeTask, editTask, changeTitle } =
       this.props;
-    const finished = (el) => el.isFinished === false;
+    const finished = (el) => !el.isFinished;
     return (
       <>
         {tasks.some(finished) ? (

@@ -78,6 +78,7 @@ class App extends Component {
       });
     }
   }
+
   saveNewTasks(tasks) {
     this.setState({
       tasks: tasks,
