@@ -1,0 +1,60 @@
+.new__task {
+  margin-top: 1.5rem;
+  display: flex;
+  border: lightgray 1px solid;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  border-radius: 5px;
+  box-shadow: 0px 0px 30px rgb(68 68 68 / 60%);
+  background-color: white;
+  gap: 1rem;
+
+  &--circle {
+    border-radius: 100%;
+    border: 2px solid #7e76b7;
+    height: 20px;
+    width: 20px;
+    box-shadow: 0px 0px 10px #7e76b7;
+    margin-right: 1rem;
+  }
+
+  &--input {
+    border: none;
+    color: rgb(73, 72, 72);
+    width: 90%;
+    &::-ms-input-placeholder {
+      color: rgb(197, 191, 191);
+    }
+    &::placeholder {
+      color: rgb(197, 191, 191);
+    }
+  }
+  &--input:focus {
+    outline: none;
+  }
+
+  &--btn {
+    border: none;
+    color: rgb(105, 102, 102);
+    background-color: transparent;
+  }
+}
+
+.main__window {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dark-mode {
+  color: white;
+  background-color: black;
+  transition: 0.4s;
+
+  ::after {
+    transition: 0.4s;
+  }
+}

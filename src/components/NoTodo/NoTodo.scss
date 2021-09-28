@@ -1,0 +1,17 @@
+.notodo__message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 25rem;
+  overflow: auto;
+
+  img {
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+    margin-top: 1rem;
+    object-fit: cover;
+    height: 20rem;
+    width: 20rem;
+  }
+}
