@@ -7,11 +7,6 @@ export default class TodoFilter extends Component {
   constructor(props) {
     super(props);
   }
-  filterAll() {}
-
-  filterActive() {}
-
-  filterCompleted() {}
 
   render() {
     return (

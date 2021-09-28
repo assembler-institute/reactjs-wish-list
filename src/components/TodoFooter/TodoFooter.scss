@@ -11,6 +11,8 @@
 	border-radius: 0.25rem;
 	color: black;
 
+	transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
+
 	[data-ui-theme='dark'] & {
 		color: white;
 	}

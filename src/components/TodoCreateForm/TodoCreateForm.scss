@@ -5,6 +5,8 @@
 	border-radius: 0.25rem;
 	background: rgba(255,255,255,0.5);
 
+	transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
+
 	[data-ui-theme='dark'] & {
 		background: rgba(0,0,0,0.5);
 		color: white;

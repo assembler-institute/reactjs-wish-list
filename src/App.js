@@ -10,7 +10,6 @@ import NoTodos from "./components/NoTodos";
 
 import "./App.scss";
 import { Route } from "react-router";
-import Switch from "./components/Switch";
 
 const LOCAL_STORAGE_KEY = "react-todos";
 

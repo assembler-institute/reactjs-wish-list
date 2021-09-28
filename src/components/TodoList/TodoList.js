@@ -13,10 +13,11 @@ export default class TodoList extends Component {
   }
 
   handleDragEnd(result) {
-    const { handleMove } = this.props;
-    const [srcIndex, dstIndex] = [result.source?.index, result.destination?.index];
+    if (!result.source || !result.destination) return;
 
-    if (srcIndex && dstIndex) handleMove(srcIndex, dstIndex);
+    const [srcIndex, dstIndex] = [result.source.index, result.destination.index];
+
+    this.props.handleMove(srcIndex, dstIndex);
   }
 
   render() {

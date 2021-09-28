@@ -18,8 +18,8 @@ export default class NoTodos extends Component {
 
     return (
       <div className="no-todos">
-        <img class="no-todos__image" src={image} data-testid="no-todos" />
-        <h3 class="no-todos__title">{messages[pathname]}</h3>
+        <img className="no-todos__image" src={image} data-testid="no-todos" />
+        <h3 className="no-todos__title">{messages[pathname]}</h3>
       </div>
     );
   }
