@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Form, Formik } from "formik";
 import taskSchema from "components/molecules/NewTaskForm/task-schema";
 import { ErrorMessage } from "components/atoms";
+import { ReactComponent as TrashSVG } from "resources/img/trash.svg";
+import { ReactComponent as TrashWhiteSVG } from "resources/img/trash-white.svg";
 
 import { Button, InputEdit, CheckDone } from "components/atoms";
 
@@ -47,6 +49,7 @@ function Task({
   toggleDoneTask,
   removeTask,
   onKeyDownSubmit,
+  theme,
 }) {
   return (
     <Draggable key={task.id} draggableId={task.id} index={index}>
@@ -97,8 +100,9 @@ function Task({
           <ButtonDelete
             className="btn btn-secondary"
             onClick={(e) => removeTask(e, task.id)}
+            style={{ color: "white" }}
           >
-            X
+            {theme === "dark" ? <TrashWhiteSVG className="svg-delete"/> : <TrashSVG className="svg-delete"/>}
           </ButtonDelete>
         </TaskItem>
       )}

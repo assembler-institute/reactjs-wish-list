@@ -12,7 +12,8 @@ function TasksList({
   toggleDoneTask,
   removeTask,
   removeAllCompletedTasks,
-  onKeyDownSubmit
+  onKeyDownSubmit,
+  theme
 }) {
   return (
     <>
@@ -39,6 +40,7 @@ function TasksList({
                   toggleDoneTask={toggleDoneTask}
                   removeTask={removeTask}
                   onKeyDownSubmit={onKeyDownSubmit}
+                  theme={theme}
                 />
               ))
             ) : (

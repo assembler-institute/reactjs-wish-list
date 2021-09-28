@@ -106,6 +106,7 @@ function HomeTemplate({
                 removeTask={removeTask}
                 onKeyDownSubmit={onKeyDownSubmit}
                 removeAllCompletedTasks={removeAllCompletedTasks}
+                theme={theme}
               />
             </Container>
           </DragDropContext>

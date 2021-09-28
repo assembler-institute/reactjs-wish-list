@@ -62,3 +62,40 @@ ul {
   width: 100%;
   display: block;
 }
+
+.svg-delete:hover {
+  animation: vibracion 1s infinite;
+}
+
+@keyframes vibracion {
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-3px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(3px);
+  }
+
+  5%,
+  25%,
+  45%,
+  65%,
+  85% {
+    transform: translateY(-3px);
+  }
+
+  15%,
+  35%,
+  55%,
+  75% {
+    transform: translateY(3px);
+  }
+}
