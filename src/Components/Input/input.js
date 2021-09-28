@@ -25,7 +25,7 @@ class Input extends Component {
                         <input 
                             type="text" 
                             placeholder="Insert any activity... "
-                            class="input__text" 
+                            className="input__text" 
                             aria-label="Insert any activity..." 
                             value={this.state.newToDo}
                             onChange={e => this.updateInput("newToDo", e.target.value)}
@@ -33,7 +33,7 @@ class Input extends Component {
                     <div>
                         <button 
                         type="submit"
-                        class="btn"
+                        className="btn"
                         onClick={() => this.props.handelSubmit(this.state.newToDo)}
                         disabled={!this.state.newToDo.length}
                         >Add</button>

@@ -40,22 +40,26 @@ class TodoListItem extends Component {
 
         return (
             <>
-            <input type="checkbox"  
-                checked={done}
-                onChange={e => this.handleCheckbox(done)}
-                    
-                /> 
-            {isEditing ? (<div class="input__todo__container">
+            <div className="input__check__container">
+            <div className="round">
+                <input className="input__checkbox" id={"box" + id} type="checkbox"  
+                    checked={done}
+                    onChange={e => this.handleCheckbox(done)}
+                />
+                <label htmlFor={"box" + id}></label>
+            </div> 
+            {isEditing ? (<div className="input__todo__container">
                 <input type="text"
-                    class="input__text"
+                    className="input__text"
                     id={id} 
                     value={value}
                     onChange={e => this.updateInput("value",e.target.value) 
                     }
                 />
-                <button type="button" class="btn" onClick={() => this.handleChange(id, value,done)}>Confirm</button>
-                </div>):<p onClick={() => this.handleChange(id, value,done)}>{value}</p> }
-                <button class="btn__remove btn" type="button" onClick={() => handleRemove()}>Remove</button>
+                <button type="button" className="btn btn__confirm" onClick={() => this.handleChange(id, value,done)}>Confirm</button>
+                </div>):<p className="title" onClick={() => this.handleChange(id, value,done)}>{value}</p> }
+            </div>
+                <button className="btn btn__remove" type="button" onClick={() => handleRemove()}>Remove</button>
             </>
         );
     }

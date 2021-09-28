@@ -1,6 +1,13 @@
 .btn{
+    border: lightgrey 2px solid;
     &__group{
         display: flex;
         flex-direction: row;
+    }
+    &__confirm{
+        margin-left: 2rem;
+    }
+    &__remove{
+        border: lightgrey 2px solid;
     }
 }

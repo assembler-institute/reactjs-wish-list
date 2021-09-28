@@ -3,18 +3,28 @@ li{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+    background-color: white;
+}
+.input__check__container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+li:hover> .btn__remove{
+    display: contents;
 }
 
-// li:hover > .btn__remove{
-//     display: flex;
-    
-// }
-
 .btn__remove{
-    // display: none;
+    display: none;
     margin-right: 0rem;
 }
 
 .todo__list__container{
     height: 20rem;
+}
+
+.title{
+    margin-left: 2rem;
 }
