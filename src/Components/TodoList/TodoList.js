@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./TodoList.scss";
+import "../Input/input.scss"
 
 class TodoListItem extends Component {
     constructor(props) {
@@ -57,7 +58,7 @@ class TodoListItem extends Component {
                     }
                 />
                 <button type="button" className="btn btn__confirm" onClick={() => this.handleChange(id, value,done)}>Confirm</button>
-                </div>):<p className="title" onClick={() => this.handleChange(id, value,done)}>{value}</p> }
+                </div>):<p className={ this.state.done ? 'line-through': 'normal__p'} onClick={() => this.handleChange(id, value,done)}>{value}</p> }
             </div>
                 <button className="btn btn__remove" type="button" onClick={() => handleRemove()}>Remove</button>
             </>
