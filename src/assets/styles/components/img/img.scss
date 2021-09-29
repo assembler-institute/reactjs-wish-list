@@ -1,0 +1,19 @@
+.bg-image-hero {
+  background-image:
+  radial-gradient(
+    rgb(4 4 68 / 81%),rgb(7 7 56 / 32%)),
+  url('https://picsum.photos/1000/600?random=101');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+  height: 20rem;
+}
+
+.absolute-center {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 30rem;
+  width: 100%;
+}

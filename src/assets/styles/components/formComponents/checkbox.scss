@@ -1,0 +1,15 @@
+.checkbox {
+  $size: 1.3rem;
+	width: $size;
+  height: $size;
+	border-radius: 50%;
+  border: 2px solid #a76bef;
+	transition: box-shadow .3s;
+	background: lightgrey;
+	cursor: pointer;
+	appearance: none;
+}
+
+.checkbox:checked {
+  box-shadow: inset 0 0 0 1.25rem #a76bef;
+}
