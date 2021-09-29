@@ -11,7 +11,11 @@ export const light = {
   background: {
     color: {
       default: "rgba(255, 255, 255, 0.75)",
-      input: "#fcfcfc",
+      input: "#FCFCFC",
+      roundButton: { 
+				hover: "linear-gradient(135deg, rgba(64, 128, 192, 0.5) 0%, rgba(224, 40, 252, 0.5) 100%)", 
+				active: "linear-gradient(135deg, rgba(64, 128, 192, 1) 0%, rgba(224, 40, 252, 1) 100%)",
+			}
     },
     image: bgLight,
   },

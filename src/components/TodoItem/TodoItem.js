@@ -79,7 +79,7 @@ export default class TodoItem extends Component {
     return (
       <>
         <article className={articleStyles} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-          <CheckButton handleClick={this.handleSetDone} isEnabled={done} data-testid="todo-item-checkbox" />
+          <CheckButton onClick={this.handleSetDone} isEnabled={done} data-testid="todo-item-checkbox" />
           {isEditing ? (
             <TodoSetTextForm handleSetText={this.handleSetText} handleCloseForm={this.handleCloseForm} text={text} />
           ) : (
@@ -87,7 +87,7 @@ export default class TodoItem extends Component {
               {text}
             </Button>
           )}
-          <DeleteButton handleClick={this.handleDelete} data-testid="todo-item-delete-button" />
+          <DeleteButton onClick={this.handleDelete} data-testid="todo-item-delete-button" />
         </article>
       </>
     );

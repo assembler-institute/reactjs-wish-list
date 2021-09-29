@@ -1,1 +1,1 @@
-export { default } from "./CheckButton";
+export { default } from "./CheckButton.styled";

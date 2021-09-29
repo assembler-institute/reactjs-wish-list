@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 const ThemeSwitchStyled = styled.button`
+  height: 2rem;
+  width: 2rem;
+
   background: none;
   border: none;
   outline: none;
@@ -15,8 +18,6 @@ const ThemeSwitchStyled = styled.button`
 
 const Icon = styled.img`
   display: block;
-  height: 1.5rem;
-  width: 1.5rem;
 `;
 
 export { ThemeSwitchStyled, Icon };

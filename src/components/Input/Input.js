@@ -15,8 +15,8 @@ export default class Input extends Component {
       type = "text",
       value = "",
       placeholder = "",
-      handleChange = () => {},
-      handleBlur = () => {},
+      onChange = () => {},
+      onBlur = () => {},
       isWrong = false,
       setAutoFocus = false,
     } = this.props;
@@ -28,8 +28,8 @@ export default class Input extends Component {
         type={type}
         value={value}
         placeholder={placeholder}
-        onChange={handleChange}
-        onBlur={handleBlur}
+        onChange={onChange}
+        onBlur={onBlur}
         autoFocus={setAutoFocus}
         isWrong={isWrong}
       />

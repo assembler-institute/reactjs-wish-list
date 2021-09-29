@@ -29,17 +29,17 @@ export default class TodoSetTextForm extends Component {
             }, 500);
           }}
         >
-          {({ handleChange, handleSubmit, validateField, resetForm, errors, values, touched, isValidating, isValid }) => (
+          {({ handleChange, handleSubmit, validateField, resetForm, errors, values }) => (
             <form onSubmit={handleSubmit} className="todo-set-text__form">
               <Input
                 type="text"
                 name="text"
                 id="text"
-                handleChange={(event) => {
+                onChange={(event) => {
                   handleChange(event);
                   validateField();
                 }}
-                handleBlur={() => {
+                onBlur={() => {
                   handleCloseForm();
                   resetForm();
                 }}

@@ -28,17 +28,17 @@ export default class FormAddTodo extends Component {
             }, 500);
           }}
         >
-          {({ handleChange, handleSubmit, validateField, resetForm, errors, values, touched, isValidating, isValid }) => (
+          {({ handleChange, handleSubmit, validateField, resetForm, errors, values }) => (
             <Form onSubmit={handleSubmit}>
               <Input
                 type="text"
                 name="text"
                 id="text"
-                handleChange={(event) => {
+                onChange={(event) => {
                   handleChange(event);
                   validateField();
                 }}
-                handleBlur={() => {
+                onBlur={() => {
                   resetForm();
                 }}
                 value={values.text}
