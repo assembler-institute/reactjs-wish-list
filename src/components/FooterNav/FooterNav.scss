@@ -1,0 +1,20 @@
+@import "~bootstrap/scss/bootstrap";
+// solo importar lo q necesito cambiar
+
+.footer-nav {
+  width: 80%;
+}
+
+.footer-nav__page-link {
+  width: 33.3%;
+}
+
+.footer-link {
+  color: white;
+
+
+  &:hover {
+    color: $gray-100;
+    text-decoration: none;
+  }
+}

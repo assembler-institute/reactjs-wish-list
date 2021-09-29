@@ -24,21 +24,14 @@ export default class App extends Component {
       counter: 0,
     };
 
-    function getTaskList() {
-      console.log("seteando estado...");
-      if (getLocalStorageObject("task-todos")) {
-        const { tasks } = getLocalStorageObject("task-todos");
-        tasks
-          ? this.setState({ tasks: tasks, counter: tasks.lenght })
-          : this.setState({ tasks: [], counter: 0 });
-      }
+    function getTaskList(key) {
+      const tasks = getLocalStorageObject(key);
+      // this.setState({ tasks: tasks, counter: tasks.lenght });
+      // eslint-disable-next-line
+      console.log("soy el get task de app", key, tasks);
     }
 
     this.getTaskList = getTaskList.bind(this);
-  }
-
-  componentDidMount() {
-    this.getTaskList();
   }
 
   render() {
@@ -56,12 +49,7 @@ export default class App extends Component {
                 <>
                   <MainList
                     {...routeProps}
-                    tasks={tasks.filter((obj) => {
-                      return appKey.list === "todos"
-                        ? obj
-                        : obj.list === appKey.list;
-                    })}
-                    getTaskList={this.getTaskList}
+                    {...tasks}
                     counter={counter}
                     pageDesc={appKey.pageDescr}
                   />
