@@ -6,12 +6,12 @@ module.exports = {
     "jest/globals": true,
   },
   extends: [
-    "airbnb",
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:jsx-a11y/recommended",
+    //"airbnb",
+    //"eslint:recommended",
+    //"plugin:react/recommended",
+    //"plugin:import/errors",
+    //"plugin:import/warnings",
+    //"plugin:jsx-a11y/recommended",
     "prettier",
     "plugin:cypress/recommended",
   ],
@@ -24,13 +24,12 @@ module.exports = {
   },
   plugins: [
     "html",
-    "react",
-    "react-hooks",
-    "jsx-a11y",
+    //"react",
+    //"react-hooks",
+    //"jsx-a11y",
     "markdown",
-    "react-hooks",
-    "import",
-    "prettier",
+    //"react-hooks",
+    //"import",
   ],
   settings: {
     react: {
@@ -56,29 +55,24 @@ module.exports = {
     },
   ],
   rules: {
-    "prettier/prettier": [
-      "error",
-      {
-        endOfLine: "auto",
-      },
-    ],
-    "react/jsx-filename-extension": "off",
-    "import/prefer-default-export": "off",
-    "prefer-destructuring": "off",
-    "object-shorthand": "off",
-    "react/jsx-props-no-spreading": "off",
-    "arrow-body-style": "off",
-    "no-underscore-dangle": "off",
-    "react/forbid-prop-types": "off",
-    "react/prop-types": "off",
-    "no-unused-expressions": "off",
-    "jsx-a11y/label-has-for": [
-      "error",
-      {
-        required: {
-          some: ["nesting", "id"],
-        },
-      },
-    ],
+  
+    //"react/jsx-filename-extension": "off",
+    //"import/prefer-default-export": "off",
+    //"prefer-destructuring": "off",
+    //"object-shorthand": "off",
+    //"react/jsx-props-no-spreading": "off",
+    //"arrow-body-style": "off",
+    //"no-underscore-dangle": "off",
+    //"react/forbid-prop-types": "off",
+    //"react/prop-types": "off",
+    //"no-unused-expressions": "off",
+    //"jsx-a11y/label-has-for": [
+    //  "error",
+    //  {
+    //    required: {
+    //      some: ["nesting", "id"],
+    //    },
+    //  },
+    //],
   },
 };

@@ -1,0 +1,40 @@
+.todo__input {
+  font-weight:800;
+  width: 100% !important;
+  border: none;
+}
+
+form{
+  width: 90%;
+}
+
+.todo__input::placeholder {
+  opacity:0.5;
+}
+
+.todo__checkbox {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 5px;
+  min-width: 25px;
+
+    &:checked{
+    width: 25px;
+    height: 25px;
+    transition: 0.3s;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.143);
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 5px;
+    background-color: #7c5ee7b4;
+  }
+
+}
+

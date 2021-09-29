@@ -1,0 +1,25 @@
+.testButton {
+  background-color: blue;
+  color: white;
+  padding: 8px 20px;
+}
+
+.container{
+  display: flex;
+  justify-content: flex-end;
+
+  .cancel {
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    border: none;
+    background-color: rgb(194, 194, 194);
+  
+    &:hover {
+      background-color: rgb(128, 128, 128);
+      transition: 0.5s;
+    }
+  }
+}
+
