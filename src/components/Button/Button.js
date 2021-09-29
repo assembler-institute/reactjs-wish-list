@@ -1,18 +1,16 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import "./Button.scss";
 
-export default class Button extends Component {
-  constructor(props) {
-    super(props);
-  }
+const Button = styled.button`
+  padding: 0.5rem;
+  cursor: pointer;
 
-  render() {
-    const { handleClick = () => {}, className = "default-button", children } = this.props;
+  border: none;
+  outline: none;
 
-    return (
-      <button className={className} onClick={handleClick}>
-        {children}
-      </button>
-    );
-  }
-}
+  background: cornflowerblue;
+  color: white;
+`;
+
+export default Button;

@@ -3,9 +3,9 @@ import TodoCounter from "../TodoCounter";
 import TodoFilter from "../TodoFilter";
 import Button from "../Button";
 
-import "./TodoFooter.scss";
+import "./Footer.scss";
 
-export default class TodoFooter extends Component {
+export default class Footer extends Component {
   constructor(props) {
     super(props);
   }
@@ -14,10 +14,10 @@ export default class TodoFooter extends Component {
     const { count, handleClear } = this.props;
 
     return (
-      <footer className="todo-footer">
+      <footer className="footer">
         <TodoCounter count={count} />
         <TodoFilter />
-        <Button className="todo-footer__button" handleClick={handleClear} data-testid="clear-completed-todos">
+        <Button className="footer__button" handleClick={handleClear} data-testid="clear-completed-todos">
           Clear Completed
         </Button>
       </footer>

@@ -4,7 +4,40 @@ import Button from "../Button";
 import DeleteButton from "../DeleteButton";
 import CheckButton from "../CheckButton";
 
+import styled, { css } from "styled-components";
+
 import "./TodoItem.scss";
+
+const FieldButtonDone = css`
+  color: ${({ theme }) => theme.colors.text};
+  text-decoration: line-through;
+`;
+
+const FieldButton = styled.button`
+  width: 100%;
+  padding: 0.5rem;
+
+  cursor: pointer;
+  user-select: none;
+
+  text-align: left;
+
+  border-radius: 0.25rem;
+  border: none;
+  outline: none;
+
+  box-shadow: none;
+  background: none;
+  color: ${({ theme }) => theme.colors.text};
+  
+  &:hover {
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.25); 
+    background: linear-gradient(135deg, rgba(64, 128, 180, 0.25) 0%, rgba(240, 40, 252, 0.25) 100%);
+    color: gray;
+  }
+
+  ${({ done }) => done && FieldButtonDone}
+`;
 
 export default class TodoItem extends Component {
   constructor(props) {
@@ -50,7 +83,7 @@ export default class TodoItem extends Component {
           {isEditing ? (
             <TodoSetTextForm handleSetText={this.handleSetText} handleCloseForm={this.handleCloseForm} text={text} />
           ) : (
-            <Button className={editButtonStyles} handleClick={this.handleOpenForm}>
+            <Button className={editButtonStyles} onClick={this.handleOpenForm}>
               {text}
             </Button>
           )}

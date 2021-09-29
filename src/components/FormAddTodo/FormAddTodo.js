@@ -1,12 +1,12 @@
 import { Component } from "react";
 import { Formik } from "formik";
 import { todoSchema } from "../../schema";
+
+import { FormAddTodoStyled, Form } from "./FormAddTodo.styled";
 import Input from "../Input";
 import ErrorMessage from "../ErrorMessage";
 
-import "./TodoCreateForm.scss";
-
-export default class TodoCreateForm extends Component {
+export default class FormAddTodo extends Component {
   constructor(props) {
     super(props);
   }
@@ -15,7 +15,7 @@ export default class TodoCreateForm extends Component {
     const { handleAddTodo } = this.props;
 
     return (
-      <section className="todo-create">
+      <FormAddTodoStyled>
         <Formik
           initialValues={{ text: this.props.text }}
           validationSchema={todoSchema}
@@ -29,7 +29,7 @@ export default class TodoCreateForm extends Component {
           }}
         >
           {({ handleChange, handleSubmit, validateField, resetForm, errors, values, touched, isValidating, isValid }) => (
-            <form className="todo-create__form" onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
               <Input
                 type="text"
                 name="text"
@@ -42,16 +42,16 @@ export default class TodoCreateForm extends Component {
                   resetForm();
                 }}
                 value={values.text}
-                wrong={Boolean(errors.text)}
+                isWrong={Boolean(errors.text)}
                 placeholder="Add a new todo..."
                 setAutoFocus={true}
                 data-testid="create-todo-input"
               />
               {errors.text && <ErrorMessage dataTestId="create-todo-error-message">{errors.text}</ErrorMessage>}
-            </form>
+            </Form>
           )}
         </Formik>
-      </section>
+      </FormAddTodoStyled>
     );
   }
 }

@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import { v4 as uuid } from "uuid";
-import { readLocalStorage, writeLocalStorage } from "./api";
-
-import Header from "./components/Header";
-import TodoCreateForm from "./components/TodoCreateForm";
-import TodoList from "./components/TodoList";
-import TodoFooter from "./components/TodoFooter";
-import NoTodos from "./components/NoTodos";
-
-import "./App.scss";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router";
+import { readLocalStorage, writeLocalStorage } from "./api";
+import { ThemeProvider } from "styled-components";
+import { v4 as uuid } from "uuid";
+import { AppMain, AppMainWrapper, AppContainer } from "./App.styled";
+import { dark, light } from "./themes";
+import Header from "./components/Header";
+import FormAddTodo from "./components/FormAddTodo";
+import TodoList from "./components/TodoList";
+import Footer from "./components/Footer";
+import NoTodos from "./components/NoTodos";
 
 const LOCAL_STORAGE_KEY = "react-todos";
 
@@ -54,18 +55,16 @@ class App extends Component {
   }
 
   addTodo(data) {
-    const { todos } = this.state;
-
-    todos.push({
+    const newTodo = {
       ...data,
       id: uuid(),
       done: false,
       isEditing: false,
-    });
+    };
 
     this.setState((prevState) => ({
       ...prevState,
-      todos: todos,
+      todos: [...prevState.todos, newTodo],
     }));
   }
 
@@ -168,39 +167,43 @@ class App extends Component {
   }
 
   render() {
-    const theme = this.state.isDarkMode ? "dark" : "light";
-
+    const theme = this.state.isDarkMode ? dark : light;
+    
     return (
-      <div data-ui-theme={theme} className="app-background">
-        <main className="app-content container-sm container-md mx-auto p-5 flex flex-column gap-8">
-          <Header handleTheme={this.toggleDarkMode} isDarkMode={this.state.isDarkMode} />
-          <TodoCreateForm handleAddTodo={this.addTodo} />
-          <section className="app-todo">
-            <Route
-              path="/"
-              render={(routeProps) => {
-                const pathname = routeProps.location.pathname;
-                const todos = this.getTodos(pathname);
+      <Router>
+        <ThemeProvider theme={theme}>
+          <AppMain>
+            <AppMainWrapper>
+              <Header handleTheme={this.toggleDarkMode} isDarkMode={this.state.isDarkMode} />
+              <FormAddTodo handleAddTodo={this.addTodo} />
+              <AppContainer>
+                <Route
+                  path="/"
+                  render={(routeProps) => {
+                    const pathname = routeProps.location.pathname;
+                    const todos = this.getTodos(pathname);
 
-                return todos.length > 0 ? (
-                  <TodoList
-                    pathname={pathname}
-                    todos={todos}
-                    handleDelete={this.deleteTodo}
-                    handleSetDone={this.setDoneTodo}
-                    handleSetText={this.setTextTodo}
-                    handleIsEditing={this.isEditingTodo}
-                    handleMove={this.moveTodo}
-                  />
-                ) : (
-                  <NoTodos pathname={pathname} />
-                );
-              }}
-            />
-            <TodoFooter count={this.getTodos("/active").length} handleClear={this.clearDoneTodos} />
-          </section>
-        </main>
-      </div>
+                    return todos.length > 0 ? (
+                      <TodoList
+                        pathname={pathname}
+                        todos={todos}
+                        handleDelete={this.deleteTodo}
+                        handleSetDone={this.setDoneTodo}
+                        handleSetText={this.setTextTodo}
+                        handleIsEditing={this.isEditingTodo}
+                        handleMove={this.moveTodo}
+                      />
+                    ) : (
+                      <NoTodos pathname={pathname} />
+                    );
+                  }}
+                />
+                <Footer count={this.getTodos("/active").length} handleClear={this.clearDoneTodos} />
+              </AppContainer>
+            </AppMainWrapper>
+          </AppMain>
+        </ThemeProvider>
+      </Router>
     );
   }
 }

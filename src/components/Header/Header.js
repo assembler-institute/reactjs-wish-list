@@ -1,6 +1,7 @@
 import { Component } from "react";
-import "./Header.scss";
-import Switch from "../Switch";
+
+import { HeaderStyled, Title } from "./Header.styled";
+import ThemeSwitch from "../ThemeSwitch";
 
 export default class Header extends Component {
   constructor(props) {
@@ -11,10 +12,10 @@ export default class Header extends Component {
     const { handleTheme, isDarkMode } = this.props;
 
     return (
-      <header className="app-header">
-        <h1 className="app-header__title">TODO</h1>
-        <Switch handleTheme={handleTheme} isDarkMode={isDarkMode} />
-      </header>
+      <HeaderStyled>
+        <Title>TODO</Title>
+        <ThemeSwitch handleTheme={handleTheme} isDarkMode={isDarkMode} />
+      </HeaderStyled>
     );
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { v4 as uuid } from "uuid";
-import "./Input.scss";
+
+import { InputStyled } from "./input.styled";
 
 export default class Input extends Component {
   constructor(props) {
@@ -16,15 +17,12 @@ export default class Input extends Component {
       placeholder = "",
       handleChange = () => {},
       handleBlur = () => {},
-      wrong,
-      className = "input",
-      classNameWrong = "input--wrong",
+      isWrong = false,
       setAutoFocus = false,
     } = this.props;
 
     return (
-      <input
-        className={wrong ? `${className} ${classNameWrong}` : className}
+      <InputStyled
         id={id}
         name={name}
         type={type}
@@ -33,6 +31,7 @@ export default class Input extends Component {
         onChange={handleChange}
         onBlur={handleBlur}
         autoFocus={setAutoFocus}
+        isWrong={isWrong}
       />
     );
   }
