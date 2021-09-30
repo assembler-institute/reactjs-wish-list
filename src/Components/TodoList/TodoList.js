@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./TodoList.scss";
 
-class TodoListItem extends Component {
+export class TodoListItem extends Component {
     constructor(props) {
         super(props);
         this.state = {

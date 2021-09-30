@@ -1,30 +1,36 @@
 import React, { Component } from "react";
 import "./TodoList.scss";
+import {TodoListItem } from "./TodoList"
 
 
 
 class TodoListCompleted extends Component {
-    constructor(props) {
+    constructor(props){
         super(props);
-        this.state = {
-                listToDo:[],
-                }
-            }
-    render(){
-        const {listToDo} = this.state;
+        this.state=({
+            done:this.state.done
+        })
+    }
+
+    render(){ 
+        const{done}=this.state
         return (
             <div className="todo__list__container container-lg">
                 <ul id="completed">
-                {/* {listToDo.map((el)=> {
-                    console.log(el) */}
-                    {/*                     if(el.id===id){
-                    <li key={el.id}>
-                        <input type="checkbox" id={el.id}  value={el.value}/>
-                        <span for={el.value}> {el.value}</span>
-                    </li>
-                } */}
-              {/*   }
-                )} */}
+                {this.state.done?( 
+                    this.props.items.map((el)=> 
+                    <li key={el.id} id={el.id}>
+                    <TodoListItem 
+                        id={el.id} 
+                        value={el.value}
+                        handleRemove={() => this.props.handleRemove(el.id)}
+                        handleEdit={(id, value) => this.props.handelEdit(id,value)}
+                    />
+                   </li>
+                )
+                ):<p>hello</p>}
+
+                    
                 </ul>
             </div>
         )

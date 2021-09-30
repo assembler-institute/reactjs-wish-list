@@ -14,17 +14,15 @@ class Home extends Component {
     this.state = {
       listToDos: [],
       newToDo: "",
-      done: false,
     };
     this.addItem = this.addItem.bind(this);
     this.editItem = this.editItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
   }
-  addItem(value,done) {
+  addItem(value) {
     const newToDo = {
       id: Math.floor(Math.random() * 100),
       value: value,
-      done:done
     };
     const { listToDos } = this.state;
     listToDos.push(newToDo);
@@ -32,28 +30,27 @@ class Home extends Component {
       listToDos,
     });
   }
-  editItem(id, value, done) {
+  editItem(id) {
     const { listToDos } = this.state;
     listToDos.find((item) => {
       if (item.id === id) {
-        item.done = !done;
       }
     });
     this.setState({
       listToDos: listToDos,
     });
   }
-
   deleteItem(id) {
     const { listToDos } = this.state;
     const updatedList = listToDos.filter((item) => item.id !== id);
     this.setState({
       listToDos: updatedList,
+      done:this.state
     });
   }
+  
   render() {
-    const done=this.state.newToDo
-    console.log(done);
+    // const displayData = this.getDataToDisplay(listToDos, filterData);
     return (
       <Router>
         <main className="container mt-5">
@@ -76,7 +73,7 @@ class Home extends Component {
                 <TodoListActive />
               </Route>
               <Route path="/completed" exact>
-                <TodoListCompleted handleDone={this.toDoDone} />
+                <TodoListCompleted items={this.state.listToDos} />
               </Route>
             </Switch>
             <Footer />
