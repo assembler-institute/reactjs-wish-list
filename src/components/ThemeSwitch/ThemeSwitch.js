@@ -9,12 +9,12 @@ export default class ThemeSwitch extends Component {
   }
 
   render() {
-    const { handleTheme, isDarkMode } = this.props;
+    const { onClick, isDarkMode } = this.props;
 
     const image = isDarkMode ? moonSVG : sunSVG;
 
     return (
-      <ThemeSwitchStyled onClick={handleTheme}>
+      <ThemeSwitchStyled onClick={onClick}>
         <Icon src={image}/>
       </ThemeSwitchStyled>
     );

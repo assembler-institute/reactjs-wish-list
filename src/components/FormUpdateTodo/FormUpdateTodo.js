@@ -4,9 +4,9 @@ import { todoSchema } from "../../schema";
 import Input from "../Input";
 import ErrorMessage from "../ErrorMessage";
 
-import "./TodoSetTextForm.scss";
+import { FormUpdateTodoStyled, Form } from "./FormUpdateTodo.styled";
 
-export default class TodoSetTextForm extends Component {
+export default class FormUpdateTodo extends Component {
   constructor(props) {
     super(props);
   }
@@ -15,7 +15,7 @@ export default class TodoSetTextForm extends Component {
     const { text, handleSetText, handleCloseForm } = this.props;
 
     return (
-      <div className="todo-set-text">
+      <FormUpdateTodoStyled>
         <Formik
           initialValues={{
             text,
@@ -30,7 +30,7 @@ export default class TodoSetTextForm extends Component {
           }}
         >
           {({ handleChange, handleSubmit, validateField, resetForm, errors, values }) => (
-            <form onSubmit={handleSubmit} className="todo-set-text__form">
+            <Form onSubmit={handleSubmit} className="todo-set-text__form">
               <Input
                 type="text"
                 name="text"
@@ -50,10 +50,10 @@ export default class TodoSetTextForm extends Component {
                 data-testid="todo-item-input"
               />
               {errors.text && <ErrorMessage>{errors.text}</ErrorMessage>}
-            </form>
+            </Form>
           )}
         </Formik>
-      </div>
+      </FormUpdateTodoStyled>
     );
   }
 }

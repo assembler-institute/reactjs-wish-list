@@ -20,7 +20,7 @@ const Icon = styled.svg`
 
 const DeleteButton = styled(DeleteButtonStyled)`
 	&::before {
-		content: '\u{2715}';
+		content: '\u{00d7}';
 	}
 `;
 

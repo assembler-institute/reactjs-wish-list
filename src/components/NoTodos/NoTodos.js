@@ -1,6 +1,6 @@
 import { Component } from "react";
-import image from "../../img/undraw_wandering_mind_0mkm.svg";
-import "./NoTodos.scss";
+
+import { Image, NoTodosStyled, Title } from "./NoTodos.styled";
 
 export default class NoTodos extends Component {
   constructor(props) {
@@ -17,10 +17,10 @@ export default class NoTodos extends Component {
     };
 
     return (
-      <div className="no-todos">
-        <img className="no-todos__image" src={image} data-testid="no-todos" />
-        <h3 className="no-todos__title">{messages[pathname]}</h3>
-      </div>
+      <NoTodosStyled>
+        <Image data-testid="no-todos" />
+        <Title>{messages[pathname]}</Title>
+      </NoTodosStyled>
     );
   }
 }

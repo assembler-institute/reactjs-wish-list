@@ -10,11 +10,11 @@ const InputStyled = styled.input`
 	border: none;
 	outline: none;
 
-	background: ${({ theme }) => theme.background.color.default};
+	background: ${({ theme }) => theme.background.color.input.default};
 	color: ${({ theme }) => theme.text.color.default};
 
 	&::placeholder {
-		color: ${({ theme }) => theme.text.color.placeholder};
+		color: ${({ theme }) => theme.text.color.placeholder.default};
 	}
 
 	&:focus, &:hover {

@@ -17,6 +17,6 @@ const Form = styled.form`
 	align-items: stretch;
 	justify-content: center;
 	gap: 0.5rem;
-`
+`;
 
 export { Form, FormAddTodoStyled };

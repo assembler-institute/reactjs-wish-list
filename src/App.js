@@ -42,7 +42,7 @@ class App extends Component {
         this.setState((prevState) => ({
           ...prevState,
           todos,
-          isLoading: true,
+          isLoading: false,
         }));
       }
     }, 1500);

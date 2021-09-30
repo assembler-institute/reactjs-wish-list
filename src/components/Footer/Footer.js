@@ -1,9 +1,8 @@
 import { Component } from "react";
-import TodoCounter from "../TodoCounter";
-import TodoFilter from "../TodoFilter";
-import Button from "../Button";
 
-import "./Footer.scss";
+import { FooterButton, FooterStyled } from "./Footer.styled.js";
+import Counter from "../Counter";
+import Filter from "../Filter";
 
 export default class Footer extends Component {
   constructor(props) {
@@ -14,13 +13,11 @@ export default class Footer extends Component {
     const { count, handleClear } = this.props;
 
     return (
-      <footer className="footer">
-        <TodoCounter count={count} />
-        <TodoFilter />
-        <Button className="footer__button" handleClick={handleClear} data-testid="clear-completed-todos">
-          Clear Completed
-        </Button>
-      </footer>
+      <FooterStyled>
+        <Counter count={count} />
+        <Filter />
+        <FooterButton onClick={handleClear} data-testid="clear-completed-todos">Clear Completed</FooterButton>
+      </FooterStyled>
     );
   }
 }

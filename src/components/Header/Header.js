@@ -14,7 +14,7 @@ export default class Header extends Component {
     return (
       <HeaderStyled>
         <Title>TODO</Title>
-        <ThemeSwitch handleTheme={handleTheme} isDarkMode={isDarkMode} />
+        <ThemeSwitch onClick={handleTheme} isDarkMode={isDarkMode} />
       </HeaderStyled>
     );
   }
