@@ -11,6 +11,7 @@ import FormAddTodo from "./components/FormAddTodo";
 import TodoList from "./components/TodoList";
 import Footer from "./components/Footer";
 import NoTodos from "./components/NoTodos";
+import { Checkbox } from "./components/Checkbox";
 
 const LOCAL_STORAGE_KEY = "react-todos";
 

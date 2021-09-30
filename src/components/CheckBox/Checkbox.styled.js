@@ -1,4 +1,6 @@
-.checkbox {
+import styled from "styled-components";
+
+const Checkbox = styled.input.attrs({ type: "checkbox" })`
 	appearance: none;
 	display: flex;
 	align-items: center;
@@ -11,11 +13,12 @@
 	cursor: pointer;
 	user-select: none;
 
+	background: white;
 	border-radius: 50%;
 	box-shadow: 0 0 4px rgba(0,0,0,0.25);
 
 	&::after {
-		content: '\2713';
+		content: '\u{2713}';
 		font-size: 1.5rem;
 		color: white;
 		display: none;
@@ -32,5 +35,7 @@
 	&:checked::after {
 		display: block;
 	}
-}
+`;
+
+export { Checkbox };
 
