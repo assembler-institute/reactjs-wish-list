@@ -9,9 +9,14 @@
   }
 }
 
-input[type="checkbox"]:checked + p{
+.line-through{
+  margin-left: 2rem;
   font-style: italic;
   text-decoration: line-through;
+}
+
+.normal__p{
+  margin-left: 2rem;
 }
 
 
