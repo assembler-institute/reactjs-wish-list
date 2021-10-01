@@ -1,0 +1,43 @@
+.container {
+    border-radius: 0 25px 0 0;
+}
+    header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    h1{
+        height: 0;
+    }
+    form {
+        vertical-align: middle;
+        margin-bottom: 2%;
+        input{
+            text-align: center;
+            height: 2rem;
+            border: 0;
+            outline: none;
+            width: 300px;
+        }
+    }
+}
+
+.switch {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    align-self: flex-end;
+    margin-top: 0.5rem;
+    margin-left: -0.5rem;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+.switch:hover {
+    margin-top: -0.5rem;
+    margin-left: 0.5rem;
+    padding: 1rem;
+    transform: rotate(180deg);
+}
