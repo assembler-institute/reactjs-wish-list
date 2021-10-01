@@ -5,7 +5,7 @@ import { readLocalStorage, writeLocalStorage } from "./api";
 import { ThemeProvider } from "styled-components";
 import { v4 as uuid } from "uuid";
 import { AppMain, AppMainWrapper, AppContainer } from "./App.styled";
-import { dark, light } from "./themes";
+import { dark, GlobalStyle, light } from "./themes";
 import Header from "./components/Header";
 import FormAddTodo from "./components/FormAddTodo";
 import TodoList from "./components/TodoList";
@@ -173,6 +173,7 @@ class App extends Component {
     return (
       <Router>
         <ThemeProvider theme={theme}>
+          <GlobalStyle />
           <AppMain>
             <AppMainWrapper>
               <Header handleTheme={this.toggleDarkMode} isDarkMode={this.state.isDarkMode} />
