@@ -20,18 +20,16 @@ export default class TodoList extends Component {
   }
 
   render() {
-    const { pathname, todos, handleDelete, handleSetDone, handleSetText, handleIsEditing } = this.props;
-
-    const dndEnabled = pathname === "/";
-
+    const { dndDisabled, todos, handleDelete, handleSetDone, handleSetText, handleIsEditing } = this.props;
+    
     return (
       <TodoListStyled>
         <DragDropContext onDragEnd={this.handleDragEnd}>
-          <Droppable droppableId="todo-list" isDropDisabled={!dndEnabled}>
+          <Droppable droppableId="todo-list" isDropDisabled={dndDisabled}>
             {(provided) => (
               <ul ref={provided.innerRef} {...provided.innerRef} data-testid="todos-list">
                 {todos.map((item, index) => (
-                  <Draggable draggableId={item.id} key={item.id} index={index} isDragDisabled={!dndEnabled}>
+                  <Draggable draggableId={item.id} key={item.id} index={index} isDragDisabled={dndDisabled}>
                     {(provided) => (
                       <li key={item.id} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} data-testid="todo-item">
                         <TodoItem
