@@ -1,5 +1,6 @@
 {
   "name": "reactjs-todo-list",
+  "homepage": ".",
   "version": "1.0.0",
   "description": "Assembler School: React.js Todo List",
   "keywords": [
