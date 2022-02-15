@@ -1,0 +1,6 @@
+@use "assets/styles/_typography.scss" as fonts;
+
+body {
+    font-family: fonts.$mainFont;
+}
+
