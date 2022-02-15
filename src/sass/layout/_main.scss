@@ -1,0 +1,15 @@
+main {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #fafafa;
+    position: relative;
+}
+.todo-list {
+    position: absolute;
+    width: 100%;
+    max-width: 722px;
+    height: 850px;
+    background-color: #fff;
+    left: calc(50% - 366px);
+    top: 50px;
+}
