@@ -1,6 +1,8 @@
 @use "assets/styles/_typography.scss" as fonts;
+@use "assets/styles/_variables.scss" as variables;
 
 body {
+  background-color: #fafafa;
   margin: 0;
   font-family: fonts.$mainFont;
   background-image: linear-gradient(
@@ -17,15 +19,58 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 }
 
 header {
+  letter-spacing: 0.7rem;
   color: white;
+  font-weight: 550;
+  font-size: 2.5rem;
+  align-self: flex-start;
 }
 main {
+  max-width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+article {
+  margin: 15px 0;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+}
+
+fieldset {
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row-reverse;
+  border-radius: 5px;
+  background-color: white;
+
+  input {
+    width: 80%;
+    border: none;
+  }
+
+  .inputCheck {
+    background: white;
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 50%;
+    appearance: none;
+    border: 2px solid #eaeaec;
+  }
+  .inputCheck:hover {
+    border: 3px solid variables.$gradient;
+  }
+
+  .inputCheck:checked {
+    background: variables.$gradient;
+  }
 }
