@@ -3,7 +3,11 @@ import Header from "./components/Header";
 import "./app.scss";
 
 function App() {
-  return <Header />;
+  return (
+    <main>
+      <Header />
+    </main>
+  );
 }
 
 export default App;
