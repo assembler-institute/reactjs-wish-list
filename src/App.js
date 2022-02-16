@@ -3,6 +3,9 @@ import React from "react";
 import "./sass/main.scss";
 import img from "./img/motivation.jpg";
 
+// Components
+import CreateToDo from "./components/CreateToDo";
+
 function App() {
   return (
     <main className="">
@@ -10,12 +13,14 @@ function App() {
         <img src={img} alt="motivated person in the mountains" />
       </header>
       <section className="todo-list">
-        <div className="d-flex">
+        <div className="main-header">
           <h1>TODO</h1>
-          <button type="button">Switch</button>
+          <button className="" type="button">
+            <span className="material-icons-outlined md-48">light_mode</span>
+          </button>
         </div>
-        {/* <Input />
-        <TodoList /> */}
+        <CreateToDo />
+        {/* <TodoList /> */}
         <h6>Drag and drop to reorder list</h6>
       </section>
     </main>
