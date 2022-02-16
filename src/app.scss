@@ -1,28 +1,6 @@
 @use "assets/styles/_typography.scss" as fonts;
 @use "assets/styles/_variables.scss" as variables;
 
-body {
-  background-color: #fafafa;
-  margin: 0;
-  font-family: fonts.$mainFont;
-  background-image: linear-gradient(
-      to left,
-      rgba(245, 246, 252, 0.52),
-      rgba(117, 19, 93, 0.73)
-    ),
-    url("assets/img/header-background.jpeg");
-  background-size: 100% 25vh;
-  background-repeat: no-repeat;
-  height: 100vh;
-  #root {
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 header {
   letter-spacing: 0.7rem;
   color: white;
