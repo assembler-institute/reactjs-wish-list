@@ -56,6 +56,7 @@ module.exports = {
     },
   ],
   rules: {
+    "no-param-reassign": 0,
     "prettier/prettier": [
       "error",
       {
