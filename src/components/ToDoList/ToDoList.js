@@ -3,13 +3,22 @@ import React from "react";
 // import ToDoItem from "../ToDoItem";
 import "./ToDoList.scss";
 import { data } from "../../utils/data";
+import ToDoItem from "../ToDoItem/ToDoItem";
 
 export default function ToDoList() {
+  function isCompleted() {}
   return (
     <div className="list-container">
-      {data.map((item) => (
-        <div key={item.id}>{item.id}</div>
-      ))}
+      <div className="todos-container">
+        {data.map((item) => (
+          <ToDoItem
+            key={item.id}
+            handleDone={isCompleted}
+            text={item.text}
+            done={item.done}
+          />
+        ))}
+      </div>
       {/* <ToDoItem /> */}
 
       <footer className="mt-auto">

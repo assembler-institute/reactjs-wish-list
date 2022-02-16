@@ -2,13 +2,15 @@ import React from "react";
 
 import "./ToDoItem.scss";
 
-export default function ToDoItem() {
+export default function ToDoItem({ text, done, handleDone }) {
   return (
     <article className="todo-item">
-      <button type="button" className="">
-        <span className="material-icons-outlined md-30">circle</span>
+      <button type="button" className="" onClick={handleDone}>
+        <span className="material-icons-outlined md-30">
+          {done ? "check_circle" : "circle"}
+        </span>
       </button>
-      <p>Read for 1 hour</p>
+      <p>{text}</p>
       <button type="button" className="">
         <span className="material-icons-outlined md-30">close</span>
       </button>
