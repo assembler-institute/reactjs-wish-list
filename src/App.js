@@ -5,6 +5,7 @@ import img from "./img/motivation.jpg";
 
 // Components
 import CreateToDo from "./components/CreateToDo";
+import ToDoList from "./components/ToDoList";
 
 function App() {
   return (
@@ -20,8 +21,8 @@ function App() {
           </button>
         </div>
         <CreateToDo />
-        {/* <TodoList /> */}
-        <h6>Drag and drop to reorder list</h6>
+        <ToDoList />
+        {/* <h6>Drag and drop to reorder list</h6> */}
       </section>
     </main>
   );
