@@ -40,13 +40,11 @@ function App() {
   function isCompleted(id) {
     const updateIndex = toDoItems.find((index) => index.id === id);
     const item = toDoItems.indexOf(updateIndex);
-    setToDoItems((prevState) => {
-      const newState = Array.from(prevState);
-      newState[item].done = !newState[item].done;
-      console.log(newState);
-      return newState;
-    });
+    const newState = Array.from(toDoItems);
+    newState[item].done = !newState[item].done;
+    setToDoItems(newState);
   }
+
   return (
     <main className="">
       <header>
