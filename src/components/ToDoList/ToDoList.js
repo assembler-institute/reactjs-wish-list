@@ -4,8 +4,7 @@ import React from "react";
 import "./ToDoList.scss";
 import ToDoItem from "../ToDoItem/ToDoItem";
 
-export default function ToDoList({ data, handleDelete }) {
-  function isCompleted() {}
+export default function ToDoList({ data, handleDelete, isCompleted }) {
   return (
     <div className="list-container">
       <div className="todos-container">
@@ -13,7 +12,7 @@ export default function ToDoList({ data, handleDelete }) {
           <ToDoItem
             id={item.id}
             key={item.id}
-            handleDone={isCompleted}
+            handleDone={() => isCompleted(item.id)}
             text={item.text}
             done={item.done}
             handleDelete={() => handleDelete(item.id)}

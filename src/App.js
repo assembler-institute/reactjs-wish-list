@@ -12,7 +12,6 @@ import ToDoList from "./components/ToDoList";
 function App() {
   const [toDoItems, setToDoItems] = useState(data);
   const [value, setValue] = useState("");
-
   function handleChange(event) {
     setValue(event.target.value);
   }
@@ -38,6 +37,16 @@ function App() {
       return newState;
     });
   }
+  function isCompleted(id) {
+    const updateIndex = toDoItems.find((index) => index.id === id);
+    const item = toDoItems.indexOf(updateIndex);
+    setToDoItems((prevState) => {
+      const newState = Array.from(prevState);
+      newState[item].done = !newState[item].done;
+      console.log(newState);
+      return newState;
+    });
+  }
   return (
     <main className="">
       <header>
@@ -56,7 +65,11 @@ function App() {
           handleSubmit={handleSubmit}
           handleKeyPress={handleKeyPress}
         />
-        <ToDoList data={toDoItems} handleDelete={handleDelete} />
+        <ToDoList
+          data={toDoItems}
+          handleDelete={handleDelete}
+          isCompleted={isCompleted}
+        />
         {/* <h6>Drag and drop to reorder list</h6> */}
       </section>
     </main>
