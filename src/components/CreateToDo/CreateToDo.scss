@@ -16,6 +16,8 @@
         color: rgb(40, 40, 40);
         border: none;
         outline: none
+
+        
     }
 }
 .material-icons-outlined.md-30 {
@@ -25,5 +27,9 @@
 .inputError {
     &:focus {
         color: red;
+        &::placeholder{
+            color: red;
+        }
     }
+
 }

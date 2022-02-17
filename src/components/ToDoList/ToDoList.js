@@ -9,19 +9,19 @@ export default function ToDoList({ data, handleDelete, isCompleted }) {
   return (
     <div className="list-container">
       {data.length > 0 && (
-        <div className="todos-container">
+        <ul className="todos-container" data-testid="todos-list">
           {data.map((item) => (
-            // NO TODOS
-            <ToDoItem
-              id={item.id}
-              key={item.id}
-              handleDone={() => isCompleted(item.id)}
-              text={item.text}
-              done={item.done}
-              handleDelete={() => handleDelete(item.id)}
-            />
+            <li key={item.id} data-testid="todo-item">
+              <ToDoItem
+                id={item.id}
+                handleDone={() => isCompleted(item.id)}
+                text={item.text}
+                done={item.done}
+                handleDelete={() => handleDelete(item.id)}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       )}
       {!data.length && (
         <div className="emptyTodosContainer" data-testid="no-todos">
@@ -30,8 +30,12 @@ export default function ToDoList({ data, handleDelete, isCompleted }) {
         </div>
       )}
 
-      <footer className="mt-auto">
-        <span className="items-left">5 items left</span>
+      <footer className="mt-auto" data-testid="app-footer">
+        <span className="items-left">
+          {data.length === 1
+            ? `${data.length} todo left`
+            : `${data.length} todos left`}
+        </span>
         <div className="items-status">
           <button type="button">All</button>
           <button type="button">Active</button>
