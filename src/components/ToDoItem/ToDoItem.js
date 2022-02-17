@@ -10,9 +10,9 @@ export default function ToDoItem({
   done,
   handleDone,
   handleDelete,
-  handleChange,
+  handleChangeUpdate,
   handleUpdate,
-  handleKeyPress,
+  handleKeyPressUpdate,
   isEmpty,
   toggleEditing,
 }) {
@@ -25,10 +25,10 @@ export default function ToDoItem({
       </button>
       {isEditing && (
         <Input
-          value={text}
-          handleChange={handleChange}
+          text={text}
+          handleChangeUpdate={handleChangeUpdate}
           handleUpdate={handleUpdate}
-          handleKeyPress={handleKeyPress}
+          handleKeyPressUpdate={handleKeyPressUpdate}
           emptyError={isEmpty}
         />
       )}

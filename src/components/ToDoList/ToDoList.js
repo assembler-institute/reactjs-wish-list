@@ -9,9 +9,8 @@ export default function ToDoList({
   data,
   handleDelete,
   isCompleted,
-  handleChange,
-  handleSubmit,
-  handleKeyPress,
+  handleChangeUpdate,
+  handleKeyPressUpdate,
   isEmpty,
   toggleEditing,
   handleUpdate,
@@ -29,11 +28,10 @@ export default function ToDoList({
                 done={item.done}
                 isEditing={item.isEditing}
                 handleDelete={() => handleDelete(item.id)}
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                handleKeyPress={handleKeyPress}
+                handleChangeUpdate={handleChangeUpdate}
+                handleKeyPressUpdate={handleKeyPressUpdate}
                 emptyError={isEmpty}
-                handleUpdate={() => handleUpdate(item.id)}
+                handleUpdate={handleUpdate}
                 toggleEditing={() => toggleEditing(item.id)}
               />
             </li>

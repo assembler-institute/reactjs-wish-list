@@ -13,13 +13,15 @@ function App() {
   const [toDoItems, setToDoItems] = useState(data);
   const [value, setValue] = useState("");
   const [isEmpty, setIsEmpty] = useState(false);
-  const [updateTodo, setUpdateTodo] = useState(data);
+  // const [updateTodo, setUpdateTodo] = useState(data);
   const [updateValue, setUpdateValue] = useState("");
 
-  function handleChange(event, action) {
-    action === "submit"
-      ? setValue(event.target.value)
-      : setUpdateValue(event.target.value);
+  function handleChange(event) {
+    setValue(event.target.value);
+    setIsEmpty(false);
+  }
+  function handleChangeUpdate(event) {
+    setUpdateValue(event.target.value);
     setIsEmpty(false);
   }
 
@@ -37,21 +39,31 @@ function App() {
       isEditing: false,
     };
     setToDoItems((prevState) => [...prevState, newToDo]);
+    setValue("");
   }
-  function handleUpdate(id) {
-    const updateIndex = updateTodo.find((index) => index.id === id);
-    const item = updateTodo.indexOf(updateIndex);
-    const updatedToDo = {
-      ...updateIndex,
-      text: updateValue,
-    };
-    const newState = Array.from(updateTodo);
-    newState[item] = updatedToDo;
-    setUpdateTodo(newState);
+  function handleUpdate(event) {
+    event.preventDefault();
+    console.log(value);
+    // const updateIndex = updateTodo.find((index) => index.id === id);
+    // const item = updateTodo.indexOf(updateIndex);
+    // const updatedToDo = {
+    //   ...updateIndex,
+    //   text: updateValue,
+    // };
+    // const newState = Array.from(updateTodo);
+    // newState[item] = updatedToDo;
+    // setUpdateTodo(newState);
   }
-  function handleKeyPress(event, action) {
+  function handleKeyPress(event) {
     if (event.keyCode === 13) {
-      action === "submit" ? handleSubmit() : handleUpdate();
+      handleSubmit();
+    }
+  }
+  function handleKeyPressUpdate(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      console.log("holaaaa!");
+      // handleUpdate();
     }
   }
   function handleDelete(id) {
@@ -90,9 +102,9 @@ function App() {
         </div>
         <CreateToDo
           value={value}
-          handleChange={() => handleChange("submit")}
+          handleChange={handleChange}
           handleSubmit={handleSubmit}
-          handleKeyPress={() => handleKeyPress("submit")}
+          handleKeyPress={handleKeyPress}
           emptyError={isEmpty}
         />
         <ToDoList
@@ -100,9 +112,8 @@ function App() {
           value={updateValue}
           handleDelete={handleDelete}
           isCompleted={isCompleted}
-          handleChange={() => handleChange("update")}
-          handleSubmit={handleSubmit}
-          handleKeyPress={() => handleKeyPress("update")}
+          handleChangeUpdate={handleChangeUpdate}
+          handleKeyPressUpdate={handleKeyPressUpdate}
           emptyError={isEmpty}
           handleUpdate={handleUpdate}
           toggleEditing={toggleEditing}
