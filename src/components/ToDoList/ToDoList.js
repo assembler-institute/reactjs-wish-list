@@ -24,7 +24,7 @@ export default function ToDoList({ data, handleDelete, isCompleted }) {
         </div>
       )}
       {!data.length && (
-        <div className="emptyTodos">
+        <div className="emptyTodosContainer" data-testid="no-todos">
           <img src={noTodosImg} alt="" className="noTodos" />
           <h3>Please write your first ToDo</h3>
         </div>

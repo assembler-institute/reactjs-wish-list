@@ -12,11 +12,20 @@ import ToDoList from "./components/ToDoList";
 function App() {
   const [toDoItems, setToDoItems] = useState(data);
   const [value, setValue] = useState("");
+  const [isEmpty, setIsEmpty] = useState(false);
+
   function handleChange(event) {
     setValue(event.target.value);
+    setIsEmpty(false);
   }
+
   function handleSubmit(event) {
     event.preventDefault();
+    // Empty error
+    if (value === "") {
+      setIsEmpty(true);
+      return;
+    }
     const newToDo = {
       id: makeNewId(),
       text: value,
@@ -62,6 +71,7 @@ function App() {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           handleKeyPress={handleKeyPress}
+          emptyError={isEmpty}
         />
         <ToDoList
           data={toDoItems}

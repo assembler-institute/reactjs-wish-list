@@ -42,7 +42,7 @@ footer {
   justify-content: space-between;
   gap: 16px;
 }
-.emptyTodos {
+.emptyTodosContainer {
   width: 100%;
   height: 100%;
   padding: 24px;
@@ -51,7 +51,9 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 50px;
+
+  img {
+    max-width: 250px;
+  }
 }
-.noTodos {
-  max-width: 250px;
-}
+
