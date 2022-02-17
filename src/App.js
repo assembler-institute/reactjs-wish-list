@@ -13,9 +13,13 @@ function App() {
   const [toDoItems, setToDoItems] = useState(data);
   const [value, setValue] = useState("");
   const [isEmpty, setIsEmpty] = useState(false);
+  const [updateTodo, setUpdateTodo] = useState(data);
+  const [updateValue, setUpdateValue] = useState("");
 
-  function handleChange(event) {
-    setValue(event.target.value);
+  function handleChange(event, action) {
+    action === "submit"
+      ? setValue(event.target.value)
+      : setUpdateValue(event.target.value);
     setIsEmpty(false);
   }
 
@@ -34,9 +38,20 @@ function App() {
     };
     setToDoItems((prevState) => [...prevState, newToDo]);
   }
-  function handleKeyPress(event) {
+  function handleUpdate(id) {
+    const updateIndex = updateTodo.find((index) => index.id === id);
+    const item = updateTodo.indexOf(updateIndex);
+    const updatedToDo = {
+      ...updateIndex,
+      text: updateValue,
+    };
+    const newState = Array.from(updateTodo);
+    newState[item] = updatedToDo;
+    setUpdateTodo(newState);
+  }
+  function handleKeyPress(event, action) {
     if (event.keyCode === 13) {
-      handleSubmit();
+      action === "submit" ? handleSubmit() : handleUpdate();
     }
   }
   function handleDelete(id) {
@@ -51,6 +66,13 @@ function App() {
     const item = toDoItems.indexOf(updateIndex);
     const newState = Array.from(toDoItems);
     newState[item].done = !newState[item].done;
+    setToDoItems(newState);
+  }
+  function toggleEditing(id) {
+    const updateIndex = toDoItems.find((index) => index.id === id);
+    const item = toDoItems.indexOf(updateIndex);
+    const newState = Array.from(toDoItems);
+    newState[item].isEditing = !newState[item].isEditing;
     setToDoItems(newState);
   }
 
@@ -68,15 +90,22 @@ function App() {
         </div>
         <CreateToDo
           value={value}
-          handleChange={handleChange}
+          handleChange={() => handleChange("submit")}
           handleSubmit={handleSubmit}
-          handleKeyPress={handleKeyPress}
+          handleKeyPress={() => handleKeyPress("submit")}
           emptyError={isEmpty}
         />
         <ToDoList
           data={toDoItems}
+          value={updateValue}
           handleDelete={handleDelete}
           isCompleted={isCompleted}
+          handleChange={() => handleChange("update")}
+          handleSubmit={handleSubmit}
+          handleKeyPress={() => handleKeyPress("update")}
+          emptyError={isEmpty}
+          handleUpdate={handleUpdate}
+          toggleEditing={toggleEditing}
         />
         {/* <h6>Drag and drop to reorder list</h6> */}
       </section>

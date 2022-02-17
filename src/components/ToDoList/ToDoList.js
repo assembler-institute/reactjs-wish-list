@@ -5,7 +5,17 @@ import "./ToDoList.scss";
 import ToDoItem from "../ToDoItem/ToDoItem";
 import noTodosImg from "../../img/no_todos.svg";
 
-export default function ToDoList({ data, handleDelete, isCompleted }) {
+export default function ToDoList({
+  data,
+  handleDelete,
+  isCompleted,
+  handleChange,
+  handleSubmit,
+  handleKeyPress,
+  isEmpty,
+  toggleEditing,
+  handleUpdate,
+}) {
   return (
     <div className="list-container">
       {data.length > 0 && (
@@ -17,7 +27,14 @@ export default function ToDoList({ data, handleDelete, isCompleted }) {
                 handleDone={() => isCompleted(item.id)}
                 text={item.text}
                 done={item.done}
+                isEditing={item.isEditing}
                 handleDelete={() => handleDelete(item.id)}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                handleKeyPress={handleKeyPress}
+                emptyError={isEmpty}
+                handleUpdate={() => handleUpdate(item.id)}
+                toggleEditing={() => toggleEditing(item.id)}
               />
             </li>
           ))}

@@ -1,12 +1,7 @@
 import React from "react";
 
 import "./CreateToDo.scss";
-// import { data } from "../../utils/data";
 
-// const errorStyle = {
-//   border: "red",
-//   backgroundColor: "red",
-// };
 export default function CreateToDo({
   value,
   handleChange,

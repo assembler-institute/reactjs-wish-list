@@ -2,7 +2,20 @@ import React from "react";
 
 import "./ToDoItem.scss";
 
-export default function ToDoItem({ text, done, handleDone, handleDelete }) {
+import Input from "../Input";
+
+export default function ToDoItem({
+  isEditing,
+  text,
+  done,
+  handleDone,
+  handleDelete,
+  handleChange,
+  handleUpdate,
+  handleKeyPress,
+  isEmpty,
+  toggleEditing,
+}) {
   return (
     <article className="todo-item">
       <button type="button" className="" onClick={handleDone}>
@@ -10,7 +23,19 @@ export default function ToDoItem({ text, done, handleDone, handleDelete }) {
           {done ? "check_circle" : "circle"}
         </span>
       </button>
-      <p>{text}</p>
+      {isEditing && (
+        <Input
+          value={text}
+          handleChange={handleChange}
+          handleUpdate={handleUpdate}
+          handleKeyPress={handleKeyPress}
+          emptyError={isEmpty}
+        />
+      )}
+      {!isEditing && <p>{text}</p>}
+      <button type="button" className="" onClick={toggleEditing}>
+        <span className="material-icons-outlined md-30">edit</span>
+      </button>
       <button type="button" className="" onClick={handleDelete}>
         <span className="material-icons-outlined md-30">close</span>
       </button>
