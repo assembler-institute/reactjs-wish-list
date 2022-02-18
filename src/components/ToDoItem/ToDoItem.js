@@ -12,23 +12,14 @@ export default function ToDoItem({
   handleDelete,
   id,
   data,
-  // handleUpdate,
-  // handleChangeUpdate,
-  // handleKeyPressUpdate,
   isEmpty,
   toggleEditing,
-  // getText,
 }) {
   const [updateData, setUpdateData] = useState(data);
   const [updateValue, setUpdateValue] = useState("");
   function testValue(event) {
     setUpdateValue(event.target.value);
   }
-  //   function testEnter(event) {
-  //     if (event.keyCode === 13) {
-  //       console.log("updated!!!");
-  //     }
-  //   }
   function testUpdate(event) {
     event.preventDefault();
     if (updateValue === "") return;
@@ -54,7 +45,6 @@ export default function ToDoItem({
           text={text}
           handleUpdate={testUpdate}
           handleChangeUpdate={testValue}
-          // handleKeyPressUpdate={testEnter}
           emptyError={isEmpty}
         />
       )}
@@ -75,7 +65,6 @@ export default function ToDoItem({
       <button type="button" className="" onClick={handleDelete}>
         <span className="material-icons-outlined md-30">close</span>
       </button>
-      {/* <input type="text" placeholder="Create new item" /> */}
     </article>
   );
 }

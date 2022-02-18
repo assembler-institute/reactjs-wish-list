@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import "./sass/main.scss";
 import img from "./img/motivation.jpg";
@@ -13,20 +14,21 @@ function App() {
   const [toDoItems, setToDoItems] = useState(data);
   const [value, setValue] = useState("");
   const [isEmpty, setIsEmpty] = useState(false);
-  // const [updateTodo, setUpdateTodo] = useState(data);
-  const [updateValue, setUpdateValue] = useState("");
 
+  const completedTodos = toDoItems.filter((item) => item.done === true);
+  const activeTodos = toDoItems.filter((item) => item.done !== true);
+
+  const routes = [
+    { path: "/", data: toDoItems },
+    { path: "/completed", data: completedTodos },
+    { path: "/active", data: activeTodos },
+  ];
+
+  // Create New Item
   function handleChange(event) {
     setValue(event.target.value);
-    console.log(value);
     setIsEmpty(false);
   }
-  function handleChangeUpdate(event) {
-    setUpdateValue(event.target.value);
-    console.log(updateValue);
-    setIsEmpty(false);
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     // Empty error
@@ -43,48 +45,6 @@ function App() {
     setToDoItems((prevState) => [newToDo, ...prevState]);
     setValue("");
   }
-  function handleUpdate(id, event) {
-    event.preventDefault();
-    const updateIndex = toDoItems.find((index) => index.id === id);
-    console.log(updateIndex);
-    // Empty error
-    if (value === "") {
-      setIsEmpty(true);
-      // return;
-    }
-    // const updatedToDo = {
-    //   id: makeNewId(),
-    //   text: value,
-    //   done: false,
-    //   isEditing: false,
-    // };
-    // setToDoItems((prevState) => [...prevState, newToDo]);
-  }
-
-  // Update
-  // function handleUpdate(id) {
-  //   const updateIndex = updateTodo.find((index) => index.id === id);
-  //   const item = updateTodo.indexOf(updateIndex);
-  //   const updatedToDo = {
-  //     ...updateIndex,
-  //     text: updateValue,
-  //   };
-  //   const newState = Array.from(updateTodo);
-  //   newState[item] = updatedToDo;
-  //   setUpdateTodo(newState);
-  // }
-
-  function handleKeyPress(event) {
-    if (event.keyCode === 13) {
-      handleSubmit();
-    }
-  }
-  function handleKeyPressUpdate(event) {
-    if (event.keyCode === 13) {
-      console.log("updated!!!");
-    }
-  }
-
   // Delete
   function handleDelete(id) {
     const deleteIndex = toDoItems.find((index) => index.id === id);
@@ -93,7 +53,6 @@ function App() {
       return newState;
     });
   }
-
   // Is Completed
   function isCompleted(id) {
     const updateIndex = toDoItems.find((index) => index.id === id);
@@ -102,7 +61,6 @@ function App() {
     newState[item].done = !newState[item].done;
     setToDoItems(newState);
   }
-
   // Is Editing
   function toggleEditing(id) {
     const updateIndex = toDoItems.find((index) => index.id === id);
@@ -112,38 +70,46 @@ function App() {
     setToDoItems(newState);
   }
 
+  // Clear Completed Items
+  function clearCompleted() {
+    setToDoItems(activeTodos);
+  }
+
   return (
-    <main className="">
-      <header>
-        <img src={img} alt="motivated person in the mountains" />
-      </header>
-      <section className="todo-list">
-        <div className="main-header">
-          <h1>TODO</h1>
-          <button className="" type="button">
-            <span className="material-icons-outlined md-48">light_mode</span>
-          </button>
-        </div>
-        <CreateToDo
-          value={value}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          handleKeyPress={handleKeyPress}
-          emptyError={isEmpty}
-        />
-        <ToDoList
-          data={toDoItems}
-          handleDelete={handleDelete}
-          isCompleted={isCompleted}
-          handleUpdate={handleUpdate}
-          handleChangeUpdate={handleChangeUpdate}
-          handleKeyPressUpdate={handleKeyPressUpdate}
-          emptyError={isEmpty}
-          toggleEditing={toggleEditing}
-        />
-        {/* <h6>Drag and drop to reorder list</h6> */}
-      </section>
-    </main>
+    <BrowserRouter>
+      <main className="">
+        <header>
+          <img src={img} alt="motivated person in the mountains" />
+        </header>
+        <section className="todo-list">
+          <div className="main-header">
+            <h1>TODO</h1>
+            <button className="" type="button">
+              <span className="material-icons-outlined md-48">light_mode</span>
+            </button>
+          </div>
+          <CreateToDo
+            value={value}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            emptyError={isEmpty}
+          />
+          {routes.map((route) => (
+            <Route key={route} path={route.path} exact>
+              <ToDoList
+                data={route.data}
+                handleDelete={handleDelete}
+                isCompleted={isCompleted}
+                emptyError={isEmpty}
+                toggleEditing={toggleEditing}
+                handleClear={clearCompleted}
+              />
+            </Route>
+          ))}
+          {/* <h6>Drag and drop to reorder list</h6> */}
+        </section>
+      </main>
+    </BrowserRouter>
   );
 }
 

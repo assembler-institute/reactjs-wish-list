@@ -12,7 +12,6 @@ export default function InputEdit({
   handleUpdate,
 }) {
   const test = emptyError ? "inputError" : "";
-  console.log(text);
   return (
     <form action="" className="inputForm">
       <input
