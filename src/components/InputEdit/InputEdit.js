@@ -7,20 +7,19 @@ const classNames = require("classnames");
 export default function Input({
   emptyError,
   text,
-  handleChange,
-  handleKeyPress,
+  handleChangeUpdate,
+  handleKeyPressUpdate,
   handleUpdate,
 }) {
   const test = emptyError ? "inputError" : "";
   return (
-    <form action="" className="inputStyle">
+    <form action="" className="inputForm">
       <input
         className={classNames({ test }, "inputStyle")}
         type="text"
-        placeholder="Please enter at least one character"
-        value={text}
-        onChange={handleChange}
-        onKeyPress={handleKeyPress}
+        placeholder={text}
+        onChange={handleChangeUpdate}
+        onKeyPress={handleKeyPressUpdate}
         data-testid="create-todo-input"
       />
       <button

@@ -9,12 +9,11 @@ export default function ToDoList({
   data,
   handleDelete,
   isCompleted,
-  handleChange,
-  handleSubmit,
-  handleKeyPress,
+  handleUpdate,
+  handleKeyPressUpdate,
+  handleChangeUpdate,
   isEmpty,
   toggleEditing,
-  handleUpdate,
 }) {
   return (
     <div className="list-container">
@@ -23,18 +22,18 @@ export default function ToDoList({
           {data.map((item) => (
             <li key={item.id} data-testid="todo-item">
               <ToDoItem
+                data={data}
                 id={item.id}
-                handleDone={() => isCompleted(item.id)}
                 text={item.text}
                 done={item.done}
                 isEditing={item.isEditing}
-                handleDelete={() => handleDelete(item.id)}
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                handleKeyPress={handleKeyPress}
                 emptyError={isEmpty}
-                handleUpdate={() => handleUpdate(item.id)}
                 toggleEditing={() => toggleEditing(item.id)}
+                handleDone={() => isCompleted(item.id)}
+                handleDelete={() => handleDelete(item.id)}
+                handleChangeUpdate={handleChangeUpdate}
+                handleKeyPressUpdate={handleKeyPressUpdate}
+                handleUpdate={() => handleUpdate(item.id)}
               />
             </li>
           ))}

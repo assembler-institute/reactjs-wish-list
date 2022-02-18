@@ -13,13 +13,17 @@ function App() {
   const [toDoItems, setToDoItems] = useState(data);
   const [value, setValue] = useState("");
   const [isEmpty, setIsEmpty] = useState(false);
-  const [updateTodo, setUpdateTodo] = useState(data);
+  // const [updateTodo, setUpdateTodo] = useState(data);
   const [updateValue, setUpdateValue] = useState("");
 
-  function handleChange(event, action) {
-    action === "submit"
-      ? setValue(event.target.value)
-      : setUpdateValue(event.target.value);
+  function handleChange(event) {
+    setValue(event.target.value);
+    console.log(value);
+    setIsEmpty(false);
+  }
+  function handleChangeUpdate(event) {
+    setUpdateValue(event.target.value);
+    console.log(updateValue);
     setIsEmpty(false);
   }
 
@@ -36,24 +40,52 @@ function App() {
       done: false,
       isEditing: false,
     };
-    setToDoItems((prevState) => [...prevState, newToDo]);
+    setToDoItems((prevState) => [newToDo, ...prevState]);
+    setValue("");
   }
-  function handleUpdate(id) {
-    const updateIndex = updateTodo.find((index) => index.id === id);
-    const item = updateTodo.indexOf(updateIndex);
-    const updatedToDo = {
-      ...updateIndex,
-      text: updateValue,
-    };
-    const newState = Array.from(updateTodo);
-    newState[item] = updatedToDo;
-    setUpdateTodo(newState);
+  function handleUpdate(id, event) {
+    event.preventDefault();
+    const updateIndex = toDoItems.find((index) => index.id === id);
+    console.log(updateIndex);
+    // Empty error
+    if (value === "") {
+      setIsEmpty(true);
+      // return;
+    }
+    // const updatedToDo = {
+    //   id: makeNewId(),
+    //   text: value,
+    //   done: false,
+    //   isEditing: false,
+    // };
+    // setToDoItems((prevState) => [...prevState, newToDo]);
   }
-  function handleKeyPress(event, action) {
+
+  // Update
+  // function handleUpdate(id) {
+  //   const updateIndex = updateTodo.find((index) => index.id === id);
+  //   const item = updateTodo.indexOf(updateIndex);
+  //   const updatedToDo = {
+  //     ...updateIndex,
+  //     text: updateValue,
+  //   };
+  //   const newState = Array.from(updateTodo);
+  //   newState[item] = updatedToDo;
+  //   setUpdateTodo(newState);
+  // }
+
+  function handleKeyPress(event) {
     if (event.keyCode === 13) {
-      action === "submit" ? handleSubmit() : handleUpdate();
+      handleSubmit();
     }
   }
+  function handleKeyPressUpdate(event) {
+    if (event.keyCode === 13) {
+      console.log("updated!!!");
+    }
+  }
+
+  // Delete
   function handleDelete(id) {
     const deleteIndex = toDoItems.find((index) => index.id === id);
     setToDoItems((prevState) => {
@@ -61,6 +93,8 @@ function App() {
       return newState;
     });
   }
+
+  // Is Completed
   function isCompleted(id) {
     const updateIndex = toDoItems.find((index) => index.id === id);
     const item = toDoItems.indexOf(updateIndex);
@@ -68,6 +102,8 @@ function App() {
     newState[item].done = !newState[item].done;
     setToDoItems(newState);
   }
+
+  // Is Editing
   function toggleEditing(id) {
     const updateIndex = toDoItems.find((index) => index.id === id);
     const item = toDoItems.indexOf(updateIndex);
@@ -90,21 +126,19 @@ function App() {
         </div>
         <CreateToDo
           value={value}
-          handleChange={() => handleChange("submit")}
+          handleChange={handleChange}
           handleSubmit={handleSubmit}
-          handleKeyPress={() => handleKeyPress("submit")}
+          handleKeyPress={handleKeyPress}
           emptyError={isEmpty}
         />
         <ToDoList
           data={toDoItems}
-          value={updateValue}
           handleDelete={handleDelete}
           isCompleted={isCompleted}
-          handleChange={() => handleChange("update")}
-          handleSubmit={handleSubmit}
-          handleKeyPress={() => handleKeyPress("update")}
-          emptyError={isEmpty}
           handleUpdate={handleUpdate}
+          handleChangeUpdate={handleChangeUpdate}
+          handleKeyPressUpdate={handleKeyPressUpdate}
+          emptyError={isEmpty}
           toggleEditing={toggleEditing}
         />
         {/* <h6>Drag and drop to reorder list</h6> */}
