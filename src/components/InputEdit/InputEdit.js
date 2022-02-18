@@ -4,7 +4,7 @@ import "./Input.scss";
 
 const classNames = require("classnames");
 
-export default function Input({
+export default function InputEdit({
   emptyError,
   text,
   handleChangeUpdate,
@@ -12,6 +12,7 @@ export default function Input({
   handleUpdate,
 }) {
   const test = emptyError ? "inputError" : "";
+  console.log(text);
   return (
     <form action="" className="inputForm">
       <input
