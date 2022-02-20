@@ -53,21 +53,21 @@ function App() {
       return newState;
     });
   }
+  // Modify a value of a ToDo Item
+  function changeValue(id, param) {
+    const element = toDoItems.find((index) => index.id === id);
+    const index = toDoItems.indexOf(element);
+    const newState = Array.from(toDoItems);
+    newState[index][param] = !newState[index][param];
+    setToDoItems(newState);
+  }
   // Is Completed
   function isCompleted(id) {
-    const updateIndex = toDoItems.find((index) => index.id === id);
-    const item = toDoItems.indexOf(updateIndex);
-    const newState = Array.from(toDoItems);
-    newState[item].done = !newState[item].done;
-    setToDoItems(newState);
+    changeValue(id, "done");
   }
   // Is Editing
   function toggleEditing(id) {
-    const updateIndex = toDoItems.find((index) => index.id === id);
-    const item = toDoItems.indexOf(updateIndex);
-    const newState = Array.from(toDoItems);
-    newState[item].isEditing = !newState[item].isEditing;
-    setToDoItems(newState);
+    changeValue(id, "isEditing");
   }
 
   // Clear Completed Items
