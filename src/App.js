@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import "./sass/main.scss";
@@ -15,14 +15,14 @@ function App() {
   const [value, setValue] = useState("");
   const [isEmpty, setIsEmpty] = useState(false);
 
-  // useEffect(() => {
-  //   const storedTodos = JSON.parse(localStorage.getItem("todos"));
-  //   if (storedTodos) setToDoItems(storedTodos);
-  // }, []);
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem("todos"));
+    if (storedTodos) setToDoItems(storedTodos);
+  }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem("todos", JSON.stringify(toDoItems));
-  // }, toDoItems);
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(toDoItems));
+  }, [toDoItems]);
 
   const completedTodos = toDoItems.filter((item) => item.done === true);
   const activeTodos = toDoItems.filter((item) => item.done !== true);
