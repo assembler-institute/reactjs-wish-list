@@ -15,7 +15,13 @@ const classNames = require("classnames");
 
 function App() {
   const [toDoItems, setToDoItems] = useState(data);
-  const [value, setValue] = useState("");
+  const [formData, setFormData] = useState({
+    id: "",
+    text: "",
+    done: false,
+    isEditing: false,
+    label: "",
+  });
   const [isEmpty, setIsEmpty] = useState(false);
   const [darkTheme, setDarkTheme] = useState(false);
 
@@ -39,24 +45,37 @@ function App() {
 
   // Create New Item
   function handleChange(event) {
-    setValue(event.target.value);
+    const { name, value } = event.target;
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
     setIsEmpty(false);
   }
   function handleSubmit(event) {
     event.preventDefault();
     // Empty error
-    if (value === "") {
+    if (formData.text === "") {
       setIsEmpty(true);
       return;
     }
     const newToDo = {
       id: makeNewId(),
-      text: value,
+      text: formData.text,
       done: false,
       isEditing: false,
+      label: formData.label,
     };
     setToDoItems((prevState) => [newToDo, ...prevState]);
-    setValue("");
+    setFormData({
+      id: "",
+      text: "",
+      done: false,
+      isEditing: false,
+      label: "",
+    });
   }
   // Delete
   function handleDelete(id) {
@@ -66,8 +85,8 @@ function App() {
       return newState;
     });
   }
-  // Modify a value of a ToDo Item
-  function changeValue(id, param) {
+  // Modify a formData of a ToDo Item
+  function changeformData(id, param) {
     const element = toDoItems.find((index) => index.id === id);
     const index = toDoItems.indexOf(element);
     const newState = Array.from(toDoItems);
@@ -85,11 +104,11 @@ function App() {
       isEditing: false,
     };
     setToDoItems((prevState) => [...prevState, newToDo]);
-    // changeValue(id, "done");
+    // changeformData(id, "done");
   }
   // Is Editing
   function toggleEditing(id) {
-    changeValue(id, "isEditing");
+    changeformData(id, "isEditing");
   }
 
   // Clear Completed Items
@@ -121,7 +140,7 @@ function App() {
             </motion.button>
           </div>
           <CreateToDo
-            value={value}
+            value={formData.text}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             emptyError={isEmpty}

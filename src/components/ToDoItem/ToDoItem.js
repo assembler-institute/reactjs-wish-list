@@ -12,6 +12,7 @@ export default function ToDoItem({
   isEditing,
   text,
   done,
+  label,
   handleDone,
   handleDelete,
   id,
@@ -37,6 +38,7 @@ export default function ToDoItem({
   }
   return (
     <article className="todo-item">
+      <div className="item-label" style={{ backgroundColor: label }} />
       <button type="button" className="" onClick={handleDone}>
         <span
           className="material-icons-outlined md-30"

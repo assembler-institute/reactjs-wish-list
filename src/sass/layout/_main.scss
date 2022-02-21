@@ -44,6 +44,7 @@ main {
 .dark-mode {
     background: #181824;
     color: white;
+    transition: all 0.5s ease-out;
   
     input,
     li,
@@ -53,21 +54,25 @@ main {
     article,
     p {
       background: rgb(37, 39, 60) !important;
+      transition: all 0.5s ease-out;
 
     }
     input {
         color: white !important;
+        transition: all 0.5s ease-out;
     }
     footer {
         background: rgb(37, 39, 60)
         linear-gradient(rgba(54, 113, 171, 0.392) 0%, rgb(37, 39, 60) 20%) repeat
         scroll 0% 0% !important;
+        transition: all 0.5s ease-out;
     }
     .list-container {
         box-shadow: rgba(255, 255, 255, 0.15) 0px 10px 15px -3px,
         rgba(255, 255, 255, 0.1) 0px 4px 6px -2px !important;
         border: 1px solid lightgrey !important;
         scrollbar-color: dark rgb(37, 39, 60) !important;
+        transition: all 0.5s ease-out;
     }
 
 

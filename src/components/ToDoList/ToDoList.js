@@ -48,7 +48,7 @@ export default function ToDoList({
                 layoutId={item.id}
                 custom={(index + 1) * 0.2}
                 // whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 1.05 }}
+                // whileTap={{ scale: 1.05 }}
                 data-testid="todo-item"
               >
                 <ToDoItem
@@ -56,6 +56,7 @@ export default function ToDoList({
                   id={item.id}
                   text={item.text}
                   done={item.done}
+                  label={item.label}
                   isEditing={item.isEditing}
                   emptyError={isEmpty}
                   toggleEditing={() => toggleEditing(item.id)}

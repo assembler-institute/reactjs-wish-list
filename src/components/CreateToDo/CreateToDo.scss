@@ -29,3 +29,50 @@
     }
   }
 }
+fieldset {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  width: 25%;
+}
+label {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    scale: 1.1;
+  }
+}
+.green-label {
+  background: #06d6a0;
+  }
+.red-label {
+  background: #ef476f;
+  }
+.orange-label {
+  background: #fb5607;
+  }
+.blue-label {
+  background: #3a86ff;
+  }
+
+.label-border-green {
+  //outline: 3px solid green;
+  scale: 1.3;
+}
+.label-border-red {
+  // outline: 3px solid red;
+  scale: 1.3;
+}
+.label-border-orange {
+  // outline: 3px solid orange;
+  scale: 1.3;
+}
+.label-border-blue {
+  // outline: 3px solid blue;
+  scale: 1.3;
+}
