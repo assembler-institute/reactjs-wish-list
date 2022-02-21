@@ -18,6 +18,7 @@ export default function ToDoItem({
   data,
   isEmpty,
   toggleEditing,
+  theme,
 }) {
   const [updateData, setUpdateData] = useState(data);
   const [updateValue, setUpdateValue] = useState("");
@@ -52,9 +53,16 @@ export default function ToDoItem({
           emptyError={isEmpty}
         />
       )}
-      {!isEditing && (
-        <p style={done ? { color: "lightgray" } : { color: "black" }}>{text}</p>
-      )}
+      {!isEditing &&
+        (theme ? (
+          <p style={done ? { color: "darkgray" } : { color: "white" }}>
+            {text}
+          </p>
+        ) : (
+          <p style={done ? { color: "lightgray" } : { color: "black" }}>
+            {text}
+          </p>
+        ))}
       <button type="button" className="" onClick={toggleEditing}>
         <span className="material-icons-outlined md-30">edit</span>
       </button>

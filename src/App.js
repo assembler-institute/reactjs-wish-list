@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import { motion } from "framer-motion/dist/framer-motion";
 
 import "./sass/main.scss";
 import img from "./img/motivation.jpg";
@@ -10,10 +11,13 @@ import makeNewId from "./utils/hash";
 import ToDoList from "./components/ToDoList";
 import CreateToDo from "./components/CreateToDo";
 
+const classNames = require("classnames");
+
 function App() {
   const [toDoItems, setToDoItems] = useState(data);
   const [value, setValue] = useState("");
   const [isEmpty, setIsEmpty] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem("todos"));
@@ -92,19 +96,29 @@ function App() {
   function clearCompleted() {
     setToDoItems(activeTodos);
   }
-
+  function changeTheme() {
+    setDarkTheme(!darkTheme);
+  }
   return (
     <BrowserRouter>
-      <main className="">
+      <main className={darkTheme ? classNames("dark-mode") : ""}>
         <header>
           <img src={img} alt="motivated person in the mountains" />
         </header>
         <section className="todo-list">
           <div className="main-header">
             <h1>TODO</h1>
-            <button className="" type="button">
-              <span className="material-icons-outlined md-48">light_mode</span>
-            </button>
+            <motion.button
+              initial={{ opacity: 0, y: -25 }}
+              animate={{ opacity: 1, y: 0 }}
+              className=""
+              type="button"
+              onClick={changeTheme}
+            >
+              <span className="material-icons-outlined md-48">
+                {darkTheme ? "dark_mode" : "light_mode"}
+              </span>
+            </motion.button>
           </div>
           <CreateToDo
             value={value}
@@ -122,10 +136,11 @@ function App() {
                 toggleEditing={toggleEditing}
                 handleClear={clearCompleted}
                 reorderList={setToDoItems}
+                theme={darkTheme}
               />
             </Route>
           ))}
-          {/* <h6>Drag and drop to reorder list</h6> */}
+          <h6>Drag and drop to reorder list</h6>
         </section>
       </main>
     </BrowserRouter>

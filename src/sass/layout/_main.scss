@@ -12,6 +12,11 @@ main {
     height: 850px;
     left: calc(50% - 366px);
     top: 50px;
+
+    h6 {
+        text-align: center;
+        margin-top: 3rem;
+    }
 }
 .main-header {
     display: flex;
@@ -35,3 +40,35 @@ main {
     color: white;
     font-size: 42px;
 }
+
+.dark-mode {
+    background: #181824;
+    color: white;
+  
+    input,
+    li,
+    ul,
+    form,
+    footer,
+    article,
+    p {
+      background: rgb(37, 39, 60) !important;
+
+    }
+    input {
+        color: white !important;
+    }
+    footer {
+        background: rgb(37, 39, 60)
+        linear-gradient(rgba(54, 113, 171, 0.392) 0%, rgb(37, 39, 60) 20%) repeat
+        scroll 0% 0% !important;
+    }
+    .list-container {
+        box-shadow: rgba(255, 255, 255, 0.15) 0px 10px 15px -3px,
+        rgba(255, 255, 255, 0.1) 0px 4px 6px -2px !important;
+        border: 1px solid lightgrey !important;
+        scrollbar-color: darkgray rgb(37, 39, 60) !important;
+    }
+
+
+  }

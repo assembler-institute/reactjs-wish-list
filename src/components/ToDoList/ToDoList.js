@@ -24,6 +24,7 @@ export default function ToDoList({
   toggleEditing,
   handleClear,
   reorderList,
+  theme,
 }) {
   return (
     <div className="list-container">
@@ -60,6 +61,7 @@ export default function ToDoList({
                   toggleEditing={() => toggleEditing(item.id)}
                   handleDone={() => isCompleted(item.id)}
                   handleDelete={() => handleDelete(item.id)}
+                  theme={theme}
                 />
               </Reorder.Item>
             ))}
