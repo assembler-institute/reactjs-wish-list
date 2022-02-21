@@ -1,10 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AnimatePresence, Reorder } from "framer-motion/dist/framer-motion";
 
-// import ToDoItem from "../ToDoItem";
 import "./ToDoList.scss";
 import ToDoItem from "../ToDoItem/ToDoItem";
 import noTodosImg from "../../img/no_todos.svg";
+
+const todoVariants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: (custom) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: custom },
+  }),
+  removed: { opacity: 0 },
+};
 
 export default function ToDoList({
   data,
@@ -13,27 +23,48 @@ export default function ToDoList({
   isEmpty,
   toggleEditing,
   handleClear,
+  reorderList,
 }) {
   return (
     <div className="list-container">
       {data.length > 0 && (
-        <ul className="todos-container" data-testid="todos-list">
-          {data.map((item) => (
-            <li key={item.id} data-testid="todo-item">
-              <ToDoItem
-                data={data}
-                id={item.id}
-                text={item.text}
-                done={item.done}
-                isEditing={item.isEditing}
-                emptyError={isEmpty}
-                toggleEditing={() => toggleEditing(item.id)}
-                handleDone={() => isCompleted(item.id)}
-                handleDelete={() => handleDelete(item.id)}
-              />
-            </li>
-          ))}
-        </ul>
+        <Reorder.Group
+          axis="y"
+          values={data}
+          onReorder={reorderList}
+          className="todos-container"
+          data-testid="todos-list"
+        >
+          <AnimatePresence>
+            {data.map((item, index) => (
+              <Reorder.Item
+                value={item}
+                key={item.id}
+                variants={todoVariants}
+                initial="hidden"
+                animate="visible"
+                exit="removed"
+                layoutId={item.id}
+                custom={(index + 1) * 0.2}
+                // whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 1.05 }}
+                data-testid="todo-item"
+              >
+                <ToDoItem
+                  data={data}
+                  id={item.id}
+                  text={item.text}
+                  done={item.done}
+                  isEditing={item.isEditing}
+                  emptyError={isEmpty}
+                  toggleEditing={() => toggleEditing(item.id)}
+                  handleDone={() => isCompleted(item.id)}
+                  handleDelete={() => handleDelete(item.id)}
+                />
+              </Reorder.Item>
+            ))}
+          </AnimatePresence>
+        </Reorder.Group>
       )}
       {!data.length && (
         <div className="emptyTodosContainer" data-testid="no-todos">

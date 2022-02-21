@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+// initial={{ y: -50, opacity: 0 }}
+// animate={{ y: 0, opacity: 1 }}
+// transition={{ duration: 0.5, ease: "easeOut", type: "spring" }}
+
 import "./ToDoItem.scss";
 
 import InputEdit from "../InputEdit";
@@ -49,15 +53,7 @@ export default function ToDoItem({
         />
       )}
       {!isEditing && (
-        <p
-          style={
-            done
-              ? { textDecoration: "line-through" }
-              : { textDecoration: "none" }
-          }
-        >
-          {text}
-        </p>
+        <p style={done ? { color: "lightgray" } : { color: "black" }}>{text}</p>
       )}
       <button type="button" className="" onClick={toggleEditing}>
         <span className="material-icons-outlined md-30">edit</span>
