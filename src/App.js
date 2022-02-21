@@ -105,8 +105,8 @@ function App() {
         <header>
           <img src={img} alt="motivated person in the mountains" />
         </header>
-        <section className="todo-list">
-          <div className="main-header">
+        <section className="container-sm d-flex flex-column fixed-top align-items-center h-100">
+          <div className="main-header w-100 mt-5 d-flex justify-content-between">
             <h1>TODO</h1>
             <motion.button
               initial={{ opacity: 0, y: -25 }}
@@ -140,7 +140,7 @@ function App() {
               />
             </Route>
           ))}
-          <h6>Drag and drop to reorder list</h6>
+          <h6 className="mt-5">Drag and drop to reorder list</h6>
         </section>
       </main>
     </BrowserRouter>
