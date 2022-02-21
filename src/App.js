@@ -7,13 +7,22 @@ import { data } from "./utils/data";
 import makeNewId from "./utils/hash";
 
 // Components
-import CreateToDo from "./components/CreateToDo";
 import ToDoList from "./components/ToDoList";
+import CreateToDo from "./components/CreateToDo";
 
 function App() {
   const [toDoItems, setToDoItems] = useState(data);
   const [value, setValue] = useState("");
   const [isEmpty, setIsEmpty] = useState(false);
+
+  // useEffect(() => {
+  //   const storedTodos = JSON.parse(localStorage.getItem("todos"));
+  //   if (storedTodos) setToDoItems(storedTodos);
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem("todos", JSON.stringify(toDoItems));
+  // }, toDoItems);
 
   const completedTodos = toDoItems.filter((item) => item.done === true);
   const activeTodos = toDoItems.filter((item) => item.done !== true);
@@ -63,7 +72,16 @@ function App() {
   }
   // Is Completed
   function isCompleted(id) {
-    changeValue(id, "done");
+    const element = toDoItems.find((index) => index.id === id);
+    handleDelete(id);
+    const newToDo = {
+      id: element.id,
+      text: element.text,
+      done: !element.done,
+      isEditing: false,
+    };
+    setToDoItems((prevState) => [...prevState, newToDo]);
+    // changeValue(id, "done");
   }
   // Is Editing
   function toggleEditing(id) {
@@ -103,6 +121,7 @@ function App() {
                 emptyError={isEmpty}
                 toggleEditing={toggleEditing}
                 handleClear={clearCompleted}
+                reorderList={setToDoItems}
               />
             </Route>
           ))}
