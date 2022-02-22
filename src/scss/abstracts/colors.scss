@@ -1,0 +1,50 @@
+// Light mode
+$color1: #ED7053;
+$color2: #F75E57;
+$color3: #E05A89;
+$color4: #F757DF;
+$color5: #D053ED;
+$color6: #fffafa;
+// Dark Mode
+$color7: #006269;
+$color8: #0099AD;
+$color9: #00AEC7;
+$colorx: #00BEDB;
+$colory: #44D2E6;
+$colorz: #292929;
+
+#root {
+    .container {
+        background: linear-gradient(90deg, $color2 0%, $color3 35%, $color4 100%);
+        .list-items {
+            div {
+                div {
+                    [type="checkbox"]:checked + label:before {
+                        background: $color2;
+                    }
+                    .text {
+                        color: $color3
+                    }
+                }
+            }
+        }
+    }
+}
+
+body {
+    background-color: $color6;
+    .switch:hover{
+    background: radial-gradient(circle, $color4 0%, $color5 100%);
+    }
+    form {
+        input {
+            color: $color4;
+        }
+    }
+    h1 {
+        color: $color6;
+    }
+    p {
+        color: $color6;
+    }
+}

@@ -1,0 +1,15 @@
+@mixin centerContent () {
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+}
+
+body {
+    @include centerContent();
+    border
+    header {
+        form {
+            @include centerContent();
+        }
+    }
+}
