@@ -11,6 +11,7 @@ import makeNewId from "./utils/hash";
 // Components
 import ToDoList from "./components/ToDoList";
 import CreateToDo from "./components/CreateToDo";
+import Quote from "./components/Quote";
 
 const classNames = require("classnames");
 
@@ -143,6 +144,7 @@ function App() {
               </span>
             </motion.button>
           </div>
+          <Quote />
           <CreateToDo
             value={formData.text}
             handleChange={handleChange}
