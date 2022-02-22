@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 
-// initial={{ y: -50, opacity: 0 }}
-// animate={{ y: 0, opacity: 1 }}
-// transition={{ duration: 0.5, ease: "easeOut", type: "spring" }}
-
 import "./ToDoItem.scss";
 
 import InputEdit from "../InputEdit";
@@ -24,12 +20,13 @@ export default function ToDoItem({
 }) {
   const [updateData, setUpdateData] = useState(data);
   const [updateValue, setUpdateValue] = useState("");
-  function itemValue(event) {
-    setUpdateValue(event.target.value);
+
+  const itemValue = (e) => {
+    setUpdateValue(e.target.value);
     handleError(false);
-  }
-  function itemUpdate(event) {
-    event.preventDefault();
+  };
+  const itemUpdate = (e) => {
+    e.preventDefault();
     if (updateValue === "") {
       handleError(true);
       return;
@@ -40,7 +37,7 @@ export default function ToDoItem({
     newState[item].text = updateValue;
     setUpdateData(newState);
     toggleEditing(id);
-  }
+  };
   return (
     <article className="todo-item">
       <div className="item-label" style={{ backgroundColor: label }} />
