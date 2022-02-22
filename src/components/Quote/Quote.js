@@ -23,14 +23,23 @@ export default function Quote() {
   //   console.log(getQuote());
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 2 }}
-      className="quoteContainer"
-    >
-      <p className="quote">{`"${quote.text}"`}</p>
-      <p className="author">{`-${quote.author}-`}</p>
-    </motion.div>
+    <div className="quoteContainer">
+      <motion.p
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2 }}
+        className="quote"
+      >
+        {`"${quote.text}"`}
+      </motion.p>
+      <motion.p
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 2, delay: 2 }}
+        className="author"
+      >
+        {`-${quote.author === null ? "Unknown" : quote.author}-`}
+      </motion.p>
+    </div>
   );
 }
