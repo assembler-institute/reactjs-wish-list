@@ -20,7 +20,8 @@ export default function ToDoList({
   data,
   handleDelete,
   isCompleted,
-  isEmpty,
+  emptyError,
+  handleError,
   toggleEditing,
   handleClear,
   reorderList,
@@ -58,7 +59,8 @@ export default function ToDoList({
                   done={item.done}
                   label={item.label}
                   isEditing={item.isEditing}
-                  emptyError={isEmpty}
+                  emptyError={emptyError}
+                  handleError={handleError}
                   toggleEditing={() => toggleEditing(item.id)}
                   handleDone={() => isCompleted(item.id)}
                   handleDelete={() => handleDelete(item.id)}

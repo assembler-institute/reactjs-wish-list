@@ -17,18 +17,23 @@ export default function ToDoItem({
   handleDelete,
   id,
   data,
-  isEmpty,
+  emptyError,
+  handleError,
   toggleEditing,
   theme,
 }) {
   const [updateData, setUpdateData] = useState(data);
   const [updateValue, setUpdateValue] = useState("");
-  function testValue(event) {
+  function itemValue(event) {
     setUpdateValue(event.target.value);
+    handleError(false);
   }
-  function testUpdate(event) {
+  function itemUpdate(event) {
     event.preventDefault();
-    if (updateValue === "") return;
+    if (updateValue === "") {
+      handleError(true);
+      return;
+    }
     const updateIndex = updateData.find((index) => index.id === id);
     const item = updateData.indexOf(updateIndex);
     const newState = Array.from(updateData);
@@ -50,9 +55,9 @@ export default function ToDoItem({
       {isEditing && (
         <InputEdit
           text={text}
-          handleUpdate={testUpdate}
-          handleChangeUpdate={testValue}
-          emptyError={isEmpty}
+          handleUpdate={itemUpdate}
+          handleChangeUpdate={itemValue}
+          emptyError={emptyError}
         />
       )}
       {!isEditing &&

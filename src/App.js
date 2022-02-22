@@ -3,7 +3,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { motion } from "framer-motion/dist/framer-motion";
 
 import "./sass/main.scss";
-import img from "./img/motivation.jpg";
+import imgLight from "./img/motivation.jpg";
+import imgDark from "./img/motivation2.jpg";
 import { data } from "./utils/data";
 import makeNewId from "./utils/hash";
 
@@ -23,6 +24,7 @@ function App() {
     label: "",
   });
   const [isEmpty, setIsEmpty] = useState(false);
+  const [todoIsEmpty, setTodoIsEmpty] = useState(false);
   const [darkTheme, setDarkTheme] = useState(false);
 
   useEffect(() => {
@@ -102,6 +104,7 @@ function App() {
       text: element.text,
       done: !element.done,
       isEditing: false,
+      label: element.label,
     };
     setToDoItems((prevState) => [...prevState, newToDo]);
     // changeformData(id, "done");
@@ -122,9 +125,15 @@ function App() {
     <BrowserRouter>
       <main className={darkTheme ? classNames("dark-mode") : ""}>
         <header>
-          <img src={img} alt="motivated person in the mountains" />
+          <img
+            src={darkTheme ? imgDark : imgLight}
+            alt="motivated person in the mountains"
+          />
         </header>
-        <section className="container-sm d-flex flex-column fixed-top align-items-center h-100">
+        <section
+          id="container-sm"
+          className="container-sm d-flex flex-column fixed-top align-items-center h-100"
+        >
           <div className="main-header w-100 mt-5 d-flex justify-content-between">
             <h1>TODO</h1>
             <motion.button
@@ -151,7 +160,8 @@ function App() {
                 data={route.data}
                 handleDelete={handleDelete}
                 isCompleted={isCompleted}
-                emptyError={isEmpty}
+                handleError={setTodoIsEmpty}
+                emptyError={todoIsEmpty}
                 toggleEditing={toggleEditing}
                 handleClear={clearCompleted}
                 reorderList={setToDoItems}

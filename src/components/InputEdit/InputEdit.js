@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
 import "./Input.scss";
 
@@ -12,12 +12,20 @@ export default function InputEdit({
   handleUpdate,
 }) {
   const test = emptyError ? "inputError" : "";
+
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
     <form action="" className="inputForm">
       <input
-        className={classNames({ test }, "inputStyle")}
+        ref={inputRef}
+        className={classNames("inputStyle", test)}
         type="text"
-        placeholder={text}
+        placeholder={!emptyError ? text : "Please enter at least one character"}
         onChange={handleChangeUpdate}
         onKeyPress={handleKeyPressUpdate}
         data-testid="create-todo-input"

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+
+import { motion } from "framer-motion/dist/framer-motion";
 
 import "./CreateToDo.scss";
 
@@ -12,10 +14,16 @@ export default function CreateToDo({
   emptyError,
 }) {
   const [todoLabel, setTodoLabel] = useState("");
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
   return (
     <form action="" className="create-todo-input">
       <span className="material-icons-outlined md-30">circle</span>
       <input
+        ref={inputRef}
         className={emptyError ? "inputError" : ""}
         type="text"
         placeholder={
@@ -30,7 +38,9 @@ export default function CreateToDo({
         name="text"
       />
       <fieldset required>
-        <label
+        <motion.label
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           htmlFor="green-option"
           className={
             todoLabel === "green"
@@ -47,8 +57,10 @@ export default function CreateToDo({
             style={{ display: "none" }}
             onClick={() => setTodoLabel("green")}
           />
-        </label>
-        <label
+        </motion.label>
+        <motion.label
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           className={
             todoLabel === "red"
               ? classNames("label-border-red", "red-label")
@@ -65,8 +77,10 @@ export default function CreateToDo({
             style={{ display: "none" }}
             onClick={() => setTodoLabel("red")}
           />
-        </label>
-        <label
+        </motion.label>
+        <motion.label
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           className={
             todoLabel === "orange"
               ? classNames("label-border-orange", "orange-label")
@@ -83,8 +97,10 @@ export default function CreateToDo({
             style={{ display: "none" }}
             onClick={() => setTodoLabel("orange")}
           />
-        </label>
-        <label
+        </motion.label>
+        <motion.label
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           className={
             todoLabel === "blue"
               ? classNames("label-border-blue", "blue-label")
@@ -101,7 +117,7 @@ export default function CreateToDo({
             style={{ display: "none" }}
             onClick={() => setTodoLabel("blue")}
           />
-        </label>
+        </motion.label>
       </fieldset>
       <button
         type="submit"

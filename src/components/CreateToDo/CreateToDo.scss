@@ -4,7 +4,7 @@
   background: white;
   border: 1px solid lightgrey;
   border-radius: 8px;
-  padding: 30px;
+  padding: 20px;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -30,12 +30,14 @@
   }
 }
 fieldset {
+
+  width: 100%;
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  width: 25%;
+
 }
 label {
   width: 25px;
@@ -60,19 +62,8 @@ label {
   background: #3a86ff;
   }
 
-.label-border-green {
+.label-border-green, .label-border-blue, .label-border-red, .label-border-orange {
   //outline: 3px solid green;
-  scale: 1.3;
-}
-.label-border-red {
-  // outline: 3px solid red;
-  scale: 1.3;
-}
-.label-border-orange {
-  // outline: 3px solid orange;
-  scale: 1.3;
-}
-.label-border-blue {
-  // outline: 3px solid blue;
-  scale: 1.3;
+  border: 2px solid rgb(128, 128, 128);
+  scale: 1.2;
 }

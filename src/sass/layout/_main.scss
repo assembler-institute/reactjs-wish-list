@@ -6,16 +6,19 @@ main {
     font-family: 'Open Sans', sans-serif;
 }
 .todo-list {
-    position: absolute;
-    width: 100%;
+    // position: absolute;
+    // width: 100%;
     max-width: 722px;
-    height: 850px;
-    left: calc(50% - 366px);
-    top: 50px;
+    // height: 850px;
+    // left: calc(50% - 366px);
+    // top: 50px;
 
     h6 {
         text-align: center;
         margin-top: 3rem;
+    }
+    #container-sm {
+        max-width: 700px !important;
     }
 }
 .main-header {
@@ -42,9 +45,9 @@ main {
 }
 
 .dark-mode {
-    background: #181824;
+    background: #212132;
     color: white;
-    transition: all 0.5s ease-out;
+
   
     input,
     li,
@@ -54,26 +57,27 @@ main {
     article,
     p {
       background: rgb(37, 39, 60) !important;
-      transition: all 0.5s ease-out;
+    //   transition: all 0.5s ease-out;
 
     }
     input {
         color: white !important;
-        transition: all 0.5s ease-out;
+    
     }
     footer {
         background: rgb(37, 39, 60)
         linear-gradient(rgba(54, 113, 171, 0.392) 0%, rgb(37, 39, 60) 20%) repeat
         scroll 0% 0% !important;
-        transition: all 0.5s ease-out;
+    
     }
     .list-container {
-        box-shadow: rgba(255, 255, 255, 0.15) 0px 10px 15px -3px,
-        rgba(255, 255, 255, 0.1) 0px 4px 6px -2px !important;
-        border: 1px solid lightgrey !important;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px !important;
         scrollbar-color: dark rgb(37, 39, 60) !important;
-        transition: all 0.5s ease-out;
+    
     }
-
-
+    .create-todo-input {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px !important;
+        border: none !important;
+    }
   }
+
