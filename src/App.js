@@ -46,8 +46,8 @@ function App() {
   ];
 
   // Create New Item
-  function handleChange(event) {
-    const { name, value } = event.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData((prevState) => {
       return {
         ...prevState,
@@ -55,9 +55,9 @@ function App() {
       };
     });
     setIsEmpty(false);
-  }
-  function handleSubmit(event) {
-    event.preventDefault();
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
     // Empty error
     if (formData.text === "") {
       setIsEmpty(true);
@@ -78,25 +78,25 @@ function App() {
       isEditing: false,
       label: "",
     });
-  }
+  };
   // Delete
-  function handleDelete(id) {
+  const handleDelete = (id) => {
     const deleteIndex = toDoItems.find((index) => index.id === id);
     setToDoItems((prevState) => {
       const newState = prevState.filter((item) => item !== deleteIndex);
       return newState;
     });
-  }
+  };
   // Modify a formData of a ToDo Item
-  function changeformData(id, param) {
+  const changeformData = (id, param) => {
     const element = toDoItems.find((index) => index.id === id);
     const index = toDoItems.indexOf(element);
     const newState = Array.from(toDoItems);
     newState[index][param] = !newState[index][param];
     setToDoItems(newState);
-  }
+  };
   // Is Completed
-  function isCompleted(id) {
+  const isCompleted = (id) => {
     const element = toDoItems.find((index) => index.id === id);
     handleDelete(id);
     const newToDo = {
@@ -108,19 +108,14 @@ function App() {
     };
     setToDoItems((prevState) => [...prevState, newToDo]);
     // changeformData(id, "done");
-  }
+  };
   // Is Editing
-  function toggleEditing(id) {
-    changeformData(id, "isEditing");
-  }
-
+  const toggleEditing = (id) => changeformData(id, "isEditing");
   // Clear Completed Items
-  function clearCompleted() {
-    setToDoItems(activeTodos);
-  }
-  function changeTheme() {
-    setDarkTheme(!darkTheme);
-  }
+  const clearCompleted = () => setToDoItems(activeTodos);
+
+  const changeTheme = () => setDarkTheme(!darkTheme);
+
   return (
     <BrowserRouter>
       <main className={darkTheme ? classNames("dark-mode") : ""}>
