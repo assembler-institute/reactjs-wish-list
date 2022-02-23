@@ -1,0 +1,16 @@
+.quoteContainer{
+    width: 100%;
+    margin-top: 20px;
+    color: white;
+
+    .quote{
+        font-size: 24px !important;
+        font-style: italic;
+        align-items: center;
+        text-align: center;
+    }
+    .author{
+        font-size: 18px;
+        text-align: center;
+    }
+}

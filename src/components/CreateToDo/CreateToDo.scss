@@ -1,0 +1,69 @@
+.create-todo-input {
+  width: 100%;
+  margin-top: 50px;
+  background: white;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  input {
+    width: 100%;
+    font-size: 24px;
+    color: rgb(40, 40, 40);
+    border: none;
+    outline: none;
+  }
+}
+.material-icons-outlined.md-30 {
+  font-size: 30px;
+  color: lightgrey;
+}
+.inputError {
+  &:focus {
+    color: red;
+    &::placeholder {
+      color: red;
+    }
+  }
+}
+fieldset {
+
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+}
+label {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    scale: 1.1;
+  }
+}
+.green-label {
+  background: #06d6a0;
+  }
+.red-label {
+  background: #ef476f;
+  }
+.orange-label {
+  background: #fb5607;
+  }
+.blue-label {
+  background: #3a86ff;
+  }
+
+.label-border-green, .label-border-blue, .label-border-red, .label-border-orange {
+  //outline: 3px solid green;
+  border: 2px solid rgb(128, 128, 128);
+  scale: 1.2;
+}

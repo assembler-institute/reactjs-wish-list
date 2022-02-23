@@ -1,0 +1,6 @@
+@use "./base/index" as *;
+@use "./layout/index";
+
+h1 {
+    color: $base-color;
+}

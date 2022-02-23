@@ -1,0 +1,86 @@
+main {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #fafafa;
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+}
+.todo-list {
+    // position: absolute;
+    // width: 100%;
+    max-width: 722px;
+    // height: 850px;
+    // left: calc(50% - 366px);
+    // top: 50px;
+
+    h6 {
+        text-align: center;
+        margin-top: 3rem;
+    }
+    #container-sm {
+        max-width: 700px !important;
+    }
+}
+.main-header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    h1 {
+        font-size: 52px;
+        color: white;
+        letter-spacing: 16px;
+    }
+    button {
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+    }
+}
+.material-icons-outlined.md-48 {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 42px;
+}
+
+.dark-mode {
+    background: #212132;
+    color: white;
+
+  
+    input,
+    li,
+    ul,
+    form,
+    footer,
+    article,
+    p {
+      background: rgb(37, 39, 60) !important;
+    //   transition: all 0.5s ease-out;
+
+    }
+    input {
+        color: white !important;
+    
+    }
+    footer {
+        background: rgb(37, 39, 60)
+        linear-gradient(rgba(54, 113, 171, 0.392) 0%, rgb(37, 39, 60) 20%) repeat
+        scroll 0% 0% !important;
+    
+    }
+    .list-container {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px !important;
+        scrollbar-color: dark rgb(37, 39, 60) !important;
+    
+    }
+    .create-todo-input {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px !important;
+        border: none !important;
+    }
+    .quoteContainer > *{
+        background: none !important;
+    }
+  }
+

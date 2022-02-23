@@ -1,0 +1,33 @@
+.todo-item {
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid lightgrey;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+
+  p {
+    width: 100%;
+    font-size: 24px;
+    color: rgb(40, 40, 40);
+    border: none;
+  }
+  button {
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+  }
+}
+.material-icons-outlined.md-30 {
+  font-size: 30px;
+  color: lightgrey;
+}
+.item-label {
+  height: 100%;
+  width: 1rem;
+  position: absolute;
+  left: 0;
+}
