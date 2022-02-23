@@ -48,8 +48,6 @@ export default function ToDoList({
                 exit="removed"
                 layoutId={item.id}
                 custom={(index + 1) * 0.2}
-                // whileHover={{ scale: 1.05 }}
-                // whileTap={{ scale: 1.05 }}
                 data-testid="todo-item"
               >
                 <ToDoItem

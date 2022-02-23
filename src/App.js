@@ -24,10 +24,16 @@ function App() {
     isEditing: false,
     label: "",
   });
+
+  // React Router routes
   const [isEmpty, setIsEmpty] = useState(false);
   const [todoIsEmpty, setTodoIsEmpty] = useState(false);
   const [darkTheme, setDarkTheme] = useState(false);
 
+  const completedTodos = toDoItems.filter((item) => item.done === true);
+  const activeTodos = toDoItems.filter((item) => item.done !== true);
+
+  // Local storage
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem("todos"));
     if (storedTodos) setToDoItems(storedTodos);
@@ -36,9 +42,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(toDoItems));
   }, [toDoItems]);
-
-  const completedTodos = toDoItems.filter((item) => item.done === true);
-  const activeTodos = toDoItems.filter((item) => item.done !== true);
 
   const routes = [
     { path: "/", data: toDoItems },
@@ -108,7 +111,6 @@ function App() {
       label: element.label,
     };
     setToDoItems((prevState) => [...prevState, newToDo]);
-    // changeformData(id, "done");
   };
   // Is Editing
   const toggleEditing = (id) => changeformData(id, "isEditing");

@@ -13,14 +13,6 @@ export default function Quote() {
       .then((response) => response.json())
       .then((data) => setQuote(data[Math.round(Math.random() * 1500)]));
   }, []);
-  //   const getQuote = () => {
-  //     const datos = fetch("https://type.fit/api/quotes")
-  //       .then((response) => response.json())
-  //       .then((data) => data[0].text);
-  //     return datos;
-  //   };
-
-  //   console.log(getQuote());
 
   return (
     <div className="quoteContainer">
