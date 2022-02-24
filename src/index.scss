@@ -1,0 +1,168 @@
+body {
+  margin-top: 20px;
+  background: #f8f8f8;
+}
+#root {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 100%;
+  background-color: #5f5f5f;
+}
+
+.container {
+  max-width: 90%;
+}
+
+div {
+  width: 100%;
+  flex-direction: column;
+}
+
+.inputform {
+  width: 90%;
+}
+
+.todo-nav {
+  margin-top: 10px;
+}
+
+.todo-nav li {
+  display: flex;
+  padding: 1em 3em;
+}
+
+.todo-list {
+  margin: 10px 0;
+}
+
+.todo-list .todo-item {
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 5px 0;
+  border-radius: 0;
+  background: #f7f7f7;
+  flex-direction: row;
+}
+
+.todo-item {
+  justify-content: flex-start;
+}
+
+.todo-item span {
+  padding-left: 1em;
+}
+
+.todo-item p {
+  width: 100%;
+  padding: 1em 1em 0;
+}
+.editBtn{
+  padding-right: 1em;
+  align-items: flex-end;
+  margin: 0 auto;
+  width: min-content;
+}
+.closeBtn {
+  align-items: flex-end;
+  margin: 0 auto;
+  width: min-content;
+}
+
+.todo-list.only-active .todo-item.complete {
+  display: none;
+}
+
+.todo-list.only-active .todo-item:not(.complete) {
+  display: block;
+}
+
+.todo-list.only-complete .todo-item:not(.complete) {
+  display: none;
+}
+
+.todo-list.only-complete .todo-item.complete {
+  display: block;
+}
+
+.todo-list .todo-item.complete span {
+  text-decoration: line-through;
+}
+
+.remove-todo-item {
+  width: 25px;
+  color: rgb(228, 98, 98);
+}
+
+.remove-todo-item:hover {
+  color: #ff0000;
+}
+
+.todo-item:hover .remove-todo-item {
+  visibility: visible;
+}
+
+div.checker {
+  width: 18px;
+  height: 18px;
+}
+
+div.checker input,
+div.checker span {
+  width: 18px;
+  height: 18px;
+}
+
+div.checker span {
+  display: -moz-inline-box;
+  display: inline-block;
+  zoom: 1;
+  text-align: center;
+  background-position: 0 -260px;
+}
+
+div.checker,
+div.checker input,
+div.checker span {
+  width: 19px;
+  height: 19px;
+}
+
+div.checker,
+div.radio,
+div.uploader {
+  position: relative;
+}
+
+div.button,
+div.button *,
+div.checker,
+div.checker *,
+div.radio,
+div.radio *,
+div.selector,
+div.selector *,
+div.uploader,
+div.uploader * {
+  margin: 0;
+  padding: 0;
+}
+
+div.button,
+div.checker,
+div.radio,
+div.selector,
+div.uploader {
+  display: -moz-inline-box;
+  display: inline-block;
+  zoom: 1;
+  vertical-align: middle;
+}
+
+.card {
+  padding: 25px;
+  margin-bottom: 20px;
+  border: initial;
+  background: #fff;
+  border-radius: calc(0.15rem - 1px);
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
+}
