@@ -26,7 +26,7 @@ This is a wishlist feature for an e-commerce app built with React that allows us
 
 This is a wishlist feature for an e-commerce app built with React that allows users to save products they are interested in purchasing for future reference. The wishlist feature is built using useState, useEffect, useContext and input events to create a seamless user experience.
 
-<img src="https://ibb.co/0DwHk3K">
+<img src="https://i.ibb.co/4mQhcx2/app-view.png">
 
 ## Project requirements
 
