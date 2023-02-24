@@ -6,9 +6,9 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-# Assembler School: React.js Todo List <!-- omit in toc -->
+# Assembler School: React.js Wish List <!-- omit in toc -->
 
-In this project you will learn how to create a React.js todo list.
+In this project you will learn how to create a React.js Wish list.
 
 ## Table of Contents <!-- omit in toc -->
 
@@ -20,21 +20,7 @@ In this project you will learn how to create a React.js todo list.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your
-local machine for development and testing purposes.
-
-See deployment for notes on how to deploy the project on a live system.
-
-### The repository
-
-First, you will need to `clone` or `fork` the repository into your Github
-account:
-
-<img src="https://docs.github.com/assets/images/help/repository/fork_button.jpg" alt="Fork on GitHub" width='450'>
-
-```
-$ git clone https://github.com/assembler-school/reactjs-todo-list.git
-```
+This is a wishlist feature for an e-commerce app built with React that allows users to save products they are interested in purchasing for future reference. The wishlist feature is built using `useState`, `useEffect`, `useContext`, `input events`or any other hooks you feel ready to use in order to create a seamless user experience.
 
 ## Contents and Branches Naming Strategy <!-- omit in toc -->
 
@@ -43,8 +29,8 @@ section.
 
 The branches follow a naming strategy like the following:
 
-- `main`: includes the main contents and the instructions
-- `assembler-solution`: includes the solution
+- `main`: includes a basic repository using react with `create-react-app`
+- `assembler-solution`: includes a proposed solution
 
 ### Fetching All the Branches
 
@@ -55,13 +41,19 @@ following command:
 $ git fetch --all
 ```
 
+or
+
+```sh
+$ git branch -r
+```
+
 ### List Both Remote Tracking Branches and Local Branches
 
 ```sh
 $ git branch --all
 ```
 
-Then, you can create a local branch based on a remote branch with the following
+If you decide to use this repository, which is not mandatory, you can create a local branch based on a remote branch with the following
 command:
 
 ```sh
@@ -77,31 +69,6 @@ Run the following command in your terminal after cloning the main repo:
 ```sh
 $ npm install
 ```
-
-### Running the Tests
-
-The tests that validate your solution can be executed by runing the following
-commands:
-
-#### 1. Run the development server
-
-```
-$ npm run start
-```
-
-#### 2. Run the Cypress tests with the graphical test runner
-
-```
-$ npm run cy:open
-```
-
-#### 3. Or you can run the Cypress tests from the terminal
-
-```
-$ npm run cy:run
-```
-
-Both need the Create React App development server to be running.
 
 ### Git `precommit` and `prepush` Hooks
 
@@ -123,7 +90,7 @@ In this pill we won't deploy the app.
 
 ## The Project
 
-In this project you will build a todo app similar to the following screenshot.
+This is a wishlist feature for an e-commerce app built with React that allows users to save products they are interested in purchasing for future reference. The wishlist feature is built using useState, useEffect, useContext and input events to create a seamless user experience.
 
 <img src="src/img/app-view.jpg">
 
@@ -131,9 +98,8 @@ In this project you will build a todo app similar to the following screenshot.
 
 This is an overview of the main requirements of this project.
 
-- You must follow all the instructions of the project step-by-step
 - You should always try to solve them by yourself before asking for help
-- You should always help your team members and fellow students of the master so
+- You should always help your team members and fellow squad members of the master so
   that you can all learn together and become better software developers and team
   members
 - You must finish all the steps that are marked as `Required`
@@ -143,212 +109,179 @@ This is an overview of the main requirements of this project.
 
 ### 1. Styles and Layout
 
-For this step you have to think of a layout for the app.
+For this step you have to think of the layout for the app and implement some sketches using platforms such as Figma or a similar app.
 
-1. You **must** use `SCSS` for all the styles of the app and the
-   [classnames](https://github.com/JedWatson/classnames#readme) npm package to
-   handle any conditionally set classes
-2. The overall layout must be a pixel perfect copy of the design we provide
-3. The layout must be responsive so that it works in all device sizes
+1. For the styles you can use any library or native languages such as `CSS`, `SCSS` or `Styled Components`.
+2. The layout must be responsive so that it works in all device sizes
 
-### 2. Show All the Todos
+### 2. Show All the Wishes
 
-In this step you must implement the logic to render all the todos of the app.
-This means that all the todos are rendered without taking into account if they
+In this step you must implement the logic to render all the wishlist items of the app.
+This means that all the wishlist items are rendered without taking into account if they
 are completed or not.
 
-1. **The todos must be created in the `App` component and passed as props to the
+1. **A wishlist must be created and its state passed as props or context to the required
    page components**
-2. **All the methods that modify the `<App />` state must also be passed as
-   props**
-3. If there are no todos created you must render a message telling the user that
-   they can create their first todo to get started
-4. You can also render an illustration that indicates users that they can create
-   a todo to get started
-   1. Feel free to create your own or use one from the internet, this is a great
-      resource: [undraw.co](https://undraw.co/illustrations)
-   2. For this step, you will need to add a `data-testid="no-todos"` property on
-      the html component that is rendered as the illustration or the
-      illustration wrapper.
+2. **All the methods that modify the state must also be passed as props or context**
+3. If there are no wished items created you must render a message telling the user that
+   they can create their first wish to get started
+4. You can also render an illustration that indicates users how they can create
+   a wish to get started. (You can use illustrations on your own or use one from the internet, this is a great resource: [undraw.co](https://undraw.co/illustrations) ).
 
-### 3. Creating Todos
+### 3. Creating Wishes
 
 #### Step 1
 
-Users must be able to create a new todo using the form in the app header
+Users should be able to add products to their wishlist by clicking a "Add to Wishlist" button on a product page. The product information should be stored in the app's state using useState.
 
-1.  To test the todo creation requirement you will need to add a
-    `data-testid="create-todo-input"` property on the input element
-2.  If the user presses enter without entering a value in the todo form, an
-    error message should be rendered. The message needs to have a
-    `data-testid="create-todo-error-message"` property with the following error
-    message: `"Please enter at least one character"`
+1.  If the user presses enter without entering a value in the wish form, an
+    error message should be rendered.
 3.  Users must be able to press the `enter` key on their keyboard to create the
-    todo (if you implement it using semantic html5 this comes for free)
+    wish (if you implement it using semantic html5 this comes for free)
 
 #### Step 2
 
-Once the todo is created it must be rendered in the list bellow the form.
+Users should be able to view their wishlist by clicking a "View Wishlist" button on the app's main navigation. The wishlist should be displayed as a separate component that shows all the products the user has added to their wishlist. This feature could use useContext to access the app's state.
 
 1. By default the list should be empty.
 2. The list must be implemented using `ul` and `li` elements.
-3. To test the todo creation requirement you will need to:
-   1. add a `data-testid="todos-list"` property on the `ul` list element.
-   2. add a `data-testid="todo-item"` property on the `li` list element.
-   3. the `li` list element should have a text content of the todo that was
-      created and the `checkbox` value set to `checked` or not depending on if
-      the todo was marked as completed.
+3. To test the wish creation requirement you will need to:
+   1. the `li` list element should have a `checkbox` value set to `checked` or not depending on if the wish was marked as completed.
 
 #### Step 3
 
-Render the total number of todos in the app footer.
+Render the total number of wishes in the app footer.
 
-The footer should have a property of: `data-testid="app-footer"` and be
-implemented using an html5 `footer` element.
+1. At the above image, we are providing a general guidence towards what you could include here and how to separate the items.
 
-1. To test this requirement you will need to render the total number of todos
-   that the app has, that is both completed and incomplete todos.
-2. The text rendered should be:
-   1. `0 todos left`: if there are no todos
-   2. `1 todos left`: if there is only 1 todo
-   3. `12 todos left`: if there are 12 todos in the app
-   4. etc
+### 4. Editing Wishes
 
-### 4. Editing Todos
+Users should be able to edit the quantity of a product in their wishlist. This can be done using input events and updating the app's state with `useState`.
 
-Users must be able to edit the todos once they are created.
-
-1. Clicking the todo name should open a form that allows users to edit the todo
+1. Clicking the wish name should open a form that allows users to edit the wish
    name.
-   1. This can be implemented either in line or by filling out the new todo form
-      with the details of the todo that was clicked
-   2. The todo item should have a property of `data-testid="todo-item-input"`
-   3. We recommend that you implement a solution that allows users to edit the
-      todo in line. This means that clicking the todo name replaces the todo
-      with a form that has a value of the todo's name
-   4. Then, by clicking on the done button or by pressing enter, the todo is
+   1. This can be implemented either in line or by filling out the new wish form
+      with the details of the wish that was clicked
+   2. We recommend that you implement a solution that allows users to edit the
+      wish in line. This means that clicking the wish name replaces the wish
+      with a form that has a value of the wish's name
+   4. Then, by clicking on the done button or by pressing enter, the wish is
       edited and saved
-2. Users should be able to delete todos by clicking the `X` button that is
-   rendered when users hover over the todo name
-   1. the `X` button should have a property of
-      `data-testid="todo-item-delete-button"`
-3. Users must be able to mark a todo as completed when they press the `Done`
-   button that is rendered when the user hovers over the todo name
-   1. the `X` button should have a property of
-      `data-testid="todo-item-checkbox"`
+2. Users should be able to delete wishes by clicking the `X` button that is
+   rendered when users hover over the wish name. The removed wish should be removed from the app's state using useState.
+3. Users must be able to mark a wish as completed when they press the `Done`
+   button that is rendered when the user hovers over the wish name
 
-### 5. Filtering Todos
+### 5. Filtering wishes
 
-In this step you will create a page for each todo type.
+In this step you will create a page for each wish type.
 
 In order to allow users to navigate to a page you will need to complete the
 footer of the app that you can see in the screenshot above.
 
 You will have to render the following in the footer:
 
-1. The total count of all the `active` todos
-2. A link to the home page that renders `all` the todos, **both active and
+1. The total count of all the `active` wishes
+2. A link to the home page that renders `all` the wishes, **both active and
    completed**
-3. A link to the active todos page that renders the `active` todos
-4. A link to the completed todos page that renders the `completed` todos
+3. A link to the active wishes page that renders the `active` wishes
+4. A link to the completed wishes page that renders the `completed` wishes
 
-#### 5.1 All Todos
+#### 5.1 All wishes
 
 - Route: `/`
 - Page Component: `Home`
 
-In this page you will render all the todos, both completed or not.
+In this page you will render all the wishes, both completed or not.
 
-#### 5.2 Completed Todos
+#### 5.2 Completed wishes
 
 - Route: `/completed`
 - Page Component: `Completed`
 
-In this page you will render all the **completed** todos.
+In this page you will render all the **completed** wishes.
 
-You will need to think of a way to store or filter the todos that are completed.
+You will need to think of a way to store or filter the wishes that are completed.
 
-A possible solution is to use `[].filter` or to store the todos in a different
+A possible solution is to use `[].filter` or to store the wishes in a different
 `this.state` property.
 
 Feel free to think of a solution for this requirement.
 
-#### 5.3 Active Todos
+#### 5.3 Active wishes
 
 - Route: `/active`
 - Page Component: `Active`
 
-In this page you will render all the **active** todos, that is, all the todos
+In this page you will render all the **active** wishes, that is, all the wishes
 that are not completed.
 
-You will need to think of a way to store or filter the todos that are active.
+You will need to think of a way to store or filter the wishes that are active.
 
-A possible solution is to use `[].filter` or to store the todos in a different
+A possible solution is to use `[].filter` or to store the wishes in a different
 `this.state` property.
 
 Feel free to think of a solution for this requirement.
 
-### 💯 Extras
+#### 6. Persist wishlist data
 
-#### 1. Store the todos in `localStorage`
+The app should persist the user's wishlist data between sessions. This feature can be implemented using `localStorage`, `sessionStorage` or `cookies` so that users can refresh the app and their previous wishes are not lost. You can also add them directly from the database. 
 
-All the todos are stored in `localStorage` so that users can refresh the app and
-their previous todos are not lost.
+You must store the wishes in a single local storage entry named:
+`"wish-list"`.
 
-You must store the todos in a single local storage entry named:
-`"reactjs-todo-list"`.
-
-The todos should be stored using the following shape (you can add other
+The wishes should be stored using the following shape (you can add other
 properties but these are required):
 
-- `id`: the id of the todo
-- `text`: the text content of the todo
-- `done`: boolean that indicates wether the todo is completed or not
-- `isEditing`: boolean that indicates wether the todo is currently being edited
+- `id`: the id of the wish
+- `text`: the text content of the wish
+- `done`: boolean that indicates wether the wish is completed or not
+- `isEditing`: boolean that indicates wether the wish is currently being edited
 
 ```js
 [
   {
     id: "9c34e805-7bfc-401a-b386-468c25315e46",
-    text: "todo 01",
+    text: "wish 01",
     done: false,
     isEditing: false,
   },
   {
     id: "d733a37e-cc4e-4cde-916f-935b3e915bb3",
-    text: "todo 02",
+    text: "wish 02",
     done: false,
     isEditing: false,
   },
 ];
 ```
 
-#### 2. Clear all the Completed Todos
+### 💯 Extras
 
-Users must be able to clear all the todos that are completed. You can implement
-a button in the app footer that allows users to clear the completed todos.
+#### 1. Add notes to product in wishlist
 
-The clear completed todos button should have a property of
-`data-testid="clear-completed-todos"`.
+Users should be able to add notes to a product in their wishlist. This feature can be implemented using input events and updating the app's state with useState.
+
+#### 2. Sort and filter wishlist
+Users should be able to sort and filter their wishlist by product name, price, or other criteria. This feature can be implemented using useEffect to update the app's state based on user input.
+
+#### 2. Clear all the Completed wishes
+
+Users must be able to clear all the wishes that are completed. You can implement
+a button in the app footer that allows users to clear the completed wishes.
 
 #### 3: Light & Dark Mode Switch
 
-You can implement a light & dark mode switch that can be toggled using the moon
-icon in the app header.
+#### 4. Share wishlist
+Users should be able to share their wishlist with friends or family via email or social media. This feature can be implemented using a third-party API or library.
 
-The light & dark mode switch button should have a property of
-`data-testid="toggle-theme"`.
+
+## Conclusion
+
+The wishlist feature is an important component of any e-commerce app that allows users to save products for future purchase. By using useState, useEffect, useContext and input events, we can create a wishlist that provides a seamless user experience. The must-have features ensure that the basic functionality of the wishlist is in place, while the should-have features provide additional functionality that can enhance the user's experience.
 
 ## Project delivery
 
-To deliver this project you must follow the steps indicated in the document:
-
-- [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
-
-## Resources
-
-- [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/)
-- [reactjs.org](https://reactjs.org/)
+To deliver this project you must send us the link to your repository or branch within your classroom card. 
 
 ## License <!-- omit in toc -->
 
@@ -356,23 +289,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 for details
 
 ## Contributors ✨ <!-- omit in toc -->
-
-Thanks goes to these wonderful people
-([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="http://www.danilucaci.com"><img src="https://avatars.githubusercontent.com/u/19062818?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dani Lucaci</b></sub></a><br /><a href="https://github.com/assembler-school/vanilla-js-project-template/commits?author=danilucaci" title="Code">💻</a> <a href="https://github.com/assembler-school/vanilla-js-project-template/commits?author=danilucaci" title="Documentation">📖</a> <a href="#example-danilucaci" title="Examples">💡</a> <a href="#tool-danilucaci" title="Tools">🔧</a></td>
-  </tr>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the
 [all-contributors](https://github.com/all-contributors/all-contributors)
