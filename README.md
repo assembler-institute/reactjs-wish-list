@@ -257,21 +257,23 @@ properties but these are required):
 
 ### 💯 Extras
 
-#### 1. Add notes to product in wishlist
+#### 1. Embed the project to your e-commerce project.
+
+#### 2. Add notes to product in wishlist
 
 Users should be able to add notes to a product in their wishlist. This feature can be implemented using input events and updating the app's state with useState.
 
-#### 2. Sort and filter wishlist
+#### 3. Sort and filter wishlist
 Users should be able to sort and filter their wishlist by product name, price, or other criteria. This feature can be implemented using useEffect to update the app's state based on user input.
 
-#### 2. Clear all the Completed wishes
+#### 4. Clear all the Completed wishes
 
 Users must be able to clear all the wishes that are completed. You can implement
 a button in the app footer that allows users to clear the completed wishes.
 
-#### 3: Light & Dark Mode Switch
+#### 5: Light & Dark Mode Switch
 
-#### 4. Share wishlist
+#### 6. Share wishlist
 Users should be able to share their wishlist with friends or family via email or social media. This feature can be implemented using a third-party API or library.
 
 
