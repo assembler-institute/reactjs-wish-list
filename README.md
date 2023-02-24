@@ -136,7 +136,7 @@ Users should be able to add products to their wishlist by clicking a "Add to Wis
 
 1.  If the user presses enter without entering a value in the wish form, an
     error message should be rendered.
-3.  Users must be able to press the `enter` key on their keyboard to create the
+2.  Users must be able to press the `enter` key on their keyboard to create the
     wish (if you implement it using semantic html5 this comes for free)
 
 #### Step 2
@@ -165,7 +165,7 @@ Users should be able to edit the quantity of a product in their wishlist. This c
    2. We recommend that you implement a solution that allows users to edit the
       wish in line. This means that clicking the wish name replaces the wish
       with a form that has a value of the wish's name
-   4. Then, by clicking on the done button or by pressing enter, the wish is
+   3. Then, by clicking on the done button or by pressing enter, the wish is
       edited and saved
 2. Users should be able to delete wishes by clicking the `X` button that is
    rendered when users hover over the wish name. The removed wish should be removed from the app's state using useState.
@@ -225,7 +225,7 @@ Feel free to think of a solution for this requirement.
 
 #### 6. Persist wishlist data
 
-The app should persist the user's wishlist data between sessions. This feature can be implemented using `localStorage`, `sessionStorage` or `cookies` so that users can refresh the app and their previous wishes are not lost. You can also add them directly from the database. 
+The app should persist the user's wishlist data between sessions. This feature can be implemented using `localStorage`, `sessionStorage` or `cookies` so that users can refresh the app and their previous wishes are not lost. You can also add them directly from the database.
 
 You must store the wishes in a single local storage entry named:
 `"wish-list"`.
@@ -264,6 +264,7 @@ properties but these are required):
 Users should be able to add notes to a product in their wishlist. This feature can be implemented using input events and updating the app's state with useState.
 
 #### 3. Sort and filter wishlist
+
 Users should be able to sort and filter their wishlist by product name, price, or other criteria. This feature can be implemented using useEffect to update the app's state based on user input.
 
 #### 4. Clear all the Completed wishes
@@ -274,8 +275,8 @@ a button in the app footer that allows users to clear the completed wishes.
 #### 5: Light & Dark Mode Switch
 
 #### 6. Share wishlist
-Users should be able to share their wishlist with friends or family via email or social media. This feature can be implemented using a third-party API or library.
 
+Users should be able to share their wishlist with friends or family via email or social media. This feature can be implemented using a third-party API or library.
 
 ## Conclusion
 
@@ -283,7 +284,7 @@ The wishlist feature is an important component of any e-commerce app that allows
 
 ## Project delivery
 
-To deliver this project you must send us the link to your repository or branch within your classroom card. 
+To deliver this project you must send us the link to your repository or branch within your classroom card.
 
 ## License <!-- omit in toc -->
 
