@@ -189,6 +189,14 @@ properties but these are required):
 ];
 ```
 
+#### 7. Use Interfaces
+
+You should use interfaces in favor of having everything typed correctly. To increase productivity in this area, you can use the following [page](https://quicktype.io/) or the resulting vscode [extension](https://marketplace.visualstudio.com/items?itemName=quicktype.quicktype).
+
+
+<img width="719" alt="Screenshot 2023-04-03 at 10 33 17 AM" src="https://user-images.githubusercontent.com/43146182/229455665-eada3ab2-6428-46da-a271-99d4de74ae59.png">
+
+
 ### 💯 Extras
 
 #### 1. Embed the project to your e-commerce project.
